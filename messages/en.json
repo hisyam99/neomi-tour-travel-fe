@@ -1,0 +1,34 @@
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  },
+  "Navigation": {
+    "home": "Home",
+    "homestay": "Homestay",
+    "packages": "Tour Packages",
+    "gallery": "Gallery",
+    "blog": "Blog",
+    "about": "About Us",
+    "contactUs": "Contact Us",
+    "brandName": "Neomi Travel"
+  },
+  "Common": {
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "bookNow": "Book Now",
+    "contactUs": "Contact Us",
+    "getStarted": "Get Started",
+    "language": "Language"
+  },
+  "Home": {
+    "section1": {
+      "title": "Discover New World with Neomi",
+      "description": "Enjoy an unforgettable holiday experience with comfort like home. From mountains to beaches, we're ready to accompany every step of your journey."
+    },
+    "section2": {
+      "title": "Your Journey Begins Here",
+      "description": "Experience the perfect blend of adventure and comfort with our carefully curated travel packages. Let us make your dream vacation a reality."
+    }
+  }
+}

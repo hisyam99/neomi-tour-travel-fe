@@ -1,0 +1,30 @@
+{
+  "Navigation": {
+    "home": "Beranda",
+    "homestay": "Homestay",
+    "packages": "Paket Tour",
+    "gallery": "Galeri",
+    "blog": "Blog",
+    "about": "Tentang Kami",
+    "contactUs": "Hubungi Kami",
+    "brandName": "Neomi Travel"
+  },
+  "Common": {
+    "readMore": "Baca Selengkapnya",
+    "learnMore": "Pelajari Lebih Lanjut",
+    "bookNow": "Pesan Sekarang",
+    "contactUs": "Hubungi Kami",
+    "getStarted": "Mulai Sekarang",
+    "language": "Bahasa"
+  },
+  "Home": {
+    "section1": {
+      "title": "Temukan Dunia Baru Bersama Neomi",
+      "description": "Nikmati pengalaman liburan tak terlupakan dengan kenyamanan seperti di rumah sendiri. Dari pegunungan hingga pantai, kami siap menemani setiap langkah perjalanan Anda."
+    },
+    "section2": {
+      "title": "Perjalanan Anda Dimulai Di Sini",
+      "description": "Rasakan perpaduan sempurna antara petualangan dan kenyamanan dengan paket perjalanan yang kami pilih dengan cermat. Biarkan kami mewujudkan liburan impian Anda."
+    }
+  }
+} 
