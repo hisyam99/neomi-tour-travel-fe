@@ -1,27 +1,33 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 
 export default function Section2() {
   const t = useTranslations("Home.section2");
   const commonT = useTranslations("Common");
 
   return (
-    <div
-      className="hero min-h-screen"
-      style={{
-        backgroundImage:
-          "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-      }}
-    >
-      <div className="hero-overlay"></div>
-      <div className="hero-content text-neutral-content text-center">
-        <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">{t("title")}</h1>
-          <p className="mb-5">{t("description")}</p>
-          <Link href="/contact-us" className="btn btn-primary">
-            {commonT("contactUs")}
-          </Link>
+    <div className="min-h-screen bg-base-200 items-center justify-center">
+      <div className="hero min-h-screen place-items-start items-center container mx-auto">
+        <div className="hero-content flex-col lg:flex-row-reverse w-full justify-between max-w-screen">
+          <div className="">
+            <Image
+              src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+              alt="Neomi Tour and Travel"
+              width={400}
+              height={300}
+              className="rounded-lg shadow-2xl object-cover"
+              priority
+            />
+          </div>
+          <div className="text-neutral-content max-w-md">
+            <h1 className="text-5xl font-bold mb-5">{t("title")}</h1>
+            <p className="mb-5">{t("description")}</p>
+            <Link href="/packages" className="btn btn-primary">
+              {commonT("getStarted")}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { NAVIGATION_ITEMS } from "../../_constants/navigation";
+import LanguageSwitcher from "../common/LanguageSwitcher";
 
 export default function Navigation() {
   const t = useTranslations("Navigation");
@@ -49,7 +50,8 @@ export default function Navigation() {
             ))}
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end gap-2">
+          <LanguageSwitcher />
           <Link href="/contact-us" className="btn btn-primary">
             {t("contactUs")}
           </Link>

@@ -1,11 +1,6 @@
-import Section1 from "./_components/home/Section1";
-import Section2 from "./_components/home/Section2";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-    <>
-      <Section1 />
-      <Section2 />
-    </>
-  );
+// This page only renders when the app is built statically (output: 'export')
+export default function RootPage() {
+  redirect("/en");
 }
