@@ -4,20 +4,14 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useTranslations } from "next-intl";
-
-const images = [
-  "https://picsum.photos/320/240?random=21",
-  "https://picsum.photos/320/240?random=22",
-  "https://picsum.photos/320/240?random=23",
-  "https://picsum.photos/320/240?random=24",
-];
+import { homeImages } from "@/app/[locale]/_constants/homeImages";
 
 export default function Section6() {
   const t = useTranslations("Home.section6");
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Ambil posts dari i18n
   const posts = t.raw("posts") as {
+    key?: string;
     date: string;
     title: string;
     excerpt: string;
@@ -54,13 +48,13 @@ export default function Section6() {
         >
           {posts.map((post, i) => (
             <div
-              key={`${post.title}-${post.date}`}
+              key={post.key ? post.key : i}
               className="flex-shrink-0 w-80 max-w-xs bg-transparent"
               style={{ scrollSnapAlign: "start" }}
             >
               <div className="mb-4">
                 <Image
-                  src={images[i % images.length]}
+                  src={homeImages[i % homeImages.length]}
                   alt={post.title}
                   width={320}
                   height={240}
