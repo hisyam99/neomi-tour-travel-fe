@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navigation from "./_components/layouts/Navigation";
 import { Geist, Geist_Mono } from "next/font/google";
+import Footer from "./_components/layouts/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default async function LocaleLayout({
             <Navigation />
           </div>
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

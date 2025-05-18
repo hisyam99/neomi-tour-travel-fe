@@ -8,12 +8,12 @@ export default function Section2() {
   const commonT = useTranslations("Common");
 
   return (
-    <div className="min-h-screen bg-base-200 items-center justify-center">
+    <div className="min-h-screen items-center justify-center">
       <div className="hero min-h-screen place-items-start items-center container mx-auto">
         <div className="hero-content flex-col lg:flex-row-reverse w-full justify-between max-w-screen">
           <div className="">
             <Image
-              src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+              src="https://picsum.photos/400/300?random=10"
               alt="Neomi Tour and Travel"
               width={400}
               height={300}

@@ -29,6 +29,77 @@
     "section2": {
       "title": "Your Journey Begins Here",
       "description": "Experience the perfect blend of adventure and comfort with our carefully curated travel packages. Let us make your dream vacation a reality."
+    },
+    "section3": {
+      "title": "Our Services",
+      "description": "We provide a variety of the best services to support your comfort and convenience during your trip. Enjoy a safe, comfortable, and unforgettable travel experience with Neomi Tour and Travel.",
+      "transport": {
+        "title": "Tour Transportation",
+        "desc": "We provide comfortable and safe vehicles, complete with experienced drivers ready to take you anywhere."
+      },
+      "homestay": {
+        "title": "Comfortable & Strategic Homestay",
+        "desc": "We offer clean, comfortable accommodation in strategic locations near tourist attractions. Perfect for families, couples, or solo travelers."
+      },
+      "package": {
+        "title": "Tour Packages",
+        "desc": "We offer a variety of attractive tour packages that can be tailored to your needs and preferences."
+      },
+      "custom": {
+        "title": "Custom Trip",
+        "desc": "Have your own destination? We are ready to create a travel package according to your wishes. More flexible and personal."
+      }
+    },
+    "section4": {
+      "title": "Discover Tourist Destinations",
+      "description": "Explore amazing places with Neomi Tour and Travel. From cool mountains to stunning tropical beaches, we are ready to take you to your dream destination with the best and most comfortable service."
+    },
+    "section6": {
+      "title": "Latest Posts",
+      "posts": [
+        {
+          "key": "bakso1",
+          "date": "May 12, 2025",
+          "title": "5 Must-Try Bakso Spots in Malang",
+          "excerpt": "Malang is known as a culinary city in East Java, and one of the most popular dishes is Malang meatballs.",
+          "readMore": "Read more",
+          "link": "/news/5-bakso-spots-malang"
+        },
+        {
+          "key": "beach1",
+          "date": "May 10, 2025",
+          "title": "Hidden Beaches to Explore in Malang",
+          "excerpt": "Discover the beauty of Malang's hidden beaches that are still rarely visited by tourists.",
+          "readMore": "Read more",
+          "link": "/news/hidden-beaches-malang"
+        },
+        {
+          "key": "bromo1",
+          "date": "May 8, 2025",
+          "title": "Exciting Hike to Mount Bromo",
+          "excerpt": "Experience hiking Mount Bromo and enjoy the breathtaking sunrise view.",
+          "readMore": "Read more",
+          "link": "/news/hiking-bromo"
+        },
+        {
+          "key": "culinary1",
+          "date": "May 5, 2025",
+          "title": "Best Night Culinary in Malang",
+          "excerpt": "Explore the best night culinary spots you must try when visiting Malang.",
+          "readMore": "Read more",
+          "link": "/news/night-culinary-malang"
+        }
+      ]
     }
+  },
+  "Footer": {
+    "brand": "Neomi Homestay Tour And Travel",
+    "description": "Enjoy an unforgettable holiday experience with comfort like home. From mountains to beaches, we are ready to accompany every step of your journey.",
+    "connect": "Connect",
+    "contact": "Contact",
+    "address": "43 Raymouth Rd. Baltemoer, London 3910",
+    "phone1": "0811-3322-218",
+    "phone2": "0811-3322-218",
+    "email": "info@mydomain.com"
   }
 }
