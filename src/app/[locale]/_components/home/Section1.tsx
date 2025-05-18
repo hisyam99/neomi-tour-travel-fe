@@ -21,7 +21,7 @@ export default function Section1() {
       className="relative min-h-screen"
       style={{
         backgroundImage:
-          "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+          "url(https://picsum.photos/1920/1080?random=9)",
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}

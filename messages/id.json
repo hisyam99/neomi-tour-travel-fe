@@ -25,6 +25,77 @@
     "section2": {
       "title": "Perjalanan Anda Dimulai Di Sini",
       "description": "Rasakan perpaduan sempurna antara petualangan dan kenyamanan dengan paket perjalanan yang kami pilih dengan cermat. Biarkan kami mewujudkan liburan impian Anda."
+    },
+    "section3": {
+      "title": "Layanan Kita",
+      "description": "Kami menyediakan berbagai layanan terbaik untuk menunjang kenyamanan dan kemudahan perjalanan Anda. Nikmati pengalaman wisata yang aman, nyaman, dan tak terlupakan bersama Neomi Tour and Travel.",
+      "transport": {
+        "title": "Transportasi Wisata",
+        "desc": "Kami menyediakan kendaraan yang nyaman dan aman, lengkap dengan sopir berpengalaman yang siap mengantar Anda ke mana saja."
+      },
+      "homestay": {
+        "title": "Homestay Nyaman & Strategis",
+        "desc": "Kami menyediakan penginapan yang bersih, nyaman, dan berada di lokasi strategis dekat tempat wisata. Cocok untuk keluarga, pasangan, maupun solo traveler."
+      },
+      "package": {
+        "title": "Paket Wisata",
+        "desc": "Kami menyediakan berbagai paket wisata menarik yang dapat disesuaikan dengan kebutuhan dan keinginan Anda."
+      },
+      "custom": {
+        "title": "Custom Trip",
+        "desc": "Punya tujuan sendiri? Kami siap membuatkan paket perjalanan sesuai keinginan Anda. Lebih fleksibel dan personal."
+      }
+    },
+    "section4": {
+      "title": "Temukan Destinasi Wisata",
+      "description": "Jelajahi berbagai tempat menakjubkan bersama Neomi Tour and Travel. Dari pegunungan yang sejuk hingga pantai tropis yang memukau, kami siap membawa Anda ke tujuan impian dengan layanan terbaik dan penuh kenyamanan."
+    },
+    "section6": {
+      "title": "Postingan Terbaru",
+      "posts": [
+        {
+          "key": "bakso1",
+          "date": "12 Mei 2025",
+          "title": "5 Rekomendasi Bakso di Malang yang Wajib Dikunjungi",
+          "excerpt": "Malang dikenal sebagai salah satu kota kuliner di Jawa Timur, dan salah satu hidangan yang paling populer adalah bakso Malang.",
+          "readMore": "Baca selengkapnya",
+          "link": "/berita/5-rekomendasi-bakso-malang"
+        },
+        {
+          "key": "pantai1",
+          "date": "10 Mei 2025",
+          "title": "Wisata Pantai Tersembunyi di Malang",
+          "excerpt": "Temukan keindahan pantai-pantai tersembunyi di Malang yang belum banyak diketahui wisatawan.",
+          "readMore": "Baca selengkapnya",
+          "link": "/berita/pantai-tersembunyi-malang"
+        },
+        {
+          "key": "gunung1",
+          "date": "8 Mei 2025",
+          "title": "Pendakian Seru ke Gunung Bromo",
+          "excerpt": "Pengalaman mendaki Gunung Bromo dengan pemandangan matahari terbit yang menakjubkan.",
+          "readMore": "Baca selengkapnya",
+          "link": "/berita/pendakian-bromo"
+        },
+        {
+          "key": "kuliner1",
+          "date": "5 Mei 2025",
+          "title": "Kuliner Malam Favorit di Kota Malang",
+          "excerpt": "Jelajahi berbagai kuliner malam yang wajib dicoba saat berkunjung ke Malang.",
+          "readMore": "Baca selengkapnya",
+          "link": "/berita/kuliner-malam-malang"
+        }
+      ]
     }
+  },
+  "Footer": {
+    "brand": "Neomi Homestay Tour And Travel",
+    "description": "Nikmati pengalaman liburan tak terlupakan dengan kenyamanan seperti di rumah sendiri. Dari pegunungan hingga pantai, kami siap menemani setiap langkah perjalanan Anda.",
+    "connect": "Connect",
+    "contact": "Contact",
+    "address": "43 Raymouth Rd. Baltemoer, London 3910",
+    "phone1": "0811-3322-218",
+    "phone2": "0811-3322-218",
+    "email": "info@mydomain.com"
   }
 } 
