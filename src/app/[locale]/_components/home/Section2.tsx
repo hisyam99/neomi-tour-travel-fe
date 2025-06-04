@@ -21,8 +21,8 @@ export default function Section2() {
               priority
             />
           </div>
-          <div className="text-neutral-content max-w-md">
-            <h1 className="text-5xl font-bold mb-5">{t("title")}</h1>
+          <div className="max-w-md">
+            <h1 className="text-5xl mb-5">{t("title")}</h1>
             <p className="mb-5">{t("description")}</p>
             <Link href="/packages" className="btn btn-primary">
               {commonT("getStarted")}

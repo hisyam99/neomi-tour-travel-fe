@@ -101,5 +101,69 @@
     "phone1": "0811-3322-218",
     "phone2": "0811-3322-218",
     "email": "info@mydomain.com"
+  },
+  "Packages": {
+    "section1": {
+      "title": "Neomi Tour And Travel",
+      "description": "Enjoy an unforgettable holiday experience with expert capabilities in our own domain. From experience to expertise, we are ready to accompany every step of your journey.",
+      "playVideo": "PLAY VIDEO"
+    },
+    "section2": {
+      "description": "Want to experience a custom tour according to your preferences? Contact us, click below.",
+      "contactUs": "Contact Us"
+    },
+    "section3": {
+      "keyword": "KEYWORD",
+      "search": "Search",
+      "priceFilter": "PRICE FILTER",
+      "min": "Min",
+      "max": "Max",
+      "duration": "DURATION",
+      "duration1": "1 Day",
+      "duration2": "2 Days",
+      "duration3": "More Than 2 Days"
+    }
+  },
+  "Homestay": {
+    "section1": {
+      "title": "Neomi HomeStay",
+      "description": "Experience comfort like home, only at Neomi Homestay – the ideal place to rest and enjoy a peaceful atmosphere.",
+      "playVideo": "PLAY VIDEO"
+    },
+    "section2": {
+      "description": "Neomi Homestay brings modern comfort with a touch of local culture. Enjoy fast Wi-Fi, breakfast, and a peaceful atmosphere perfect for your holiday or business trip."
+    },
+    "section3": {
+      "priceFilter": "PRICE FILTER",
+      "min": "Min",
+      "max": "Max",
+      "otherFilters": "OTHER FILTERS",
+      "withHotdesk": "With Hotdesk",
+      "withoutHotdesk": "Without Hotdesk"
+    },
+    "section4": {
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "Gallery": {
+    "section1": {
+      "title": "Gallery",
+      "description": "A collection of the best moments from Neomi Tour & Travel's journeys and services."
+    }
+  },
+  "Blog": {
+    "section1": {
+      "title": "Blog",
+      "description": "Enjoy an unforgettable holiday experience with expert capabilities in our own domain. From experience to expertise, we are ready to accompany every step of your journey.",
+      "playVideo": "PLAY VIDEO"
+    }
+  },
+  "About": {
+    "section1": {
+      "title": "About Us",
+      "description": "Experience comfort like home, only at Neomi Homestay – the ideal place to rest and enjoy a peaceful atmosphere.",
+      "playVideo": "PLAY VIDEO"
+    }
   }
 }

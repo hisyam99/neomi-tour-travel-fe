@@ -97,5 +97,65 @@
     "phone1": "0811-3322-218",
     "phone2": "0811-3322-218",
     "email": "info@mydomain.com"
+  },
+  "Packages": {
+    "section1": {
+      "title": "Neomi Tour And Travel",
+      "description": "Nikmati pengalaman liburan tak terlupakan dengan kemampuan expert di ranah sendiri. Dari pengalaman hingga pandai, kami siap menemani setiap langkah perjalanan Anda.",
+      "playVideo": "PUTAR VIDEO"
+    },
+    "section2": {
+      "description": "Ingin merasakan tour custom sesuai pilihan anda? Hubungi kami, klik dibawah ini.",
+      "contactUs": "Hubungi Kami"
+    },
+    "section3": {
+      "keyword": "KATA KUNCI",
+      "search": "Cari",
+      "priceFilter": "FILTER HARGA",
+      "min": "Min",
+      "max": "Maks",
+      "duration": "DURASI",
+      "duration1": "1 Hari",
+      "duration2": "2 Hari",
+      "duration3": "Lebih Dari 2 Hari"
+    }
+  },
+  "Homestay": {
+    "section1": {
+      "title": "Neomi HomeStay",
+      "description": "Rasakan kenyamanan seperti di rumah sendiri, hanya di Neomi Homestay – tempat ideal untuk beristirahat dan menikmati suasana tenang.",
+      "playVideo": "PUTAR VIDEO"
+    },
+    "section2": {
+      "description": "Neomi Homestay menghadirkan kenyamanan modern dengan sentuhan budaya lokal. Nikmati Wi-Fi cepat, sarapan dan suasana tenang yang cocok untuk liburan atau perjalanan kerja Anda."
+    },
+    "section3": {
+      "priceFilter": "FILTER HARGA",
+      "min": "Min",
+      "max": "Maks",
+      "otherFilters": "FILTER LAINNYA",
+      "withHotdesk": "Ada Hotdesk",
+      "withoutHotdesk": "Non Hotdesk"
+    }
+  },
+  "Gallery": {
+    "section1": {
+      "title": "Galeri",
+      "description": "Kumpulan momen terbaik dari perjalanan dan layanan Neomi Tour & Travel."
+    }
+  },
+  "Blog": {
+    "section1": {
+      "title": "Blog",
+      "description": "Nikmati pengalaman liburan tak terlupakan dengan kemampuan expert di ranah sendiri. Dari pengalaman hingga pandai, kami siap menemani setiap langkah perjalanan Anda.",
+      "playVideo": "PUTAR VIDEO"
+    }
+  },
+  "About": {
+    "section1": {
+      "title": "Tentang Kami",
+      "description": "Rasakan kenyamanan seperti di rumah sendiri, hanya di Neomi HomeStay – tempat ideal untuk beristirahat dan menikmati suasana tenang.",
+      "playVideo": "PUTAR VIDEO"
+    }
   }
 } 

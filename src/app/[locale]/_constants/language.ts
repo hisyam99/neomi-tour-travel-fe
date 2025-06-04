@@ -8,6 +8,11 @@ export const LANGUAGES = [
     code: 'id',
     name: 'Indonesia',
     flag: '🇮🇩'
+  },
+  {
+    code: 'zh',
+    name: '中文',
+    flag: '🇨🇳'
   }
 ] as const;
 

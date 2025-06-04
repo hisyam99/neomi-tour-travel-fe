@@ -1,0 +1,28 @@
+import React from "react";
+import { FaWifi, FaUtensils, FaBus, FaBed, FaCamera } from "react-icons/fa";
+
+const fasilitas = [
+  { icon: <FaWifi />, label: "WiFi" },
+  { icon: <FaUtensils />, label: "Makan" },
+  { icon: <FaBus />, label: "Transport" },
+  { icon: <FaBed />, label: "Hotel" },
+  { icon: <FaCamera />, label: "Tour" },
+];
+
+export default function Section1() {
+  return (
+    <section className="bg-base-100 pt-10 pb-4">
+      <div className="container mx-auto px-4">
+        <h1 className="text-4xl md:text-5xl italic mb-6">Tour Dan Trip Bromo</h1>
+        <div className="flex flex-wrap gap-6 mb-6">
+          {fasilitas.map((f, idx) => (
+            <div key={idx} className="flex flex-col items-center gap-2">
+              <div className="bg-base-200 rounded-full p-3 text-2xl">{f.icon}</div>
+              <span className="text-xs md:text-sm text-base-content/70">{f.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+} 

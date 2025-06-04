@@ -31,7 +31,7 @@ export default function Section1() {
         <div className="hero min-h-screen place-items-start items-center">
           <div className="hero-content text-neutral-content text-left">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">{t("title")}</h1>
+              <h1 className="mb-5 text-5xl italic">{t("title")}</h1>
               <p className="mb-5">{t("description")}</p>
               <Link href="/packages" className="btn btn-primary">
                 {commonT("getStarted")}

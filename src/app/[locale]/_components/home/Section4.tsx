@@ -23,7 +23,7 @@ export default function Section4() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
           <div className="lg:w-1/3 mb-8 lg:mb-0">
-            <h2 className="text-5xl font-bold mb-4">{t("title")}</h2>
+            <h2 className="text-5xl mb-4">{t("title")}</h2>
             <p className="text-base">{t("description")}</p>
           </div>
           <div className="flex items-center gap-4 ml-auto mb-8 lg:mb-0">
