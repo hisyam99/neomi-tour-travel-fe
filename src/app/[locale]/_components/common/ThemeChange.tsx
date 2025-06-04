@@ -40,7 +40,7 @@ const ThemeChange: React.FC = () => {
 
   return (
     <div className="dropdown dropdown-end dropdown-bottom">
-      <div tabIndex={0} role="button" className="btn btn-ghost">
+      <button className="btn btn-ghost">
         <div className="flex items-center space-x-2">
           <p>Theme</p>
           <svg
@@ -52,10 +52,8 @@ const ThemeChange: React.FC = () => {
             <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
           </svg>
         </div>
-      </div>
-      <ul
-        tabIndex={0}
-        className="dropdown-content z-[1] max-h-60 w-52 overflow-y-auto rounded-box bg-base-300 p-2 shadow-2xl flex flex-col">
+      </button>
+      <ul className="dropdown-content z-[1] max-h-60 w-52 overflow-y-auto rounded-box bg-base-300 p-2 shadow-2xl flex flex-col">
         {themes.map(themeOption => (
           <li key={themeOption}>
             <button

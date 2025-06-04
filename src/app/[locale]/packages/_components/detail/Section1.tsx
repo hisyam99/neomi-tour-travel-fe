@@ -3,11 +3,11 @@ import React from "react";
 import { FaWifi, FaUtensils, FaBus, FaBed, FaCamera } from "react-icons/fa";
 
 const fasilitas = [
-  { icon: <FaWifi />, label: "WiFi" },
-  { icon: <FaUtensils />, label: "Makan" },
-  { icon: <FaBus />, label: "Transport" },
-  { icon: <FaBed />, label: "Hotel" },
-  { icon: <FaCamera />, label: "Tour" },
+  { id: 'wifi', icon: <FaWifi />, label: "WiFi" },
+  { id: 'makan', icon: <FaUtensils />, label: "Makan" },
+  { id: 'transport', icon: <FaBus />, label: "Transport" },
+  { id: 'hotel', icon: <FaBed />, label: "Hotel" },
+  { id: 'tour', icon: <FaCamera />, label: "Tour" },
 ];
 
 interface Props {
@@ -20,8 +20,8 @@ export default function Section1({ packageId }: Props) {
       <div className="container mx-auto px-4">
         <h1 className="text-4xl md:text-5xl italic mb-6">Tour Dan Trip Bromo</h1>
         <div className="flex flex-wrap gap-6 mb-6">
-          {fasilitas.map((f, idx) => (
-            <div key={idx} className="flex flex-col items-center gap-2">
+          {fasilitas.map((f) => (
+            <div key={f.id} className="flex flex-col items-center gap-2">
               <div className="bg-base-200 rounded-full p-3 text-2xl">{f.icon}</div>
               <span className="text-xs md:text-sm text-base-content/70">{f.label}</span>
             </div>

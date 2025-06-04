@@ -29,12 +29,13 @@ export default function Navigation() {
         <div className="w-full navbar bg-base-100">
           {/* Left Section */}
           <div className="flex-none flex items-center gap-2">
-            <label htmlFor="nav-drawer" className="btn btn-square btn-ghost drawer-button lg:hidden">
+            <label htmlFor="nav-drawer" className="btn btn-square btn-ghost drawer-button lg:hidden" aria-label="Open navigation menu">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 className="inline-block w-5 h-5 stroke-current"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -82,7 +83,7 @@ export default function Navigation() {
       <div className="drawer-side z-50">
         <label
           htmlFor="nav-drawer"
-          aria-label="close sidebar"
+          aria-label="Close navigation menu"
           className="drawer-overlay"
         ></label>
         <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">

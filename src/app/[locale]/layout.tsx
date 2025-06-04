@@ -2,9 +2,8 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navigation from "./_components/layouts/Navigation";
-import { Geist_Mono } from "next/font/google";
+import { Geist_Mono, Playfair_Display } from "next/font/google";
 import Footer from "./_components/layouts/Footer";
-import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
