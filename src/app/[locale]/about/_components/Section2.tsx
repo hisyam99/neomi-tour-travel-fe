@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export default function Section2() {
   return (
@@ -17,7 +18,13 @@ export default function Section2() {
           </div>
           {/* Right: Profile */}
           <div className="w-full md:w-64 flex flex-col items-center bg-base-100 rounded-xl p-6 shadow-sm">
-            <img src="https://picsum.photos/100" alt="John Doe" className="w-24 h-24 rounded-full mb-4 object-cover" />
+            <Image 
+              src="https://picsum.photos/100" 
+              alt="John Doe" 
+              width={96}
+              height={96}
+              className="rounded-full mb-4 object-cover" 
+            />
             <div className="italic text-lg mb-2">John Doe</div>
             <div className="text-xs text-base-content/80 text-center mb-4">
               Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation.

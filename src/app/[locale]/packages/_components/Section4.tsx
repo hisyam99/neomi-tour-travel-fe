@@ -1,6 +1,7 @@
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 
 const packages = Array.from({ length: 3 }).map((_, i) => ({
   id: i + 1,
@@ -14,10 +15,16 @@ export default function Section4() {
   return (
     <div>
       <div className="grid grid-cols-1 gap-8">
-        {packages.map((pkg, idx) => (
-          <div key={idx} className="bg-base-200 rounded-xl shadow p-6 flex flex-col md:flex-row items-center md:items-stretch gap-6">
+        {packages.map((pkg) => (
+          <div key={pkg.id} className="bg-base-200 rounded-xl shadow p-6 flex flex-col md:flex-row items-center md:items-stretch gap-6">
             <div className="w-full md:w-1/3 flex items-center justify-center">
-              <img src={pkg.image} alt={pkg.title} className="object-cover w-full h-40 rounded" />
+              <Image 
+                src={pkg.image} 
+                alt={pkg.title} 
+                width={400}
+                height={160}
+                className="object-cover w-full h-40 rounded" 
+              />
             </div>
             <div className="flex-1 flex flex-col justify-between">
               <div>

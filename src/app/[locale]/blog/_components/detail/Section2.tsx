@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const blogs = Array.from({ length: 8 }).map((_, i) => ({
   id: i + 1,
@@ -23,24 +25,32 @@ const dummyContent = `
 `;
 
 export default function Section2() {
+  const t = useTranslations("Blog.detail.section2");
+
   return (
     <section className="py-10">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-8">
         {/* Main Content */}
         <div className="flex-1 min-w-0">
           <article className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto">
-            <div dangerouslySetInnerHTML={{ __html: dummyContent }} />
+            <div dangerouslySetInnerHTML={{ __html: t("content") }} />
           </article>
         </div>
         {/* Related Posts */}
         <aside className="w-full lg:w-80">
           <div className="bg-base-200 rounded-xl p-6 shadow">
-            <div className="text-lg italic mb-4">Related Posts</div>
+            <div className="text-lg italic mb-4">{t("relatedPosts")}</div>
             <ul className="space-y-4">
               {blogs.slice(0, 6).map((post) => (
                 <li key={post.id} className="flex items-center gap-4">
                   <Link href={`/blog/${post.id}`} className="flex-shrink-0">
-                    <img src={post.image} alt={post.title} className="w-20 h-16 object-cover rounded-lg" />
+                    <Image 
+                      src={post.image} 
+                      alt={post.title} 
+                      width={80}
+                      height={64}
+                      className="object-cover rounded-lg" 
+                    />
                   </Link>
                   <Link href={`/blog/${post.id}`} className="flex-1 text-sm text-base-content/80 line-clamp-2 hover:text-accent transition-colors">
                     {post.title}

@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslations } from "next-intl";
 
 export default function Section1() {
+  const t = useTranslations("Blog.detail.section1");
+
   return (
     <div 
       className="relative min-h-[300px] md:min-h-[400px] flex items-center"
@@ -13,11 +16,13 @@ export default function Section1() {
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
       <div className="container mx-auto relative z-10 px-4 py-12 flex items-center">
         <div className="max-w-xl text-left text-neutral-content">
-          <h1 className="mb-4 text-5xl italic">Blog Detail</h1>
-          <p className="mb-2">Nikmati pengalaman liburan tak terlupakan dengan kemampuan expert di ranah sendiri. Dari pengalaman hingga pandai, kami siap menemani setiap langkah perjalanan Anda.</p>
-          <button className="btn btn-outline btn-neutral flex items-center gap-2 mt-4">
-            <span className="w-3 h-3 rounded-full bg-neutral"></span>
-            PLAY VIDEO
+          <h1 className="mb-4 text-5xl italic">{t("title")}</h1>
+          <p className="mb-2">{t("description")}</p>
+          <button className="btn btn-outline btn-neutral mt-4">
+            <div className="flex items-center">
+              <span className="w-3 h-3 rounded-full bg-neutral mr-3"></span>
+              <span>{t("playVideo")}</span>
+            </div>
           </button>
         </div>
       </div>

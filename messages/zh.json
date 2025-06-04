@@ -157,6 +157,17 @@
       "title": "博客",
       "description": "享受难忘的假期体验，拥有我们专业领域的专业能力。从经验到专业知识，我们随时准备陪伴您的每一步旅程。",
       "playVideo": "播放视频"
+    },
+    "detail": {
+      "section1": {
+        "title": "博客详情",
+        "description": "享受难忘的假期体验，拥有我们专业领域的专业能力。从经验到专业知识，我们随时准备陪伴您的每一步旅程。",
+        "playVideo": "播放视频"
+      },
+      "section2": {
+        "relatedPosts": "相关文章",
+        "content": "<h2>博客标题</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque.</p><p>Aliquam erat volutpat. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Pellentesque euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque.</p><h3>副标题</h3><ul><li>第一点，包含非常详细和冗长的解释，可能超过一行。</li><li>第二点，包含非常详细和冗长的解释，可能超过一行。</li><li>第三点，包含非常详细和冗长的解释，可能超过一行。</li></ul><p>总结段落，同样较长，用于模拟从WYSIWYG编辑器生成的博客内容。可以包含<strong>粗体文本</strong>、<em>斜体文本</em>和<a href='#'>链接</a>。</p>"
+      }
     }
   },
   "About": {

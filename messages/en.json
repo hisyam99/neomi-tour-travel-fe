@@ -157,6 +157,17 @@
       "title": "Blog",
       "description": "Enjoy an unforgettable holiday experience with expert capabilities in our own domain. From experience to expertise, we are ready to accompany every step of your journey.",
       "playVideo": "PLAY VIDEO"
+    },
+    "detail": {
+      "section1": {
+        "title": "Blog Detail",
+        "description": "Enjoy an unforgettable holiday experience with expert capabilities in our own domain. From experience to expertise, we are ready to accompany every step of your journey.",
+        "playVideo": "PLAY VIDEO"
+      },
+      "section2": {
+        "relatedPosts": "Related Posts",
+        "content": "<h2>Blog Title</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque.</p><p>Aliquam erat volutpat. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Pellentesque euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque.</p><h3>Subtitle</h3><ul><li>First point with a very long and detailed explanation, can be more than one line.</li><li>Second point with a very long and detailed explanation, can be more than one line.</li><li>Third point with a very long and detailed explanation, can be more than one line.</li></ul><p>Closing paragraph that is also quite long to simulate blog content generated from a WYSIWYG editor. Can contain <strong>bold text</strong>, <em>italic text</em>, and <a href='#'>links</a>.</p>"
+      }
     }
   },
   "About": {

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 
 const blogs = Array.from({ length: 8 }).map((_, i) => ({
   id: i + 1,
@@ -16,7 +17,13 @@ export default function Section2() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {blogs.map((blog) => (
             <div key={blog.id} className="bg-base-200 rounded-xl shadow flex flex-col overflow-hidden">
-              <img src={blog.image} alt={blog.title} className="object-cover w-full h-40" />
+              <Image 
+                src={blog.image} 
+                alt={blog.title} 
+                width={400}
+                height={160}
+                className="object-cover w-full h-40" 
+              />
               <div className="p-4 flex-1 flex flex-col">
                 <div className="text-xs text-base-content/60 mb-1">{blog.date}</div>
                 <div className="font-semibold mb-1 text-sm line-clamp-2">{blog.title}</div>

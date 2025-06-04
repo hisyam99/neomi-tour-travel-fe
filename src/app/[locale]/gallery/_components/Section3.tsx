@@ -1,16 +1,27 @@
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Image from "next/image";
 
-const images = Array.from({ length: 9 }).map((_, i) => `https://picsum.photos/400/300?random=${i + 1}`);
+const images = Array.from({ length: 9 }).map((_, i) => ({
+  id: i + 1,
+  url: `https://picsum.photos/400/300?random=${i + 1}`,
+  alt: `Gallery ${i + 1}`
+}));
 
 export default function Section3() {
   return (
     <section className="py-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {images.map((img, idx) => (
-            <div key={idx} className="relative group overflow-hidden rounded-xl shadow bg-base-200">
-              <img src={img} alt={`Gallery ${idx + 1}`} className="object-cover w-full h-40 group-hover:scale-110 transition-transform duration-300" />
+          {images.map((img) => (
+            <div key={img.id} className="relative group overflow-hidden rounded-xl shadow bg-base-200">
+              <Image 
+                src={img.url} 
+                alt={img.alt} 
+                width={400}
+                height={300}
+                className="object-cover w-full h-40 group-hover:scale-110 transition-transform duration-300" 
+              />
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="text-white font-semibold">Lihat</span>
               </div>
