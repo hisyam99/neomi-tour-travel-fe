@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { FaWifi, FaUtensils, FaBus, FaBed, FaCamera } from "react-icons/fa";
 
@@ -9,7 +10,11 @@ const fasilitas = [
   { icon: <FaCamera />, label: "Tour" },
 ];
 
-export default function Section1() {
+interface Props {
+  packageId: string;
+}
+
+export default function Section1({ packageId }: Props) {
   return (
     <section className="bg-base-100 pt-10 pb-4">
       <div className="container mx-auto px-4">

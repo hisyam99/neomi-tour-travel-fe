@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 
 const images = [
@@ -7,7 +8,11 @@ const images = [
   "https://picsum.photos/400/200?random=4",
 ];
 
-export default function Section2() {
+interface Props {
+  packageId: string;
+}
+
+export default function Section2({ packageId }: Props) {
   return (
     <section className="pb-8">
       <div className="container mx-auto px-4">

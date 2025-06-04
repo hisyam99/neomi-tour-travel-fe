@@ -5,15 +5,25 @@ import Section4 from "../_components/detail/Section4";
 import Section5 from "../_components/detail/Section5";
 import Section6 from "../_components/detail/Section6";
 
-export default function PackageDetailPage() {
+type Props = {
+  params: Promise<{
+    packageId: string;
+    locale: string;
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function PackageDetailPage({ params, searchParams }: Props) {
+  const [{ packageId }] = await Promise.all([params, searchParams]);
+  
   return (
     <main>
-      <Section1 />
-      <Section2 />
-      <Section3 />
-      <Section4 />
-      <Section5 />
-      <Section6 />
+      <Section1 packageId={packageId} />
+      <Section2 packageId={packageId} />
+      <Section3 packageId={packageId} />
+      <Section4 packageId={packageId} />
+      <Section5 packageId={packageId} />
+      <Section6 packageId={packageId} />
     </main>
   );
 } 

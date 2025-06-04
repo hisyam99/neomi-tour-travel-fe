@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 
-export default function Section3() {
+interface Props {
+  packageId: string;
+}
+
+export default function Section3({ packageId }: Props) {
   return (
     <section className="py-8">
       <div className="container mx-auto px-4">

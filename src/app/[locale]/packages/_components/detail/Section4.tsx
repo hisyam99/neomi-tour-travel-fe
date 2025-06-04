@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, { useState } from "react";
@@ -12,7 +13,11 @@ const itinerary = [
   { day: "Day 4 - Interlaken Area. Excursion to The Jungfrau Massif", desc: "..." },
 ];
 
-export default function Section4() {
+interface Props {
+  packageId: string;
+}
+
+export default function Section4({ packageId }: Props) {
   const [open, setOpen] = useState(0);
   return (
     <section className="py-8">
