@@ -16,7 +16,8 @@ export default function Navigation() {
   };
 
   return (
-    <div className="drawer">
+    <div className="bg-base-100"> 
+      <div className="container mx-auto drawer">
       <input
         id="nav-drawer"
         type="checkbox"
@@ -26,7 +27,7 @@ export default function Navigation() {
       />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
-        <div className="w-full navbar bg-base-100">
+        <div className="w-full navbar bg-transparent">
           {/* Left Section */}
           <div className="flex-none flex items-center gap-2">
             <label htmlFor="nav-drawer" className="btn btn-square btn-ghost drawer-button lg:hidden" aria-label="Open navigation menu">
@@ -121,6 +122,7 @@ export default function Navigation() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
