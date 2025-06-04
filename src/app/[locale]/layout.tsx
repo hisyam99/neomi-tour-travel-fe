@@ -2,12 +2,14 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navigation from "./_components/layouts/Navigation";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import Footer from "./_components/layouts/Footer";
+import { Playfair_Display } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const playfair = Playfair_Display({
   subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -38,8 +40,8 @@ export default async function LocaleLayout({
   const messages = await getMessages(locale);
 
   return (
-    <html lang={locale}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html data-theme="bumblebee" lang={locale}>
+      <body className={`${playfair.variable} ${geistMono.variable} font-playfair antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <div className="sticky top-0 z-30">
             <Navigation />

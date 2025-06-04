@@ -1,0 +1,169 @@
+{
+  "HomePage": {
+    "title": "你好，世界！",
+    "about": "前往关于页面"
+  },
+  "Navigation": {
+    "home": "首页",
+    "homestay": "民宿",
+    "packages": "旅游套餐",
+    "gallery": "画廊",
+    "blog": "博客",
+    "about": "关于我们",
+    "contactUs": "联系我们",
+    "brandName": "Neomi 旅游"
+  },
+  "Common": {
+    "readMore": "阅读更多",
+    "learnMore": "了解更多",
+    "bookNow": "立即预订",
+    "contactUs": "联系我们",
+    "getStarted": "开始使用",
+    "language": "语言"
+  },
+  "Home": {
+    "section1": {
+      "title": "与 Neomi 一起探索新世界",
+      "description": "享受如家般舒适的难忘假期体验。从山脉到海滩，我们随时准备陪伴您的每一步旅程。"
+    },
+    "section2": {
+      "title": "您的旅程从这里开始",
+      "description": "体验我们精心策划的旅行套餐，完美融合冒险与舒适。让我们将您的梦想假期变为现实。"
+    },
+    "section3": {
+      "title": "我们的服务",
+      "description": "我们提供各种最佳服务，以支持您在旅行期间的舒适和便利。与 Neomi 旅游一起享受安全、舒适和难忘的旅行体验。",
+      "transport": {
+        "title": "旅游交通",
+        "desc": "我们提供舒适安全的车辆，配备经验丰富的司机，随时准备带您去任何地方。"
+      },
+      "homestay": {
+        "title": "舒适且位置优越的民宿",
+        "desc": "我们在靠近旅游景点的战略位置提供干净、舒适的住宿。非常适合家庭、情侣或独自旅行者。"
+      },
+      "package": {
+        "title": "旅游套餐",
+        "desc": "我们提供各种有吸引力的旅游套餐，可以根据您的需求和偏好量身定制。"
+      },
+      "custom": {
+        "title": "定制旅行",
+        "desc": "有自己的目的地？我们随时准备根据您的愿望创建旅行套餐。更灵活和个性化。"
+      }
+    },
+    "section4": {
+      "title": "探索旅游目的地",
+      "description": "与 Neomi 旅游一起探索令人惊叹的地方。从凉爽的山脉到令人惊叹的热带海滩，我们随时准备以最佳和最舒适的服务带您前往梦想目的地。"
+    },
+    "section6": {
+      "title": "最新文章",
+      "posts": [
+        {
+          "key": "bakso1",
+          "date": "2025年5月12日",
+          "title": "玛琅必尝的5家肉丸店",
+          "excerpt": "玛琅被称为东爪哇的美食城市，其中最受欢迎的菜肴之一就是玛琅肉丸。",
+          "readMore": "阅读更多",
+          "link": "/news/5-bakso-spots-malang"
+        },
+        {
+          "key": "beach1",
+          "date": "2025年5月10日",
+          "title": "玛琅值得探索的隐秘海滩",
+          "excerpt": "发现玛琅鲜为人知的隐秘海滩之美。",
+          "readMore": "阅读更多",
+          "link": "/news/hidden-beaches-malang"
+        },
+        {
+          "key": "bromo1",
+          "date": "2025年5月8日",
+          "title": "令人兴奋的布罗莫火山徒步之旅",
+          "excerpt": "体验布罗莫火山徒步，享受令人叹为观止的日出景色。",
+          "readMore": "阅读更多",
+          "link": "/news/hiking-bromo"
+        },
+        {
+          "key": "culinary1",
+          "date": "2025年5月5日",
+          "title": "玛琅最佳夜间美食",
+          "excerpt": "探索访问玛琅时必尝的最佳夜间美食地点。",
+          "readMore": "阅读更多",
+          "link": "/news/night-culinary-malang"
+        }
+      ]
+    }
+  },
+  "Footer": {
+    "brand": "Neomi 民宿旅游",
+    "description": "享受如家般舒适的难忘假期体验。从山脉到海滩，我们随时准备陪伴您的每一步旅程。",
+    "connect": "联系我们",
+    "contact": "联系方式",
+    "address": "伦敦3910号巴尔蒂莫尔雷茅斯路43号",
+    "phone1": "0811-3322-218",
+    "phone2": "0811-3322-218",
+    "email": "info@mydomain.com"
+  },
+  "Packages": {
+    "section1": {
+      "title": "Neomi 旅游",
+      "description": "享受难忘的假期体验，拥有我们专业领域的专业能力。从经验到专业知识，我们随时准备陪伴您的每一步旅程。",
+      "playVideo": "播放视频"
+    },
+    "section2": {
+      "description": "想要体验根据您的偏好定制的旅游？联系我们，点击下方。",
+      "contactUs": "联系我们"
+    },
+    "section3": {
+      "keyword": "关键词",
+      "search": "搜索",
+      "priceFilter": "价格筛选",
+      "min": "最低",
+      "max": "最高",
+      "duration": "行程时长",
+      "duration1": "1天",
+      "duration2": "2天",
+      "duration3": "2天以上"
+    }
+  },
+  "Homestay": {
+    "section1": {
+      "title": "Neomi 民宿",
+      "description": "体验如家般的舒适，尽在 Neomi 民宿 - 休息和享受宁静氛围的理想场所。",
+      "playVideo": "播放视频"
+    },
+    "section2": {
+      "description": "Neomi 民宿带来现代舒适与当地文化的融合。享受快速Wi-Fi、早餐和宁静的氛围，非常适合您的假期或商务旅行。"
+    },
+    "section3": {
+      "priceFilter": "价格筛选",
+      "min": "最低",
+      "max": "最高",
+      "otherFilters": "其他筛选",
+      "withHotdesk": "带办公桌",
+      "withoutHotdesk": "不带办公桌"
+    },
+    "section4": {
+      "previous": "上一页",
+      "next": "下一页"
+    }
+  },
+  "Gallery": {
+    "section1": {
+      "title": "画廊",
+      "description": "Neomi 旅游旅程和服务的最佳时刻集锦。"
+    }
+  },
+  "Blog": {
+    "section1": {
+      "title": "博客",
+      "description": "享受难忘的假期体验，拥有我们专业领域的专业能力。从经验到专业知识，我们随时准备陪伴您的每一步旅程。",
+      "playVideo": "播放视频"
+    }
+  },
+  "About": {
+    "section1": {
+      "title": "关于我们",
+      "description": "体验如家般的舒适，尽在 Neomi 民宿 - 休息和享受宁静氛围的理想场所。",
+      "playVideo": "播放视频"
+    }
+  }
+} 
