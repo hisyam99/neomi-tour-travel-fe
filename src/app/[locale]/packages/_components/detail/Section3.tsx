@@ -26,7 +26,7 @@ export default function Section3() {
               <ul className="list-disc ml-6 text-sm text-base-content/80">
                 <li>View the City Walk</li>
                 <li>Biking for the locals</li>
-                <li>Discover famous new project "The Lark"</li>
+                <li>Discover famous new project &quot;The Lark&quot;</li>
                 <li>Sunset on the cruise</li>
               </ul>
             </div>
