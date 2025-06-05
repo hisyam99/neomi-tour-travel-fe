@@ -7,7 +7,7 @@ export default function Section3() {
   return (
     <section className="py-10">
       <div className="container mx-auto">
-        <aside className="bg-base-200 rounded-xl p-6 w-full">
+        <aside className="bg-base-200 rounded-xl p-6 w-full" data-aos="fade-right">
           <div className="space-y-6">
             {/* Price Filter */}
             <div>

@@ -15,9 +15,9 @@ export default function Section1() {
     >
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
       <div className="container mx-auto relative z-10 px-4 py-12">
-        <div className="max-w-2xl text-left text-neutral-content">
-          <h1 className="mb-4 text-5xl italic">{t("title")}</h1>
-          <p className="mb-2">{t("description")}</p>
+        <div className="max-w-2xl text-left text-neutral-content" data-aos="fade-up">
+          <h1 className="mb-4 text-5xl italic" data-aos="fade-up" data-aos-delay="100">{t("title")}</h1>
+          <p className="mb-2" data-aos="fade-up" data-aos-delay="200">{t("description")}</p>
         </div>
       </div>
     </div>

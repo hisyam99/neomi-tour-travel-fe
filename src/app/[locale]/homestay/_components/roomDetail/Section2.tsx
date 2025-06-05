@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Section2({ roomId }: { roomId: string }) {
   return (
-    <div className="py-8">
+    <div className="py-8" data-aos="fade-up">
       <div className="mb-4">
         <div className="text-2xl font-semibold">Rp.9000</div>
         <div className="text-xs text-base-content/60">Per Malam</div>

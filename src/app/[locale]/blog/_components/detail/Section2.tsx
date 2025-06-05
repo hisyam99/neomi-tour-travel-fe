@@ -32,18 +32,18 @@ export default function Section2() {
     <section className="py-10">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-8">
         {/* Main Content */}
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0" data-aos="fade-up">
           <article className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto">
             <div dangerouslySetInnerHTML={{ __html: t("content") }} />
           </article>
         </div>
         {/* Related Posts */}
-        <aside className="w-full lg:w-80">
+        <aside className="w-full lg:w-80" data-aos="fade-left" data-aos-delay="200">
           <div className="bg-base-200 rounded-xl p-6 shadow">
             <div className="text-lg italic mb-4">{t("relatedPosts")}</div>
             <ul className="space-y-4">
-              {blogs.slice(0, 6).map((post) => (
-                <li key={post.id} className="flex items-center gap-4">
+              {blogs.slice(0, 6).map((post, idx) => (
+                <li key={post.id} className="flex items-center gap-4" data-aos="fade-left" data-aos-delay={300 + idx * 100}>
                   <Link href={`/blog/${post.id}`} className="flex-shrink-0">
                     <Image 
                       src={post.image} 

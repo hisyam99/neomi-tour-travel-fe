@@ -30,10 +30,10 @@ export default function Section1() {
       <div className="container mx-auto relative z-10">
         <div className="hero min-h-screen place-items-start items-center">
           <div className="hero-content text-neutral-content text-left">
-            <div className="max-w-md">
-              <h1 className="mb-5 text-5xl italic">{t("title")}</h1>
-              <p className="mb-5">{t("description")}</p>
-              <Link href="/packages" className="btn btn-primary">
+            <div className="max-w-md" data-aos="fade-up" data-aos-delay="100">
+              <h1 className="mb-5 text-5xl italic" data-aos="fade-up" data-aos-delay="200">{t("title")}</h1>
+              <p className="mb-5" data-aos="fade-up" data-aos-delay="300">{t("description")}</p>
+              <Link href="/packages" className="btn btn-primary" data-aos="fade-up" data-aos-delay="400">
                 {commonT("getStarted")}
               </Link>
             </div>

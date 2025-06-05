@@ -13,8 +13,9 @@ export default function Section3() {
     <section className="py-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {images.map((img) => (
-            <div key={img.id} className="relative group overflow-hidden rounded-xl shadow bg-base-200">
+          {images.map((img, idx) => (
+            <div key={img.id} className="relative group overflow-hidden rounded-xl shadow bg-base-200"
+              data-aos="zoom-in" data-aos-delay={100 * (idx % 4)}>
               <Image 
                 src={img.url} 
                 alt={img.alt} 
@@ -29,7 +30,7 @@ export default function Section3() {
           ))}
         </div>
         {/* Navigation buttons */}
-        <div className="flex justify-center gap-4 mt-8">
+        <div className="flex justify-center gap-4 mt-8" data-aos="fade-up" data-aos-delay="400">
           <button className="btn btn-circle bg-base-200 border-none" aria-label="Previous">
             <FaChevronLeft className="text-xl" />
           </button>

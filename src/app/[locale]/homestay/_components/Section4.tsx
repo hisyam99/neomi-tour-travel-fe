@@ -26,8 +26,8 @@ export default function Section4() {
           {/* Room grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {rooms.map((room) => (
-                <Link href={`homestay/${room.id}`} key={room.id} className="bg-base-200 rounded-xl shadow p-4 flex flex-col hover:shadow-lg transition-shadow">
+              {rooms.map((room, idx) => (
+                <Link href={`homestay/${room.id}`} key={room.id} className="bg-base-200 rounded-xl shadow p-4 flex flex-col hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay={100 * (idx % 3)}>
                   <div className="w-full h-40 bg-base-300 rounded mb-4 flex items-center justify-center relative">
                     <Image 
                       src={room.image} 

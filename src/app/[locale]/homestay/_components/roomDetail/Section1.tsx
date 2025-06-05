@@ -6,18 +6,18 @@ export default function Section1({ roomId }: { roomId: string }) {
   return (
     <section className="py-10">
       <div className="container mx-auto px-4">
-        <h1 className="text-5xl italic font-normal mb-6">Standart Double</h1>
+        <h1 className="text-5xl italic font-normal mb-6" data-aos="fade-up">Standart Double</h1>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Main Image */}
-          <div className="w-full lg:w-2/3 mb-4 lg:mb-0">
+          <div className="w-full lg:w-2/3 mb-4 lg:mb-0" data-aos="fade-right">
             <div className="relative w-full h-56 md:h-80 bg-base-300 rounded-lg overflow-hidden">
               <Image src="https://picsum.photos/600/400?random=1" alt="Room main" fill className="object-cover" />
             </div>
           </div>
           {/* 4 Grid Images */}
           <div className="w-full lg:w-1/3 grid grid-cols-2 grid-rows-2 gap-4">
-            {[2,3,4,5].map((num) => (
-              <div key={num} className="relative w-full h-24 md:h-28 bg-base-300 rounded-lg overflow-hidden">
+            {[2,3,4,5].map((num, idx) => (
+              <div key={num} className="relative w-full h-24 md:h-28 bg-base-300 rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay={100 * idx}>
                 <Image src={`https://picsum.photos/200/100?random=${num}`} alt={`Room sub${num-1}`} fill className="object-cover" />
               </div>
             ))}

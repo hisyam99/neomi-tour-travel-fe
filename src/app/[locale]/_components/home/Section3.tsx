@@ -10,16 +10,18 @@ export default function Section3() {
     <section className="bg-base-200 py-16">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
-          <div className="w-full lg:w-1/3 text-left mb-8 lg:mb-0">
-            <h1 className="text-4xl italic mb-3">{t("title")}</h1>
-            <p className="text-sm mt-2 max-w-xs">{t("description")}</p>
+          <div className="w-full lg:w-1/3 text-left mb-8 lg:mb-0" data-aos="fade-right">
+            <h1 className="text-4xl italic mb-3" data-aos="fade-right" data-aos-delay="100">{t("title")}</h1>
+            <p className="text-sm mt-2 max-w-xs" data-aos="fade-right" data-aos-delay="200">{t("description")}</p>
           </div>
           <div className="flex-1">
             <div className="flex flex-nowrap lg:justify-start gap-4">
-              {homeServices.map((service) => (
+              {homeServices.map((service, index) => (
                 <div
                   key={service.key}
                   className="flex flex-col"
+                  data-aos="fade-up"
+                  data-aos-delay={100 * (index + 1)}
                 >
                   <div className="w-12 h-12 rounded-full bg-base-100 flex mb-2 border border-base-300">
                     <Image

@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { NAVIGATION_ITEMS } from "../../_constants/navigation";
-import LanguageSwitcher from "../common/LanguageSwitcher";
 import ThemeChange from "../common/ThemeChange";
+// import LanguageSwitcher from "../common/LanguageSwitcher";
 
 export default function Navigation() {
   const t = useTranslations("Navigation");
@@ -74,7 +74,7 @@ export default function Navigation() {
             {/* Right Section */}
             <div className="flex-none flex items-center gap-2">
               <ThemeChange />
-              <LanguageSwitcher />
+              {/* <LanguageSwitcher /> */}
               <Link href="/contact-us" className="btn btn-primary hidden lg:inline-flex">
                 {t("contactUs")}
               </Link>

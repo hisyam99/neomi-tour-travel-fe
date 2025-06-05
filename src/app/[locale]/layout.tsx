@@ -4,6 +4,8 @@ import { routing } from "@/i18n/routing";
 import Navigation from "./_components/layouts/Navigation";
 import { Geist_Mono, Playfair_Display } from "next/font/google";
 import Footer from "./_components/layouts/Footer";
+import AOSProvider from "../_components/common/AOSProvider";
+import Script from "next/script";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -39,14 +41,26 @@ export default async function LocaleLayout({
   const messages = await getMessages(locale);
 
   return (
-    <html data-theme="bumblebee" lang={locale}>
-      <body className={`${playfair.variable} ${geistMono.variable} font-playfair antialiased`}>
+    <html lang={locale}>
+      <body
+        className={`${playfair.variable} ${geistMono.variable} font-playfair antialiased`}
+      >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="sticky top-0 z-30">
-            <Navigation />
-          </div>
-          {children}
-          <Footer />
+          <AOSProvider>
+            <div className="sticky top-0 z-30">
+              <Navigation />
+            </div>
+            <div className="gtranslate_wrapper"></div>
+            <Script id="gtranslate-settings">
+              {`window.gtranslateSettings = {"default_language":"en","languages":["en","fr","es","de","ja","ko","th","zh-CN"],"wrapper_selector":".gtranslate_wrapper"}`}
+            </Script>
+            <Script
+              src="https://cdn.gtranslate.net/widgets/latest/float.js"
+              strategy="afterInteractive"
+            />
+            {children}
+            <Footer />
+          </AOSProvider>
         </NextIntlClientProvider>
       </body>
     </html>

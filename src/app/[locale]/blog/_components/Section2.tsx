@@ -15,8 +15,11 @@ export default function Section2() {
     <section className="py-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-          {blogs.map((blog) => (
-            <div key={blog.id} className="bg-base-200 rounded-xl shadow flex flex-col overflow-hidden">
+          {blogs.map((blog, index) => (
+            <div key={blog.id} className="bg-base-200 rounded-xl shadow flex flex-col overflow-hidden" 
+              data-aos="fade-up"
+              data-aos-delay={100 * (index % 4)}
+            >
               <Image 
                 src={blog.image} 
                 alt={blog.title} 
@@ -34,7 +37,7 @@ export default function Section2() {
           ))}
         </div>
         {/* Pagination */}
-        <div className="flex justify-center items-center gap-4">
+        <div className="flex justify-center items-center gap-4" data-aos="fade-up" data-aos-delay="400">
           <button className="btn btn-outline btn-sm">Previous</button>
           <div className="flex gap-2">
             <button className="btn btn-circle btn-xs bg-base-200">1</button>

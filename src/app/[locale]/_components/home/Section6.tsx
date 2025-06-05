@@ -30,8 +30,8 @@ export default function Section6() {
   return (
     <section className="bg-base-100 py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl mb-4 italic">{t("title")}</h2>
-        <div className="flex justify-end mb-6">
+        <h2 className="text-3xl mb-4 italic" data-aos="fade-up">{t("title")}</h2>
+        <div className="flex justify-end mb-6" data-aos="fade-up" data-aos-delay="100">
           <div className="flex gap-4">
             <button className="btn btn-circle bg-base-200 border-none" onClick={() => scroll("left")} aria-label="Previous">
               <FaChevronLeft className="text-xl" />
@@ -51,6 +51,8 @@ export default function Section6() {
               key={post.key ? post.key : i}
               className="flex-shrink-0 w-80 max-w-xs bg-transparent"
               style={{ scrollSnapAlign: "start" }}
+              data-aos="fade-up"
+              data-aos-delay={100 * (i + 1)}
             >
               <div className="mb-4">
                 <Image
