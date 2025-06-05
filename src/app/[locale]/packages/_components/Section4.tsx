@@ -15,8 +15,13 @@ export default function Section4() {
   return (
     <div>
       <div className="grid grid-cols-1 gap-8">
-        {packages.map((pkg) => (
-          <div key={pkg.id} className="bg-base-200 rounded-xl shadow p-6 flex flex-col md:flex-row items-center md:items-stretch gap-6">
+        {packages.map((pkg, index) => (
+          <div 
+            key={pkg.id} 
+            className="bg-base-200 rounded-xl shadow p-6 flex flex-col md:flex-row items-center md:items-stretch gap-6"
+            data-aos="fade-up"
+            data-aos-delay={100 * (index % 3)}
+          >
             <div className="w-full md:w-1/3 flex items-center justify-center">
               <Image 
                 src={pkg.image} 
@@ -33,14 +38,19 @@ export default function Section4() {
               </div>
               <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 mt-2 md:mt-0">
                 <div className="font-bold text-lg">{pkg.price}</div>
-                <Link href={`/packages/${pkg.id}`} className="btn btn-outline btn-primary btn-sm">Selengkapnya</Link>
+                <Link 
+                  href={`/packages/${pkg.id}`} 
+                  className="btn btn-outline btn-primary btn-sm"
+                >
+                  Selengkapnya
+                </Link>
               </div>
             </div>
           </div>
         ))}
       </div>
       {/* Navigation buttons */}
-      <div className="flex justify-center gap-4 mt-8 pb-8">
+      <div className="flex justify-center gap-4 mt-8 pb-8" data-aos="fade-up" data-aos-delay="800">
         <button className="btn btn-circle bg-base-200 border-none" aria-label="Previous">
           <FaChevronLeft className="text-xl" />
         </button>

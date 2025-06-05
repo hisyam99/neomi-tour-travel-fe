@@ -25,9 +25,9 @@ const ThemeChange: React.FC = () => {
 
   const getThemeDisplayName = (theme: string) => {
     switch (theme) {
-      case "bumblebee":
+      case "light":
         return "Light";
-      case "bumblebee-dark":
+      case "dark":
         return "Dark";
       default:
         return theme.charAt(0).toUpperCase() + theme.slice(1);
@@ -35,7 +35,7 @@ const ThemeChange: React.FC = () => {
   };
 
   return (
-    <div className="dropdown dropdown-end dropdown-bottom">
+    <div className="dropdown lg:dropdown-end dropdown-start dropdown-bottom">
       <button className="btn btn-ghost">
         <div className="flex items-center space-x-2">
           <p>Theme</p>

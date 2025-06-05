@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { homeImages } from "@/app/[locale]/_constants/homeImages";
+import { Link } from "@/i18n/navigation";
 
 export default function Section6() {
   const t = useTranslations("Home.section6");
@@ -16,7 +17,7 @@ export default function Section6() {
     title: string;
     excerpt: string;
     readMore: string;
-    link?: string;
+    blogId?: string;
   }[];
 
   const scroll = (dir: "left" | "right") => {
@@ -66,7 +67,12 @@ export default function Section6() {
               <div className="text-sm text-base-content/70 mb-1">{post.date}</div>
               <div className="font-semibold mb-1">{post.title}</div>
               <div className="text-sm text-base-content/80 mb-2">{post.excerpt}</div>
-              <a href={post.link ? post.link : '#'} className="italic font-semibold text-primary text-sm hover:underline">{post.readMore} &gt;</a>
+              <Link 
+                href={post.blogId ? `/blog/${post.blogId}` : '#'} 
+                className="italic font-semibold text-primary text-sm hover:underline"
+              >
+                {post.readMore} &gt;
+              </Link>
             </div>
           ))}
         </div>
