@@ -14,7 +14,11 @@ type Props = {
 
 export default async function RoomDetailPage(props: Props) {
   const params = await props.params;
-  const { roomId } = params;
+  const roomId = parseInt(params.roomId, 10);
+
+  if (isNaN(roomId)) {
+    return <div className="text-center py-8">Invalid homestay ID</div>;
+  }
 
   return (
     <main>

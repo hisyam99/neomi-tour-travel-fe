@@ -5,10 +5,10 @@ import { homestaysService } from "@/services/homestays";
 import { useApi } from "@/hooks/useApi";
 import { Homestay, ApiResponse } from "@/types";
 import Image from "next/image";
-import { FaWifi, FaUtensils, FaBus, FaBed, FaMountain } from "react-icons/fa";
+import { FaWifi, FaUtensils, FaBus, FaBed, FaMountain, FaSnowflake } from "react-icons/fa";
 
 interface Props {
-  roomId: string;
+  roomId: number;
 }
 
 export default function Section1({ roomId }: Props) {
@@ -51,23 +51,28 @@ export default function Section1({ roomId }: Props) {
   const details = homestay.details;
   const photos = details.photos || [];
 
-  const facilities = [
-    { id: 'wifi', icon: <FaWifi />, label: "WiFi" },
-    { id: 'makan', icon: <FaUtensils />, label: "Makan" },
-    { id: 'transport', icon: <FaBus />, label: "Transport" },
-    { id: 'hotel', icon: <FaBed />, label: "Hotel" },
-    { id: 'tour', icon: <FaMountain />, label: "Tour" },
-  ];
+  const getFacilityIcon = (icon: string) => {
+    switch (icon) {
+      case 'wifi':
+        return <FaWifi />;
+      case 'ac.svg':
+        return <FaSnowflake />;
+      default:
+        return <FaBed />;
+    }
+  };
 
   return (
     <section className="bg-base-100 pt-10 pb-4">
       <div className="container mx-auto px-4">
         <h1 className="text-4xl md:text-5xl italic mb-6">{homestay.name}</h1>
         <div className="flex flex-wrap gap-6 mb-6">
-          {facilities.map((f) => (
-            <div key={f.id} className="flex flex-col items-center gap-2">
-              <div className="bg-base-200 rounded-full p-3 text-2xl">{f.icon}</div>
-              <span className="text-xs md:text-sm text-base-content/70">{f.label}</span>
+          {details.facilities.map((facility) => (
+            <div key={facility.id} className="flex flex-col items-center gap-2">
+              <div className="bg-base-200 rounded-full p-3 text-2xl">
+                {getFacilityIcon(facility.icon)}
+              </div>
+              <span className="text-xs md:text-sm text-base-content/70">{facility.name}</span>
             </div>
           ))}
         </div>

@@ -1,24 +1,26 @@
-import { ApiResponse, Homestay } from "@/types";
 import api from "./api";
+import { Homestay, ApiResponse } from "@/types";
 
-export const homestaysService = {
-  getAll: async (): Promise<ApiResponse<Homestay[]>> => {
+class HomestayService {
+  async getAll(): Promise<ApiResponse<Homestay[]>> {
     try {
-      const response = await api.get<ApiResponse<Homestay[]>>("/homestays");
+      const response = await api.get("/homestays");
       return response.data;
     } catch (error) {
       console.error("Error fetching homestays:", error);
       throw error;
     }
-  },
+  }
 
-  getById: async (id: string): Promise<ApiResponse<Homestay>> => {
+  async getById(id: number): Promise<ApiResponse<Homestay>> {
     try {
-      const response = await api.get<ApiResponse<Homestay>>(`/homestays/${id}`);
+      const response = await api.get(`/homestays/${id}`);
       return response.data;
     } catch (error) {
-      console.error(`Error fetching homestay ${id}:`, error);
+      console.error(`Error fetching homestay with ID ${id}:`, error);
       throw error;
     }
-  },
-}; 
+  }
+}
+
+export const homestaysService = new HomestayService(); 

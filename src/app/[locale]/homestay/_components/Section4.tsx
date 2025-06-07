@@ -67,12 +67,12 @@ export default function Section4() {
                   <h3 className="text-lg font-semibold mb-2">{homestay.name}</h3>
                   <div className="flex items-center gap-4 text-sm text-base-content/70 mb-4">
                     <div className="flex items-center gap-1">
-                      <span>👥</span>
-                      <span>{details?.max_guest || 0} guests</span>
+                      <span>🏠</span>
+                      <span>{details?.type || 'N/A'}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <span>📏</span>
-                      <span>{details?.size || '0'} m²</span>
+                      <span>👥</span>
+                      <span>Max {details?.max_guest || 0} guests</span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
@@ -80,7 +80,7 @@ export default function Section4() {
                       Rp {Number(details?.price || 0).toLocaleString()}
                     </div>
                     <Link 
-                      href={`/homestay/${details?.slug || homestay.id}`}
+                      href={`/homestay/${homestay.id}`}
                       className="btn btn-primary btn-sm"
                     >
                       View Details

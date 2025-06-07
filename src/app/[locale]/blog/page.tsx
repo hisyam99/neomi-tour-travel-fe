@@ -5,7 +5,9 @@ export default function BlogPage() {
   return (
     <main>
       <Section1 />
-      <Section2 />
+      <div className="container mx-auto px-4">
+        <Section2 />
+      </div>
     </main>
   );
 } 

@@ -11,8 +11,9 @@ interface Props {
 }
 
 export default function Section1({ blogId }: Props) {
-  const fetchBlog = useCallback(() => blogService.getById(blogId), [blogId]);
-  const { data, loading, error, execute } = useApi<ApiResponse<Blog>>(fetchBlog);
+  const fetchBlog = useCallback(() => blogService.getBySlug(blogId), [blogId]);
+  const { data, loading, error, execute } =
+    useApi<ApiResponse<Blog>>(fetchBlog);
 
   useEffect(() => {
     execute();
@@ -27,7 +28,9 @@ export default function Section1({ blogId }: Props) {
   }
 
   if (error) {
-    return <div className="text-error">Error loading blog post: {error.message}</div>;
+    return (
+      <div className="text-error">Error loading blog post: {error.message}</div>
+    );
   }
 
   if (!data?.data) {
@@ -37,12 +40,14 @@ export default function Section1({ blogId }: Props) {
   const blog = data.data;
 
   return (
-    <div 
+    <div
       className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center"
       style={{
-        backgroundImage: `url(${blog.thumbnail || "https://picsum.photos/1920/800"})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundImage: `url(${
+          blog.thumbnail || "https://picsum.photos/1920/800"
+        })`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
@@ -51,10 +56,15 @@ export default function Section1({ blogId }: Props) {
           <div className="text-sm mb-4" data-aos="fade-up" data-aos-delay="100">
             {new Date(blog.created_at).toLocaleDateString()}
           </div>
-          <h1 className="mb-4 text-5xl italic" data-aos="fade-up" data-aos-delay="200">{blog.title}</h1>
-          <p className="mb-6" data-aos="fade-up" data-aos-delay="300">{blog.excerpt}</p>
+          <h1
+            className="mb-4 text-5xl italic"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            {blog.title}
+          </h1>
         </div>
       </div>
     </div>
   );
-} 
+}

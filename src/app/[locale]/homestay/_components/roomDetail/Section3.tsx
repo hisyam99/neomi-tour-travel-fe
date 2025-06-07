@@ -7,7 +7,7 @@ import { Homestay, ApiResponse } from "@/types";
 import { FaUsers, FaRuler, FaBed, FaMountain } from "react-icons/fa";
 
 interface Props {
-  roomId: string;
+  roomId: number;
 }
 
 export default function Section3({ roomId }: Props) {
@@ -53,7 +53,7 @@ export default function Section3({ roomId }: Props) {
       <div className="container mx-auto px-4">
         <div className="mb-8">
           <h2 className="font-bold text-2xl mb-4">Description</h2>
-          <p className="text-base-content/80">{homestay.description}</p>
+          <div dangerouslySetInnerHTML={{ __html: homestay.description }} />
         </div>
 
         <div className="mb-8">
@@ -87,7 +87,7 @@ export default function Section3({ roomId }: Props) {
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
                 <FaMountain className="text-primary text-xl" />
               </div>
-              <span className="font-medium">{details.price}</span>
+              <span className="font-medium">Rp {parseInt(details.price).toLocaleString()}</span>
               <span className="text-sm text-base-content/70">Price</span>
             </div>
           </div>
