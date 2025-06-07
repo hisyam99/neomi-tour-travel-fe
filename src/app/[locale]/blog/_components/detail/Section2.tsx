@@ -1,8 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
-import { Link } from "@/i18n/navigation";
+"use client";
+
+import React, { useEffect, useCallback } from "react";
+import { blogService } from "@/services/blog";
+import { useApi } from "@/hooks/useApi";
+import { Blog, ApiResponse } from "@/types";
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+
+interface Props {
+  blogId: string;
+}
 
 const blogs = Array.from({ length: 8 }).map((_, i) => ({
   id: i + 1,
@@ -25,8 +33,41 @@ const dummyContent = `
   <p>Paragraf penutup yang juga cukup panjang untuk simulasi konten blog yang dihasilkan dari WYSIWYG editor. Bisa mengandung <strong>teks tebal</strong>, <em>teks miring</em>, dan <a href='#'>tautan</a>.</p>
 `;
 
-export default function Section2() {
+export default function Section2({ blogId }: Props) {
   const t = useTranslations("Blog.detail.section2");
+  const fetchBlog = useCallback(() => blogService.getById(blogId), [blogId]);
+  const { data, loading, error, execute } = useApi<ApiResponse<Blog>>(fetchBlog);
+
+  useEffect(() => {
+    execute();
+  }, [execute]);
+
+  if (loading) {
+    return (
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="animate-pulse">
+              <div className="h-4 bg-base-200 rounded w-3/4 mb-4"></div>
+              <div className="h-4 bg-base-200 rounded w-full mb-4"></div>
+              <div className="h-4 bg-base-200 rounded w-5/6 mb-4"></div>
+              <div className="h-4 bg-base-200 rounded w-4/6"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return <div className="text-error">Error loading blog post: {error.message}</div>;
+  }
+
+  if (!data?.data) {
+    return <div className="text-center">Blog post not found</div>;
+  }
+
+  const blog = data.data;
 
   return (
     <section className="py-10">
@@ -34,7 +75,7 @@ export default function Section2() {
         {/* Main Content */}
         <div className="flex-1 min-w-0" data-aos="fade-up">
           <article className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto">
-            <div dangerouslySetInnerHTML={{ __html: t("content") }} />
+            <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: blog.content }} />
           </article>
         </div>
         {/* Related Posts */}

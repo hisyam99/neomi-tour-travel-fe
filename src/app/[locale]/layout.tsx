@@ -42,22 +42,6 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <head>
-        <style>{`
-          .gtranslate_wrapper {
-            position: fixed !important;
-            bottom: 20px !important;
-            right: 20px !important;
-            z-index: 9999 !important;
-          }
-          .gt_float_switcher {
-            position: fixed !important;
-            bottom: 20px !important;
-            right: 20px !important;
-            z-index: 9999 !important;
-          }
-        `}</style>
-      </head>
       <body
         className={`${playfair.variable} ${geistMono.variable} font-playfair antialiased`}
       >
@@ -66,7 +50,10 @@ export default async function LocaleLayout({
             <div className="sticky top-0 z-30">
               <Navigation />
             </div>
-            <div className="gtranslate_wrapper"></div>
+            {children}
+            <div className="container mx-auto">
+              <div className="gtranslate_wrapper"></div>
+            </div>
             <Script id="gtranslate-settings">
               {`window.gtranslateSettings = {"default_language":"en","languages":["en","id","zh-CN","fr","es","de","ja","ko","th"],"wrapper_selector":".gtranslate_wrapper","position":"bottom_right","switcher_horizontal_position":"right","switcher_vertical_position":"bottom"}`}
             </Script>
@@ -74,7 +61,6 @@ export default async function LocaleLayout({
               src="https://cdn.gtranslate.net/widgets/latest/float.js"
               strategy="afterInteractive"
             />
-            {children}
             <Footer />
           </AOSProvider>
         </NextIntlClientProvider>

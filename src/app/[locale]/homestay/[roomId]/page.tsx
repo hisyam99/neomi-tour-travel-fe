@@ -12,9 +12,10 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function RoomDetailPage({ params, searchParams }: Props) {
-  const [{ roomId }] = await Promise.all([params, searchParams]);
-  
+export default async function RoomDetailPage(props: Props) {
+  const params = await props.params;
+  const { roomId } = params;
+
   return (
     <main>
       <Section1 roomId={roomId} />

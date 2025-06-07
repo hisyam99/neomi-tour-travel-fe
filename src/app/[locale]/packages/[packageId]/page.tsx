@@ -13,9 +13,11 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function PackageDetailPage({ params, searchParams }: Props) {
+export default async function PackageDetailPage(props: Props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const [{ packageId }] = await Promise.all([params, searchParams]);
-  
+
   return (
     <main>
       <Section1 packageId={packageId} />

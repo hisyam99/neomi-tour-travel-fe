@@ -1,20 +1,85 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
+"use client";
 
-export default function Section2({ roomId }: { roomId: string }) {
+import React, { useEffect, useCallback } from "react";
+import { homestaysService } from "@/services/homestays";
+import { useApi } from "@/hooks/useApi";
+import { Homestay, ApiResponse } from "@/types";
+import Image from "next/image";
+
+interface Props {
+  roomId: string;
+}
+
+export default function Section2({ roomId }: Props) {
+  const fetchHomestay = useCallback(() => homestaysService.getById(roomId), [roomId]);
+  const { data, loading, error, execute } = useApi<ApiResponse<Homestay>>(fetchHomestay);
+
+  useEffect(() => {
+    execute();
+  }, [execute]);
+
+  if (loading) {
+    return (
+      <section className="pb-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1">
+              <div className="bg-base-200 rounded-xl h-64 md:h-96 animate-pulse"></div>
+            </div>
+            <div className="flex flex-col gap-4 w-full md:w-1/3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-base-200 rounded-xl h-20 md:h-28 animate-pulse"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return <div className="text-error">Error loading homestay: {error.message}</div>;
+  }
+
+  if (!data?.data) {
+    return <div className="text-center">Homestay not found</div>;
+  }
+
+  const homestay = data.data;
+  const details = homestay.details;
+  const photos = details.photos || [];
+
   return (
-    <div className="py-8" data-aos="fade-up">
-      <div className="mb-4">
-        <div className="text-2xl font-semibold">Rp.9000</div>
-        <div className="text-xs text-base-content/60">Per Malam</div>
+    <section className="pb-8">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex-1">
+            <div className="relative h-64 md:h-96 rounded-xl overflow-hidden">
+              <Image
+                src={photos[0]?.path || `https://picsum.photos/1200/800?random=${homestay.id}`}
+                alt={homestay.name}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+          <div className="flex flex-col gap-4 w-full md:w-1/3">
+            {photos.slice(1, 4).map((photo) => (
+              <div key={photo.id} className="relative h-20 md:h-28 rounded-xl overflow-hidden">
+                <Image
+                  src={photo.path}
+                  alt={`${homestay.name} - Photo ${photo.id}`}
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="divider"></div>
-      <div className="mb-4 text-sm text-base-content/80">
-        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
-      </div>
-      <div className="mb-4 text-sm text-base-content/80">
-        The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn&apos;t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
-      </div>
-    </div>
+    </section>
   );
 } 
