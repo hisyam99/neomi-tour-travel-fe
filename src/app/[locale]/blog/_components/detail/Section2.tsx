@@ -15,7 +15,7 @@ interface Props {
 export default function Section2({ blogId }: Props) {
   const t = useTranslations("Blog.detail.section2");
   const fetchRelatedPosts = useCallback(() => blogService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<Blog[]>>(fetchRelatedPosts);
+  const { data, loading, error, execute } = useApi<ApiResponse<Blog[]>, []>(fetchRelatedPosts);
 
   useEffect(() => {
     execute();

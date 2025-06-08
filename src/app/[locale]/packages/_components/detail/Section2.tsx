@@ -12,7 +12,7 @@ interface Props {
 
 export default function Section2({ packageId }: Props) {
   const fetchPackage = useCallback(() => tourAndTravelService.getById(parseInt(packageId, 10)), [packageId]);
-  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel>>(fetchPackage);
+  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel>, []>(fetchPackage);
 
   useEffect(() => {
     execute();

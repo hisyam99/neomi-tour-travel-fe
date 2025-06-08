@@ -15,7 +15,7 @@ export default function PackageDetail() {
   const params = useParams();
   const packageId = parseInt(params.packageId as string, 10);
   const fetchPackage = useCallback(() => tourAndTravelService.getById(packageId), [packageId]);
-  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel>>(fetchPackage);
+  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel>, []>(fetchPackage);
 
   useEffect(() => {
     if (!isNaN(packageId)) {

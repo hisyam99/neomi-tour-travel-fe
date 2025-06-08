@@ -17,7 +17,7 @@ export default function HomestayPage() {
   });
 
   const fetchHomestays = useCallback(() => homestaysService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<Homestay[]>>(fetchHomestays);
+  const { data, loading, error, execute } = useApi<ApiResponse<Homestay[]>, []>(fetchHomestays);
 
   useEffect(() => {
     execute();

@@ -24,3 +24,5 @@ class TourAndTravelService {
 }
 
 export const tourAndTravelService = new TourAndTravelService(); 
+
+export type { TourAndTravel };

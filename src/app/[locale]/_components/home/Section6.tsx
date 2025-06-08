@@ -14,7 +14,7 @@ export default function Section6() {
   const commonT = useTranslations("Common");
   const carouselRef = useRef<HTMLDivElement>(null);
   const fetchBlogs = useCallback(() => blogService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<Blog[]>>(fetchBlogs);
+  const { data, loading, error, execute } = useApi<ApiResponse<Blog[]>, []>(fetchBlogs);
 
   useEffect(() => {
     execute();

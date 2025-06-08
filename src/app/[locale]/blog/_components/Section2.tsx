@@ -14,7 +14,7 @@ export default function Section2() {
   const t = useTranslations("Blog.section2");
   const [currentPage, setCurrentPage] = useState(1);
   const fetchBlogs = useCallback(() => blogService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<Blog[]>>(fetchBlogs);
+  const { data, loading, error, execute } = useApi<ApiResponse<Blog[]>, []>(fetchBlogs);
 
   useEffect(() => {
     execute();

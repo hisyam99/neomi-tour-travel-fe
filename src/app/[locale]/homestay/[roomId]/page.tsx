@@ -3,20 +3,21 @@ import Section1 from "../_components/roomDetail/Section1";
 import Section3 from "../_components/roomDetail/Section3";
 import Section4 from "../_components/roomDetail/Section4";
 
-interface Props {
-  params: {
+type Props = {
+  params: Promise<{
     roomId: string;
     locale: string;
-  };
-}
+  }>;
+};
 
-export default function HomestayRoomDetailPage({ params }: Props) {
+export default async function HomestayRoomDetailPage(props: Props) {
+  const params = await props.params;
   const roomId = parseInt(params.roomId, 10);
 
   if (isNaN(roomId)) {
     return <div className="text-center py-8">Invalid homestay ID</div>;
   }
-  
+
   return (
     <main className="pt-16">
       <Section1 roomId={roomId} />

@@ -13,7 +13,7 @@ interface Props {
 export default function Section1({ blogId }: Props) {
   const fetchBlog = useCallback(() => blogService.getBySlug(blogId), [blogId]);
   const { data, loading, error, execute } =
-    useApi<ApiResponse<Blog>>(fetchBlog);
+    useApi<ApiResponse<Blog>, []>(fetchBlog);
 
   useEffect(() => {
     execute();

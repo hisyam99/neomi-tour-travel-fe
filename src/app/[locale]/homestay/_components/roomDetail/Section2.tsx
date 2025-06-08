@@ -12,7 +12,7 @@ interface Props {
 
 export default function Section2({ roomId }: Props) {
   const fetchHomestay = useCallback(() => homestaysService.getById(roomId), [roomId]);
-  const { data, loading, error, execute } = useApi<ApiResponse<Homestay>>(fetchHomestay);
+  const { data, loading, error, execute } = useApi<ApiResponse<Homestay>, []>(fetchHomestay);
 
   useEffect(() => {
     execute();

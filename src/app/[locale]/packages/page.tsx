@@ -17,7 +17,7 @@ export default function PackagesPage() {
   });
 
   const fetchPackages = useCallback(() => tourAndTravelService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel[]>>(fetchPackages);
+  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel[]>, []>(fetchPackages);
 
   useEffect(() => {
     execute();
