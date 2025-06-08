@@ -40,16 +40,15 @@ export default function Section1({ blogId }: Props) {
   const blog = data.data;
 
   return (
-    <div
-      className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center"
-      style={{
-        backgroundImage: `url(${
-          blog.thumbnail || "https://picsum.photos/1920/800"
-        })`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center">
+      <Image
+        src={blog.thumbnail || "https://picsum.photos/1920/800"}
+        alt={blog.title}
+        fill
+        className="object-cover"
+        priority
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+      />
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
       <div className="container mx-auto relative z-10 px-4 py-16">
         <div className="max-w-3xl text-left text-neutral-content">
