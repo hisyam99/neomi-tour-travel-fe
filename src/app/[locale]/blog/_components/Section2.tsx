@@ -1,14 +1,18 @@
 "use client";
 
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { blogService } from "@/services/blog";
 import { useApi } from "@/hooks/useApi";
 import { Blog, ApiResponse } from "@/types";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useTranslations } from "next-intl";
+
+const POSTS_PER_PAGE = 6;
 
 export default function Section2() {
+  const t = useTranslations("Blog.section2");
+  const [currentPage, setCurrentPage] = useState(1);
   const fetchBlogs = useCallback(() => blogService.getAll(), []);
   const { data, loading, error, execute } = useApi<ApiResponse<Blog[]>>(fetchBlogs);
 
@@ -19,7 +23,7 @@ export default function Section2() {
   if (loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[1, 2, 3].map((i) => (
+        {[1, 2, 3, 4, 5, 6].map((i) => (
           <div key={i} className="bg-base-200 rounded-xl p-6 shadow animate-pulse">
             <div className="h-48 bg-base-300 rounded-lg mb-4"></div>
             <div className="h-6 bg-base-300 rounded w-3/4 mb-2"></div>
@@ -40,28 +44,71 @@ export default function Section2() {
     return <div className="text-center">No blog posts found</div>;
   }
 
+  const totalPages = Math.ceil(data.data.length / POSTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const currentPosts = data.data.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {data.data.map((post) => (
-        <div key={post.id} className="bg-base-200 rounded-xl p-6 shadow">
-          <div className="relative h-48 mb-4">
-            <Image
-              src={post.thumbnail || "https://picsum.photos/400/300"}
-              alt={post.title}
-              fill
-              className="rounded-lg object-cover"
-            />
+    <div className="space-y-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {currentPosts.map((post) => (
+          <div key={post.id} className="bg-base-200 rounded-xl p-6 shadow hover:shadow-lg transition-shadow" data-aos="fade-up">
+            <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
+              <Image
+                src={post.thumbnail || "https://picsum.photos/400/300"}
+                alt={post.title}
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
+            <div className="text-sm text-base-content/70 mb-3">
+              {new Date(post.created_at).toLocaleDateString()}
+            </div>
+            <h3 className="text-xl font-semibold mb-3 line-clamp-2">{post.title}</h3>
+            <div className="text-base-content/70 mb-6 line-clamp-3" dangerouslySetInnerHTML={{ __html: post.content }} />
+            <Link href={`/blog/${post.slug}`} className="btn btn-primary w-full">
+              {t("readMore")}
+            </Link>
           </div>
-          <div className="text-sm text-base-content/70 mb-2">
-            {new Date(post.created_at).toLocaleDateString()}
+        ))}
+      </div>
+
+      {totalPages > 1 && (
+        <div className="flex justify-center pt-8" data-aos="fade-up">
+          <div className="join">
+            <button
+              className="join-item btn"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              «
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                className={`join-item btn ${currentPage === page ? 'btn-active' : ''}`}
+                onClick={() => handlePageChange(page)}
+              >
+                {page}
+              </button>
+            ))}
+            <button
+              className="join-item btn"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              »
+            </button>
           </div>
-          <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-          <div className="text-base-content/70 mb-4 line-clamp-3" dangerouslySetInnerHTML={{ __html: post.content }} />
-          <Link href={`/blog/${post.slug}`} className="btn btn-primary">
-            Read More
-          </Link>
         </div>
-      ))}
+      )}
     </div>
   );
 } 

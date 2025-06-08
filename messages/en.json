@@ -154,9 +154,12 @@
   },
   "Blog": {
     "section1": {
-      "title": "Blog",
-      "description": "Enjoy an unforgettable holiday experience with expert capabilities in our own domain. From experience to expertise, we are ready to accompany every step of your journey.",
-      "playVideo": "PLAY VIDEO"
+      "title": "Our Blog",
+      "description": "Discover the latest news, tips, and stories from our travel experts",
+      "playVideo": "Watch Video"
+    },
+    "section2": {
+      "readMore": "Read More"
     },
     "detail": {
       "section1": {

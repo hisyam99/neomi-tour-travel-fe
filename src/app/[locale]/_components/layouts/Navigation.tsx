@@ -26,6 +26,11 @@ export default function Navigation() {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const getNavLinkClass = (href: string) => {
+    const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
+    return isActive ? "text-primary font-bold" : "text-base-content";
+  };
+
   return (
     <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
@@ -85,11 +90,7 @@ export default function Navigation() {
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className={`transition-all duration-300 ${
-                          pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
-                            ? "text-primary font-bold"
-                            : isScrolled ? 'text-base-content' : 'text-base-content'
-                        }`}
+                        className={`transition-all duration-300 ${getNavLinkClass(item.href)}`}
                       >
                         {t(item.key)}
                       </Link>
@@ -139,11 +140,7 @@ export default function Navigation() {
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className={
-                          pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
-                            ? "text-primary font-bold"
-                            : undefined
-                        }
+                        className={getNavLinkClass(item.href)}
                         onClick={toggleDrawer}
                       >
                         {t(item.key)}

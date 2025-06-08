@@ -146,20 +146,12 @@
   },
   "Blog": {
     "section1": {
-      "title": "Blog",
-      "description": "Nikmati pengalaman liburan tak terlupakan dengan kemampuan expert di ranah sendiri. Dari pengalaman hingga pandai, kami siap menemani setiap langkah perjalanan Anda.",
-      "playVideo": "PUTAR VIDEO"
+      "title": "Blog Kami",
+      "description": "Temukan berita terbaru, tips, dan cerita dari para ahli perjalanan kami",
+      "playVideo": "Tonton Video"
     },
-    "detail": {
-      "section1": {
-        "title": "Detail Blog",
-        "description": "Nikmati pengalaman liburan tak terlupakan dengan kemampuan expert di ranah sendiri. Dari pengalaman hingga pandai, kami siap menemani setiap langkah perjalanan Anda.",
-        "playVideo": "PUTAR VIDEO"
-      },
-      "section2": {
-        "relatedPosts": "Postingan Terkait",
-        "content": "<h2>Judul Blog</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque.</p><p>Aliquam erat volutpat. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Pellentesque euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque.</p><h3>Subjudul</h3><ul><li>Poin pertama dengan penjelasan yang sangat panjang dan detail, bisa lebih dari satu baris.</li><li>Poin kedua dengan penjelasan yang sangat panjang dan detail, bisa lebih dari satu baris.</li><li>Poin ketiga dengan penjelasan yang sangat panjang dan detail, bisa lebih dari satu baris.</li></ul><p>Paragraf penutup yang juga cukup panjang untuk simulasi konten blog yang dihasilkan dari WYSIWYG editor. Bisa mengandung <strong>teks tebal</strong>, <em>teks miring</em>, dan <a href='#'>tautan</a>.</p>"
-      }
+    "section2": {
+      "readMore": "Baca Selengkapnya"
     }
   },
   "About": {

@@ -154,9 +154,12 @@
   },
   "Blog": {
     "section1": {
-      "title": "博客",
-      "description": "享受难忘的假期体验，拥有我们专业领域的专业能力。从经验到专业知识，我们随时准备陪伴您的每一步旅程。",
-      "playVideo": "播放视频"
+      "title": "我们的博客",
+      "description": "探索来自我们旅行专家的最新新闻、提示和故事",
+      "playVideo": "观看视频"
+    },
+    "section2": {
+      "readMore": "阅读更多"
     },
     "detail": {
       "section1": {
