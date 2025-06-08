@@ -20,9 +20,9 @@ export default function Section1({ roomId }: Props) {
   }, [execute]);
 
   if (loading) {
-    return (
+  return (
       <section className="bg-base-100 pt-10 pb-4">
-        <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4">
           <div className="animate-pulse space-y-4">
             <div className="h-8 bg-base-200 rounded w-1/3"></div>
             <div className="flex flex-wrap gap-6">
@@ -136,10 +136,10 @@ export default function Section1({ roomId }: Props) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
               className="object-cover"
             />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
   );
 
   const renderFourLayout = () => (
@@ -169,7 +169,7 @@ export default function Section1({ roomId }: Props) {
           </div>
         ))}
       </div>
-    </div>
+          </div>
   );
 
   const renderLayout = () => {
@@ -197,9 +197,9 @@ export default function Section1({ roomId }: Props) {
             <div key={facility.id} className="flex flex-col items-center gap-2">
               <div className="bg-base-200 rounded-full p-3 text-2xl">
                 {getFacilityIcon(facility.icon)}
-              </div>
+          </div>
               <span className="text-xs md:text-sm text-base-content/70">{facility.name}</span>
-            </div>
+          </div>
           ))}
         </div>
         {renderLayout()}

@@ -100,8 +100,8 @@ export default function Section3({ roomId }: Props) {
               <div key={facility.id} className="flex items-center gap-2 p-3 bg-base-200 rounded-lg">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
                 <span className="text-sm">{facility.name}</span>
-              </div>
-            ))}
+          </div>
+        ))}
           </div>
         </div>
       </div>

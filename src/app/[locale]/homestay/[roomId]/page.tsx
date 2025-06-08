@@ -16,7 +16,7 @@ export default function HomestayRoomDetailPage({ params }: Props) {
   if (isNaN(roomId)) {
     return <div className="text-center py-8">Invalid homestay ID</div>;
   }
-
+  
   return (
     <main className="pt-16">
       <Section1 roomId={roomId} />

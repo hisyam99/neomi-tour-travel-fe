@@ -86,9 +86,10 @@ export default function Section6() {
           style={{ scrollSnapType: "x mandatory" }}
         >
           {latestPosts.map((post, i) => (
-            <div
+            <Link
+              href={`/blog/${post.slug}`}
               key={post.id}
-              className="flex-shrink-0 w-80 max-w-xs bg-transparent"
+              className="flex-shrink-0 w-80 max-w-xs bg-transparent hover:opacity-90 transition-opacity"
               style={{ scrollSnapAlign: "start" }}
               data-aos="fade-up"
               data-aos-delay={100 * (i + 1)}
@@ -108,13 +109,10 @@ export default function Section6() {
                 className="text-sm text-base-content/80 mb-2 line-clamp-2"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
-              <Link 
-                href={`/blog/${post.slug}`} 
-                className="italic font-semibold text-primary text-sm hover:underline"
-              >
+              <div className="italic font-semibold text-primary text-sm hover:underline">
                 {commonT("readMore")} &gt;
-              </Link>
-            </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

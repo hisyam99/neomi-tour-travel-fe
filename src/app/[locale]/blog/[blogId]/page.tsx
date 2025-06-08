@@ -14,7 +14,7 @@ export default async function BlogDetailPage(props: Props) {
   const searchParams = await props.searchParams;
   const params = await props.params;
   const [{ blogId }] = await Promise.all([params, searchParams]);
-
+  
   return (
     <main className="pt-16">
       <Section1 blogId={blogId} />

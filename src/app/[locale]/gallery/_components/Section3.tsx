@@ -2,6 +2,7 @@ import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 const images = Array.from({ length: 9 }).map((_, i) => ({
   id: i + 1,
@@ -17,8 +18,13 @@ export default function Section3() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {images.map((img, idx) => (
-            <div key={img.id} className="relative group overflow-hidden rounded-xl shadow bg-base-200"
-              data-aos="zoom-in" data-aos-delay={100 * (idx % 4)}>
+            <Link
+              href={`/gallery/${img.id}`}
+              key={img.id}
+              className="block relative group overflow-hidden rounded-xl shadow bg-base-200 hover:shadow-lg transition-shadow"
+              data-aos="zoom-in"
+              data-aos-delay={100 * (idx % 4)}
+            >
               <Image 
                 src={img.url} 
                 alt={img.alt} 
@@ -29,7 +35,7 @@ export default function Section3() {
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="text-white font-semibold">{t("view")}</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         {/* Navigation buttons */}

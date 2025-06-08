@@ -19,40 +19,48 @@
     "bookNow": "Book Now",
     "contactUs": "Contact Us",
     "getStarted": "Get Started",
-    "language": "Language"
+    "language": "Language",
+    "previous": "Previous",
+    "next": "Next",
+    "theme": {
+      "title": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "default": "System"
+    }
   },
   "Home": {
     "section1": {
-      "title": "Discover New World with Neomi",
-      "description": "Enjoy an unforgettable holiday experience with comfort like home. From mountains to beaches, we're ready to accompany every step of your journey."
+      "title": "Discover Your Perfect Getaway",
+      "description": "Experience unforgettable adventures with our curated travel packages. From serene beaches to thrilling mountain treks, we've got your dream vacation covered."
     },
     "section2": {
       "title": "Your Journey Begins Here",
-      "description": "Experience the perfect blend of adventure and comfort with our carefully curated travel packages. Let us make your dream vacation a reality."
+      "description": "Let us guide you through extraordinary destinations and create memories that last a lifetime."
     },
     "section3": {
       "title": "Our Services",
-      "description": "We provide a variety of the best services to support your comfort and convenience during your trip. Enjoy a safe, comfortable, and unforgettable travel experience with Neomi Tour and Travel.",
-      "transport": {
-        "title": "Tour Transportation",
-        "desc": "We provide comfortable and safe vehicles, complete with experienced drivers ready to take you anywhere."
+      "description": "Discover our comprehensive range of services designed to make your travel experience unforgettable",
+      "tour": {
+        "title": "Tour & Travel",
+        "desc": "Explore amazing destinations with our curated tour packages"
       },
       "homestay": {
-        "title": "Comfortable & Strategic Homestay",
-        "desc": "We offer clean, comfortable accommodation in strategic locations near tourist attractions. Perfect for families, couples, or solo travelers."
+        "title": "Homestay",
+        "desc": "Experience local living with our comfortable homestay options"
       },
-      "package": {
-        "title": "Tour Packages",
-        "desc": "We offer a variety of attractive tour packages that can be tailored to your needs and preferences."
+      "hotdesk": {
+        "title": "Hotdesk",
+        "desc": "Work remotely with our flexible hotdesk solutions"
       },
-      "custom": {
-        "title": "Custom Trip",
-        "desc": "Have your own destination? We are ready to create a travel package according to your wishes. More flexible and personal."
+      "coworking": {
+        "title": "Coworking",
+        "desc": "Collaborate in our modern coworking spaces"
       }
     },
     "section4": {
-      "title": "Discover Tourist Destinations",
-      "description": "Explore amazing places with Neomi Tour and Travel. From cool mountains to stunning tropical beaches, we are ready to take you to your dream destination with the best and most comfortable service."
+      "title": "Popular Destinations",
+      "description": "Explore our most sought-after travel destinations"
     },
     "section6": {
       "title": "Latest Posts",
@@ -104,58 +112,157 @@
   },
   "Packages": {
     "section1": {
-      "title": "Neomi Tour And Travel",
-      "description": "Enjoy an unforgettable holiday experience with expert capabilities in our own domain. From experience to expertise, we are ready to accompany every step of your journey.",
-      "playVideo": "PLAY VIDEO"
+      "title": "Tour Packages",
+      "description": "Discover our carefully curated travel experiences",
+      "playVideo": "Watch Video"
     },
     "section2": {
-      "description": "Want to experience a custom tour according to your preferences? Contact us, click below.",
+      "description": "Find the perfect package for your next adventure",
       "contactUs": "Contact Us"
     },
     "section3": {
-      "keyword": "KEYWORD",
-      "search": "Search",
-      "priceFilter": "PRICE FILTER",
-      "min": "Min",
-      "max": "Max",
-      "duration": "DURATION",
+      "priceFilter": "Price Range",
+      "duration": "Duration",
+      "durationNone": "Any Duration",
       "duration1": "1 Day",
       "duration2": "2 Days",
-      "duration3": "More Than 2 Days"
+      "duration3": "3+ Days",
+      "searchPlaceholder": "Search packages...",
+      "noPackages": "No packages found",
+      "sortBy": "Sort By",
+      "sortOptions": {
+        "priceLow": "Price: Low to High",
+        "priceHigh": "Price: High to Low",
+        "durationShort": "Duration: Short to Long",
+        "durationLong": "Duration: Long to Short",
+        "popularity": "Popularity"
+      },
+      "min": "Min",
+      "max": "Max",
+      "keyword": "Keyword",
+      "search": "Search"
+    },
+    "section4": {
+      "card": {
+        "viewDetails": "View Details",
+        "duration": "Duration",
+        "price": "Price",
+        "groupSize": "Group Size",
+        "difficulty": "Difficulty",
+        "location": "Location",
+        "noImage": "No Image Available",
+        "perPerson": "per person",
+        "people": "people",
+        "days": "days",
+        "day": "day",
+        "currency": "Rp",
+        "moreDetails": "More Details",
+        "errorTitle": "Oops! Something went wrong",
+        "noResultsTitle": "No Packages Found",
+        "noResultsDescription": "We couldn't find any packages matching your search criteria. Try adjusting your filters or search terms.",
+        "refreshPage": "Refresh Page",
+        "goBack": "Go Back"
+      },
+      "loading": "Loading packages...",
+      "error": "Error loading packages",
+      "noResults": "No packages found matching your criteria"
     }
   },
   "Homestay": {
     "section1": {
-      "title": "Neomi HomeStay",
-      "description": "Experience comfort like home, only at Neomi Homestay – the ideal place to rest and enjoy a peaceful atmosphere.",
-      "playVideo": "PLAY VIDEO"
+      "title": "Our Homestays",
+      "description": "Experience local living at its finest",
+      "playVideo": "Watch Video"
     },
     "section2": {
-      "description": "Neomi Homestay brings modern comfort with a touch of local culture. Enjoy fast Wi-Fi, breakfast, and a peaceful atmosphere perfect for your holiday or business trip."
+      "description": "Find your perfect home away from home",
+      "noHomestays": "No homestays found",
+      "searchPlaceholder": "Search homestays...",
+      "sortBy": "Sort By",
+      "sortOptions": {
+        "priceLow": "Price: Low to High",
+        "priceHigh": "Price: High to Low",
+        "rating": "Rating",
+        "popularity": "Popularity"
+      }
     },
     "section3": {
-      "priceFilter": "PRICE FILTER",
+      "otherFilters": "Other Filters",
+      "withHotdesk": "With Hotdesk",
+      "withoutHotdesk": "Without Hotdesk",
+      "amenities": "Amenities",
+      "priceRange": "Price Range",
+      "location": "Location",
+      "roomType": "Room Type",
+      "roomTypes": {
+        "single": "Single Room",
+        "double": "Double Room",
+        "twin": "Twin Room",
+        "family": "Family Room",
+        "suite": "Suite"
+      },
       "min": "Min",
       "max": "Max",
-      "otherFilters": "OTHER FILTERS",
-      "withHotdesk": "With Hotdesk",
-      "withoutHotdesk": "Without Hotdesk"
+      "keyword": "Keyword",
+      "search": "Search",
+      "priceFilter": "Price Filter",
+      "filterBy": "Filter By",
+      "reset": "Reset Filters"
     },
     "section4": {
+      "card": {
+        "viewDetails": "View Details",
+        "price": "Price",
+        "perNight": "per night",
+        "maxGuests": "Max Guests",
+        "roomType": "Room Type",
+        "amenities": "Amenities",
+        "noImage": "No Image Available",
+        "guests": "guests",
+        "bookNow": "Book Now",
+        "currency": "Rp",
+        "moreDetails": "More Details",
+        "errorTitle": "Oops! Something went wrong",
+        "noResultsTitle": "No Homestays Found",
+        "noResultsDescription": "We couldn't find any homestays matching your search criteria. Try adjusting your filters or search terms.",
+        "refreshPage": "Refresh Page",
+        "goBack": "Go Back"
+      },
+      "loading": "Loading homestays...",
+      "error": "Error loading homestays",
+      "noResults": "No homestays found matching your criteria",
       "previous": "Previous",
       "next": "Next"
+    },
+    "detail": {
+      "section1": {
+        "title": "Homestay Details",
+        "overview": "Overview",
+        "amenities": "Amenities",
+        "location": "Location",
+        "policies": "Policies",
+        "reviews": "Reviews",
+        "bookNow": "Book Now",
+        "price": "Price per night",
+        "checkIn": "Check-in Time",
+        "checkOut": "Check-out Time",
+        "cancellation": "Cancellation Policy",
+        "houseRules": "House Rules",
+        "nearby": "Nearby Attractions",
+        "related": "Similar Homestays"
+      }
     }
   },
   "Gallery": {
     "section1": {
       "title": "Our Gallery",
-      "description": "Explore our collection of beautiful moments and experiences"
+      "description": "Explore our collection of memorable moments"
     },
     "section2": {
       "searchPlaceholder": "Search gallery...",
-      "all": "All Categories",
+      "all": "All",
       "homestay": "Homestay",
-      "tour": "Tour & Travel",
+      "tour": "Tour",
       "event": "Event"
     },
     "section3": {
@@ -167,7 +274,7 @@
   "Blog": {
     "section1": {
       "title": "Our Blog",
-      "description": "Discover the latest news, tips, and stories from our travel experts",
+      "description": "Stay updated with our latest travel stories and tips",
       "playVideo": "Watch Video"
     },
     "section2": {
@@ -188,8 +295,64 @@
   "About": {
     "section1": {
       "title": "About Us",
-      "description": "Experience comfort like home, only at Neomi Homestay – the ideal place to rest and enjoy a peaceful atmosphere.",
-      "playVideo": "PLAY VIDEO"
+      "description": "We are passionate about creating unforgettable travel experiences for our clients.",
+      "playVideo": "Watch Our Story"
+    },
+    "section2": {
+      "title": "About Us",
+      "about": {
+        "title": "About Travel Website",
+        "description": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.\n\nI should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees.",
+        "more": "Learn More"
+      },
+      "team1": {
+        "name": "John Doe",
+        "description": "Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation.",
+        "more": "More About John"
+      }
+    },
+    "section3": {
+      "title": "Our Team",
+      "description": "Meet the passionate individuals behind our success",
+      "team": {
+        "member1": {
+          "name": "Sarah Johnson",
+          "position": "Founder & CEO",
+          "description": "With over 15 years of experience in the travel industry, Sarah leads our team with passion and expertise."
+        },
+        "member2": {
+          "name": "Michael Chen",
+          "position": "Travel Consultant",
+          "description": "Michael's deep knowledge of global destinations helps create perfect itineraries for our clients."
+        },
+        "member3": {
+          "name": "Emma Wilson",
+          "position": "Customer Experience",
+          "description": "Emma ensures every client receives exceptional service and memorable experiences."
+        }
+      }
+    },
+    "section4": {
+      "title": "Our Values",
+      "description": "The principles that guide everything we do",
+      "values": {
+        "excellence": {
+          "title": "Excellence",
+          "description": "We strive for excellence in every aspect of our service"
+        },
+        "integrity": {
+          "title": "Integrity",
+          "description": "We conduct our business with honesty and transparency"
+        },
+        "innovation": {
+          "title": "Innovation",
+          "description": "We continuously seek new ways to enhance travel experiences"
+        },
+        "sustainability": {
+          "title": "Sustainability",
+          "description": "We are committed to responsible and sustainable tourism"
+        }
+      }
     }
   }
 }

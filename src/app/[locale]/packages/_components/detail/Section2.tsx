@@ -19,9 +19,9 @@ export default function Section2({ packageId }: Props) {
   }, [execute]);
 
   if (loading) {
-    return (
-      <section className="pb-8">
-        <div className="container mx-auto px-4">
+  return (
+    <section className="pb-8">
+      <div className="container mx-auto px-4">
           <div className="animate-pulse space-y-4">
             <div className="h-64 md:h-96 bg-base-200 rounded-xl"></div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -113,7 +113,7 @@ export default function Section2({ packageId }: Props) {
       <div className="grid grid-cols-1 gap-4">
         {photos.slice(1).map((photo) => (
           <div key={photo.url} className="relative h-[190px] md:h-[240px] rounded-xl overflow-hidden">
-            <Image
+            <Image 
               src={photo.url}
               alt={`${packageData.name_package} - Photo ${photo.url.split('/').pop()}`}
               fill
@@ -121,8 +121,8 @@ export default function Section2({ packageId }: Props) {
               className="object-cover"
             />
           </div>
-        ))}
-      </div>
+            ))}
+          </div>
     </div>
   );
 

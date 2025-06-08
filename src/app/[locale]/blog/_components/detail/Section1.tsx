@@ -54,7 +54,7 @@ export default function Section1({ blogId }: Props) {
         <div className="max-w-3xl text-left text-neutral-content">
           <div className="text-sm mb-4" data-aos="fade-up" data-aos-delay="100">
             {new Date(blog.created_at).toLocaleDateString()}
-          </div>
+            </div>
           <h1
             className="mb-4 text-5xl italic"
             data-aos="fade-up"
@@ -66,4 +66,4 @@ export default function Section1({ blogId }: Props) {
       </div>
     </div>
   );
-}
+} 

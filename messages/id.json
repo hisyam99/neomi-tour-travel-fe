@@ -15,40 +15,48 @@
     "bookNow": "Pesan Sekarang",
     "contactUs": "Hubungi Kami",
     "getStarted": "Mulai Sekarang",
-    "language": "Bahasa"
+    "language": "Bahasa",
+    "previous": "Sebelumnya",
+    "next": "Selanjutnya",
+    "theme": {
+      "title": "Tema",
+      "light": "Terang",
+      "dark": "Gelap",
+      "default": "Sistem"
+    }
   },
   "Home": {
     "section1": {
-      "title": "Temukan Dunia Baru Bersama Neomi",
-      "description": "Nikmati pengalaman liburan tak terlupakan dengan kenyamanan seperti di rumah sendiri. Dari pegunungan hingga pantai, kami siap menemani setiap langkah perjalanan Anda."
+      "title": "Temukan Liburan Sempurna Anda",
+      "description": "Nikmati petualangan tak terlupakan dengan paket perjalanan kami. Dari pantai yang tenang hingga pendakian gunung yang menantang, kami siap mewujudkan liburan impian Anda."
     },
     "section2": {
       "title": "Perjalanan Anda Dimulai Di Sini",
-      "description": "Rasakan perpaduan sempurna antara petualangan dan kenyamanan dengan paket perjalanan yang kami pilih dengan cermat. Biarkan kami mewujudkan liburan impian Anda."
+      "description": "Biarkan kami membimbing Anda melalui destinasi yang luar biasa dan menciptakan kenangan yang tak terlupakan."
     },
     "section3": {
-      "title": "Layanan Kita",
-      "description": "Kami menyediakan berbagai layanan terbaik untuk menunjang kenyamanan dan kemudahan perjalanan Anda. Nikmati pengalaman wisata yang aman, nyaman, dan tak terlupakan bersama Neomi Tour and Travel.",
-      "transport": {
-        "title": "Transportasi Wisata",
-        "desc": "Kami menyediakan kendaraan yang nyaman dan aman, lengkap dengan sopir berpengalaman yang siap mengantar Anda ke mana saja."
+      "title": "Layanan Kami",
+      "description": "Temukan berbagai layanan komprehensif kami yang dirancang untuk membuat pengalaman perjalanan Anda tak terlupakan",
+      "tour": {
+        "title": "Tur & Perjalanan",
+        "desc": "Jelajahi destinasi menakjubkan dengan paket tur pilihan kami"
       },
       "homestay": {
-        "title": "Homestay Nyaman & Strategis",
-        "desc": "Kami menyediakan penginapan yang bersih, nyaman, dan berada di lokasi strategis dekat tempat wisata. Cocok untuk keluarga, pasangan, maupun solo traveler."
+        "title": "Homestay",
+        "desc": "Rasakan kehidupan lokal dengan pilihan homestay nyaman kami"
       },
-      "package": {
-        "title": "Paket Wisata",
-        "desc": "Kami menyediakan berbagai paket wisata menarik yang dapat disesuaikan dengan kebutuhan dan keinginan Anda."
+      "hotdesk": {
+        "title": "Hotdesk",
+        "desc": "Bekerja jarak jauh dengan solusi hotdesk fleksibel kami"
       },
-      "custom": {
-        "title": "Custom Trip",
-        "desc": "Punya tujuan sendiri? Kami siap membuatkan paket perjalanan sesuai keinginan Anda. Lebih fleksibel dan personal."
+      "coworking": {
+        "title": "Coworking",
+        "desc": "Berkolaborasi di ruang coworking modern kami"
       }
     },
     "section4": {
-      "title": "Temukan Destinasi Wisata",
-      "description": "Jelajahi berbagai tempat menakjubkan bersama Neomi Tour and Travel. Dari pegunungan yang sejuk hingga pantai tropis yang memukau, kami siap membawa Anda ke tujuan impian dengan layanan terbaik dan penuh kenyamanan."
+      "title": "Destinasi Populer",
+      "description": "Jelajahi destinasi perjalanan paling dicari kami"
     },
     "section6": {
       "title": "Postingan Terbaru",
@@ -100,54 +108,192 @@
   },
   "Packages": {
     "section1": {
-      "title": "Neomi Tour And Travel",
-      "description": "Nikmati pengalaman liburan tak terlupakan dengan kemampuan expert di ranah sendiri. Dari pengalaman hingga pandai, kami siap menemani setiap langkah perjalanan Anda.",
-      "playVideo": "PUTAR VIDEO"
+      "title": "Paket Wisata",
+      "description": "Temukan pengalaman perjalanan yang dirancang dengan cermat",
+      "playVideo": "Tonton Video"
     },
     "section2": {
-      "description": "Ingin merasakan tour custom sesuai pilihan anda? Hubungi kami, klik dibawah ini.",
+      "description": "Temukan paket sempurna untuk petualangan Anda berikutnya",
       "contactUs": "Hubungi Kami"
     },
     "section3": {
-      "keyword": "KATA KUNCI",
-      "search": "Cari",
-      "priceFilter": "FILTER HARGA",
-      "min": "Min",
-      "max": "Maks",
-      "duration": "DURASI",
+      "priceFilter": "Rentang Harga",
+      "duration": "Durasi",
+      "durationNone": "Semua Durasi",
       "duration1": "1 Hari",
       "duration2": "2 Hari",
-      "duration3": "Lebih Dari 2 Hari"
+      "duration3": "3+ Hari",
+      "searchPlaceholder": "Cari paket...",
+      "noPackages": "Tidak ada paket yang ditemukan",
+      "sortBy": "Urutkan Berdasarkan",
+      "sortOptions": {
+        "priceLow": "Harga: Rendah ke Tinggi",
+        "priceHigh": "Harga: Tinggi ke Rendah",
+        "durationShort": "Durasi: Pendek ke Panjang",
+        "durationLong": "Durasi: Panjang ke Pendek",
+        "popularity": "Popularitas"
+      },
+      "min": "Min",
+      "max": "Maks",
+      "keyword": "Kata Kunci",
+      "search": "Cari"
+    },
+    "section4": {
+      "card": {
+        "viewDetails": "Lihat Detail",
+        "duration": "Durasi",
+        "price": "Harga",
+        "groupSize": "Ukuran Grup",
+        "difficulty": "Tingkat Kesulitan",
+        "location": "Lokasi",
+        "noImage": "Tidak Ada Gambar",
+        "perPerson": "per orang",
+        "people": "orang",
+        "days": "hari",
+        "day": "hari",
+        "currency": "Rp",
+        "moreDetails": "Selengkapnya",
+        "errorTitle": "Ups! Terjadi Kesalahan",
+        "noResultsTitle": "Paket Tidak Ditemukan",
+        "noResultsDescription": "Kami tidak dapat menemukan paket yang sesuai dengan kriteria pencarian Anda. Coba sesuaikan filter atau kata kunci pencarian Anda.",
+        "refreshPage": "Muat Ulang Halaman",
+        "goBack": "Kembali"
+      },
+      "loading": "Memuat paket...",
+      "error": "Gagal memuat paket",
+      "noResults": "Tidak ada paket yang sesuai dengan kriteria Anda"
     }
   },
   "Homestay": {
     "section1": {
-      "title": "Neomi HomeStay",
-      "description": "Rasakan kenyamanan seperti di rumah sendiri, hanya di Neomi Homestay – tempat ideal untuk beristirahat dan menikmati suasana tenang.",
-      "playVideo": "PUTAR VIDEO"
+      "title": "Homestay Kami",
+      "description": "Nikmati kehidupan lokal yang terbaik",
+      "playVideo": "Tonton Video"
     },
     "section2": {
-      "description": "Neomi Homestay menghadirkan kenyamanan modern dengan sentuhan budaya lokal. Nikmati Wi-Fi cepat, sarapan dan suasana tenang yang cocok untuk liburan atau perjalanan kerja Anda."
+      "description": "Temukan rumah kedua yang sempurna untuk Anda",
+      "noHomestays": "Tidak ada homestay yang ditemukan",
+      "searchPlaceholder": "Cari homestay...",
+      "sortBy": "Urutkan Berdasarkan",
+      "sortOptions": {
+        "priceLow": "Harga: Rendah ke Tinggi",
+        "priceHigh": "Harga: Tinggi ke Rendah",
+        "rating": "Rating",
+        "popularity": "Popularitas"
+      }
     },
     "section3": {
-      "priceFilter": "FILTER HARGA",
+      "otherFilters": "Filter Lainnya",
+      "withHotdesk": "Dengan Hotdesk",
+      "withoutHotdesk": "Tanpa Hotdesk",
+      "amenities": "Fasilitas",
+      "priceRange": "Rentang Harga",
+      "location": "Lokasi",
+      "roomType": "Tipe Kamar",
+      "roomTypes": {
+        "single": "Kamar Single",
+        "double": "Kamar Double",
+        "twin": "Kamar Twin",
+        "family": "Kamar Keluarga",
+        "suite": "Suite"
+      },
       "min": "Min",
       "max": "Maks",
-      "otherFilters": "FILTER LAINNYA",
-      "withHotdesk": "Ada Hotdesk",
-      "withoutHotdesk": "Non Hotdesk"
+      "keyword": "Kata Kunci",
+      "search": "Cari",
+      "priceFilter": "Filter Harga",
+      "filterBy": "Filter Berdasarkan",
+      "reset": "Reset Filter"
+    },
+    "detail": {
+      "section1": {
+        "title": "Detail Homestay",
+        "overview": "Ikhtisar",
+        "amenities": "Fasilitas",
+        "location": "Lokasi",
+        "policies": "Kebijakan",
+        "reviews": "Ulasan",
+        "bookNow": "Pesan Sekarang",
+        "price": "Harga per malam",
+        "checkIn": "Waktu Check-in",
+        "checkOut": "Waktu Check-out",
+        "cancellation": "Kebijakan Pembatalan",
+        "houseRules": "Aturan Rumah",
+        "nearby": "Tempat Wisata Terdekat",
+        "related": "Homestay Serupa"
+      },
+      "section2": {
+        "title": "Galeri Foto",
+        "description": "Lihat homestay kami melalui foto-foto ini"
+      },
+      "section3": {
+        "title": "Informasi Kamar",
+        "description": "Semua yang perlu Anda ketahui tentang kamar ini",
+        "features": {
+          "title": "Fitur Kamar",
+          "maxGuest": "Maksimal Tamu",
+          "roomSize": "Ukuran Kamar",
+          "roomType": "Tipe Kamar",
+          "price": "Harga"
+        },
+        "facilities": {
+          "title": "Fasilitas",
+          "wifi": "WiFi Gratis",
+          "ac": "AC",
+          "tv": "TV",
+          "bathroom": "Kamar Mandi Pribadi",
+          "breakfast": "Sarapan Termasuk",
+          "parking": "Parkir Gratis"
+        }
+      },
+      "section4": {
+        "title": "Pesan Sekarang",
+        "description": "Pesan menginap Anda bersama kami",
+        "form": {
+          "checkIn": "Tanggal Check-in",
+          "checkOut": "Tanggal Check-out",
+          "guests": "Jumlah Tamu",
+          "totalPrice": "Total Harga",
+          "submit": "Pesan Sekarang"
+        }
+      }
+    },
+    "section4": {
+      "card": {
+        "viewDetails": "Lihat Detail",
+        "price": "Harga",
+        "perNight": "per malam",
+        "maxGuests": "Maksimal Tamu",
+        "roomType": "Tipe Kamar",
+        "amenities": "Fasilitas",
+        "noImage": "Tidak Ada Gambar",
+        "guests": "tamu",
+        "bookNow": "Pesan Sekarang",
+        "currency": "Rp",
+        "moreDetails": "Selengkapnya",
+        "errorTitle": "Ups! Terjadi Kesalahan",
+        "noResultsTitle": "Homestay Tidak Ditemukan",
+        "noResultsDescription": "Kami tidak dapat menemukan homestay yang sesuai dengan kriteria pencarian Anda. Coba sesuaikan filter atau kata kunci pencarian Anda.",
+        "refreshPage": "Muat Ulang Halaman",
+        "goBack": "Kembali"
+      },
+      "loading": "Memuat homestay...",
+      "error": "Gagal memuat homestay",
+      "noResults": "Tidak ada homestay yang sesuai dengan kriteria Anda",
+      "previous": "Sebelumnya",
+      "next": "Selanjutnya"
     }
   },
   "Gallery": {
     "section1": {
       "title": "Galeri Kami",
-      "description": "Jelajahi koleksi momen dan pengalaman indah kami"
+      "description": "Jelajahi koleksi momen berkesan kami"
     },
     "section2": {
       "searchPlaceholder": "Cari galeri...",
-      "all": "Semua Kategori",
+      "all": "Semua",
       "homestay": "Homestay",
-      "tour": "Tur & Perjalanan",
+      "tour": "Wisata",
       "event": "Acara"
     },
     "section3": {
@@ -159,7 +305,7 @@
   "Blog": {
     "section1": {
       "title": "Blog Kami",
-      "description": "Temukan berita terbaru, tips, dan cerita dari para ahli perjalanan kami",
+      "description": "Dapatkan informasi terbaru tentang cerita dan tips perjalanan kami",
       "playVideo": "Tonton Video"
     },
     "section2": {
@@ -169,8 +315,64 @@
   "About": {
     "section1": {
       "title": "Tentang Kami",
-      "description": "Rasakan kenyamanan seperti di rumah sendiri, hanya di Neomi HomeStay – tempat ideal untuk beristirahat dan menikmati suasana tenang.",
-      "playVideo": "PUTAR VIDEO"
+      "description": "Kami bersemangat dalam menciptakan pengalaman perjalanan yang tak terlupakan untuk klien kami.",
+      "playVideo": "Tonton Cerita Kami"
+    },
+    "section2": {
+      "title": "Tentang Kami",
+      "about": {
+        "title": "Tentang Website Perjalanan",
+        "description": "Ketenangan yang indah telah menguasai seluruh jiwa saya, seperti pagi-pagi musim semi yang manis yang saya nikmati dengan sepenuh hati. Saya sendirian, dan merasakan pesona keberadaan di tempat ini, yang diciptakan untuk kebahagiaan jiwa-jiwa seperti saya. Saya sangat bahagia, teman saya, begitu terpikat dengan rasa ketenangan yang indah, sehingga saya mengabaikan bakat saya.\n\nSaya tidak akan mampu membuat satu goresan pun saat ini; namun saya merasa bahwa saya tidak pernah menjadi seniman yang lebih hebat dari sekarang. Ketika, sementara lembah yang indah dipenuhi kabut di sekitar saya, dan matahari tengah hari menyinari permukaan atas dedaunan pohon-pohon saya yang tak tertembus.",
+        "more": "Pelajari Lebih Lanjut"
+      },
+      "team1": {
+        "name": "John Doe",
+        "description": "Semua orang menyadari mengapa bahasa umum baru akan diinginkan: seseorang bisa menolak untuk membayar penerjemah yang mahal. Untuk mencapai ini, perlu memiliki tata bahasa dan pengucapan yang seragam.",
+        "more": "Selengkapnya Tentang John"
+      }
+    },
+    "section3": {
+      "title": "Tim Kami",
+      "description": "Kenali individu-individu yang bersemangat di balik kesuksesan kami",
+      "team": {
+        "member1": {
+          "name": "Sarah Johnson",
+          "position": "Pendiri & CEO",
+          "description": "Dengan pengalaman lebih dari 15 tahun di industri perjalanan, Sarah memimpin tim kami dengan semangat dan keahlian."
+        },
+        "member2": {
+          "name": "Michael Chen",
+          "position": "Konsultan Perjalanan",
+          "description": "Pengetahuan mendalam Michael tentang destinasi global membantu menciptakan itinerari yang sempurna untuk klien kami."
+        },
+        "member3": {
+          "name": "Emma Wilson",
+          "position": "Pengalaman Pelanggan",
+          "description": "Emma memastikan setiap klien menerima layanan yang luar biasa dan pengalaman yang tak terlupakan."
+        }
+      }
+    },
+    "section4": {
+      "title": "Nilai-Nilai Kami",
+      "description": "Prinsip-prinsip yang membimbing segala yang kami lakukan",
+      "values": {
+        "excellence": {
+          "title": "Keunggulan",
+          "description": "Kami berusaha untuk mencapai keunggulan dalam setiap aspek layanan kami"
+        },
+        "integrity": {
+          "title": "Integritas",
+          "description": "Kami menjalankan bisnis dengan kejujuran dan transparansi"
+        },
+        "innovation": {
+          "title": "Inovasi",
+          "description": "Kami terus mencari cara baru untuk meningkatkan pengalaman perjalanan"
+        },
+        "sustainability": {
+          "title": "Keberlanjutan",
+          "description": "Kami berkomitmen untuk pariwisata yang bertanggung jawab dan berkelanjutan"
+        }
+      }
     }
   }
 } 

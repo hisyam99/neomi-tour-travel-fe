@@ -1,21 +1,21 @@
 import { useState, useCallback } from 'react';
 
-interface UseApiResponse<T> {
+interface UseApiResponse<T, P extends unknown[]> {
   data: T | null;
   loading: boolean;
   error: Error | null;
-  execute: (...args: any[]) => Promise<void>;
+  execute: (...args: P) => Promise<void>;
 }
 
-export function useApi<T>(
-  apiFunction: (...args: any[]) => Promise<T>
-): UseApiResponse<T> {
+export function useApi<T, P extends unknown[]>(
+  apiFunction: (...args: P) => Promise<T>
+): UseApiResponse<T, P> {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
   const execute = useCallback(
-    async (...args: any[]) => {
+    async (...args: P) => {
       try {
         setLoading(true);
         setError(null);

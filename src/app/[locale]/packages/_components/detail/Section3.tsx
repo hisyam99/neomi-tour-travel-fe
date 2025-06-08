@@ -16,14 +16,14 @@ export default function Section3({ packageData }: Props) {
       <div className="prose max-w-none">
         <h2 className="text-2xl font-semibold mb-4">Package Details</h2>
         <div dangerouslySetInnerHTML={{ __html: details?.detail_wte || '' }} />
-      </div>
+            </div>
 
       {details?.itineraries && details.itineraries.length > 0 && (
         <div className="mt-8">
           <h2 className="text-2xl font-semibold mb-4">Itinerary</h2>
           <div className="flex flex-col gap-2">
             {details.itineraries.map((day, index) => (
-              <div key={`day-${index}-${typeof day === 'string' ? day : day.days}`} className="collapse collapse-arrow bg-base-200 rounded-xl">
+              <div key={`day-${index}-${day.days}`} className="collapse collapse-arrow bg-base-200 rounded-xl">
                 <input 
                   type="checkbox" 
                   className="peer" 
@@ -31,18 +31,18 @@ export default function Section3({ packageData }: Props) {
                   onChange={() => setOpenDay(openDay === `day${index}` ? null : `day${index}`)} 
                 />
                 <div className="collapse-title text-md font-semibold">
-                  Day {index + 1}
-                </div>
+                  {day.days}
+            </div>
                 <div className="collapse-content">
                   <p className="text-sm text-base-content/80">
-                    {typeof day === 'string' ? day : day.days}
+                    {day.details}
                   </p>
-                </div>
-              </div>
+            </div>
+          </div>
             ))}
           </div>
         </div>
       )}
-    </div>
+      </div>
   );
 } 

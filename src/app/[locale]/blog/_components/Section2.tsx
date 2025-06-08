@@ -58,9 +58,14 @@ export default function Section2() {
     <div className="space-y-12">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {currentPosts.map((post) => (
-          <div key={post.id} className="bg-base-200 rounded-xl p-6 shadow hover:shadow-lg transition-shadow" data-aos="fade-up">
+          <Link
+            href={`/blog/${post.slug}`}
+            key={post.id} 
+            className="block bg-base-200 rounded-xl p-6 shadow hover:shadow-lg transition-shadow" 
+              data-aos="fade-up"
+            >
             <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
-              <Image
+              <Image 
                 src={post.thumbnail || "https://picsum.photos/400/300"}
                 alt={post.title}
                 fill
@@ -70,15 +75,15 @@ export default function Section2() {
             </div>
             <div className="text-sm text-base-content/70 mb-3">
               {new Date(post.created_at).toLocaleDateString()}
-            </div>
+              </div>
             <h3 className="text-xl font-semibold mb-3 line-clamp-2">{post.title}</h3>
             <div className="text-base-content/70 mb-6 line-clamp-3" dangerouslySetInnerHTML={{ __html: post.content }} />
-            <Link href={`/blog/${post.slug}`} className="btn btn-primary w-full">
+            <div className="btn btn-primary w-full">
               {t("readMore")}
-            </Link>
-          </div>
-        ))}
-      </div>
+            </div>
+          </Link>
+          ))}
+        </div>
 
       {totalPages > 1 && (
         <div className="flex justify-center pt-8" data-aos="fade-up">
@@ -109,6 +114,6 @@ export default function Section2() {
           </div>
         </div>
       )}
-    </div>
+      </div>
   );
 } 
