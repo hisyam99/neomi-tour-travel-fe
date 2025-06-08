@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { homestaysService } from "@/services/homestays";
 import { useApi } from "@/hooks/useApi";
 import { Homestay, ApiResponse } from "@/types";
@@ -10,12 +10,36 @@ interface Props {
 }
 
 export default function Section4({ roomId }: Props) {
+  const [bookingData, setBookingData] = useState({
+    checkin: "",
+    checkout: "",
+    guests: "1"
+  });
+
   const fetchHomestay = useCallback(() => homestaysService.getById(roomId), [roomId]);
   const { data, loading, error, execute } = useApi<ApiResponse<Homestay>, []>(fetchHomestay);
 
   useEffect(() => {
     execute();
   }, [execute]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setBookingData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const buildChatUrl = (baseUrl: string) => {
+    const params = new URLSearchParams();
+    if (bookingData.checkin) params.append('checkin', bookingData.checkin);
+    if (bookingData.checkout) params.append('checkout', bookingData.checkout);
+    if (bookingData.guests) params.append('guests', bookingData.guests);
+    
+    const separator = baseUrl.includes('?') ? '&' : '?';
+    return `${baseUrl}${separator}${params.toString()}`;
+  };
 
   if (loading) {
     return (
@@ -89,7 +113,10 @@ export default function Section4({ roomId }: Props) {
               <input 
                 id="checkin"
                 type="date" 
-                className="input input-bordered w-full" 
+                className="input input-bordered w-full"
+                value={bookingData.checkin}
+                onChange={handleInputChange}
+                min={new Date().toISOString().split('T')[0]}
               />
             </div>
             <div className="form-control">
@@ -99,7 +126,10 @@ export default function Section4({ roomId }: Props) {
               <input 
                 id="checkout"
                 type="date" 
-                className="input input-bordered w-full" 
+                className="input input-bordered w-full"
+                value={bookingData.checkout}
+                onChange={handleInputChange}
+                min={bookingData.checkin || new Date().toISOString().split('T')[0]}
               />
             </div>
             <div className="form-control">
@@ -109,6 +139,8 @@ export default function Section4({ roomId }: Props) {
               <select 
                 id="guests"
                 className="select select-bordered w-full"
+                value={bookingData.guests}
+                onChange={handleInputChange}
               >
                 {Array.from({ length: details.max_guest }, (_, i) => (
                   <option key={i + 1} value={i + 1}>
@@ -123,7 +155,7 @@ export default function Section4({ roomId }: Props) {
               <span className="text-xl font-bold">Rp {parseInt(details.price).toLocaleString()}</span>
             </div>
             <a
-              href={details.chat_url}
+              href={buildChatUrl(details.chat_url)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary w-full"
