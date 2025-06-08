@@ -1,45 +1,181 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
-import Image from "next/image";
+"use client";
 
-const images = [
-  { id: 'main', url: "https://picsum.photos/800/400?random=1", alt: "Main image" },
-  { id: 'gallery1', url: "https://picsum.photos/400/200?random=2", alt: "Gallery image 1" },
-  { id: 'gallery2', url: "https://picsum.photos/400/200?random=3", alt: "Gallery image 2" },
-  { id: 'gallery3', url: "https://picsum.photos/400/200?random=4", alt: "Gallery image 3" },
-];
+import React, { useEffect, useCallback } from "react";
+import { tourAndTravelService } from "@/services/tourAndTravel";
+import { useApi } from "@/hooks/useApi";
+import { TourAndTravel, ApiResponse } from "@/types";
+import Image from "next/image";
 
 interface Props {
   packageId: string;
 }
 
 export default function Section2({ packageId }: Props) {
+  const fetchPackage = useCallback(() => tourAndTravelService.getById(parseInt(packageId, 10)), [packageId]);
+  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel>>(fetchPackage);
+
+  useEffect(() => {
+    execute();
+  }, [execute]);
+
+  if (loading) {
+    return (
+      <section className="pb-8">
+        <div className="container mx-auto px-4">
+          <div className="animate-pulse space-y-4">
+            <div className="h-64 md:h-96 bg-base-200 rounded-xl"></div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="h-32 bg-base-200 rounded-lg"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return <div className="text-error">Error loading package: {error.message}</div>;
+  }
+
+  if (!data?.data) {
+    return <div className="text-center">Package not found</div>;
+  }
+
+  const packageData = data.data;
+  const details = packageData.details[0];
+  const photos = details?.photos || [];
+
+  const getGridLayout = () => {
+    if (photos.length === 1) {
+      return "single";
+    } else if (photos.length === 2) {
+      return "two";
+    } else if (photos.length <= 4) {
+      return "three";
+    } else {
+      return "four";
+    }
+  };
+
+  const renderSingleLayout = () => (
+    <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+      <Image
+        src={photos[0]?.url || `https://picsum.photos/1200/800?random=${packageData.id}`}
+        alt={packageData.name_package}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
+        className="object-cover"
+        priority
+      />
+    </div>
+  );
+
+  const renderTwoLayout = () => (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+        <Image
+          src={photos[0]?.url || `https://picsum.photos/1200/800?random=${packageData.id}`}
+          alt={packageData.name_package}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+          className="object-cover"
+          priority
+        />
+      </div>
+      <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+        <Image
+          src={photos[1]?.url || `https://picsum.photos/1200/800?random=${packageData.id + 1}`}
+          alt={`${packageData.name_package} - Photo 2`}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+          className="object-cover"
+        />
+      </div>
+    </div>
+  );
+
+  const renderThreeLayout = () => (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="md:col-span-2">
+        <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+          <Image
+            src={photos[0]?.url || `https://picsum.photos/1200/800?random=${packageData.id}`}
+            alt={packageData.name_package}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
+            className="object-cover"
+            priority
+          />
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-4">
+        {photos.slice(1).map((photo) => (
+          <div key={photo.url} className="relative h-[190px] md:h-[240px] rounded-xl overflow-hidden">
+            <Image
+              src={photo.url}
+              alt={`${packageData.name_package} - Photo ${photo.url.split('/').pop()}`}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderFourLayout = () => (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="md:col-span-2">
+        <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+          <Image
+            src={photos[0]?.url || `https://picsum.photos/1200/800?random=${packageData.id}`}
+            alt={packageData.name_package}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
+            className="object-cover"
+            priority
+          />
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        {photos.slice(1, 5).map((photo) => (
+          <div key={photo.url} className="relative h-48 rounded-xl overflow-hidden">
+            <Image
+              src={photo.url}
+              alt={`${packageData.name_package} - Photo ${photo.url.split('/').pop()}`}
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 400px"
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderLayout = () => {
+    const layout = getGridLayout();
+    switch (layout) {
+      case "single":
+        return renderSingleLayout();
+      case "two":
+        return renderTwoLayout();
+      case "three":
+        return renderThreeLayout();
+      case "four":
+        return renderFourLayout();
+      default:
+        return renderSingleLayout();
+    }
+  };
+
   return (
     <section className="pb-8">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className="flex-1">
-            <Image 
-              src={images[0].url} 
-              alt={images[0].alt}
-              width={800}
-              height={400}
-              className="rounded-xl w-full h-64 md:h-96 object-cover" 
-            />
-          </div>
-          <div className="flex flex-col gap-4 w-full md:w-1/3">
-            {images.slice(1).map((img) => (
-              <Image 
-                key={img.id}
-                src={img.url}
-                alt={img.alt}
-                width={400}
-                height={200}
-                className="rounded-xl w-full h-20 md:h-28 object-cover"
-              />
-            ))}
-          </div>
-        </div>
+        {renderLayout()}
       </div>
     </section>
   );

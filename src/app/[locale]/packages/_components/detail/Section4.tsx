@@ -1,48 +1,67 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, { useState } from "react";
-
-const itinerary = [
-  {
-    id: 'day1',
-    day: "Day 1 - Arrive in Zürich, Switzerland",
-    desc: "Timperdiet gravida scelerisque odio nunc. Eget felis, odio bibendum quis eget sit lorem donec diam. Voutabat sed orci turpis sit dolor est a pretium eget. Vitae turpis orci vel tellus cursus lorem vestibulum quis eu. Eti commodo, eget lorem venenatis urna.",
-  },
-  { id: 'day2', day: "Day 2 - Zürich–Biel/BienneNeuchâtel–Geneva", desc: "..." },
-  { id: 'day3', day: "Day 3 - Enchanting Engelberg", desc: "..." },
-  { id: 'day4', day: "Day 4 - Interlaken Area. Excursion to The Jungfrau Massif", desc: "..." },
-];
+import { TourAndTravel } from "@/types";
 
 interface Props {
-  packageId: string;
+  packageData: TourAndTravel;
 }
 
-export default function Section4({ packageId }: Props) {
-  const [open, setOpen] = useState<string | null>(null);
+export default function Section4({ packageData }: Props) {
+  const [isMapLoading, setIsMapLoading] = useState(true);
+  const details = packageData.details[0];
+
+  // Function to convert Google Maps URL to embed URL
+  const getEmbedUrl = (url: string) => {
+    try {
+      // If it's already an embed URL, return as is
+      if (url.includes('embed')) {
+        return url;
+      }
+
+      // Extract the map ID from the URL
+      const mapIdMatch = url.match(/mid=([^&]+)/);
+      if (mapIdMatch && mapIdMatch[1]) {
+        return `https://www.google.com/maps/d/embed?mid=${mapIdMatch[1]}`;
+      }
+
+      // If it's a regular Google Maps URL, convert to embed format
+      const urlObj = new URL(url);
+      const path = urlObj.pathname;
+      const query = urlObj.search;
+      
+      return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(path + query)}`;
+    } catch (error) {
+      console.error('Error converting map URL:', error);
+      return url;
+    }
+  };
+
+  if (!details?.link_route_maps) {
+    return null;
+  }
+
   return (
-    <section className="py-8">
-      <div className="container mx-auto px-4">
-        <h3 className="font-bold text-lg mb-4">Rencana Perjalanan</h3>
-        <div className="flex flex-col gap-2">
-          {itinerary.map((item) => (
-            <div key={item.id} className="collapse collapse-arrow bg-base-200 rounded-xl">
-              <input 
-                type="checkbox" 
-                className="peer" 
-                checked={open === item.id} 
-                onChange={() => setOpen(open === item.id ? null : item.id)} 
-              />
-              <div className="collapse-title text-md font-semibold">
-                {item.day}
-              </div>
-              <div className="collapse-content">
-                <p className="text-sm text-base-content/80">{item.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className="mt-8">
+      <h2 className="text-2xl font-semibold mb-4">Route Map</h2>
+      <div className="w-full h-[500px] rounded-xl overflow-hidden relative">
+        {isMapLoading && (
+          <div className="absolute inset-0 bg-base-200 animate-pulse">
+            <div className="w-full h-full skeleton"></div>
+          </div>
+        )}
+        <iframe
+          title="Tour Package Route Map"
+          src={getEmbedUrl(details.link_route_maps)}
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          onLoad={() => setIsMapLoading(false)}
+        ></iframe>
       </div>
-    </section>
+    </div>
   );
 } 

@@ -1,38 +1,40 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { TourAndTravel } from "@/types";
 
 interface Props {
-  packageId: string;
+  packageData: TourAndTravel;
 }
 
-export default function Section5({ packageId }: Props) {
-  const [isLoading, setIsLoading] = useState(true);
+export default function Section5({ packageData }: Props) {
+  const details = packageData.details[0];
 
   return (
-    <section className="py-8">
-      <div className="container mx-auto px-4">
-        <h3 className="font-bold text-lg mb-4">Map</h3>
-        <div className="w-full h-[500px] rounded-xl overflow-hidden relative">
-          {isLoading && (
-            <div className="absolute inset-0 bg-base-200 animate-pulse">
-              <div className="w-full h-full skeleton"></div>
+    <div className="md:col-span-1">
+      <div className="bg-base-200 p-6 rounded-xl sticky top-4">
+        <h2 className="text-xl font-semibold mb-4">Package Information</h2>
+        <div className="space-y-4">
+          <div>
+            <div className="text-base-content/70">Duration</div>
+            <div className="font-semibold">{details?.duration || 'N/A'}</div>
+          </div>
+          <div>
+            <div className="text-base-content/70">Price</div>
+            <div className="text-2xl font-bold text-primary">
+              Rp {Number(details?.price || 0).toLocaleString()}
             </div>
-          )}
-          <iframe
-            title="Tour Package Location Map"
-            src="https://www.google.com/maps/d/u/0/embed?mid=1mGgtylMQHGAKR6HR8r8YLe5W4LU&femb=1&ll=46.763418698970376%2C7.316172324717343&z=10"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            onLoad={() => setIsLoading(false)}
-          ></iframe>
+          </div>
+          <a 
+            href={`https://wa.me/6281230996791?text=${encodeURIComponent(details?.chat || '')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary w-full"
+          >
+            Book Now
+          </a>
         </div>
       </div>
-    </section>
+    </div>
   );
 } 

@@ -50,23 +50,66 @@ export default function Section4({ roomId }: Props) {
         <div className="bg-base-200 rounded-xl p-6 shadow">
           <h3 className="font-bold text-xl mb-4">Book Now</h3>
           <div className="space-y-4">
+            {/* <div className="form-control">
+              <label htmlFor="name" className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                id="name"
+                type="text"
+                placeholder="Your name"
+                className="input input-bordered w-full"
+              />
+            </div>
             <div className="form-control">
-              <label className="label">
+              <label htmlFor="email" className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="Your email"
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div className="form-control">
+              <label htmlFor="message" className="label">
+                <span className="label-text">Message</span>
+              </label>
+              <textarea
+                id="message"
+                className="textarea textarea-bordered h-24"
+                placeholder="Your message"
+              ></textarea>
+            </div> */}
+            <div className="form-control">
+              <label htmlFor="checkin" className="label">
                 <span className="label-text">Check-in Date</span>
               </label>
-              <input type="date" className="input input-bordered w-full" />
+              <input 
+                id="checkin"
+                type="date" 
+                className="input input-bordered w-full" 
+              />
             </div>
             <div className="form-control">
-              <label className="label">
+              <label htmlFor="checkout" className="label">
                 <span className="label-text">Check-out Date</span>
               </label>
-              <input type="date" className="input input-bordered w-full" />
+              <input 
+                id="checkout"
+                type="date" 
+                className="input input-bordered w-full" 
+              />
             </div>
             <div className="form-control">
-              <label className="label">
+              <label htmlFor="guests" className="label">
                 <span className="label-text">Number of Guests</span>
               </label>
-              <select className="select select-bordered w-full">
+              <select 
+                id="guests"
+                className="select select-bordered w-full"
+              >
                 {Array.from({ length: details.max_guest }, (_, i) => (
                   <option key={i + 1} value={i + 1}>
                     {i + 1} {i === 0 ? 'Guest' : 'Guests'}
