@@ -13,32 +13,96 @@ export default function Section4({ roomId }: Props) {
   const [bookingData, setBookingData] = useState({
     checkin: "",
     checkout: "",
-    guests: "1"
+    guests: "1",
   });
 
-  const fetchHomestay = useCallback(() => homestaysService.getById(roomId), [roomId]);
-  const { data, loading, error, execute } = useApi<ApiResponse<Homestay>, []>(fetchHomestay);
+  const [errors, setErrors] = useState({
+    checkin: "",
+    checkout: "",
+  });
+
+  const fetchHomestay = useCallback(
+    () => homestaysService.getById(roomId),
+    [roomId]
+  );
+  const { data, loading, error, execute } = useApi<ApiResponse<Homestay>, []>(
+    fetchHomestay
+  );
 
   useEffect(() => {
     execute();
   }, [execute]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { id, value } = e.target;
-    setBookingData(prev => ({
+    setBookingData((prev) => ({
       ...prev,
-      [id]: value
+      [id]: value,
     }));
+
+    if (errors[id as keyof typeof errors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [id]: "",
+      }));
+    }
+  };
+
+  const validateBooking = () => {
+    const newErrors = {
+      checkin: "",
+      checkout: "",
+    };
+    let isValid = true;
+
+    if (!bookingData.checkin) {
+      newErrors.checkin = "Check-in date is required";
+      isValid = false;
+    }
+
+    if (!bookingData.checkout) {
+      newErrors.checkout = "Check-out date is required";
+      isValid = false;
+    }
+
+    if (bookingData.checkin && bookingData.checkout) {
+      const checkinDate = new Date(bookingData.checkin);
+      const checkoutDate = new Date(bookingData.checkout);
+
+      if (checkoutDate <= checkinDate) {
+        newErrors.checkout = "Check-out date must be after check-in date";
+        isValid = false;
+      }
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
   const buildChatUrl = (baseUrl: string) => {
-    const params = new URLSearchParams();
-    if (bookingData.checkin) params.append('checkin', bookingData.checkin);
-    if (bookingData.checkout) params.append('checkout', bookingData.checkout);
-    if (bookingData.guests) params.append('guests', bookingData.guests);
-    
-    const separator = baseUrl.includes('?') ? '&' : '?';
-    return `${baseUrl}${separator}${params.toString()}`;
+    const message = [
+      "",
+      "",
+      "*Homestay Details:*",
+      `*${data?.data?.name}*`,
+      "",
+      "*Booking Details:*",
+      `Check-in: *${bookingData.checkin}*`,
+      `Check-out: *${bookingData.checkout}*`,
+      `Jumlah Tamu: *${bookingData.guests} orang*`,
+      "",
+      "Mohon konfirmasi ketersediaan untuk tanggal tersebut. Terima kasih!",
+    ].join("%0A");
+
+    return `${baseUrl}${message}`;
+  };
+
+  const handleBookNow = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!validateBooking()) {
+      e.preventDefault();
+    }
   };
 
   if (loading) {
@@ -58,7 +122,9 @@ export default function Section4({ roomId }: Props) {
   }
 
   if (error) {
-    return <div className="text-error">Error loading homestay: {error.message}</div>;
+    return (
+      <div className="text-error">Error loading homestay: {error.message}</div>
+    );
   }
 
   if (!data?.data) {
@@ -110,33 +176,53 @@ export default function Section4({ roomId }: Props) {
               <label htmlFor="checkin" className="label">
                 <span className="label-text">Check-in Date</span>
               </label>
-              <input 
+              <input
                 id="checkin"
-                type="date" 
-                className="input input-bordered w-full"
+                type="date"
+                className={`input input-bordered w-full ${
+                  errors.checkin ? "input-error" : ""
+                }`}
                 value={bookingData.checkin}
                 onChange={handleInputChange}
-                min={new Date().toISOString().split('T')[0]}
+                min={new Date().toISOString().split("T")[0]}
               />
+              {errors.checkin && (
+                <label className="label">
+                  <span className="label-text-alt text-error">
+                    {errors.checkin}
+                  </span>
+                </label>
+              )}
             </div>
             <div className="form-control">
               <label htmlFor="checkout" className="label">
                 <span className="label-text">Check-out Date</span>
               </label>
-              <input 
+              <input
                 id="checkout"
-                type="date" 
-                className="input input-bordered w-full"
+                type="date"
+                className={`input input-bordered w-full ${
+                  errors.checkout ? "input-error" : ""
+                }`}
                 value={bookingData.checkout}
                 onChange={handleInputChange}
-                min={bookingData.checkin || new Date().toISOString().split('T')[0]}
+                min={
+                  bookingData.checkin || new Date().toISOString().split("T")[0]
+                }
               />
+              {errors.checkout && (
+                <label className="label">
+                  <span className="label-text-alt text-error">
+                    {errors.checkout}
+                  </span>
+                </label>
+              )}
             </div>
             <div className="form-control">
               <label htmlFor="guests" className="label">
                 <span className="label-text">Number of Guests</span>
               </label>
-              <select 
+              <select
                 id="guests"
                 className="select select-bordered w-full"
                 value={bookingData.guests}
@@ -144,7 +230,7 @@ export default function Section4({ roomId }: Props) {
               >
                 {Array.from({ length: details.max_guest }, (_, i) => (
                   <option key={i + 1} value={i + 1}>
-                    {i + 1} {i === 0 ? 'Guest' : 'Guests'}
+                    {i + 1} {i === 0 ? "Guest" : "Guests"}
                   </option>
                 ))}
               </select>
@@ -152,13 +238,16 @@ export default function Section4({ roomId }: Props) {
             <div className="divider"></div>
             <div className="flex justify-between items-center">
               <span className="font-semibold">Total Price:</span>
-              <span className="text-xl font-bold">Rp {parseInt(details.price).toLocaleString()}</span>
+              <span className="text-xl font-bold">
+                Rp {parseInt(details.price).toLocaleString()}
+              </span>
             </div>
             <a
               href={buildChatUrl(details.chat_url)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary w-full"
+              onClick={handleBookNow}
             >
               Book Now
             </a>
@@ -167,4 +256,4 @@ export default function Section4({ roomId }: Props) {
       </div>
     </section>
   );
-} 
+}
