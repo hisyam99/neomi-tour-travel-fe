@@ -148,8 +148,20 @@
   },
   "Gallery": {
     "section1": {
-      "title": "画廊",
-      "description": "Neomi 旅游旅程和服务的最佳时刻集锦。"
+      "title": "我们的画廊",
+      "description": "探索我们精彩时刻和体验的收藏"
+    },
+    "section2": {
+      "searchPlaceholder": "搜索画廊...",
+      "all": "所有类别",
+      "homestay": "民宿",
+      "tour": "旅游",
+      "event": "活动"
+    },
+    "section3": {
+      "view": "查看",
+      "previous": "上一页",
+      "next": "下一页"
     }
   },
   "Blog": {

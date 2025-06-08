@@ -5,7 +5,7 @@ import Section4 from "./_components/Section4";
 
 export default function HomestayPage() {
   return (
-    <main>
+    <main className="pt-16">
       <Section1 />
       <Section2 />
       <div className="container mx-auto px-4">

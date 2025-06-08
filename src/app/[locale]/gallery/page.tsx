@@ -4,7 +4,7 @@ import Section3 from "./_components/Section3";
 
 export default function GalleryPage() {
   return (
-    <main>
+    <main className="pt-16">
       <Section1 />
       <Section2 />
       <Section3 />

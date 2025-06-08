@@ -140,8 +140,20 @@
   },
   "Gallery": {
     "section1": {
-      "title": "Galeri",
-      "description": "Kumpulan momen terbaik dari perjalanan dan layanan Neomi Tour & Travel."
+      "title": "Galeri Kami",
+      "description": "Jelajahi koleksi momen dan pengalaman indah kami"
+    },
+    "section2": {
+      "searchPlaceholder": "Cari galeri...",
+      "all": "Semua Kategori",
+      "homestay": "Homestay",
+      "tour": "Tur & Perjalanan",
+      "event": "Acara"
+    },
+    "section3": {
+      "view": "Lihat",
+      "previous": "Sebelumnya",
+      "next": "Selanjutnya"
     }
   },
   "Blog": {

@@ -148,8 +148,20 @@
   },
   "Gallery": {
     "section1": {
-      "title": "Gallery",
-      "description": "A collection of the best moments from Neomi Tour & Travel's journeys and services."
+      "title": "Our Gallery",
+      "description": "Explore our collection of beautiful moments and experiences"
+    },
+    "section2": {
+      "searchPlaceholder": "Search gallery...",
+      "all": "All Categories",
+      "homestay": "Homestay",
+      "tour": "Tour & Travel",
+      "event": "Event"
+    },
+    "section3": {
+      "view": "View",
+      "previous": "Previous",
+      "next": "Next"
     }
   },
   "Blog": {

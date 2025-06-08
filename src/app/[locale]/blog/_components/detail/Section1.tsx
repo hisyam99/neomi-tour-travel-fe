@@ -21,7 +21,7 @@ export default function Section1({ blogId }: Props) {
 
   if (loading) {
     return (
-      <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center">
+      <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center -mt-16 pt-16">
         <div className="absolute inset-0 bg-base-200 animate-pulse"></div>
       </div>
     );
@@ -40,7 +40,7 @@ export default function Section1({ blogId }: Props) {
   const blog = data.data;
 
   return (
-    <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center">
+    <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center -mt-16 pt-16">
       <Image
         src={blog.thumbnail || "https://picsum.photos/1920/800"}
         alt={blog.title}

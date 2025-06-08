@@ -6,7 +6,7 @@ export default function Section1() {
 
   return (
     <div 
-      className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center"
+      className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center -mt-16 pt-16"
       style={{
         backgroundImage: "url(https://picsum.photos/1920/800?random=20)",
         backgroundSize: 'cover',

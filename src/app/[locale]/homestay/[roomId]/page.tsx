@@ -18,7 +18,7 @@ export default function HomestayRoomDetailPage({ params }: Props) {
   }
 
   return (
-    <main>
+    <main className="pt-16">
       <Section1 roomId={roomId} />
       <div className="container mx-auto px-4 flex flex-col md:flex-row gap-8 mt-8">
         <div className="w-full md:w-2/3">

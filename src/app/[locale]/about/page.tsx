@@ -3,7 +3,7 @@ import Section2 from "./_components/Section2";
 
 export default function AboutPage() {
   return (
-    <main>
+    <main className="pt-16">
       <Section1 />
       <Section2 />
     </main>

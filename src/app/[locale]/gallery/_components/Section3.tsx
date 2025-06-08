@@ -1,6 +1,7 @@
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const images = Array.from({ length: 9 }).map((_, i) => ({
   id: i + 1,
@@ -9,6 +10,8 @@ const images = Array.from({ length: 9 }).map((_, i) => ({
 }));
 
 export default function Section3() {
+  const t = useTranslations("Gallery.section3");
+
   return (
     <section className="py-10">
       <div className="container mx-auto px-4">
@@ -24,17 +27,17 @@ export default function Section3() {
                 className="object-cover w-full h-40 group-hover:scale-110 transition-transform duration-300" 
               />
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-semibold">Lihat</span>
+                <span className="text-white font-semibold">{t("view")}</span>
               </div>
             </div>
           ))}
         </div>
         {/* Navigation buttons */}
         <div className="flex justify-center gap-4 mt-8" data-aos="fade-up" data-aos-delay="400">
-          <button className="btn btn-circle bg-base-200 border-none" aria-label="Previous">
+          <button className="btn btn-circle bg-base-200 border-none" aria-label={t("previous")}>
             <FaChevronLeft className="text-xl" />
           </button>
-          <button className="btn btn-circle bg-base-200 border-none" aria-label="Next">
+          <button className="btn btn-circle bg-base-200 border-none" aria-label={t("next")}>
             <FaChevronRight className="text-xl" />
           </button>
         </div>
