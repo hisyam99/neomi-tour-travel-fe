@@ -31,31 +31,31 @@
   },
   "Home": {
     "section1": {
-      "title": "Discover Your Perfect Getaway",
-      "description": "Experience unforgettable adventures with our curated travel packages. From serene beaches to thrilling mountain treks, we've got your dream vacation covered."
+      "title": "Discover a New Experience with Neomi.",
+      "description": "Savor an unforgettable getaway with all the comforts of home. From mountain peaks to sandy shores, we're with you every step of the way."
     },
     "section2": {
-      "title": "Your Journey Begins Here",
-      "description": "Let us guide you through extraordinary destinations and create memories that last a lifetime."
+      "title": "Neomi Top-Quality Trips, Memorable Moments",
+      "description": "Experience exclusive tours with expert guides and premium facilities — where every journey is filled with comfort and lasting impressions."
     },
     "section3": {
       "title": "Our Services",
-      "description": "Discover our comprehensive range of services designed to make your travel experience unforgettable",
+      "description": "We’re committed to providing the best services to support your comfort and ease throughout your journey. Travel safely, comfortably, and memorably with Neomi Tour and Travel",
       "tour": {
-        "title": "Tour & Travel",
-        "desc": "Explore amazing destinations with our curated tour packages"
+        "title": "Reliable Tour Transport",
+        "desc": "Enjoy your journey with our well-maintained vehicles and experienced drivers who ensure a smooth and secure ride."
       },
       "homestay": {
         "title": "Homestay",
-        "desc": "Experience local living with our comfortable homestay options"
+        "desc": "Stay in our well-located homestays, offering the comfort you need just minutes away from top destinations. Ideal for families, couples, or solo adventurers."
       },
       "hotdesk": {
-        "title": "Hotdesk",
-        "desc": "Work remotely with our flexible hotdesk solutions"
+        "title": "Tour Packages",
+        "desc": "We offer comprehensive tour packages designed for your comfort and convenience. From clean and cozy accommodations in strategic locations to enjoyable trips to various tourist attractions. Perfect for families, couples, and solo travelers."
       },
       "coworking": {
-        "title": "Coworking",
-        "desc": "Collaborate in our modern coworking spaces"
+        "title": "Custom Tour Packages",
+        "desc": "Got your own destination? We’re ready to create a travel package tailored to your wishes. More flexible and personalized."
       }
     },
     "section4": {
@@ -117,7 +117,7 @@
       "playVideo": "Watch Video"
     },
     "section2": {
-      "description": "Find the perfect package for your next adventure",
+      "description": "Interested in a custom tour designed just for you? Reach out to us by clicking the button below.",
       "contactUs": "Contact Us"
     },
     "section3": {
@@ -171,11 +171,11 @@
   "Homestay": {
     "section1": {
       "title": "Our Homestays",
-      "description": "Experience local living at its finest",
+      "description": "Feel at home comfort, only at Neomi HomeStay — the ideal place to rest and enjoy a peaceful atmosphere.",
       "playVideo": "Watch Video"
     },
     "section2": {
-      "description": "Find your perfect home away from home",
+      "description": "Neomi HomeStay offers modern comfort with a touch of local culture. Enjoy fast Wi-Fi, breakfast, and a peaceful atmosphere perfect for your vacation or business trip.",
       "noHomestays": "No homestays found",
       "searchPlaceholder": "Search homestays...",
       "sortBy": "Sort By",
@@ -301,14 +301,14 @@
     "section2": {
       "title": "About Us",
       "about": {
-        "title": "About Travel Website",
-        "description": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.\n\nI should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees.",
-        "more": "Learn More"
+        "title": "About Neomi ",
+        "description": "At Neomi Tour and Travel, we believe that every journey should be memorable, comfortable, and uniquely tailored to your needs. Founded with the passion to explore and connect, we offer exclusive tour packages and personalized travel experiences that go beyond ordinary vacations. Our dedicated team is committed to crafting unforgettable adventures that suit your preferences, whether you seek relaxation, cultural immersion, or thrilling exploration. We prioritize exceptional service, attention to detail, and local expertise to ensure your trip is seamless from start to finish.With Neomi Tour and Travel, you’re not just a traveler — you’re a valued guest. We take pride in providing a warm, welcoming atmosphere that makes you feel at home, no matter where your journey takes you.",
+        "more": ""
       },
       "team1": {
-        "name": "John Doe",
-        "description": "Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation.",
-        "more": "More About John"
+        "name": "Our Mission",
+        "description": "To provide exceptional travel experiences that inspire and connect people with the world around them. We aim to create memorable journeys that enrich lives through exploration and discovery.",
+        "more": ""
       }
     },
     "section3": {

@@ -8,11 +8,17 @@ export default function Section1() {
     <div 
       className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center -mt-16 pt-16"
       style={{
-        backgroundImage: "url(https://picsum.photos/1920/800?random=30)",
+        backgroundImage: 'url("/tourandtravel/tour.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
+
       }}
     >
+    <img 
+        src="/tourandravel/tour.jpg" 
+        alt={t("imageAlt", { defaultValue: "Neomi Tour" })} 
+        className="sr-only" 
+      />
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
       <div className="container mx-auto relative z-10 px-4 py-16">
         <div className="max-w-xl text-left text-neutral-content">
