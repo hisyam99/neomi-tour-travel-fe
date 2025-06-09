@@ -8,11 +8,17 @@ export default function Section1() {
     <div 
       className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center -mt-16 pt-16"
       style={{
-        backgroundImage: "url(https://picsum.photos/1920/800?random=20)",
+        backgroundImage: 'url("/homestays/neomi-homestay.png")',
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        objectFit: "cover"
       }}
     >
+        <img 
+        src="/homestays/neomi-homestay.png" 
+        alt={t("imageAlt", { defaultValue: "Neomi Homestay" })} 
+        className="sr-only" 
+      />
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
       <div className="container mx-auto relative z-10 px-4 py-16">
         <div className="max-w-xl text-left text-neutral-content" data-aos="fade-up">

@@ -10,7 +10,7 @@ export default function Section1() {
   return (
     <div className="relative min-h-[400px] md:min-h-[500px] flex items-center -mt-16 pt-16">
       <Image
-        src="https://picsum.photos/1920/800?random=50"
+        src="/blog/blog.jpg"
         alt="Blog Header"
         fill
         className="object-cover"
