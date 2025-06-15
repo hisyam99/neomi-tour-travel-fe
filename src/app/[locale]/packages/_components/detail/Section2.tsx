@@ -116,34 +116,34 @@ export default function Section2({ packageId }: Readonly<Props>) {
   );
 
   const renderThreeLayout = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <button
+        onClick={() => handleImageClick(0)}
+        className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity md:col-span-2"
+      >
+        <Image
+          src={packageData.photos[0]}
+          alt={`${packageData.name} - 1`}
+          fill
+          className="object-cover"
+        />
+      </button>
       <div className="grid grid-rows-2 gap-4">
-        {packageData.photos.slice(0, 2).map((photo: string, index: number) => (
+        {packageData.photos.slice(1, 3).map((photo: string, index: number) => (
           <button
-            key={`photo-${index}-${photo}`}
-            onClick={() => handleImageClick(index)}
+            key={`photo-${index + 1}-${photo}`}
+            onClick={() => handleImageClick(index + 1)}
             className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
           >
             <Image
               src={photo}
-              alt={`${packageData.name} - ${index + 1}`}
+              alt={`${packageData.name} - ${index + 2}`}
               fill
               className="object-cover"
             />
           </button>
         ))}
       </div>
-      <button
-        onClick={() => handleImageClick(2)}
-        className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
-      >
-        <Image
-          src={packageData.photos[2]}
-          alt={`${packageData.name} - 3`}
-          fill
-          className="object-cover"
-        />
-      </button>
     </div>
   );
 
