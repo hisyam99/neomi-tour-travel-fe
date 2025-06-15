@@ -74,7 +74,7 @@ export default function Section4() {
   return (
     <section className="bg-base-100 py-16">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-8" data-aos="fade-up">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-12" data-aos="fade-up">
           <div className="lg:w-1/3 mb-8 lg:mb-0">
             <h2 className="text-5xl mb-4" data-aos="fade-up" data-aos-delay="100">{t("title")}</h2>
             <p className="text-base" data-aos="fade-up" data-aos-delay="200">{t("description")}</p>
@@ -92,7 +92,7 @@ export default function Section4() {
         </div>
         <div
           ref={scrollContainerRef}
-          className="flex overflow-x-auto gap-6 pb-6 scrollbar-hide"
+          className="flex overflow-x-auto gap-8 pb-6 scrollbar-hide"
           style={{ 
             scrollSnapType: "x mandatory",
             scrollbarWidth: "none",
@@ -105,7 +105,7 @@ export default function Section4() {
             <Link
               href={`/packages/${pkg.id}`}
               key={pkg.id}
-              className="flex-shrink-0 w-64 hover:opacity-90 transition-opacity"
+              className="flex-shrink-0 w-80 hover:opacity-90 transition-opacity"
               style={{ 
                 scrollSnapAlign: "start",
                 pointerEvents: "auto"
@@ -113,18 +113,20 @@ export default function Section4() {
               data-aos="fade-up"
               data-aos-delay={100 * (index + 1)}
             >
-              <div className="bg-base-200 rounded shadow h-80 flex items-center justify-center mb-4">
-                <Image
-                  src={pkg.details[0]?.photos[0]?.url || "https://picsum.photos/256/320"}
-                  alt={pkg.name_package}
-                  width={256}
-                  height={320}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="text-center">
-                <div className="text-lg mb-1 italic">{pkg.name_package}</div>
-                <div className="text-sm text-base-content/80">{pkg.details[0]?.duration || "Duration not specified"}</div>
+              <div className="card bg-base-200">
+                <figure className="h-48">
+                  <Image
+                    src={pkg.details[0]?.photos[0]?.url || "https://picsum.photos/256/320"}
+                    alt={pkg.name_package}
+                    width={320}
+                    height={192}
+                    className="object-cover w-full h-full"
+                  />
+                </figure>
+                <div className="card-body p-6">
+                  <h2 className="card-title text-lg italic mb-2">{pkg.name_package}</h2>
+                  <p className="text-sm text-base-content/80">{pkg.details[0]?.duration || "Duration not specified"}</p>
+                </div>
               </div>
             </Link>
           ))}
