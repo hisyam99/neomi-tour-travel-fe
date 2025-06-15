@@ -11,7 +11,7 @@ export default function Section1() {
         src="/aboutus/aboutus.jpg"
         alt={t("imageAlt", { defaultValue: "About Neomi" })}
         fill
-        className="object-cover object-[center_-50px] -z-10"
+        className="object-cover -z-10"
         priority
       />
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
