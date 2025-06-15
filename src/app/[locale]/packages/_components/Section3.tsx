@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { FaSearch, FaFilter } from "react-icons/fa";
+import { tourAndTravelService } from "@/services/tourAndTravel";
+import { useApi } from "@/hooks/useApi";
+import { TourAndTravel, ApiResponse } from "@/types";
 
 interface Props {
   onFilterChange: (filters: {
@@ -17,6 +20,22 @@ export default function Section3({ onFilterChange }: Props) {
   const [keyword, setKeyword] = useState("");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 50000000]);
   const [duration, setDuration] = useState<string | null>(null);
+
+  const fetchPackages = useCallback(() => tourAndTravelService.getAll(), []);
+  const { data } = useApi<ApiResponse<TourAndTravel[]>, []>(fetchPackages);
+
+  useEffect(() => {
+    if (data?.min_price && data?.max_price) {
+      const minPrice = Number(data.min_price);
+      const maxPrice = Number(data.max_price);
+      setPriceRange([minPrice, maxPrice]);
+      onFilterChange({
+        keyword,
+        priceRange: [minPrice, maxPrice],
+        duration,
+      });
+    }
+  }, [data?.min_price, data?.max_price, keyword, duration, onFilterChange]);
 
   const handleKeywordChange = (value: string) => {
     setKeyword(value);
@@ -128,8 +147,8 @@ export default function Section3({ onFilterChange }: Props) {
             </div>
             <input 
               type="range" 
-              min={0} 
-              max={50000000} 
+              min={data?.min_price ? Number(data.min_price) : 0} 
+              max={data?.max_price ? Number(data.max_price) : 50000000} 
               value={priceRange[1]}
               onChange={(e) => handlePriceRangeChange(parseInt(e.target.value))}
               className="range range-primary w-full" 
@@ -176,13 +195,24 @@ export default function Section3({ onFilterChange }: Props) {
         <button 
           onClick={() => {
             setKeyword("");
-            setPriceRange([0, 50000000]);
             setDuration(null);
-            onFilterChange({
-              keyword: "",
-              priceRange: [0, 50000000],
-              duration: null,
-            });
+            if (data?.min_price && data?.max_price) {
+              const minPrice = Number(data.min_price);
+              const maxPrice = Number(data.max_price);
+              setPriceRange([minPrice, maxPrice]);
+              onFilterChange({
+                keyword: "",
+                priceRange: [minPrice, maxPrice],
+                duration: null,
+              });
+            } else {
+              setPriceRange([0, 50000000]);
+              onFilterChange({
+                keyword: "",
+                priceRange: [0, 50000000],
+                duration: null,
+              });
+            }
           }}
           className="btn btn-outline btn-primary w-full mt-4"
         >

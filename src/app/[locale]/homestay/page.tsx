@@ -22,6 +22,16 @@ export default function HomestayPage() {
     execute();
   }, [execute]);
 
+  // Update price range based on API response
+  useEffect(() => {
+    if (data?.min_price && data?.max_price) {
+      setFilters(prev => ({
+        ...prev,
+        priceRange: [Number(data.min_price), Number(data.max_price)]
+      }));
+    }
+  }, [data?.min_price, data?.max_price]);
+
   const handleFilterChange = (newFilters: typeof filters) => {
     setFilters(newFilters);
   };

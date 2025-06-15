@@ -114,4 +114,6 @@ export interface ApiResponse<T> {
     timestamp: string;
     request_id: string;
   };
+  min_price?: string;
+  max_price?: string;
 } 

@@ -23,22 +23,15 @@ export default function PackagesPage() {
     execute();
   }, [execute]);
 
-  // Update price range based on actual data
+  // Update price range based on API response
   useEffect(() => {
-    if (data?.data && data.data.length > 0) {
-      const prices = data.data.map(pkg => Number(pkg.details[0]?.price || 0));
-      const maxPrice = Math.max(...prices);
-      const minPrice = Math.min(...prices);
-      
-      // Only update if the current range is at max
-      if (filters.priceRange[1] === 1000000000) {
-        setFilters(prev => ({
-          ...prev,
-          priceRange: [minPrice, maxPrice]
-        }));
-      }
+    if (data?.min_price && data?.max_price) {
+      setFilters(prev => ({
+        ...prev,
+        priceRange: [Number(data.min_price), Number(data.max_price)]
+      }));
     }
-  }, [data?.data, filters.priceRange]);
+  }, [data?.min_price, data?.max_price]);
 
   const handleFilterChange = (newFilters: typeof filters) => {
     setFilters(newFilters);

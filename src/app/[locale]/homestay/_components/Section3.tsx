@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { FaSearch, FaFilter } from "react-icons/fa";
+import { homestaysService } from "@/services/homestays";
+import { useApi } from "@/hooks/useApi";
+import { Homestay, ApiResponse } from "@/types";
 
 interface Props {
   onFilterChange: (filters: {
@@ -15,6 +18,21 @@ export default function Section3({ onFilterChange }: Props) {
   const t = useTranslations("Homestay.section3");
   const [keyword, setKeyword] = useState("");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 50000000]);
+
+  const fetchHomestays = useCallback(() => homestaysService.getAll(), []);
+  const { data } = useApi<ApiResponse<Homestay[]>, []>(fetchHomestays);
+
+  useEffect(() => {
+    if (data?.min_price && data?.max_price) {
+      const minPrice = Number(data.min_price);
+      const maxPrice = Number(data.max_price);
+      setPriceRange([minPrice, maxPrice]);
+      onFilterChange({
+        keyword,
+        priceRange: [minPrice, maxPrice],
+      });
+    }
+  }, [data?.min_price, data?.max_price, keyword, onFilterChange]);
 
   const handleKeywordChange = (value: string) => {
     setKeyword(value);
@@ -113,8 +131,8 @@ export default function Section3({ onFilterChange }: Props) {
             </div>
             <input 
               type="range" 
-              min={0} 
-              max={50000000} 
+              min={data?.min_price ? Number(data.min_price) : 0} 
+              max={data?.max_price ? Number(data.max_price) : 50000000} 
               value={priceRange[1]}
               onChange={(e) => handlePriceRangeChange(parseInt(e.target.value))}
               className="range range-primary w-full" 
@@ -129,11 +147,21 @@ export default function Section3({ onFilterChange }: Props) {
         <button 
           onClick={() => {
             setKeyword("");
-            setPriceRange([0, 50000000]);
-            onFilterChange({
-              keyword: "",
-              priceRange: [0, 50000000],
-            });
+            if (data?.min_price && data?.max_price) {
+              const minPrice = Number(data.min_price);
+              const maxPrice = Number(data.max_price);
+              setPriceRange([minPrice, maxPrice]);
+              onFilterChange({
+                keyword: "",
+                priceRange: [minPrice, maxPrice],
+              });
+            } else {
+              setPriceRange([0, 50000000]);
+              onFilterChange({
+                keyword: "",
+                priceRange: [0, 50000000],
+              });
+            }
           }}
           className="btn btn-outline btn-primary w-full mt-4"
         >
