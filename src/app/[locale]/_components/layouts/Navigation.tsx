@@ -44,17 +44,17 @@ export default function Navigation() {
   };
 
   const getActiveTextColor = () => {
-    if (isScrolled) {
+    if (isScrolled || !shouldUseLightText()) {
       return 'text-primary';
     }
-    return shouldUseLightText() ? 'text-neutral-content' : 'text-base-content';
+    return 'text-neutral-content';
   };
 
   const getInactiveTextColor = () => {
-    if (isScrolled) {
+    if (isScrolled || !shouldUseLightText()) {
       return 'text-base-content';
     }
-    return shouldUseLightText() ? 'text-neutral-content' : 'text-base-content';
+    return 'text-neutral-content';
   };
 
   const getTextColor = (isActive: boolean) => {
@@ -64,11 +64,22 @@ export default function Navigation() {
   const getNavLinkClass = (href: string) => {
     const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
     const textColor = getTextColor(isActive);
-    const shadow = isScrolled ? '' : 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]';
+    const isLightTextPath = shouldUseLightText();
+    const shadow = (isScrolled || !isLightTextPath) ? '' : 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]';
+    
+    // Enhanced active state styling for light text paths
+    const activeLightPathClass = isActive && isLightTextPath 
+      ? 'scale-105 text-shadow-sm tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white/50 after:rounded-full after:animate-pulse' 
+      : '';
+
+    // Enhanced hover effects
+    const hoverEffects = !isActive 
+      ? 'hover:scale-105 hover:tracking-wide transition-all duration-300 hover:text-primary/90' 
+      : '';
 
     return isActive 
-      ? `font-bold ${shadow} ${textColor}` 
-      : `${shadow} hover:text-primary ${textColor}`;
+      ? `font-bold ${shadow} ${textColor} ${activeLightPathClass} transition-all duration-300 relative` 
+      : `${shadow} ${textColor} ${hoverEffects} relative`;
   };
 
   const getDrawerLinkClass = (href: string) => {
@@ -78,22 +89,22 @@ export default function Navigation() {
 
   const getContactUsButtonClass = () => {
     if (isScrolled) {
-      return 'btn-primary shadow-lg hover:shadow-xl hover:scale-105';
+      return 'btn-primary shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300';
     }
 
-    return `btn-ghost border-2 border-neutral-content/20 hover:border-neutral-content/40 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)] hover:text-primary ${getInactiveTextColor()}`;
+    return `btn-ghost border-2 border-neutral-content/20 hover:border-neutral-content/40 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)] hover:text-primary ${getInactiveTextColor()} hover:scale-105 transition-all duration-300`;
   };
 
   const getDrawerButtonClass = () => {
     const textColor = getInactiveTextColor();
     const shadow = !isScrolled && shouldUseLightText() ? 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]' : '';
-    return `btn btn-square btn-ghost drawer-button lg:hidden ${shadow} ${textColor}`;
+    return `btn btn-square btn-ghost drawer-button lg:hidden ${shadow} ${textColor} hover:scale-110 transition-all duration-300`;
   };
 
   const getBrandLinkClass = () => {
     const textColor = getInactiveTextColor();
     const shadow = !isScrolled && shouldUseLightText() ? 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]' : '';
-    return `btn btn-ghost text-xl font-bold tracking-wide ${shadow} ${textColor} hover:text-primary flex items-center`;
+    return `btn btn-ghost text-xl font-bold tracking-wide ${shadow} ${textColor} hover:text-primary flex items-center gap-2 hover:scale-105 transition-all duration-300`;
   };
 
   return (
