@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 
 export default function Section1() {
   const t = useTranslations("Home.section1");
@@ -8,13 +7,20 @@ export default function Section1() {
 
   return (
     <div className="relative min-h-screen flex items-center -mt-16 pt-16">
-      <Image 
-        src="https://picsum.photos/1920/1080?random=9"
-        alt={t("imageAlt", { defaultValue: "Neomi Tour and Travel" })}
-        fill
-        className="object-cover -z-10"
-        priority
-      />
+      <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          tabIndex={-1}
+          aria-label="Background video"
+        >
+          <source src="/videos/videoplayback.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
       <div className="container mx-auto relative z-10 px-4 py-16">
         <div className="max-w-xl text-left text-neutral-content" data-aos="fade-up">
