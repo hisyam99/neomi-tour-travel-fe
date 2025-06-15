@@ -47,11 +47,13 @@ export default function HomestayPage() {
       <Section1 />
       <Section2 />
       <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="w-full md:w-1/3 lg:w-1/4">
-            <Section3 onFilterChange={handleFilterChange} />
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="w-full lg:w-1/4">
+            <div className="sticky top-24">
+              <Section3 onFilterChange={handleFilterChange} />
+            </div>
           </div>
-          <div className="w-full md:w-2/3 lg:w-3/4">
+          <div className="w-full lg:w-3/4">
             <Section4 homestays={filteredHomestays || []} loading={loading} error={error} />
           </div>
         </div>

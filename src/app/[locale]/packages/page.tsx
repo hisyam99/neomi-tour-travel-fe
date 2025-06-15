@@ -94,7 +94,9 @@ export default function PackagesPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="w-full lg:w-1/4">
-            <Section3 onFilterChange={handleFilterChange} />
+            <div className="sticky top-24">
+              <Section3 onFilterChange={handleFilterChange} />
+            </div>
           </div>
           <div className="w-full lg:w-3/4">
             <Section4 packages={filteredPackages} loading={loading} error={error} />

@@ -50,13 +50,13 @@ export default function PackageDetail() {
 
   return (
     <div className="container mx-auto px-4 py-8 pt-24">
-      <Section1 packageData={data.data} />
-      <Section2 packageId={Number(packageId)} />
+      <Section1 packageData={data.data} data-aos="fade-up" data-aos-duration="1000" />
+      <Section2 packageId={Number(packageId)} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <Section3 packageData={data.data} />
-        <Section5 packageData={data.data} />
+        <Section3 packageData={data.data} data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200" />
+        <Section5 packageData={data.data} data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300" />
       </div>
-      <Section4 packageData={data.data} />
+      <Section4 packageData={data.data} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" />
     </div>
   );
 } 
