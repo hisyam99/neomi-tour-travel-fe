@@ -10,6 +10,13 @@ import { useTranslations } from "next-intl";
 
 const POSTS_PER_PAGE = 6;
 
+// Helper function to strip HTML and get plain text
+const stripHtml = (html: string) => {
+  const tmp = document.createElement('DIV');
+  tmp.innerHTML = html;
+  return tmp.textContent || tmp.innerText || '';
+};
+
 export default function Section2() {
   const t = useTranslations("Blog.section2");
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,8 +69,8 @@ export default function Section2() {
             href={`/blog/${post.slug}`}
             key={post.id} 
             className="block bg-base-200 rounded-xl p-6 shadow hover:shadow-lg transition-shadow" 
-              data-aos="fade-up"
-            >
+            data-aos="fade-up"
+          >
             <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
               <Image 
                 src={post.thumbnail || "https://picsum.photos/400/300"}
@@ -75,15 +82,17 @@ export default function Section2() {
             </div>
             <div className="text-sm text-base-content/70 mb-3">
               {new Date(post.created_at).toLocaleDateString()}
-              </div>
+            </div>
             <h3 className="text-xl font-semibold mb-3 line-clamp-2">{post.title}</h3>
-            <div className="text-base-content/70 mb-6 line-clamp-3" dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className="text-base-content/70 mb-6 line-clamp-3">
+              {stripHtml(post.content)}
+            </div>
             <div className="btn btn-primary w-full">
               {t("readMore")}
             </div>
           </Link>
-          ))}
-        </div>
+        ))}
+      </div>
 
       {totalPages > 1 && (
         <div className="flex justify-center pt-8" data-aos="fade-up">
@@ -114,6 +123,6 @@ export default function Section2() {
           </div>
         </div>
       )}
-      </div>
+    </div>
   );
 } 

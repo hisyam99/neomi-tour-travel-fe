@@ -296,11 +296,8 @@
       "imageAlt": "Neomi Gallery"
     },
     "section2": {
-      "searchPlaceholder": "Search gallery...",
-      "all": "All",
-      "homestay": "Homestay",
-      "tour": "Tour",
-      "event": "Event"
+      "title": "Explore Our Gallery",
+      "description": "Discover the beauty of our destinations through our curated collection of photos showcasing our homestays, tours, and special events."
     },
     "section3": {
       "view": "View",

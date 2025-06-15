@@ -296,11 +296,8 @@
       "imageAlt": "Galeri Neomi"
     },
     "section2": {
-      "searchPlaceholder": "Cari galeri...",
-      "all": "Semua",
-      "homestay": "Homestay",
-      "tour": "Tour",
-      "event": "Acara"
+      "title": "Jelajahi Galeri Kami",
+      "description": "Temukan keindahan destinasi kami melalui koleksi foto yang dipilih dengan cermat yang menampilkan homestay, tur, dan acara khusus kami."
     },
     "section3": {
       "view": "Lihat",
