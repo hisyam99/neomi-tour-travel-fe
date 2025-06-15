@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { NAVIGATION_ITEMS } from "../../_constants/navigation";
 import ThemeChange from "../common/ThemeChange";
+import Image from "next/image";
 // import LanguageSwitcher from "../common/LanguageSwitcher";
 
 export default function Navigation() {
@@ -92,7 +93,7 @@ export default function Navigation() {
   const getBrandLinkClass = () => {
     const textColor = getInactiveTextColor();
     const shadow = !isScrolled && shouldUseLightText() ? 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]' : '';
-    return `btn btn-ghost text-xl font-bold tracking-wide ${shadow} ${textColor} hover:text-primary`;
+    return `btn btn-ghost text-xl font-bold tracking-wide ${shadow} ${textColor} hover:text-primary flex items-center`;
   };
 
   return (
@@ -113,7 +114,7 @@ export default function Navigation() {
           {/* Navbar */}
           <div className="w-full navbar justify-between lg:justify-start">
             {/* Left Section */}
-            <div className="flex-none flex items-center gap-2">
+            <div className="flex-none flex items-center">
               <label 
                 htmlFor="nav-drawer" 
                 className={getDrawerButtonClass()}
@@ -138,6 +139,13 @@ export default function Navigation() {
                 href="/" 
                 className={getBrandLinkClass()}
               >
+                <Image
+                  src="/icon.png"
+                  alt="Neomi Logo"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10"
+                />
                 {t("brandName")}
               </Link>
             </div>
