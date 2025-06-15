@@ -8,10 +8,10 @@ export default function Section1() {
   return (
     <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center -mt-16 pt-16">
       <Image 
-        src="https://picsum.photos/1920/1080?random=1"
+        src="/aboutus/aboutus.jpg"
         alt={t("imageAlt", { defaultValue: "About Neomi" })}
         fill
-        className="object-cover -z-10"
+        className="object-cover object-[center_-50px] -z-10"
         priority
       />
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>

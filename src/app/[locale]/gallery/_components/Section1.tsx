@@ -8,7 +8,7 @@ export default function Section1() {
   return (
     <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center -mt-16 pt-16">
       <Image 
-        src="https://picsum.photos/1920/1080?random=2"
+        src="/gallery/gallery.jpg"
         alt={t("imageAlt", { defaultValue: "Gallery Neomi" })}
         fill
         className="object-cover -z-10"
