@@ -178,6 +178,7 @@ export default function Navigation() {
                 rel="noopener noreferrer"
                 className={`btn transition-all duration-300 ${getContactUsButtonClass()}`}
                 aria-label={t("contactUs")}
+                data-aos="none"
               >
                 <span className="font-medium">{t("contactUs")}</span>
               </a>
@@ -221,6 +222,7 @@ export default function Navigation() {
                   className="btn btn-primary w-full shadow-lg hover:shadow-xl hover:scale-105"
                   onClick={toggleDrawer}
                   aria-label={t("contactUs")}
+                  data-aos="none"
                 >
                   <span className="font-medium">{t("contactUs")}</span>
                 </a>

@@ -53,8 +53,8 @@ export default function PackageDetail() {
       <Section1 packageData={data.data} data-aos="fade-up" data-aos-duration="1000" />
       <Section2 packageId={Number(packageId)} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <Section3 packageData={data.data} data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200" />
-        <Section5 packageData={data.data} data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300" />
+        <Section3 packageData={data.data} data-aos="zoom-in lg:fade-right" data-aos-duration="1000" data-aos-delay="200" />
+        <Section5 packageData={data.data} data-aos="zoom-in-up lg:fade-left" data-aos-duration="1000" data-aos-delay="300" />
       </div>
       <Section4 packageData={data.data} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" />
     </div>

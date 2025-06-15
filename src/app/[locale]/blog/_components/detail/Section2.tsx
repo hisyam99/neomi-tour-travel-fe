@@ -168,7 +168,7 @@ export default function Section2({ blogId }: Props) {
         {/* Related Posts */}
         <aside
           className="w-full lg:w-80"
-          data-aos="fade-left"
+          data-aos="zoom-in-up lg:fade-left"
           data-aos-delay="200"
         >
           <div className="bg-base-200 rounded-xl p-6 shadow">
@@ -178,7 +178,7 @@ export default function Section2({ blogId }: Props) {
                 <li
                   key={`related-post-${post.id}`}
                   className="flex items-center gap-4"
-                  data-aos="fade-left"
+                  data-aos="zoom-in-up"
                   data-aos-delay={300}
                 >
                   <Link href={`/blog/${post.slug}`} className="flex-shrink-0">
