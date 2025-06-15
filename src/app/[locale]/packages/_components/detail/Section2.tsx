@@ -78,7 +78,7 @@ export default function Section2({ packageId }: Readonly<Props>) {
   };
 
   const renderSingleLayout = () => (
-    <div className="relative aspect-video overflow-hidden rounded-lg">
+    <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
       <Image
         src={packageData.photos[0]}
         alt={`${packageData.name} - 1`}
@@ -89,30 +89,69 @@ export default function Section2({ packageId }: Readonly<Props>) {
   );
 
   const renderTwoLayout = () => (
-    <div className="grid grid-cols-2 gap-4">
-      {packageData.photos.slice(0, 2).map((photo: string, index: number) => (
-        <button
-          key={`photo-${index}-${photo}`}
-          onClick={() => handleImageClick(index)}
-          className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
-        >
-          <Image
-            src={photo}
-            alt={`${packageData.name} - ${index + 1}`}
-            fill
-            className="object-cover"
-          />
-        </button>
-      ))}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <button
+        onClick={() => handleImageClick(0)}
+        className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+      >
+        <Image
+          src={packageData.photos[0]}
+          alt={`${packageData.name} - 1`}
+          fill
+          className="object-cover"
+        />
+      </button>
+      <button
+        onClick={() => handleImageClick(1)}
+        className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+      >
+        <Image
+          src={packageData.photos[1]}
+          alt={`${packageData.name} - 2`}
+          fill
+          className="object-cover"
+        />
+      </button>
     </div>
   );
 
   const renderThreeLayout = () => (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-rows-2 gap-4">
+        {packageData.photos.slice(0, 2).map((photo: string, index: number) => (
+          <button
+            key={`photo-${index}-${photo}`}
+            onClick={() => handleImageClick(index)}
+            className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+          >
+            <Image
+              src={photo}
+              alt={`${packageData.name} - ${index + 1}`}
+              fill
+              className="object-cover"
+            />
+          </button>
+        ))}
+      </div>
       <button
-        key={`photo-0-${packageData.photos[0]}`}
+        onClick={() => handleImageClick(2)}
+        className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+      >
+        <Image
+          src={packageData.photos[2]}
+          alt={`${packageData.name} - 3`}
+          fill
+          className="object-cover"
+        />
+      </button>
+    </div>
+  );
+
+  const renderFourLayout = () => (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <button
         onClick={() => handleImageClick(0)}
-        className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+        className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
       >
         <Image
           src={packageData.photos[0]}
@@ -122,11 +161,11 @@ export default function Section2({ packageId }: Readonly<Props>) {
         />
       </button>
       <div className="grid grid-rows-2 gap-4">
-        {packageData.photos.slice(1, 3).map((photo: string, index: number) => (
+        {packageData.photos.slice(1, 4).map((photo: string, index: number) => (
           <button
             key={`photo-${index + 1}-${photo}`}
             onClick={() => handleImageClick(index + 1)}
-            className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+            className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
           >
             <Image
               src={photo}
@@ -137,25 +176,6 @@ export default function Section2({ packageId }: Readonly<Props>) {
           </button>
         ))}
       </div>
-    </div>
-  );
-
-  const renderFourLayout = () => (
-    <div className="grid grid-cols-2 gap-4">
-      {packageData.photos.slice(0, 4).map((photo: string, index: number) => (
-        <button
-          key={`photo-${index}-${photo}`}
-          onClick={() => handleImageClick(index)}
-          className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
-        >
-          <Image
-            src={photo}
-            alt={`${packageData.name} - ${index + 1}`}
-            fill
-            className="object-cover"
-          />
-        </button>
-      ))}
     </div>
   );
 

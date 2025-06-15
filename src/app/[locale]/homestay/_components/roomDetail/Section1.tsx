@@ -80,7 +80,7 @@ export default function Section1({ roomId }: Readonly<Props>) {
   const renderSingleLayout = () => (
     <button
       onClick={() => handleImageClick(0)}
-      className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+      className="relative w-full aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
     >
       <Image
         src={room.photos[0]}
@@ -95,7 +95,7 @@ export default function Section1({ roomId }: Readonly<Props>) {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <button
         onClick={() => handleImageClick(0)}
-        className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+        className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
       >
         <Image
           src={room.photos[0]}
@@ -106,7 +106,7 @@ export default function Section1({ roomId }: Readonly<Props>) {
       </button>
       <button
         onClick={() => handleImageClick(1)}
-        className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+        className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
       >
         <Image
           src={room.photos[1]}
@@ -120,33 +120,33 @@ export default function Section1({ roomId }: Readonly<Props>) {
 
   const renderThreeLayout = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <button
-        onClick={() => handleImageClick(0)}
-        className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
-      >
-        <Image
-          src={room.photos[0]}
-          alt={`${room.name} - 1`}
-          fill
-          className="object-cover"
-        />
-      </button>
       <div className="grid grid-rows-2 gap-4">
-        {room.photos.slice(1, 3).map((photo: string, index: number) => (
+        {room.photos.slice(0, 2).map((photo: string, index: number) => (
           <button
-            key={`photo-${index + 1}-${photo}`}
-            onClick={() => handleImageClick(index + 1)}
-            className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+            key={`photo-${index}-${photo}`}
+            onClick={() => handleImageClick(index)}
+            className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
           >
             <Image
               src={photo}
-              alt={`${room.name} - ${index + 2}`}
+              alt={`${room.name} - ${index + 1}`}
               fill
               className="object-cover"
             />
           </button>
         ))}
       </div>
+      <button
+        onClick={() => handleImageClick(2)}
+        className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+      >
+        <Image
+          src={room.photos[2]}
+          alt={`${room.name} - 3`}
+          fill
+          className="object-cover"
+        />
+      </button>
     </div>
   );
 
@@ -154,7 +154,7 @@ export default function Section1({ roomId }: Readonly<Props>) {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <button
         onClick={() => handleImageClick(0)}
-        className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+        className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
       >
         <Image
           src={room.photos[0]}
@@ -168,7 +168,7 @@ export default function Section1({ roomId }: Readonly<Props>) {
           <button
             key={`photo-${index + 1}-${photo}`}
             onClick={() => handleImageClick(index + 1)}
-            className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+            className="relative aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
           >
             <Image
               src={photo}
