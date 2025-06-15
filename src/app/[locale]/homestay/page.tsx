@@ -13,7 +13,6 @@ export default function HomestayPage() {
   const [filters, setFilters] = useState({
     keyword: "",
     priceRange: [0, 1000000000] as [number, number],
-    withHotdesk: null as boolean | null,
   });
 
   const fetchHomestays = useCallback(() => homestaysService.getAll(), []);
@@ -37,12 +36,6 @@ export default function HomestayPage() {
     // Price filter
     const price = Number(homestay.details?.price || 0);
     if (price < filters.priceRange[0] || price > filters.priceRange[1]) {
-      return false;
-    }
-
-    // Hotdesk filter
-    const hasHotdesk = homestay.details?.facilities?.some(f => f.name.toLowerCase().includes('hotdesk'));
-    if (filters.withHotdesk !== null && hasHotdesk !== filters.withHotdesk) {
       return false;
     }
 

@@ -15,8 +15,13 @@ export default function Section3({ packageData }: Props) {
     <div className="md:col-span-2">
       <div className="prose max-w-none">
         <h2 className="text-2xl font-semibold mb-4">Package Details</h2>
+        <div dangerouslySetInnerHTML={{ __html: packageData.description || '' }} />
+      </div>
+
+      <div className="prose max-w-none mt-8">
+        <h2 className="text-2xl font-semibold mb-4">What to Expect</h2>
         <div dangerouslySetInnerHTML={{ __html: details?.detail_wte || '' }} />
-            </div>
+      </div>
 
       {details?.itineraries && details.itineraries.length > 0 && (
         <div className="mt-8">
@@ -32,17 +37,17 @@ export default function Section3({ packageData }: Props) {
                 />
                 <div className="collapse-title text-md font-semibold">
                   {day.days}
-            </div>
+                </div>
                 <div className="collapse-content">
                   <p className="text-sm text-base-content/80">
                     {day.details}
                   </p>
-            </div>
-          </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       )}
-      </div>
+    </div>
   );
 } 

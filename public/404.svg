@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="800px" viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Background Circle -->
+        <circle fill="#E5E7EB" cx="400" cy="400" r="380"/>
+        
+        <!-- 404 Text -->
+        <text font-family="Arial-BoldMT, Arial" font-size="240" font-weight="bold" fill="#4B5563">
+            <tspan x="160" y="480">404</tspan>
+        </text>
+        
+        <!-- Decorative Elements -->
+        <circle fill="#9CA3AF" cx="200" cy="200" r="40"/>
+        <circle fill="#6B7280" cx="600" cy="600" r="30"/>
+        <circle fill="#4B5563" cx="650" cy="150" r="25"/>
+        <circle fill="#374151" cx="150" cy="650" r="35"/>
+        
+        <!-- Small Dots -->
+        <circle fill="#9CA3AF" cx="300" cy="300" r="10"/>
+        <circle fill="#6B7280" cx="500" cy="500" r="8"/>
+        <circle fill="#4B5563" cx="400" cy="200" r="12"/>
+        <circle fill="#374151" cx="200" cy="400" r="9"/>
+    </g>
+</svg> 

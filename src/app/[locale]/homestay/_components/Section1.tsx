@@ -1,23 +1,18 @@
 import React from "react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function Section1() {
   const t = useTranslations("Homestay.section1");
 
   return (
-    <div 
-      className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center -mt-16 pt-16"
-      style={{
-        backgroundImage: 'url("/homestays/neomi-homestay.png")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        objectFit: "cover"
-      }}
-    >
-        <img 
-        src="/homestays/neomi-homestay.png" 
-        alt={t("imageAlt", { defaultValue: "Neomi Homestay" })} 
-        className="sr-only" 
+    <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center -mt-16 pt-16">
+      <Image 
+        src="/homestays/neomi-homestay.png"
+        alt={t("imageAlt", { defaultValue: "Neomi Homestay" })}
+        fill
+        className="object-cover -z-10"
+        priority
       />
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
       <div className="container mx-auto relative z-10 px-4 py-16">

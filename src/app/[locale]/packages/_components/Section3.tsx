@@ -14,7 +14,7 @@ interface Props {
 export default function Section3({ onFilterChange }: Props) {
   const t = useTranslations("Packages.section3");
   const [keyword, setKeyword] = useState("");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000000000]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 50000000]);
   const [duration, setDuration] = useState<string | null>(null);
 
   const handleKeywordChange = (value: string) => {
@@ -125,7 +125,7 @@ export default function Section3({ onFilterChange }: Props) {
             <input 
               type="range" 
               min={0} 
-              max={1000000000} 
+              max={50000000} 
               value={priceRange[1]}
               onChange={(e) => handlePriceRangeChange(parseInt(e.target.value))}
               className="range range-primary w-full" 

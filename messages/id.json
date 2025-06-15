@@ -1,4 +1,8 @@
 {
+  "HomePage": {
+    "title": "Halo dunia!",
+    "about": "Pergi ke halaman tentang"
+  },
   "Navigation": {
     "home": "Beranda",
     "homestay": "Homestay",
@@ -18,6 +22,15 @@
     "language": "Bahasa",
     "previous": "Sebelumnya",
     "next": "Selanjutnya",
+    "loading": "Memuat...",
+    "error": "Kesalahan",
+    "noResults": "Tidak ada hasil ditemukan",
+    "search": "Cari",
+    "filter": "Filter",
+    "view": "Lihat",
+    "viewDetails": "Lihat Detail",
+    "refreshPage": "Muat Ulang Halaman",
+    "goBack": "Kembali",
     "theme": {
       "title": "Tema",
       "light": "Terang",
@@ -27,93 +40,119 @@
   },
   "Home": {
     "section1": {
-      "title": "Temukan Liburan Sempurna Anda",
-      "description": "Nikmati petualangan tak terlupakan dengan paket perjalanan kami. Dari pantai yang tenang hingga pendakian gunung yang menantang, kami siap mewujudkan liburan impian Anda."
+      "title": "Temukan Pengalaman Baru dengan Neomi.",
+      "description": "Nikmati liburan tak terlupakan dengan kenyamanan seperti di rumah. Dari puncak gunung hingga pantai berpasir, kami menemani setiap langkah perjalanan Anda.",
+      "imageAlt": "Neomi Tour and Travel Hero"
     },
     "section2": {
-      "title": "Perjalanan Anda Dimulai Di Sini",
-      "description": "Biarkan kami membimbing Anda melalui destinasi yang luar biasa dan menciptakan kenangan yang tak terlupakan."
+      "title": "Perjalanan Berkualitas Neomi, Momen Tak Terlupakan",
+      "description": "Nikmati tur eksklusif dengan pemandu ahli dan fasilitas premium — di mana setiap perjalanan dipenuhi dengan kenyamanan dan kesan yang tak terlupakan.",
+      "imageAlt": "Layanan Neomi Tour and Travel"
     },
     "section3": {
       "title": "Layanan Kami",
-      "description": "Temukan berbagai layanan komprehensif kami yang dirancang untuk membuat pengalaman perjalanan Anda tak terlupakan",
+      "description": "Kami berkomitmen untuk memberikan layanan terbaik untuk mendukung kenyamanan dan kemudahan Anda selama perjalanan. Berpergian dengan aman, nyaman, dan berkesan bersama Neomi Tour and Travel",
       "tour": {
-        "title": "Tur & Perjalanan",
-        "desc": "Jelajahi destinasi menakjubkan dengan paket tur pilihan kami"
+        "title": "Transportasi Tour Terpercaya",
+        "desc": "Nikmati perjalanan Anda dengan kendaraan yang terawat baik dan pengemudi berpengalaman yang memastikan perjalanan yang lancar dan aman."
       },
       "homestay": {
         "title": "Homestay",
-        "desc": "Rasakan kehidupan lokal dengan pilihan homestay nyaman kami"
+        "desc": "Menginap di homestay kami yang strategis, menawarkan kenyamanan yang Anda butuhkan hanya beberapa menit dari destinasi utama. Ideal untuk keluarga, pasangan, atau petualang solo."
       },
       "hotdesk": {
-        "title": "Hotdesk",
-        "desc": "Bekerja jarak jauh dengan solusi hotdesk fleksibel kami"
+        "title": "Paket Tour",
+        "desc": "Kami menawarkan paket tur komprehensif yang dirancang untuk kenyamanan dan kemudahan Anda. Dari akomodasi bersih dan nyaman di lokasi strategis hingga perjalanan menyenangkan ke berbagai objek wisata. Sempurna untuk keluarga, pasangan, dan pelancong solo."
       },
       "coworking": {
-        "title": "Coworking",
-        "desc": "Berkolaborasi di ruang coworking modern kami"
+        "title": "Paket Tour Kustom",
+        "desc": "Punya destinasi sendiri? Kami siap membuat paket perjalanan yang disesuaikan dengan keinginan Anda. Lebih fleksibel dan personal."
       }
     },
     "section4": {
       "title": "Destinasi Populer",
-      "description": "Jelajahi destinasi perjalanan paling dicari kami"
+      "description": "Jelajahi destinasi perjalanan paling dicari kami",
+      "viewAll": "Lihat Semua Destinasi",
+      "imageAlt": "Destinasi Populer"
+    },
+    "section5": {
+      "title": "Apa Kata Pelanggan Kami",
+      "description": "Baca testimonial dari pelanggan kami yang puas",
+      "imageAlt": "Testimonial Pelanggan"
     },
     "section6": {
       "title": "Postingan Terbaru",
+      "description": "Tetap update dengan tips dan cerita perjalanan terbaru kami",
+      "imageAlt": "Postingan Blog Terbaru",
       "posts": [
         {
           "key": "bakso1",
           "date": "12 Mei 2025",
-          "title": "5 Rekomendasi Bakso di Malang yang Wajib Dikunjungi",
-          "excerpt": "Malang dikenal sebagai salah satu kota kuliner di Jawa Timur, dan salah satu hidangan yang paling populer adalah bakso Malang.",
+          "title": "5 Tempat Bakso Wajib Dicoba di Malang",
+          "excerpt": "Malang dikenal sebagai kota kuliner di Jawa Timur, dan salah satu hidangan paling populer adalah bakso Malang.",
           "readMore": "Baca selengkapnya",
-          "link": "/berita/5-rekomendasi-bakso-malang"
+          "link": "/news/5-bakso-spots-malang"
         },
         {
-          "key": "pantai1",
+          "key": "beach1",
           "date": "10 Mei 2025",
-          "title": "Wisata Pantai Tersembunyi di Malang",
-          "excerpt": "Temukan keindahan pantai-pantai tersembunyi di Malang yang belum banyak diketahui wisatawan.",
+          "title": "Pantai Tersembunyi untuk Dijelajahi di Malang",
+          "excerpt": "Temukan keindahan pantai tersembunyi Malang yang masih jarang dikunjungi wisatawan.",
           "readMore": "Baca selengkapnya",
-          "link": "/berita/pantai-tersembunyi-malang"
+          "link": "/news/hidden-beaches-malang"
         },
         {
-          "key": "gunung1",
+          "key": "bromo1",
           "date": "8 Mei 2025",
           "title": "Pendakian Seru ke Gunung Bromo",
-          "excerpt": "Pengalaman mendaki Gunung Bromo dengan pemandangan matahari terbit yang menakjubkan.",
+          "excerpt": "Nikmati pendakian Gunung Bromo dan nikmati pemandangan matahari terbit yang menakjubkan.",
           "readMore": "Baca selengkapnya",
-          "link": "/berita/pendakian-bromo"
+          "link": "/news/hiking-bromo"
         },
         {
-          "key": "kuliner1",
+          "key": "culinary1",
           "date": "5 Mei 2025",
-          "title": "Kuliner Malam Favorit di Kota Malang",
-          "excerpt": "Jelajahi berbagai kuliner malam yang wajib dicoba saat berkunjung ke Malang.",
+          "title": "Kuliner Malam Terbaik di Malang",
+          "excerpt": "Jelajahi tempat kuliner malam terbaik yang wajib dicoba saat mengunjungi Malang.",
           "readMore": "Baca selengkapnya",
-          "link": "/berita/kuliner-malam-malang"
+          "link": "/news/night-culinary-malang"
         }
       ]
     }
   },
   "Footer": {
     "brand": "Neomi Homestay Tour And Travel",
-    "description": "Nikmati pengalaman liburan tak terlupakan dengan kenyamanan seperti di rumah sendiri. Dari pegunungan hingga pantai, kami siap menemani setiap langkah perjalanan Anda.",
-    "connect": "Connect",
-    "contact": "Contact",
+    "description": "Nikmati pengalaman liburan tak terlupakan dengan kenyamanan seperti di rumah. Dari gunung hingga pantai, kami siap menemani setiap langkah perjalanan Anda.",
+    "connect": "Terhubung",
+    "contact": "Kontak",
     "address": "43 Raymouth Rd. Baltemoer, London 3910",
     "phone1": "0811-3322-218",
     "phone2": "0811-3322-218",
-    "email": "info@mydomain.com"
+    "email": "info@mydomain.com",
+    "quickLinks": {
+      "title": "Tautan Cepat",
+      "home": "Beranda",
+      "about": "Tentang",
+      "services": "Layanan",
+      "contact": "Kontak"
+    },
+    "socialMedia": {
+      "title": "Ikuti Kami",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "twitter": "Twitter"
+    },
+    "copyright": "© 2024 Neomi Tour and Travel. Hak Cipta Dilindungi."
   },
   "Packages": {
     "section1": {
-      "title": "Paket Wisata",
-      "description": "Temukan pengalaman perjalanan yang dirancang dengan cermat",
-      "playVideo": "Tonton Video"
+      "title": "Paket Tour",
+      "description": "Temukan pengalaman perjalanan yang kami pilih dengan cermat",
+      "playVideo": "Tonton Video",
+      "imageAlt": "Paket Tour Neomi"
     },
     "section2": {
-      "description": "Temukan paket sempurna untuk petualangan Anda berikutnya",
+      "description": "Tertarik dengan tur kustom yang dirancang khusus untuk Anda? Hubungi kami dengan mengklik tombol di bawah.",
       "contactUs": "Hubungi Kami"
     },
     "section3": {
@@ -124,7 +163,7 @@
       "duration2": "2 Hari",
       "duration3": "3+ Hari",
       "searchPlaceholder": "Cari paket...",
-      "noPackages": "Tidak ada paket yang ditemukan",
+      "noPackages": "Tidak ada paket ditemukan",
       "sortBy": "Urutkan Berdasarkan",
       "sortOptions": {
         "priceLow": "Harga: Rendah ke Tinggi",
@@ -134,7 +173,7 @@
         "popularity": "Popularitas"
       },
       "min": "Min",
-      "max": "Maks",
+      "max": "Max",
       "keyword": "Kata Kunci",
       "search": "Cari"
     },
@@ -152,27 +191,28 @@
         "days": "hari",
         "day": "hari",
         "currency": "Rp",
-        "moreDetails": "Selengkapnya",
+        "moreDetails": "Detail Lebih Lanjut",
         "errorTitle": "Ups! Terjadi Kesalahan",
-        "noResultsTitle": "Paket Tidak Ditemukan",
+        "noResultsTitle": "Tidak Ada Paket Ditemukan",
         "noResultsDescription": "Kami tidak dapat menemukan paket yang sesuai dengan kriteria pencarian Anda. Coba sesuaikan filter atau kata kunci pencarian Anda.",
         "refreshPage": "Muat Ulang Halaman",
         "goBack": "Kembali"
       },
       "loading": "Memuat paket...",
-      "error": "Gagal memuat paket",
+      "error": "Kesalahan memuat paket",
       "noResults": "Tidak ada paket yang sesuai dengan kriteria Anda"
     }
   },
   "Homestay": {
     "section1": {
       "title": "Homestay Kami",
-      "description": "Nikmati kehidupan lokal yang terbaik",
-      "playVideo": "Tonton Video"
+      "description": "Rasakan kenyamanan seperti di rumah, hanya di Neomi HomeStay — tempat ideal untuk beristirahat dan menikmati suasana yang tenang.",
+      "playVideo": "Tonton Video",
+      "imageAlt": "Neomi Homestay Tour And Travel"
     },
     "section2": {
-      "description": "Temukan rumah kedua yang sempurna untuk Anda",
-      "noHomestays": "Tidak ada homestay yang ditemukan",
+      "description": "Neomi HomeStay menawarkan kenyamanan modern dengan sentuhan budaya lokal. Nikmati Wi-Fi cepat, sarapan, dan suasana tenang yang sempurna untuk liburan atau perjalanan bisnis Anda.",
+      "noHomestays": "Tidak ada homestay ditemukan",
       "searchPlaceholder": "Cari homestay...",
       "sortBy": "Urutkan Berdasarkan",
       "sortOptions": {
@@ -198,12 +238,37 @@
         "suite": "Suite"
       },
       "min": "Min",
-      "max": "Maks",
+      "max": "Max",
       "keyword": "Kata Kunci",
       "search": "Cari",
       "priceFilter": "Filter Harga",
       "filterBy": "Filter Berdasarkan",
       "reset": "Reset Filter"
+    },
+    "section4": {
+      "card": {
+        "viewDetails": "Lihat Detail",
+        "price": "Harga",
+        "perNight": "per malam",
+        "maxGuests": "Maksimal Tamu",
+        "roomType": "Tipe Kamar",
+        "amenities": "Fasilitas",
+        "noImage": "Tidak Ada Gambar",
+        "guests": "tamu",
+        "bookNow": "Pesan Sekarang",
+        "currency": "Rp",
+        "moreDetails": "Detail Lebih Lanjut",
+        "errorTitle": "Ups! Terjadi Kesalahan",
+        "noResultsTitle": "Tidak Ada Homestay Ditemukan",
+        "noResultsDescription": "Kami tidak dapat menemukan homestay yang sesuai dengan kriteria pencarian Anda. Coba sesuaikan filter atau kata kunci pencarian Anda.",
+        "refreshPage": "Muat Ulang Halaman",
+        "goBack": "Kembali"
+      },
+      "loading": "Memuat homestay...",
+      "error": "Kesalahan memuat homestay",
+      "noResults": "Tidak ada homestay yang sesuai dengan kriteria Anda",
+      "previous": "Sebelumnya",
+      "next": "Selanjutnya"
     },
     "detail": {
       "section1": {
@@ -219,81 +284,22 @@
         "checkOut": "Waktu Check-out",
         "cancellation": "Kebijakan Pembatalan",
         "houseRules": "Aturan Rumah",
-        "nearby": "Tempat Wisata Terdekat",
+        "nearby": "Tempat Menarik Terdekat",
         "related": "Homestay Serupa"
-      },
-      "section2": {
-        "title": "Galeri Foto",
-        "description": "Lihat homestay kami melalui foto-foto ini"
-      },
-      "section3": {
-        "title": "Informasi Kamar",
-        "description": "Semua yang perlu Anda ketahui tentang kamar ini",
-        "features": {
-          "title": "Fitur Kamar",
-          "maxGuest": "Maksimal Tamu",
-          "roomSize": "Ukuran Kamar",
-          "roomType": "Tipe Kamar",
-          "price": "Harga"
-        },
-        "facilities": {
-          "title": "Fasilitas",
-          "wifi": "WiFi Gratis",
-          "ac": "AC",
-          "tv": "TV",
-          "bathroom": "Kamar Mandi Pribadi",
-          "breakfast": "Sarapan Termasuk",
-          "parking": "Parkir Gratis"
-        }
-      },
-      "section4": {
-        "title": "Pesan Sekarang",
-        "description": "Pesan menginap Anda bersama kami",
-        "form": {
-          "checkIn": "Tanggal Check-in",
-          "checkOut": "Tanggal Check-out",
-          "guests": "Jumlah Tamu",
-          "totalPrice": "Total Harga",
-          "submit": "Pesan Sekarang"
-        }
       }
-    },
-    "section4": {
-      "card": {
-        "viewDetails": "Lihat Detail",
-        "price": "Harga",
-        "perNight": "per malam",
-        "maxGuests": "Maksimal Tamu",
-        "roomType": "Tipe Kamar",
-        "amenities": "Fasilitas",
-        "noImage": "Tidak Ada Gambar",
-        "guests": "tamu",
-        "bookNow": "Pesan Sekarang",
-        "currency": "Rp",
-        "moreDetails": "Selengkapnya",
-        "errorTitle": "Ups! Terjadi Kesalahan",
-        "noResultsTitle": "Homestay Tidak Ditemukan",
-        "noResultsDescription": "Kami tidak dapat menemukan homestay yang sesuai dengan kriteria pencarian Anda. Coba sesuaikan filter atau kata kunci pencarian Anda.",
-        "refreshPage": "Muat Ulang Halaman",
-        "goBack": "Kembali"
-      },
-      "loading": "Memuat homestay...",
-      "error": "Gagal memuat homestay",
-      "noResults": "Tidak ada homestay yang sesuai dengan kriteria Anda",
-      "previous": "Sebelumnya",
-      "next": "Selanjutnya"
     }
   },
   "Gallery": {
     "section1": {
       "title": "Galeri Kami",
-      "description": "Jelajahi koleksi momen berkesan kami"
+      "description": "Jelajahi koleksi momen berkesan kami",
+      "imageAlt": "Galeri Neomi"
     },
     "section2": {
       "searchPlaceholder": "Cari galeri...",
       "all": "Semua",
       "homestay": "Homestay",
-      "tour": "Wisata",
+      "tour": "Tour",
       "event": "Acara"
     },
     "section3": {
@@ -305,35 +311,64 @@
   "Blog": {
     "section1": {
       "title": "Blog Kami",
-      "description": "Dapatkan informasi terbaru tentang cerita dan tips perjalanan kami",
-      "playVideo": "Tonton Video"
+      "description": "Tetap update dengan cerita dan tips perjalanan terbaru kami",
+      "playVideo": "Tonton Video",
+      "imageAlt": "Blog Neomi"
     },
     "section2": {
-      "readMore": "Baca Selengkapnya"
+      "readMore": "Baca Selengkapnya",
+      "searchPlaceholder": "Cari posting blog...",
+      "categories": "Kategori",
+      "recentPosts": "Postingan Terbaru",
+      "tags": "Tag",
+      "author": "Penulis",
+      "date": "Tanggal",
+      "category": "Kategori",
+      "relatedPosts": "Postingan Terkait"
+    },
+    "detail": {
+      "section1": {
+        "title": "Detail Blog",
+        "description": "Nikmati pengalaman liburan tak terlupakan dengan kemampuan ahli di domain kami sendiri. Dari pengalaman hingga keahlian, kami siap menemani setiap langkah perjalanan Anda.",
+        "playVideo": "PUTAR VIDEO",
+        "author": "Penulis",
+        "date": "Tanggal",
+        "category": "Kategori",
+        "tags": "Tag",
+        "share": "Bagikan",
+        "relatedPosts": "Postingan Terkait"
+      },
+      "section2": {
+        "relatedPosts": "Postingan Terkait",
+        "noPosts": "Tidak ada postingan terkait ditemukan",
+        "content": "<h2>Judul Blog</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque.</p><p>Aliquam erat volutpat. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Etiam euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque. Pellentesque euismod, urna eu tincidunt consectetur, nisi nisl aliquam nunc, eget aliquam massa nisl quis neque.</p><h3>Subjudul</h3><ul><li>Poin pertama dengan penjelasan yang sangat panjang dan detail, bisa lebih dari satu baris.</li><li>Poin kedua dengan penjelasan yang sangat panjang dan detail, bisa lebih dari satu baris.</li><li>Poin ketiga dengan penjelasan yang sangat panjang dan detail, bisa lebih dari satu baris.</li></ul><p>Paragraf penutup yang juga cukup panjang untuk mensimulasikan konten blog yang dihasilkan dari editor WYSIWYG. Dapat berisi <strong>teks tebal</strong>, <em>teks miring</em>, dan <a href='#'>tautan</a>.</p>"
+      }
     }
   },
   "About": {
     "section1": {
       "title": "Tentang Kami",
-      "description": "Kami bersemangat dalam menciptakan pengalaman perjalanan yang tak terlupakan untuk klien kami.",
-      "playVideo": "Tonton Cerita Kami"
+      "description": "Kami bersemangat dalam menciptakan pengalaman perjalanan tak terlupakan untuk klien kami.",
+      "playVideo": "Tonton Cerita Kami",
+      "imageAlt": "Tim Neomi"
     },
     "section2": {
       "title": "Tentang Kami",
       "about": {
-        "title": "Tentang Website Perjalanan",
-        "description": "Ketenangan yang indah telah menguasai seluruh jiwa saya, seperti pagi-pagi musim semi yang manis yang saya nikmati dengan sepenuh hati. Saya sendirian, dan merasakan pesona keberadaan di tempat ini, yang diciptakan untuk kebahagiaan jiwa-jiwa seperti saya. Saya sangat bahagia, teman saya, begitu terpikat dengan rasa ketenangan yang indah, sehingga saya mengabaikan bakat saya.\n\nSaya tidak akan mampu membuat satu goresan pun saat ini; namun saya merasa bahwa saya tidak pernah menjadi seniman yang lebih hebat dari sekarang. Ketika, sementara lembah yang indah dipenuhi kabut di sekitar saya, dan matahari tengah hari menyinari permukaan atas dedaunan pohon-pohon saya yang tak tertembus.",
-        "more": "Pelajari Lebih Lanjut"
+        "title": "Tentang Neomi",
+        "description": "Di Neomi Tour and Travel, kami percaya bahwa setiap perjalanan harus berkesan, nyaman, dan disesuaikan secara unik dengan kebutuhan Anda. Didirikan dengan semangat untuk menjelajahi dan terhubung, kami menawarkan paket tur eksklusif dan pengalaman perjalanan yang dipersonalisasi yang melampaui liburan biasa. Tim kami yang berdedikasi berkomitmen untuk menciptakan petualangan tak terlupakan yang sesuai dengan preferensi Anda, baik Anda mencari relaksasi, imersi budaya, atau eksplorasi yang mendebarkan. Kami memprioritaskan layanan luar biasa, perhatian terhadap detail, dan keahlian lokal untuk memastikan perjalanan Anda berjalan lancar dari awal hingga akhir. Dengan Neomi Tour and Travel, Anda bukan hanya seorang pelancong — Anda adalah tamu yang dihargai. Kami bangga menyediakan suasana yang hangat dan ramah yang membuat Anda merasa seperti di rumah, di mana pun perjalanan Anda membawa Anda.",
+        "more": ""
       },
       "team1": {
-        "name": "John Doe",
-        "description": "Semua orang menyadari mengapa bahasa umum baru akan diinginkan: seseorang bisa menolak untuk membayar penerjemah yang mahal. Untuk mencapai ini, perlu memiliki tata bahasa dan pengucapan yang seragam.",
-        "more": "Selengkapnya Tentang John"
+        "name": "Misi Kami",
+        "description": "Untuk memberikan pengalaman perjalanan luar biasa yang menginspirasi dan menghubungkan orang dengan dunia di sekitar mereka. Kami bertujuan untuk menciptakan perjalanan berkesan yang memperkaya hidup melalui eksplorasi dan penemuan.",
+        "more": ""
       }
     },
     "section3": {
       "title": "Tim Kami",
       "description": "Kenali individu-individu yang bersemangat di balik kesuksesan kami",
+      "imageAlt": "Anggota Tim Neomi",
       "team": {
         "member1": {
           "name": "Sarah Johnson",
@@ -343,26 +378,26 @@
         "member2": {
           "name": "Michael Chen",
           "position": "Konsultan Perjalanan",
-          "description": "Pengetahuan mendalam Michael tentang destinasi global membantu menciptakan itinerari yang sempurna untuk klien kami."
+          "description": "Pengetahuan mendalam Michael tentang destinasi global membantu menciptakan itinerari sempurna untuk klien kami."
         },
         "member3": {
           "name": "Emma Wilson",
           "position": "Pengalaman Pelanggan",
-          "description": "Emma memastikan setiap klien menerima layanan yang luar biasa dan pengalaman yang tak terlupakan."
+          "description": "Emma memastikan setiap klien menerima layanan luar biasa dan pengalaman berkesan."
         }
       }
     },
     "section4": {
       "title": "Nilai-Nilai Kami",
-      "description": "Prinsip-prinsip yang membimbing segala yang kami lakukan",
+      "description": "Prinsip-prinsip yang memandu semua yang kami lakukan",
       "values": {
         "excellence": {
-          "title": "Keunggulan",
-          "description": "Kami berusaha untuk mencapai keunggulan dalam setiap aspek layanan kami"
+          "title": "Kelebihan",
+          "description": "Kami berusaha untuk keunggulan dalam setiap aspek layanan kami"
         },
         "integrity": {
           "title": "Integritas",
-          "description": "Kami menjalankan bisnis dengan kejujuran dan transparansi"
+          "description": "Kami menjalankan bisnis kami dengan kejujuran dan transparansi"
         },
         "innovation": {
           "title": "Inovasi",

@@ -1,182 +1,179 @@
 "use client";
 
-import React, { useEffect, useCallback } from "react";
-import { tourAndTravelService } from "@/services/tourAndTravel";
-import { useApi } from "@/hooks/useApi";
-import { TourAndTravel, ApiResponse } from "@/types";
-import Image from "next/image";
+import React, { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { tourAndTravelService } from '@/services/tourAndTravel';
+import Image from 'next/image';
+import ImageViewer from '@/app/_components/common/ImageViewer';
+import { TourAndTravel } from '@/types';
 
 interface Props {
-  packageId: string;
+  packageId: number;
 }
 
-export default function Section2({ packageId }: Props) {
-  const fetchPackage = useCallback(() => tourAndTravelService.getById(parseInt(packageId, 10)), [packageId]);
-  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel>, []>(fetchPackage);
+interface Package {
+  id: number;
+  name: string;
+  photos: string[];
+}
+
+export default function Section2({ packageId }: Readonly<Props>) {
+  const t = useTranslations('Package');
+  const [packageData, setPackageData] = useState<Package | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    execute();
-  }, [execute]);
+    const fetchPackage = async () => {
+      try {
+        const response = await tourAndTravelService.getById(packageId);
+        const packageData = response.data as TourAndTravel;
+        setPackageData({
+          id: packageData.id,
+          name: packageData.name_package,
+          photos: packageData.details[0].photos.map((photo: { url: string }) => photo.url)
+        });
+      } catch (error) {
+        setError('Failed to fetch package details');
+        console.error('Error fetching package:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPackage();
+  }, [packageId]);
 
   if (loading) {
-  return (
-    <section className="pb-8">
-      <div className="container mx-auto px-4">
-          <div className="animate-pulse space-y-4">
-            <div className="h-64 md:h-96 bg-base-200 rounded-xl"></div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-32 bg-base-200 rounded-lg"></div>
-              ))}
-            </div>
-          </div>
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="animate-pulse">
+          <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-5/6"></div>
         </div>
-      </section>
+      </div>
     );
   }
 
   if (error) {
-    return <div className="text-error">Error loading package: {error.message}</div>;
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-red-500">{error}</div>
+      </div>
+    );
   }
 
-  if (!data?.data) {
-    return <div className="text-center">Package not found</div>;
+  if (!packageData) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-gray-500">{t('noPackageFound')}</div>
+      </div>
+    );
   }
 
-  const packageData = data.data;
-  const details = packageData.details[0];
-  const photos = details?.photos || [];
-
-  const getGridLayout = () => {
-    if (photos.length === 1) {
-      return "single";
-    } else if (photos.length === 2) {
-      return "two";
-    } else if (photos.length <= 4) {
-      return "three";
-    } else {
-      return "four";
-    }
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
   };
 
   const renderSingleLayout = () => (
-    <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+    <div className="relative aspect-video overflow-hidden rounded-lg">
       <Image
-        src={photos[0]?.url || `https://picsum.photos/1200/800?random=${packageData.id}`}
-        alt={packageData.name_package}
+        src={packageData.photos[0]}
+        alt={`${packageData.name} - 1`}
         fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
         className="object-cover"
-        priority
       />
     </div>
   );
 
   const renderTwoLayout = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden">
-        <Image
-          src={photos[0]?.url || `https://picsum.photos/1200/800?random=${packageData.id}`}
-          alt={packageData.name_package}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-          className="object-cover"
-          priority
-        />
-      </div>
-      <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden">
-        <Image
-          src={photos[1]?.url || `https://picsum.photos/1200/800?random=${packageData.id + 1}`}
-          alt={`${packageData.name_package} - Photo 2`}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-          className="object-cover"
-        />
-      </div>
+    <div className="grid grid-cols-2 gap-4">
+      {packageData.photos.slice(0, 2).map((photo: string, index: number) => (
+        <button
+          key={`photo-${index}-${photo}`}
+          onClick={() => handleImageClick(index)}
+          className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+        >
+          <Image
+            src={photo}
+            alt={`${packageData.name} - ${index + 1}`}
+            fill
+            className="object-cover"
+          />
+        </button>
+      ))}
     </div>
   );
 
   const renderThreeLayout = () => (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div className="md:col-span-2">
-        <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
-          <Image
-            src={photos[0]?.url || `https://picsum.photos/1200/800?random=${packageData.id}`}
-            alt={packageData.name_package}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
-            className="object-cover"
-            priority
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-1 gap-4">
-        {photos.slice(1).map((photo) => (
-          <div key={photo.url} className="relative h-[190px] md:h-[240px] rounded-xl overflow-hidden">
-            <Image 
-              src={photo.url}
-              alt={`${packageData.name_package} - Photo ${photo.url.split('/').pop()}`}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
-              className="object-cover"
-            />
-          </div>
-            ))}
-          </div>
-    </div>
-  );
-
-  const renderFourLayout = () => (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div className="md:col-span-2">
-        <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
-          <Image
-            src={photos[0]?.url || `https://picsum.photos/1200/800?random=${packageData.id}`}
-            alt={packageData.name_package}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
-            className="object-cover"
-            priority
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        {photos.slice(1, 5).map((photo) => (
-          <div key={photo.url} className="relative h-48 rounded-xl overflow-hidden">
+    <div className="grid grid-cols-2 gap-4">
+      <button
+        key={`photo-0-${packageData.photos[0]}`}
+        onClick={() => handleImageClick(0)}
+        className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+      >
+        <Image
+          src={packageData.photos[0]}
+          alt={`${packageData.name} - 1`}
+          fill
+          className="object-cover"
+        />
+      </button>
+      <div className="grid grid-rows-2 gap-4">
+        {packageData.photos.slice(1, 3).map((photo: string, index: number) => (
+          <button
+            key={`photo-${index + 1}-${photo}`}
+            onClick={() => handleImageClick(index + 1)}
+            className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+          >
             <Image
-              src={photo.url}
-              alt={`${packageData.name_package} - Photo ${photo.url.split('/').pop()}`}
+              src={photo}
+              alt={`${packageData.name} - ${index + 2}`}
               fill
-              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 400px"
               className="object-cover"
             />
-          </div>
+          </button>
         ))}
       </div>
     </div>
   );
 
-  const renderLayout = () => {
-    const layout = getGridLayout();
-    switch (layout) {
-      case "single":
-        return renderSingleLayout();
-      case "two":
-        return renderTwoLayout();
-      case "three":
-        return renderThreeLayout();
-      case "four":
-        return renderFourLayout();
-      default:
-        return renderSingleLayout();
-    }
-  };
+  const renderFourLayout = () => (
+    <div className="grid grid-cols-2 gap-4">
+      {packageData.photos.slice(0, 4).map((photo: string, index: number) => (
+        <button
+          key={`photo-${index}-${photo}`}
+          onClick={() => handleImageClick(index)}
+          className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+        >
+          <Image
+            src={photo}
+            alt={`${packageData.name} - ${index + 1}`}
+            fill
+            className="object-cover"
+          />
+        </button>
+      ))}
+    </div>
+  );
 
   return (
-    <section className="pb-8">
-      <div className="container mx-auto px-4">
-        {renderLayout()}
+    <div className="container mx-auto px-4 py-8">
+      <div className="mb-8">
+        {packageData.photos.length === 1 && renderSingleLayout()}
+        {packageData.photos.length === 2 && renderTwoLayout()}
+        {packageData.photos.length === 3 && renderThreeLayout()}
+        {packageData.photos.length >= 4 && renderFourLayout()}
       </div>
-    </section>
+      {selectedImageIndex !== null && (
+        <ImageViewer
+          images={packageData.photos}
+          initialIndex={selectedImageIndex}
+          onClose={() => setSelectedImageIndex(null)}
+        />
+      )}
+    </div>
   );
 } 

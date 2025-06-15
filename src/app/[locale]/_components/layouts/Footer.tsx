@@ -1,9 +1,59 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { socialMediaService } from "../../../../services/socialMedia";
+import { useApi } from "@/hooks/useApi";
+import { SocialMedia, ApiResponse } from "@/types";
+import { FaFacebookF, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
   const t = useTranslations("Footer");
+  const fetchSocialMedia = useCallback(() => socialMediaService.getAll(), []);
+  const { data, loading, error, execute } = useApi<ApiResponse<SocialMedia[]>, []>(fetchSocialMedia);
+
+  useEffect(() => {
+    execute();
+  }, [execute]);
+
+  if (loading) {
+    return (
+      <footer className="bg-base-200 py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-16">
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <div className="h-6 bg-base-100 rounded w-1/4 mb-3 animate-pulse"></div>
+                <div className="h-4 bg-base-100 rounded w-3/4 mb-7 animate-pulse"></div>
+              </div>
+              <div>
+                <div className="h-5 bg-base-100 rounded w-1/4 mb-3 animate-pulse"></div>
+                <div className="flex gap-3">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="w-10 h-10 bg-base-100 rounded-full animate-pulse"></div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col justify-start h-full">
+              <div className="h-5 bg-base-100 rounded w-1/4 mb-3 animate-pulse"></div>
+              <div className="space-y-2">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="h-4 bg-base-100 rounded w-1/2 animate-pulse"></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
+  if (error) {
+    return <div className="text-error">Error loading social media: {error.message}</div>;
+  }
+
+  const socialMedia = data?.data[0];
 
   return (
     <footer className="bg-base-200 py-12">
@@ -20,9 +70,50 @@ export default function Footer() {
             <div>
               <div className="font-semibold mb-3">{t("connect")}</div>
               <div className="flex gap-3">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="btn btn-circle bg-neutral/70 border-none text-white text-xl" aria-label="Facebook"><FaFacebookF /></a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="btn btn-circle bg-neutral/70 border-none text-white text-xl" aria-label="Twitter"><FaTwitter /></a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="btn btn-circle bg-neutral/70 border-none text-white text-xl" aria-label="Instagram"><FaInstagram /></a>
+                {socialMedia?.facebook && (
+                  <a 
+                    href={socialMedia.facebook} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl" 
+                    aria-label="Facebook"
+                  >
+                    <FaFacebookF />
+                  </a>
+                )}
+                {socialMedia?.instagram && (
+                  <a 
+                    href={socialMedia.instagram} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl" 
+                    aria-label="Instagram"
+                  >
+                    <FaInstagram />
+                  </a>
+                )}
+                {socialMedia?.tiktok && (
+                  <a 
+                    href={socialMedia.tiktok} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl" 
+                    aria-label="TikTok"
+                  >
+                    <FaTiktok />
+                  </a>
+                )}
+                {socialMedia?.whatsapp && (
+                  <a 
+                    href={socialMedia.whatsapp} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl" 
+                    aria-label="WhatsApp"
+                  >
+                    <FaWhatsapp />
+                  </a>
+                )}
               </div>
             </div>
           </div>

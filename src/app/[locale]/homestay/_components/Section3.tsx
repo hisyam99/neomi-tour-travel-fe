@@ -7,22 +7,19 @@ interface Props {
   onFilterChange: (filters: {
     keyword: string;
     priceRange: [number, number];
-    withHotdesk: boolean | null;
   }) => void;
 }
 
 export default function Section3({ onFilterChange }: Props) {
   const t = useTranslations("Homestay.section3");
   const [keyword, setKeyword] = useState("");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000000000]);
-  const [withHotdesk, setWithHotdesk] = useState<boolean | null>(null);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 50000000]);
 
   const handleKeywordChange = (value: string) => {
     setKeyword(value);
     onFilterChange({
       keyword: value,
       priceRange,
-      withHotdesk,
     });
   };
 
@@ -32,7 +29,6 @@ export default function Section3({ onFilterChange }: Props) {
     onFilterChange({
       keyword,
       priceRange: newPriceRange,
-      withHotdesk,
     });
   };
 
@@ -43,7 +39,6 @@ export default function Section3({ onFilterChange }: Props) {
     onFilterChange({
       keyword,
       priceRange: newPriceRange,
-      withHotdesk,
     });
   };
 
@@ -54,16 +49,6 @@ export default function Section3({ onFilterChange }: Props) {
     onFilterChange({
       keyword,
       priceRange: newPriceRange,
-      withHotdesk,
-    });
-  };
-
-  const handleHotdeskChange = (value: boolean | null) => {
-    setWithHotdesk(value);
-    onFilterChange({
-      keyword,
-      priceRange,
-      withHotdesk: value,
     });
   };
 
@@ -121,38 +106,11 @@ export default function Section3({ onFilterChange }: Props) {
                 <input
                   type="range"
                   min={0}
-                  max={1000000000}
+                  max={50000000}
                   value={priceRange[1]}
                   onChange={(e) => handlePriceRangeChange(parseInt(e.target.value))}
                   className="range range-primary w-full"
                 />
-              </div>
-            </div>
-
-            {/* Other Filters */}
-            <div>
-              <h3 className="font-semibold text-lg mb-4">{t("otherFilters")}</h3>
-              <div className="space-y-3">
-                <label className="label cursor-pointer justify-start gap-3 hover:bg-base-300 p-2 rounded-lg transition-colors">
-                  <input 
-                    type="radio" 
-                    name="hotdesk" 
-                    className="radio radio-primary" 
-                    checked={withHotdesk === true}
-                    onChange={() => handleHotdeskChange(withHotdesk === true ? null : true)}
-                  />
-                  <span className="label-text text-base">{t("withHotdesk")}</span>
-                </label>
-                <label className="label cursor-pointer justify-start gap-3 hover:bg-base-300 p-2 rounded-lg transition-colors">
-                  <input 
-                    type="radio" 
-                    name="hotdesk" 
-                    className="radio radio-primary"
-                    checked={withHotdesk === false}
-                    onChange={() => handleHotdeskChange(withHotdesk === false ? null : false)}
-                  />
-                  <span className="label-text text-base">{t("withoutHotdesk")}</span>
-                </label>
               </div>
             </div>
           </div>

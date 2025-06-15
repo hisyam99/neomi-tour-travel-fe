@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description: "Discover New World with Neomi",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return children;
 }

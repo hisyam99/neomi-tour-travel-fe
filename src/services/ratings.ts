@@ -1,14 +1,11 @@
-import api from './api';
-import { Rating } from '@/types';
+import { Rating, ApiResponse } from "@/types";
+import api from "./api";
 
-export const ratingsService = {
-  getAll: async (): Promise<Rating[]> => {
-    const response = await api.get('/ratings');
+class RatingService {
+  async getAll(): Promise<ApiResponse<Rating[]>> {
+    const response = await api.get<ApiResponse<Rating[]>>("/ratings");
     return response.data;
-  },
+  }
+}
 
-  getById: async (id: number): Promise<Rating> => {
-    const response = await api.get(`/ratings/${id}`);
-    return response.data;
-  },
-}; 
+export const ratingService = new RatingService(); 

@@ -26,9 +26,73 @@ export default function Navigation() {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const shouldUseLightText = () => {
+    const lightTextPaths = [
+      '/',
+      '/homestay',
+      '/packages',
+      '/gallery',
+      '/blog',
+      '/about'
+    ];
+    
+    return !isScrolled && (
+      lightTextPaths.includes(pathname) || 
+      pathname.startsWith('/blog/')
+    );
+  };
+
+  const getActiveTextColor = () => {
+    if (isScrolled) {
+      return 'text-primary';
+    }
+    return shouldUseLightText() ? 'text-neutral-content' : 'text-base-content';
+  };
+
+  const getInactiveTextColor = () => {
+    if (isScrolled) {
+      return 'text-base-content';
+    }
+    return shouldUseLightText() ? 'text-neutral-content' : 'text-base-content';
+  };
+
+  const getTextColor = (isActive: boolean) => {
+    return isActive ? getActiveTextColor() : getInactiveTextColor();
+  };
+
   const getNavLinkClass = (href: string) => {
     const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
+    const textColor = getTextColor(isActive);
+    const shadow = isScrolled ? '' : 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]';
+
+    return isActive 
+      ? `font-bold ${shadow} ${textColor}` 
+      : `${shadow} hover:text-primary ${textColor}`;
+  };
+
+  const getDrawerLinkClass = (href: string) => {
+    const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
     return isActive ? "text-primary font-bold" : "text-base-content";
+  };
+
+  const getContactUsButtonClass = () => {
+    if (isScrolled) {
+      return 'btn-primary shadow-lg hover:shadow-xl hover:scale-105';
+    }
+
+    return `btn-ghost border-2 border-neutral-content/20 hover:border-neutral-content/40 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)] hover:text-primary ${getInactiveTextColor()}`;
+  };
+
+  const getDrawerButtonClass = () => {
+    const textColor = getInactiveTextColor();
+    const shadow = !isScrolled && shouldUseLightText() ? 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]' : '';
+    return `btn btn-square btn-ghost drawer-button lg:hidden ${shadow} ${textColor}`;
+  };
+
+  const getBrandLinkClass = () => {
+    const textColor = getInactiveTextColor();
+    const shadow = !isScrolled && shouldUseLightText() ? 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]' : '';
+    return `btn btn-ghost text-xl font-bold tracking-wide ${shadow} ${textColor} hover:text-primary`;
   };
 
   return (
@@ -49,12 +113,10 @@ export default function Navigation() {
           {/* Navbar */}
           <div className="w-full navbar justify-between lg:justify-start">
             {/* Left Section */}
-            <div className={`flex-none flex items-center gap-2 transition-all duration-300 ${
-              !isScrolled ? 'bg-base-100/50 backdrop-blur-sm rounded-xl p-1' : ''
-            }`}>
+            <div className="flex-none flex items-center gap-2">
               <label 
                 htmlFor="nav-drawer" 
-                className="btn btn-square btn-ghost drawer-button lg:hidden" 
+                className={getDrawerButtonClass()}
                 aria-label="Open navigation menu"
               >
                 <svg
@@ -74,7 +136,7 @@ export default function Navigation() {
               </label>
               <Link 
                 href="/" 
-                className="btn btn-ghost text-xl"
+                className={getBrandLinkClass()}
               >
                 {t("brandName")}
               </Link>
@@ -82,46 +144,35 @@ export default function Navigation() {
 
             {/* Center Section - Desktop Only */}
             <div className="hidden lg:flex flex-1 justify-center">
-              <div className={`transition-all duration-300 ${
-                !isScrolled ? 'bg-base-100/50 backdrop-blur-sm rounded-xl' : ''
-              }`}>
-                <ul className="menu menu-horizontal">
-                  {NAVIGATION_ITEMS.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        className={`transition-all duration-300 ${getNavLinkClass(item.href)}`}
-                      >
-                        {t(item.key)}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="menu menu-horizontal bg-transparent">
+                {NAVIGATION_ITEMS.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={`transition-all duration-300 text-base font-medium ${getNavLinkClass(item.href)}`}
+                      aria-label={t(item.key)}
+                    >
+                      {t(item.key)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Right Section */}
-            <div className="flex-none flex items-center gap-2">
-              <div className={`hidden lg:block transition-all duration-300 ${
-                !isScrolled ? 'bg-base-100/50 backdrop-blur-sm rounded-xl p-1' : ''
-              }`}>
+            <div className="flex-none flex items-center gap-4">
+              <div className="hidden lg:block">
                 <ThemeChange />
               </div>
-              {/* <LanguageSwitcher /> */}
-              <div className={`transition-all duration-300 ${
-                !isScrolled ? 'bg-primary backdrop-blur-sm rounded-xl p-1' : ''
-              }`}>
-                <Link 
-                  href="/contact-us" 
-                  className={`btn transition-all duration-300 ${
-                    isScrolled 
-                      ? 'btn-primary' 
-                      : 'btn-ghost'
-                  }`}
-                >
-                  {t("contactUs")}
-                </Link>
-              </div>
+              <a 
+                href="https://wa.me/6281234567890?text=Hello%20Neomi%2C%20I%E2%80%99m%20interested%20in%20arranging%20a%20personalized%20custom%20trip.%20Could%20you%20please%20assist%20me%20with%20the%20details%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`btn transition-all duration-300 ${getContactUsButtonClass()}`}
+                aria-label={t("contactUs")}
+              >
+                <span className="font-medium">{t("contactUs")}</span>
+              </a>
             </div>
           </div>
         </div>
@@ -140,8 +191,9 @@ export default function Navigation() {
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className={getNavLinkClass(item.href)}
+                        className={getDrawerLinkClass(item.href)}
                         onClick={toggleDrawer}
+                        aria-label={t(item.key)}
                       >
                         {t(item.key)}
                       </Link>
@@ -152,15 +204,18 @@ export default function Navigation() {
               <div className="divider"></div>
               <div className="flex flex-col gap-4">
                 <div className="lg:hidden">
-                  <ThemeChange />
+                  <ThemeChange isInDrawer={true} />
                 </div>
-                <Link
-                  href="/contact-us"
-                  className="btn btn-primary w-full"
+                <a
+                  href="https://wa.me/6281234567890?text=Hello%20Neomi%2C%20I%E2%80%99m%20interested%20in%20arranging%20a%20personalized%20custom%20trip.%20Could%20you%20please%20assist%20me%20with%20the%20details%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary w-full shadow-lg hover:shadow-xl hover:scale-105"
                   onClick={toggleDrawer}
+                  aria-label={t("contactUs")}
                 >
-                  {t("contactUs")}
-                </Link>
+                  <span className="font-medium">{t("contactUs")}</span>
+                </a>
               </div>
             </div>
           </div>

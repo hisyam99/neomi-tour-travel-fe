@@ -1,209 +1,203 @@
 "use client";
 
-import React, { useEffect, useCallback } from "react";
-import { homestaysService } from "@/services/homestays";
-import { useApi } from "@/hooks/useApi";
-import { Homestay, ApiResponse } from "@/types";
-import Image from "next/image";
-import { FaWifi, FaBed, FaSnowflake } from "react-icons/fa";
+import React, { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { homestaysService } from '@/services/homestays';
+import Image from 'next/image';
+import ImageViewer from '@/app/_components/common/ImageViewer';
+import { Homestay } from '@/types';
 
 interface Props {
   roomId: number;
 }
 
-export default function Section1({ roomId }: Props) {
-  const fetchHomestay = useCallback(() => homestaysService.getById(roomId), [roomId]);
-  const { data, loading, error, execute } = useApi<ApiResponse<Homestay>, []>(fetchHomestay);
+interface Room {
+  id: number;
+  name: string;
+  photos: string[];
+}
+
+export default function Section1({ roomId }: Readonly<Props>) {
+  const t = useTranslations('Homestay');
+  const [room, setRoom] = useState<Room | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    execute();
-  }, [execute]);
+    const fetchRoom = async () => {
+      try {
+        const response = await homestaysService.getById(roomId);
+        const homestay = response.data as Homestay;
+        setRoom({
+          id: homestay.id,
+          name: homestay.name,
+          photos: homestay.details.photos.map(photo => photo.path)
+        });
+      } catch (error) {
+        setError('Failed to fetch room details');
+        console.error('Error fetching room:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRoom();
+  }, [roomId]);
 
   if (loading) {
-  return (
-      <section className="bg-base-100 pt-10 pb-4">
-      <div className="container mx-auto px-4">
-          <div className="animate-pulse space-y-4">
-            <div className="h-8 bg-base-200 rounded w-1/3"></div>
-            <div className="flex flex-wrap gap-6">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="flex flex-col items-center gap-2">
-                  <div className="w-12 h-12 bg-base-200 rounded-full"></div>
-                  <div className="h-4 bg-base-200 rounded w-16"></div>
-                </div>
-              ))}
-            </div>
-            <div className="h-96 bg-base-200 rounded-xl"></div>
-          </div>
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="animate-pulse">
+          <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-5/6"></div>
         </div>
-      </section>
+      </div>
     );
   }
 
   if (error) {
-    return <div className="text-error">Error loading homestay: {error.message}</div>;
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-red-500">{error}</div>
+      </div>
+    );
   }
 
-  if (!data?.data) {
-    return <div className="text-center">Homestay not found</div>;
+  if (!room) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-gray-500">{t('noRoomFound')}</div>
+      </div>
+    );
   }
 
-  const homestay = data.data;
-  const details = homestay.details;
-  const photos = details.photos || [];
-
-  const getFacilityIcon = (icon: string) => {
-    switch (icon) {
-      case 'wifi':
-        return <FaWifi />;
-      case 'ac.svg':
-        return <FaSnowflake />;
-      default:
-        return <FaBed />;
-    }
-  };
-
-  const getGridLayout = () => {
-    if (photos.length === 1) {
-      return "single";
-    } else if (photos.length === 2) {
-      return "two";
-    } else if (photos.length <= 4) {
-      return "three";
-    } else {
-      return "four";
-    }
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
   };
 
   const renderSingleLayout = () => (
-    <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+    <button
+      onClick={() => handleImageClick(0)}
+      className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+    >
       <Image
-        src={photos[0]?.path || `https://picsum.photos/1200/800?random=${homestay.id}`}
-        alt={homestay.name}
+        src={room.photos[0]}
+        alt={`${room.name} - 1`}
         fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
         className="object-cover"
-        priority
       />
-    </div>
+    </button>
   );
 
   const renderTwoLayout = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+      <button
+        onClick={() => handleImageClick(0)}
+        className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+      >
         <Image
-          src={photos[0]?.path || `https://picsum.photos/1200/800?random=${homestay.id}`}
-          alt={homestay.name}
+          src={room.photos[0]}
+          alt={`${room.name} - 1`}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-          className="object-cover"
-          priority
-        />
-      </div>
-      <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden">
-        <Image
-          src={photos[1]?.path || `https://picsum.photos/1200/800?random=${homestay.id + 1}`}
-          alt={`${homestay.name} - Photo 2`}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
           className="object-cover"
         />
-      </div>
+      </button>
+      <button
+        onClick={() => handleImageClick(1)}
+        className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+      >
+        <Image
+          src={room.photos[1]}
+          alt={`${room.name} - 2`}
+          fill
+          className="object-cover"
+        />
+      </button>
     </div>
   );
 
   const renderThreeLayout = () => (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div className="md:col-span-2">
-        <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
-          <Image
-            src={photos[0]?.path || `https://picsum.photos/1200/800?random=${homestay.id}`}
-            alt={homestay.name}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
-            className="object-cover"
-            priority
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-1 gap-4">
-        {photos.slice(1).map((photo) => (
-          <div key={photo.id} className="relative h-[190px] md:h-[240px] rounded-xl overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <button
+        onClick={() => handleImageClick(0)}
+        className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+      >
+        <Image
+          src={room.photos[0]}
+          alt={`${room.name} - 1`}
+          fill
+          className="object-cover"
+        />
+      </button>
+      <div className="grid grid-rows-2 gap-4">
+        {room.photos.slice(1, 3).map((photo: string, index: number) => (
+          <button
+            key={`photo-${index + 1}-${photo}`}
+            onClick={() => handleImageClick(index + 1)}
+            className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+          >
             <Image
-              src={photo.path}
-              alt={`${homestay.name} - Photo ${photo.id}`}
+              src={photo}
+              alt={`${room.name} - ${index + 2}`}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
               className="object-cover"
             />
-              </div>
-            ))}
-          </div>
-        </div>
+          </button>
+        ))}
+      </div>
+    </div>
   );
 
   const renderFourLayout = () => (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div className="md:col-span-2">
-        <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
-          <Image
-            src={photos[0]?.path || `https://picsum.photos/1200/800?random=${homestay.id}`}
-            alt={homestay.name}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
-            className="object-cover"
-            priority
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        {photos.slice(1, 5).map((photo) => (
-          <div key={photo.id} className="relative h-48 rounded-xl overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <button
+        onClick={() => handleImageClick(0)}
+        className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+      >
+        <Image
+          src={room.photos[0]}
+          alt={`${room.name} - 1`}
+          fill
+          className="object-cover"
+        />
+      </button>
+      <div className="grid grid-rows-2 gap-4">
+        {room.photos.slice(1, 4).map((photo: string, index: number) => (
+          <button
+            key={`photo-${index + 1}-${photo}`}
+            onClick={() => handleImageClick(index + 1)}
+            className="relative aspect-video overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+          >
             <Image
-              src={photo.path}
-              alt={`${homestay.name} - Photo ${photo.id}`}
+              src={photo}
+              alt={`${room.name} - ${index + 2}`}
               fill
-              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 400px"
               className="object-cover"
             />
-          </div>
+          </button>
         ))}
       </div>
-          </div>
+    </div>
   );
 
-  const renderLayout = () => {
-    const layout = getGridLayout();
-    switch (layout) {
-      case "single":
-        return renderSingleLayout();
-      case "two":
-        return renderTwoLayout();
-      case "three":
-        return renderThreeLayout();
-      case "four":
-        return renderFourLayout();
-      default:
-        return renderSingleLayout();
-    }
-  };
-
   return (
-    <section className="bg-base-100 pt-10 pb-4">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl italic mb-6">{homestay.name}</h1>
-        <div className="flex flex-wrap gap-6 mb-6">
-          {details.facilities.map((facility) => (
-            <div key={facility.id} className="flex flex-col items-center gap-2">
-              <div className="bg-base-200 rounded-full p-3 text-2xl">
-                {getFacilityIcon(facility.icon)}
-          </div>
-              <span className="text-xs md:text-sm text-base-content/70">{facility.name}</span>
-          </div>
-          ))}
-        </div>
-        {renderLayout()}
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8">{room.name}</h1>
+      <div className="mb-8">
+        {room.photos.length === 1 && renderSingleLayout()}
+        {room.photos.length === 2 && renderTwoLayout()}
+        {room.photos.length === 3 && renderThreeLayout()}
+        {room.photos.length >= 4 && renderFourLayout()}
       </div>
-    </section>
+      {selectedImageIndex !== null && (
+        <ImageViewer
+          images={room.photos}
+          initialIndex={selectedImageIndex}
+          onClose={() => setSelectedImageIndex(null)}
+        />
+      )}
+    </div>
   );
 } 

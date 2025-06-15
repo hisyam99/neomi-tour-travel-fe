@@ -7,6 +7,16 @@ export interface Rating {
   updated_at: string;
 }
 
+export interface SocialMedia {
+  id: number;
+  tiktok: string;
+  facebook: string;
+  instagram: string;
+  whatsapp: string;
+  created_at: string | null;
+  updated_at: string;
+}
+
 export interface HomestayFacility {
   id: number;
   name: string;
@@ -31,6 +41,8 @@ export interface HomestayDetail {
   price: string;
   slug: string;
   size: string;
+  Min_Price: string;
+  Max_Price: string;
   facilities: HomestayFacility[];
   rules: HomestayRule[];
   photos: HomestayPhoto[];
@@ -90,15 +102,6 @@ export interface AboutSection {
   title: string;
   content: string;
   image: string;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface SocialMedia {
-  id: number;
-  platform: string;
-  url: string;
-  icon: string;
   created_at: string;
   updated_at: string;
 }
