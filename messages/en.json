@@ -175,7 +175,9 @@
       "min": "Min",
       "max": "Max",
       "keyword": "Keyword",
-      "search": "Search"
+      "search": "Search",
+      "filterBy": "Filter By",
+      "reset": "Reset Filters"
     },
     "section4": {
       "card": {
@@ -211,51 +213,23 @@
       "imageAlt": "Neomi Homestay Tour And Travel"
     },
     "section2": {
-      "description": "Neomi HomeStay offers modern comfort with a touch of local culture. Enjoy fast Wi-Fi, breakfast, and a peaceful atmosphere perfect for your vacation or business trip.",
-      "noHomestays": "No homestays found",
-      "searchPlaceholder": "Search homestays...",
-      "sortBy": "Sort By",
-      "sortOptions": {
-        "priceLow": "Price: Low to High",
-        "priceHigh": "Price: High to Low",
-        "rating": "Rating",
-        "popularity": "Popularity"
-      }
+      "description": "Neomi HomeStay offers modern comfort with a touch of local culture. Enjoy fast Wi-Fi, breakfast, and a peaceful atmosphere perfect for your vacation or business trip."
     },
     "section3": {
-      "otherFilters": "Other Filters",
-      "withHotdesk": "With Hotdesk",
-      "withoutHotdesk": "Without Hotdesk",
-      "amenities": "Amenities",
-      "priceRange": "Price Range",
-      "location": "Location",
-      "roomType": "Room Type",
-      "roomTypes": {
-        "single": "Single Room",
-        "double": "Double Room",
-        "twin": "Twin Room",
-        "family": "Family Room",
-        "suite": "Suite"
-      },
+      "priceFilter": "Price Range",
+      "keyword": "Keyword",
+      "searchPlaceholder": "Search homestays...",
+      "noHomestays": "No homestays found",
       "min": "Min",
       "max": "Max",
-      "keyword": "Keyword",
       "search": "Search",
-      "priceFilter": "Price Filter",
       "filterBy": "Filter By",
       "reset": "Reset Filters"
     },
     "section4": {
       "card": {
-        "viewDetails": "View Details",
-        "price": "Price",
-        "perNight": "per night",
-        "maxGuests": "Max Guests",
-        "roomType": "Room Type",
-        "amenities": "Amenities",
-        "noImage": "No Image Available",
         "guests": "guests",
-        "bookNow": "Book Now",
+        "perNight": "per night",
         "currency": "Rp",
         "moreDetails": "More Details",
         "errorTitle": "Oops! Something went wrong",
@@ -266,26 +240,32 @@
       },
       "loading": "Loading homestays...",
       "error": "Error loading homestays",
-      "noResults": "No homestays found matching your criteria",
-      "previous": "Previous",
-      "next": "Next"
+      "noResults": "No homestays found matching your criteria"
     },
-    "detail": {
+    "roomDetail": {
       "section1": {
-        "title": "Homestay Details",
-        "overview": "Overview",
-        "amenities": "Amenities",
-        "location": "Location",
-        "policies": "Policies",
-        "reviews": "Reviews",
+        "noRoomFound": "Room not found"
+      },
+      "section3": {
+        "description": "Description",
+        "roomFeatures": "Room Features",
+        "maxGuests": "Max Guests",
+        "roomSize": "Room Size",
+        "roomType": "Room Type",
+        "price": "Price",
+        "facilities": "Facilities"
+      },
+      "section4": {
         "bookNow": "Book Now",
-        "price": "Price per night",
-        "checkIn": "Check-in Time",
-        "checkOut": "Check-out Time",
-        "cancellation": "Cancellation Policy",
-        "houseRules": "House Rules",
-        "nearby": "Nearby Attractions",
-        "related": "Similar Homestays"
+        "checkinDate": "Check-in Date",
+        "checkoutDate": "Check-out Date",
+        "numberOfGuests": "Number of Guests",
+        "guest": "Guest",
+        "guests": "Guests",
+        "totalPrice": "Total Price",
+        "checkinRequired": "Check-in date is required",
+        "checkoutRequired": "Check-out date is required",
+        "invalidCheckout": "Check-out date must be after check-in date"
       }
     }
   },

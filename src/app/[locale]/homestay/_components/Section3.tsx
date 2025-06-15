@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
+import { FaSearch, FaFilter } from "react-icons/fa";
 
 interface Props {
   onFilterChange: (filters: {
@@ -34,88 +35,111 @@ export default function Section3({ onFilterChange }: Props) {
 
   const handleMinPriceChange = (value: string) => {
     const numValue = parseInt(value.replace(/\D/g, '')) || 0;
-    const newPriceRange: [number, number] = [numValue, priceRange[1]];
-    setPriceRange(newPriceRange);
+    setPriceRange([numValue, priceRange[1]]);
     onFilterChange({
       keyword,
-      priceRange: newPriceRange,
+      priceRange: [numValue, priceRange[1]],
     });
   };
 
   const handleMaxPriceChange = (value: string) => {
     const numValue = parseInt(value.replace(/\D/g, '')) || 0;
-    const newPriceRange: [number, number] = [priceRange[0], numValue];
-    setPriceRange(newPriceRange);
+    setPriceRange([priceRange[0], numValue]);
     onFilterChange({
       keyword,
-      priceRange: newPriceRange,
+      priceRange: [priceRange[0], numValue],
     });
   };
 
   return (
-    <section className="py-8">
-      <div className="container mx-auto">
-        <aside className="bg-base-200 rounded-xl p-6 w-full" data-aos="fade-right">
-          <div className="space-y-8">
-            {/* Keyword Search */}
-            <div>
-              <h3 className="font-semibold text-lg mb-4">{t("keyword")}</h3>
+    <aside className="bg-base-200 rounded-xl p-6 w-full mb-8 lg:mb-0" data-aos="fade" data-aos-duration="1000">
+      <div className="space-y-8">
+        {/* Header */}
+        <div className="flex items-center gap-3 pb-4 border-b border-base-300">
+          <FaFilter className="text-primary text-xl" />
+          <h2 className="text-xl font-semibold">{t("filterBy")}</h2>
+        </div>
+
+        {/* Keyword Search */}
+        <div>
+          <div className="font-semibold text-lg mb-4 flex items-center gap-2" data-aos="fade" data-aos-duration="1000" data-aos-delay="100">
+            <FaSearch className="text-primary" />
+            {t("keyword")}
+          </div>
+          <div className="join w-full">
+            <input 
+              type="text" 
+              placeholder={t("searchPlaceholder")} 
+              className="input input-bordered join-item w-full" 
+              value={keyword}
+              onChange={(e) => handleKeywordChange(e.target.value)}
+              data-aos="fade" 
+              data-aos-duration="1000" 
+              data-aos-delay="200" 
+            />
+            <button className="btn join-item btn-primary">
+              <FaSearch />
+            </button>
+          </div>
+        </div>
+
+        {/* Price Filter */}
+        <div>
+          <div className="font-semibold text-lg mb-4" data-aos="fade" data-aos-duration="1000" data-aos-delay="300">
+            {t("priceFilter")}
+          </div>
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
               <div className="join w-full">
+                <span className="join-item btn btn-sm">Rp</span>
                 <input 
                   type="text" 
-                  placeholder={t("search")} 
                   className="input input-bordered join-item w-full" 
-                  value={keyword}
-                  onChange={(e) => handleKeywordChange(e.target.value)}
+                  value={priceRange[0].toLocaleString()}
+                  onChange={(e) => handleMinPriceChange(e.target.value)}
+                  placeholder={t("min")}
                 />
-                <button className="btn join-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </button>
               </div>
-            </div>
-
-            {/* Price Filter */}
-            <div>
-              <h3 className="font-semibold text-lg mb-4">{t("priceFilter")}</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <div className="join w-full">
-                    <span className="join-item btn btn-sm">Rp</span>
-                    <input 
-                      type="text" 
-                      className="input input-bordered join-item w-full" 
-                      value={priceRange[0].toLocaleString()}
-                      onChange={(e) => handleMinPriceChange(e.target.value)}
-                      placeholder="Min"
-                    />
-                  </div>
-                  <span>-</span>
-                  <div className="join w-full">
-                    <span className="join-item btn btn-sm">Rp</span>
-                    <input 
-                      type="text" 
-                      className="input input-bordered join-item w-full" 
-                      value={priceRange[1].toLocaleString()}
-                      onChange={(e) => handleMaxPriceChange(e.target.value)}
-                      placeholder="Max"
-                    />
-                  </div>
-                </div>
-                <input
-                  type="range"
-                  min={0}
-                  max={50000000}
-                  value={priceRange[1]}
-                  onChange={(e) => handlePriceRangeChange(parseInt(e.target.value))}
-                  className="range range-primary w-full"
+              <div className="join w-full">
+                <span className="join-item btn btn-sm">Rp</span>
+                <input 
+                  type="text" 
+                  className="input input-bordered join-item w-full" 
+                  value={priceRange[1].toLocaleString()}
+                  onChange={(e) => handleMaxPriceChange(e.target.value)}
+                  placeholder={t("max")}
                 />
               </div>
             </div>
+            <input 
+              type="range" 
+              min={0} 
+              max={50000000} 
+              value={priceRange[1]}
+              onChange={(e) => handlePriceRangeChange(parseInt(e.target.value))}
+              className="range range-primary w-full" 
+              data-aos="fade" 
+              data-aos-duration="1000" 
+              data-aos-delay="500" 
+            />
           </div>
-        </aside>
+        </div>
+
+        {/* Reset Button */}
+        <button 
+          onClick={() => {
+            setKeyword("");
+            setPriceRange([0, 50000000]);
+            onFilterChange({
+              keyword: "",
+              priceRange: [0, 50000000],
+            });
+          }}
+          className="btn btn-outline btn-primary w-full mt-4"
+        >
+          {t("reset")}
+        </button>
       </div>
-    </section>
+    </aside>
   );
 }

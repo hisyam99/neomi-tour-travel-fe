@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
+import { FaSearch, FaFilter } from "react-icons/fa";
 
 interface Props {
   onFilterChange: (filters: {
@@ -57,7 +58,6 @@ export default function Section3({ onFilterChange }: Props) {
   };
 
   const handleDurationChange = (value: string | null) => {
-    console.log('Duration changed to:', value);
     setDuration(value);
     onFilterChange({
       keyword,
@@ -67,17 +67,24 @@ export default function Section3({ onFilterChange }: Props) {
   };
 
   return (
-    <aside className="bg-base-200 rounded-xl p-6 w-full md:w-72 mb-8 md:mb-0" data-aos="fade" data-aos-duration="1000">
+    <aside className="bg-base-200 rounded-xl p-6 w-full mb-8 lg:mb-0" data-aos="fade" data-aos-duration="1000">
       <div className="space-y-8">
+        {/* Header */}
+        <div className="flex items-center gap-3 pb-4 border-b border-base-300">
+          <FaFilter className="text-primary text-xl" />
+          <h2 className="text-xl font-semibold">{t("filterBy")}</h2>
+        </div>
+
         {/* Keyword Search */}
         <div>
-          <div className="font-semibold text-lg mb-4" data-aos="fade" data-aos-duration="1000" data-aos-delay="100">
+          <div className="font-semibold text-lg mb-4 flex items-center gap-2" data-aos="fade" data-aos-duration="1000" data-aos-delay="100">
+            <FaSearch className="text-primary" />
             {t("keyword")}
           </div>
           <div className="join w-full">
             <input 
               type="text" 
-              placeholder={t("search")} 
+              placeholder={t("searchPlaceholder")} 
               className="input input-bordered join-item w-full" 
               value={keyword}
               onChange={(e) => handleKeywordChange(e.target.value)}
@@ -85,10 +92,8 @@ export default function Section3({ onFilterChange }: Props) {
               data-aos-duration="1000" 
               data-aos-delay="200" 
             />
-            <button className="btn join-item">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+            <button className="btn join-item btn-primary">
+              <FaSearch />
             </button>
           </div>
         </div>
@@ -99,7 +104,7 @@ export default function Section3({ onFilterChange }: Props) {
             {t("priceFilter")}
           </div>
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
+            <div className="grid grid-cols-2 gap-4">
               <div className="join w-full">
                 <span className="join-item btn btn-sm">Rp</span>
                 <input 
@@ -107,10 +112,9 @@ export default function Section3({ onFilterChange }: Props) {
                   className="input input-bordered join-item w-full" 
                   value={priceRange[0].toLocaleString()}
                   onChange={(e) => handleMinPriceChange(e.target.value)}
-                  placeholder="Min"
+                  placeholder={t("min")}
                 />
               </div>
-              <span>-</span>
               <div className="join w-full">
                 <span className="join-item btn btn-sm">Rp</span>
                 <input 
@@ -118,7 +122,7 @@ export default function Section3({ onFilterChange }: Props) {
                   className="input input-bordered join-item w-full" 
                   value={priceRange[1].toLocaleString()}
                   onChange={(e) => handleMaxPriceChange(e.target.value)}
-                  placeholder="Max"
+                  placeholder={t("max")}
                 />
               </div>
             </div>
@@ -142,48 +146,48 @@ export default function Section3({ onFilterChange }: Props) {
             {t("duration")}
           </div>
           <div className="space-y-3">
-            <label className="label cursor-pointer justify-start gap-3 hover:bg-base-300 p-2 rounded-lg transition-colors" data-aos="fade" data-aos-duration="1000" data-aos-delay="800">
-              <input 
-                type="radio" 
-                name="duration" 
-                className="radio radio-primary" 
-                checked={duration === null}
-                onChange={() => handleDurationChange(null)}
-              />
-              <span className="label-text text-base">{t("durationNone")}</span>
-            </label>
-            <label className="label cursor-pointer justify-start gap-3 hover:bg-base-300 p-2 rounded-lg transition-colors" data-aos="fade" data-aos-duration="1000" data-aos-delay="900">
-              <input 
-                type="radio" 
-                name="duration" 
-                className="radio radio-primary" 
-                checked={duration === "1"}
-                onChange={() => handleDurationChange(duration === "1" ? null : "1")}
-              />
-              <span className="label-text text-base">{t("duration1")}</span>
-            </label>
-            <label className="label cursor-pointer justify-start gap-3 hover:bg-base-300 p-2 rounded-lg transition-colors" data-aos="fade" data-aos-duration="1000" data-aos-delay="1000">
-              <input 
-                type="radio" 
-                name="duration" 
-                className="radio radio-primary"
-                checked={duration === "2"}
-                onChange={() => handleDurationChange(duration === "2" ? null : "2")}
-              />
-              <span className="label-text text-base">{t("duration2")}</span>
-            </label>
-            <label className="label cursor-pointer justify-start gap-3 hover:bg-base-300 p-2 rounded-lg transition-colors" data-aos="fade" data-aos-duration="1000" data-aos-delay="1100">
-              <input 
-                type="radio" 
-                name="duration" 
-                className="radio radio-primary"
-                checked={duration === "3+"}
-                onChange={() => handleDurationChange(duration === "3+" ? null : "3+")}
-              />
-              <span className="label-text text-base">{t("duration3")}</span>
-            </label>
+            {[
+              { value: null, label: t("durationNone") },
+              { value: "1", label: t("duration1") },
+              { value: "2", label: t("duration2") },
+              { value: "3+", label: t("duration3") }
+            ].map((option, index) => (
+              <label 
+                key={option.value || "none"} 
+                className="label cursor-pointer justify-start gap-3 hover:bg-base-300 p-3 rounded-lg transition-colors" 
+                data-aos="fade" 
+                data-aos-duration="1000" 
+                data-aos-delay={800 + (index * 100)}
+              >
+                <input 
+                  type="radio" 
+                  name="duration" 
+                  className="radio radio-primary" 
+                  checked={duration === option.value}
+                  onChange={() => handleDurationChange(option.value)}
+                />
+                <span className="label-text text-base">{option.label}</span>
+              </label>
+            ))}
           </div>
         </div>
+
+        {/* Reset Button */}
+        <button 
+          onClick={() => {
+            setKeyword("");
+            setPriceRange([0, 50000000]);
+            setDuration(null);
+            onFilterChange({
+              keyword: "",
+              priceRange: [0, 50000000],
+              duration: null,
+            });
+          }}
+          className="btn btn-outline btn-primary w-full mt-4"
+        >
+          {t("reset")}
+        </button>
       </div>
     </aside>
   );

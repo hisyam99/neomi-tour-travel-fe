@@ -175,7 +175,9 @@
       "min": "Min",
       "max": "Max",
       "keyword": "Kata Kunci",
-      "search": "Cari"
+      "search": "Cari",
+      "filterBy": "Filter Berdasarkan",
+      "reset": "Reset Filter"
     },
     "section4": {
       "card": {
@@ -211,53 +213,25 @@
       "imageAlt": "Neomi Homestay Tour And Travel"
     },
     "section2": {
-      "description": "Neomi HomeStay menawarkan kenyamanan modern dengan sentuhan budaya lokal. Nikmati Wi-Fi cepat, sarapan, dan suasana tenang yang sempurna untuk liburan atau perjalanan bisnis Anda.",
-      "noHomestays": "Tidak ada homestay ditemukan",
-      "searchPlaceholder": "Cari homestay...",
-      "sortBy": "Urutkan Berdasarkan",
-      "sortOptions": {
-        "priceLow": "Harga: Rendah ke Tinggi",
-        "priceHigh": "Harga: Tinggi ke Rendah",
-        "rating": "Rating",
-        "popularity": "Popularitas"
-      }
+      "description": "Neomi HomeStay menawarkan kenyamanan modern dengan sentuhan budaya lokal. Nikmati Wi-Fi cepat, sarapan, dan suasana tenang yang sempurna untuk liburan atau perjalanan bisnis Anda."
     },
     "section3": {
-      "otherFilters": "Filter Lainnya",
-      "withHotdesk": "Dengan Hotdesk",
-      "withoutHotdesk": "Tanpa Hotdesk",
-      "amenities": "Fasilitas",
-      "priceRange": "Rentang Harga",
-      "location": "Lokasi",
-      "roomType": "Tipe Kamar",
-      "roomTypes": {
-        "single": "Kamar Single",
-        "double": "Kamar Double",
-        "twin": "Kamar Twin",
-        "family": "Kamar Keluarga",
-        "suite": "Suite"
-      },
+      "priceFilter": "Rentang Harga",
+      "keyword": "Kata Kunci",
+      "searchPlaceholder": "Cari homestay...",
+      "noHomestays": "Tidak ada homestay ditemukan",
       "min": "Min",
       "max": "Max",
-      "keyword": "Kata Kunci",
       "search": "Cari",
-      "priceFilter": "Filter Harga",
       "filterBy": "Filter Berdasarkan",
       "reset": "Reset Filter"
     },
     "section4": {
       "card": {
-        "viewDetails": "Lihat Detail",
-        "price": "Harga",
-        "perNight": "per malam",
-        "maxGuests": "Maksimal Tamu",
-        "roomType": "Tipe Kamar",
-        "amenities": "Fasilitas",
-        "noImage": "Tidak Ada Gambar",
         "guests": "tamu",
-        "bookNow": "Pesan Sekarang",
+        "perNight": "per malam",
         "currency": "Rp",
-        "moreDetails": "Detail Lebih Lanjut",
+        "moreDetails": "Detail Selengkapnya",
         "errorTitle": "Ups! Terjadi Kesalahan",
         "noResultsTitle": "Tidak Ada Homestay Ditemukan",
         "noResultsDescription": "Kami tidak dapat menemukan homestay yang sesuai dengan kriteria pencarian Anda. Coba sesuaikan filter atau kata kunci pencarian Anda.",
@@ -266,26 +240,32 @@
       },
       "loading": "Memuat homestay...",
       "error": "Kesalahan memuat homestay",
-      "noResults": "Tidak ada homestay yang sesuai dengan kriteria Anda",
-      "previous": "Sebelumnya",
-      "next": "Selanjutnya"
+      "noResults": "Tidak ada homestay yang sesuai dengan kriteria Anda"
     },
-    "detail": {
+    "roomDetail": {
       "section1": {
-        "title": "Detail Homestay",
-        "overview": "Ikhtisar",
-        "amenities": "Fasilitas",
-        "location": "Lokasi",
-        "policies": "Kebijakan",
-        "reviews": "Ulasan",
+        "noRoomFound": "Kamar tidak ditemukan"
+      },
+      "section3": {
+        "description": "Deskripsi",
+        "roomFeatures": "Fitur Kamar",
+        "maxGuests": "Maksimal Tamu",
+        "roomSize": "Ukuran Kamar",
+        "roomType": "Tipe Kamar",
+        "price": "Harga",
+        "facilities": "Fasilitas"
+      },
+      "section4": {
         "bookNow": "Pesan Sekarang",
-        "price": "Harga per malam",
-        "checkIn": "Waktu Check-in",
-        "checkOut": "Waktu Check-out",
-        "cancellation": "Kebijakan Pembatalan",
-        "houseRules": "Aturan Rumah",
-        "nearby": "Tempat Menarik Terdekat",
-        "related": "Homestay Serupa"
+        "checkinDate": "Tanggal Check-in",
+        "checkoutDate": "Tanggal Check-out",
+        "numberOfGuests": "Jumlah Tamu",
+        "guest": "Tamu",
+        "guests": "Tamu",
+        "totalPrice": "Total Harga",
+        "checkinRequired": "Tanggal check-in wajib diisi",
+        "checkoutRequired": "Tanggal check-out wajib diisi",
+        "invalidCheckout": "Tanggal check-out harus setelah tanggal check-in"
       }
     }
   },
