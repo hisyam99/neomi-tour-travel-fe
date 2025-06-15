@@ -69,7 +69,7 @@ export default function Navigation() {
     
     // Enhanced active state styling for light text paths
     const activeLightPathClass = isActive && isLightTextPath 
-      ? 'scale-105 text-shadow-sm tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white/50 after:rounded-full after:animate-pulse' 
+      ? 'scale-105 text-shadow-sm tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-neutral-content/50 after:rounded-full after:animate-pulse' 
       : '';
 
     // Enhanced hover effects
