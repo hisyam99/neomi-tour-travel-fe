@@ -29,8 +29,8 @@ export default function Section3() {
       <section className="py-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="animate-pulse">
+            {Array.from({ length: 8 }).map(() => (
+              <div key={`skeleton-${crypto.randomUUID()}`} className="animate-pulse">
                 <div className="bg-base-200 rounded-xl h-40"></div>
               </div>
             ))}
@@ -64,7 +64,7 @@ export default function Section3() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {allPhotos.map((img, idx) => (
             <button
-              key={`gallery-image-${idx}-${img.src}`}
+              key={`gallery-image-${img.src}`}
               onClick={() => setIndex(idx)}
               className="block relative group overflow-hidden rounded-xl shadow bg-base-200 hover:shadow-lg transition-shadow w-full"
               data-aos="zoom-in"
