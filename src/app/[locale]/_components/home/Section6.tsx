@@ -83,14 +83,23 @@ export default function Section6() {
         <div
           ref={carouselRef}
           className="flex gap-8 overflow-x-auto scrollbar-hide"
-          style={{ scrollSnapType: "x mandatory" }}
+          style={{ 
+            scrollSnapType: "x mandatory",
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+            WebkitOverflowScrolling: "touch",
+            pointerEvents: "none"
+          }}
         >
           {latestPosts.map((post, i) => (
             <Link
               href={`/blog/${post.slug}`}
               key={post.id}
               className="flex-shrink-0 w-80 max-w-xs bg-transparent hover:opacity-90 transition-opacity"
-              style={{ scrollSnapAlign: "start" }}
+              style={{ 
+                scrollSnapAlign: "start",
+                pointerEvents: "auto"
+              }}
               data-aos="fade-up"
               data-aos-delay={100 * (i + 1)}
             >
