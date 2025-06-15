@@ -16,7 +16,7 @@ export default function Navigation() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const fetchSocialMedia = useCallback(() => socialMediaService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<SocialMedia[]>, []>(fetchSocialMedia);
+  const { data, execute } = useApi<ApiResponse<SocialMedia[]>, []>(fetchSocialMedia);
 
   useEffect(() => {
     execute();
