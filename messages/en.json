@@ -11,7 +11,8 @@
     "blog": "Blog",
     "about": "About Us",
     "contactUs": "Contact Us",
-    "brandName": "Neomi Travel"
+    "brandName": "Neomi Travel",
+    "whatsappMessage": "Hello Neomi, I'm interested in arranging a personalized custom trip. Could you please assist me with the details?"
   },
   "Common": {
     "readMore": "Read More",
@@ -154,7 +155,8 @@
     },
     "section2": {
       "description": "Interested in a custom tour designed just for you? Reach out to us by clicking the button below.",
-      "contactUs": "Contact Us"
+      "contactUs": "Contact Us",
+      "whatsappMessage": "Hello Neomi, I'm interested in arranging a personalized custom trip. Could you please assist me with the details?"
     },
     "section3": {
       "priceFilter": "Price Range",

@@ -105,7 +105,7 @@ export default function Footer() {
                 )}
                 {socialMedia?.whatsapp && (
                   <a 
-                    href={socialMedia.whatsapp} 
+                    href={socialMedia.whatsapp}
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="btn btn-circle bg-neutral/70 border-none text-white text-xl" 

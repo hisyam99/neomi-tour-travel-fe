@@ -1,10 +1,13 @@
 'use client';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { NAVIGATION_ITEMS } from "../../_constants/navigation";
 import ThemeChange from "../common/ThemeChange";
 import Image from "next/image";
+import { socialMediaService } from "../../../../services/socialMedia";
+import { useApi } from "@/hooks/useApi";
+import { SocialMedia, ApiResponse } from "@/types";
 // import LanguageSwitcher from "../common/LanguageSwitcher";
 
 export default function Navigation() {
@@ -12,6 +15,12 @@ export default function Navigation() {
   const pathname = usePathname();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const fetchSocialMedia = useCallback(() => socialMediaService.getAll(), []);
+  const { data, loading, error, execute } = useApi<ApiResponse<SocialMedia[]>, []>(fetchSocialMedia);
+
+  useEffect(() => {
+    execute();
+  }, [execute]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +31,9 @@ export default function Navigation() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const socialMedia = data?.data[0];
+  const whatsappMessage = encodeURIComponent(t("whatsappMessage"));
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -183,16 +195,18 @@ export default function Navigation() {
               <div className="hidden lg:block">
                 <ThemeChange />
               </div>
-              <a 
-                href="https://wa.me/6281234567890?text=Hello%20Neomi%2C%20I%E2%80%99m%20interested%20in%20arranging%20a%20personalized%20custom%20trip.%20Could%20you%20please%20assist%20me%20with%20the%20details%3F"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`btn transition-all duration-300 ${getContactUsButtonClass()}`}
-                aria-label={t("contactUs")}
-                data-aos="none"
-              >
-                <span className="font-medium">{t("contactUs")}</span>
-              </a>
+              {socialMedia?.whatsapp && (
+                <a 
+                  href={`${socialMedia.whatsapp}?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`btn transition-all duration-300 ${getContactUsButtonClass()}`}
+                  aria-label={t("contactUs")}
+                  data-aos="none"
+                >
+                  <span className="font-medium">{t("contactUs")}</span>
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -226,17 +240,19 @@ export default function Navigation() {
                 <div className="lg:hidden">
                   <ThemeChange isInDrawer={true} />
                 </div>
-                <a
-                  href="https://wa.me/6281234567890?text=Hello%20Neomi%2C%20I%E2%80%99m%20interested%20in%20arranging%20a%20personalized%20custom%20trip.%20Could%20you%20please%20assist%20me%20with%20the%20details%3F"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary w-full shadow-lg hover:shadow-xl hover:scale-105"
-                  onClick={toggleDrawer}
-                  aria-label={t("contactUs")}
-                  data-aos="none"
-                >
-                  <span className="font-medium">{t("contactUs")}</span>
-                </a>
+                {socialMedia?.whatsapp && (
+                  <a
+                    href={`${socialMedia.whatsapp}?text=${whatsappMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary w-full shadow-lg hover:shadow-xl hover:scale-105"
+                    onClick={toggleDrawer}
+                    aria-label={t("contactUs")}
+                    data-aos="none"
+                  >
+                    <span className="font-medium">{t("contactUs")}</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>

@@ -11,7 +11,8 @@
     "blog": "Blog",
     "about": "Tentang Kami",
     "contactUs": "Hubungi Kami",
-    "brandName": "Neomi Travel"
+    "brandName": "Neomi Travel",
+    "whatsappMessage": "Halo Neomi, saya tertarik untuk mengatur perjalanan kustom yang dipersonalisasi. Bisakah Anda membantu saya dengan detailnya?"
   },
   "Common": {
     "readMore": "Baca Selengkapnya",
@@ -154,7 +155,8 @@
     },
     "section2": {
       "description": "Tertarik dengan tur kustom yang dirancang khusus untuk Anda? Hubungi kami dengan mengklik tombol di bawah.",
-      "contactUs": "Hubungi Kami"
+      "contactUs": "Hubungi Kami",
+      "whatsappMessage": "Halo Neomi, saya tertarik untuk mengatur perjalanan kustom yang dipersonalisasi. Bisakah Anda membantu saya dengan detailnya?"
     },
     "section3": {
       "priceFilter": "Rentang Harga",

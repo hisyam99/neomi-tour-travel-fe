@@ -11,7 +11,8 @@
     "blog": "博客",
     "about": "关于我们",
     "contactUs": "联系我们",
-    "brandName": "Neomi 旅游"
+    "brandName": "Neomi 旅游",
+    "whatsappMessage": "你好 Neomi，我对安排个性化定制旅行感兴趣。您能帮我了解详情吗？"
   },
   "Common": {
     "readMore": "阅读更多",
@@ -111,7 +112,8 @@
     },
     "section2": {
       "description": "想要体验根据您的偏好定制的旅游？联系我们，点击下方。",
-      "contactUs": "联系我们"
+      "contactUs": "联系我们",
+      "whatsappMessage": "你好 Neomi，我对您的套餐感兴趣。您能提供更多信息吗？"
     },
     "section3": {
       "keyword": "关键词",
