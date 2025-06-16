@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -16,7 +16,9 @@ export default function Navigation() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const fetchSocialMedia = useCallback(() => socialMediaService.getAll(), []);
-  const { data, execute } = useApi<ApiResponse<SocialMedia[]>, []>(fetchSocialMedia);
+  const { data, execute } = useApi<ApiResponse<SocialMedia[]>, []>(
+    fetchSocialMedia
+  );
 
   useEffect(() => {
     execute();
@@ -28,8 +30,8 @@ export default function Navigation() {
       setIsScrolled(scrollPosition > 0);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const socialMedia = data?.data[0];
@@ -41,32 +43,32 @@ export default function Navigation() {
 
   const shouldUseLightText = () => {
     const lightTextPaths = [
-      '/',
-      '/homestay',
-      '/packages',
-      '/gallery',
-      '/blog',
-      '/about'
+      "/",
+      "/homestay",
+      "/packages",
+      "/gallery",
+      "/blog",
+      "/about",
     ];
-    
-    return !isScrolled && (
-      lightTextPaths.includes(pathname) || 
-      pathname.startsWith('/blog/')
+
+    return (
+      !isScrolled &&
+      (lightTextPaths.includes(pathname) || pathname.startsWith("/blog/"))
     );
   };
 
   const getActiveTextColor = () => {
     if (isScrolled || !shouldUseLightText()) {
-      return 'text-primary';
+      return "text-primary";
     }
-    return 'text-neutral-content';
+    return "text-neutral-content";
   };
 
   const getInactiveTextColor = () => {
     if (isScrolled || !shouldUseLightText()) {
-      return 'text-base-content';
+      return "text-base-content";
     }
-    return 'text-neutral-content';
+    return "text-neutral-content";
   };
 
   const getTextColor = (isActive: boolean) => {
@@ -74,34 +76,40 @@ export default function Navigation() {
   };
 
   const getNavLinkClass = (href: string) => {
-    const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
+    const isActive =
+      pathname === href || (href !== "/" && pathname.startsWith(href));
     const textColor = getTextColor(isActive);
     const isLightTextPath = shouldUseLightText();
-    const shadow = (isScrolled || !isLightTextPath) ? '' : 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]';
-    
+    const shadow =
+      isScrolled || !isLightTextPath
+        ? ""
+        : "drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]";
+
     // Enhanced active state styling for light text paths
-    const activeLightPathClass = isActive && isLightTextPath 
-      ? 'scale-105 text-shadow-sm tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-neutral-content/50 after:rounded-full after:animate-pulse' 
-      : '';
+    const activeLightPathClass =
+      isActive && isLightTextPath
+        ? "scale-105 text-shadow-sm tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-neutral-content/50 after:rounded-full after:animate-pulse"
+        : "";
 
     // Enhanced hover effects
-    const hoverEffects = !isActive 
-      ? 'hover:scale-105 hover:tracking-wide transition-all duration-300 hover:text-primary/90' 
-      : '';
+    const hoverEffects = !isActive
+      ? "hover:scale-105 hover:tracking-wide transition-all duration-300 hover:text-primary/90"
+      : "";
 
-    return isActive 
-      ? `font-bold ${shadow} ${textColor} ${activeLightPathClass} transition-all duration-300 relative` 
+    return isActive
+      ? `font-bold ${shadow} ${textColor} ${activeLightPathClass} transition-all duration-300 relative`
       : `${shadow} ${textColor} ${hoverEffects} relative`;
   };
 
   const getDrawerLinkClass = (href: string) => {
-    const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
+    const isActive =
+      pathname === href || (href !== "/" && pathname.startsWith(href));
     return isActive ? "text-primary font-bold" : "text-base-content";
   };
 
   const getContactUsButtonClass = () => {
     if (isScrolled) {
-      return 'btn-primary shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300';
+      return "btn-primary shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300";
     }
 
     return `btn-ghost border-2 border-neutral-content/20 hover:border-neutral-content/40 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)] hover:text-primary ${getInactiveTextColor()} hover:scale-105 transition-all duration-300`;
@@ -109,22 +117,30 @@ export default function Navigation() {
 
   const getDrawerButtonClass = () => {
     const textColor = getInactiveTextColor();
-    const shadow = !isScrolled && shouldUseLightText() ? 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]' : '';
+    const shadow =
+      !isScrolled && shouldUseLightText()
+        ? "drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
+        : "";
     return `btn btn-square btn-ghost drawer-button lg:hidden ${shadow} ${textColor} hover:scale-110 transition-all duration-300`;
   };
 
   const getBrandLinkClass = () => {
     const textColor = getInactiveTextColor();
-    const shadow = !isScrolled && shouldUseLightText() ? 'drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]' : '';
-    return `btn btn-ghost text-xl font-bold tracking-wide ${shadow} ${textColor} hover:text-primary flex items-center gap-2 hover:scale-105 transition-all duration-300`;
+    const shadow =
+      !isScrolled && shouldUseLightText()
+        ? "drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
+        : "";
+    return `btn btn-ghost text-base lg:text-xl font-bold tracking-wide ${shadow} ${textColor} hover:text-primary flex items-center gap-2 hover:scale-105 transition-all duration-300`;
   };
 
   return (
-    <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-base-100/80 backdrop-blur-xl backdrop-saturate-150 shadow-lg' 
-        : 'bg-transparent'
-    }`}> 
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-base-100/80 backdrop-blur-xl backdrop-saturate-150 shadow-lg"
+          : "bg-transparent"
+      }`}
+    >
       <div className="container mx-auto drawer">
         <input
           id="nav-drawer"
@@ -138,30 +154,7 @@ export default function Navigation() {
           <div className="w-full navbar justify-between lg:justify-start">
             {/* Left Section */}
             <div className="flex-none flex items-center">
-              <label 
-                htmlFor="nav-drawer" 
-                className={getDrawerButtonClass()}
-                aria-label="Open navigation menu"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="inline-block w-5 h-5 stroke-current"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  ></path>
-                </svg>
-              </label>
-              <Link 
-                href="/" 
-                className={getBrandLinkClass()}
-              >
+              <Link href="/" className={getBrandLinkClass()}>
                 <Image
                   src="/icon.png"
                   alt="Neomi Logo"
@@ -180,7 +173,9 @@ export default function Navigation() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className={`transition-all duration-300 text-base font-medium ${getNavLinkClass(item.href)}`}
+                      className={`transition-all duration-300 text-base font-medium ${getNavLinkClass(
+                        item.href
+                      )}`}
                       aria-label={t(item.key)}
                     >
                       {t(item.key)}
@@ -192,21 +187,45 @@ export default function Navigation() {
 
             {/* Right Section */}
             <div className="flex-none flex items-center gap-4">
-              <div className="hidden lg:block">
+              <div className="hidden lg:block shrink-0">
                 <ThemeChange />
               </div>
-              {socialMedia?.whatsapp && (
-                <a 
-                  href={`${socialMedia.whatsapp}?text=${whatsappMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`btn transition-all duration-300 ${getContactUsButtonClass()}`}
-                  aria-label={t("contactUs")}
-                  data-aos="none"
+              <div className="flex-1 flex justify-end">
+                {socialMedia?.whatsapp && (
+                  <a
+                    href={`${socialMedia.whatsapp}?text=${whatsappMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`btn transition-all duration-300 ${getContactUsButtonClass()}`}
+                    aria-label={t("contactUs")}
+                    data-aos="none"
+                  >
+                    <span className="font-medium">{t("contactUs")}</span>
+                  </a>
+                )}
+              </div>
+              <div className="shrink-0">
+                <label
+                  htmlFor="nav-drawer"
+                  className={getDrawerButtonClass()}
+                  aria-label="Open navigation menu"
                 >
-                  <span className="font-medium">{t("contactUs")}</span>
-                </a>
-              )}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    className="inline-block w-5 h-5 stroke-current"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    ></path>
+                  </svg>
+                </label>
+              </div>
             </div>
           </div>
         </div>
@@ -220,6 +239,18 @@ export default function Navigation() {
             {/* Sidebar content here */}
             <div className="flex flex-col h-full">
               <div className="flex-1">
+                <div className="pt-6 mb-8 flex justify-start">
+                  <Link href="/" className="btn btn-ghost text-lg lg:text-2xl font-bold tracking-wide text-base-content hover:text-primary flex items-center gap-3 hover:scale-105 transition-all duration-300" onClick={toggleDrawer}>
+                    <Image
+                      src="/icon.png"
+                      alt="Neomi Logo"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12"
+                    />
+                    {t("brandName")}
+                  </Link>
+                </div>
                 <ul className="menu menu-lg gap-2">
                   {NAVIGATION_ITEMS.map((item) => (
                     <li key={item.href}>
