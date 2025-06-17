@@ -32,12 +32,67 @@ export default function Section2({ blogId }: Props) {
   const extractImagesFromContent = (content: string) => {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = content;
+    
+    // Find all figure elements with attachments
+    const figureElements = tempDiv.getElementsByTagName("figure");
+    Array.from(figureElements).forEach(figure => {
+      const anchor = figure.querySelector("a");
+      const img = figure.querySelector("img");
+      const figcaption = figure.querySelector("figcaption");
+      if (anchor && img) {
+        // Remove the anchor and keep the image and figcaption
+        const newFigure = document.createElement("figure");
+        newFigure.className = figure.className;
+        newFigure.setAttribute("data-trix-attachment", figure.getAttribute("data-trix-attachment") || "");
+        newFigure.setAttribute("data-trix-content-type", figure.getAttribute("data-trix-content-type") || "");
+        newFigure.setAttribute("data-trix-attributes", figure.getAttribute("data-trix-attributes") || "");
+        
+        newFigure.appendChild(img);
+        if (figcaption) {
+          newFigure.appendChild(figcaption);
+        }
+        
+        figure.parentNode?.replaceChild(newFigure, figure);
+      }
+    });
+
     const imgElements = tempDiv.getElementsByTagName("img");
     const extractedImages = Array.from(imgElements).map((img) => ({
       src: img.src,
       alt: img.alt || "Blog image",
     }));
     return extractedImages;
+  };
+
+  // Function to process content before rendering
+  const processContent = (content: string) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = content;
+    
+    // Find all figure elements with attachments
+    const figureElements = tempDiv.getElementsByTagName("figure");
+    Array.from(figureElements).forEach(figure => {
+      const anchor = figure.querySelector("a");
+      const img = figure.querySelector("img");
+      const figcaption = figure.querySelector("figcaption");
+      if (anchor && img) {
+        // Remove the anchor and keep the image and figcaption
+        const newFigure = document.createElement("figure");
+        newFigure.className = figure.className;
+        newFigure.setAttribute("data-trix-attachment", figure.getAttribute("data-trix-attachment") || "");
+        newFigure.setAttribute("data-trix-content-type", figure.getAttribute("data-trix-content-type") || "");
+        newFigure.setAttribute("data-trix-attributes", figure.getAttribute("data-trix-attributes") || "");
+        
+        newFigure.appendChild(img);
+        if (figcaption) {
+          newFigure.appendChild(figcaption);
+        }
+        
+        figure.parentNode?.replaceChild(newFigure, figure);
+      }
+    });
+
+    return tempDiv.innerHTML;
   };
 
   // Function to handle image click
@@ -61,8 +116,14 @@ export default function Section2({ blogId }: Props) {
     if (data?.data) {
       const currentBlog = data.data.find((post) => post.slug === blogId);
       if (currentBlog?.content) {
-        const extractedImages = extractImagesFromContent(currentBlog.content);
+        const processedContent = processContent(currentBlog.content);
+        const extractedImages = extractImagesFromContent(processedContent);
         setImages(extractedImages);
+        
+        // Update the content ref with processed content
+        if (contentRef.current) {
+          contentRef.current.innerHTML = processedContent;
+        }
       }
     }
   }, [data, blogId]);
@@ -72,19 +133,11 @@ export default function Section2({ blogId }: Props) {
     if (contentRef.current) {
       const imgElements = contentRef.current.getElementsByTagName("img");
       Array.from(imgElements).forEach((img) => {
-        // Remove any existing click handlers
         img.removeAttribute("onclick");
         img.removeAttribute("href");
-
-        // Add our custom attributes
         img.setAttribute("role", "button");
         img.setAttribute("tabIndex", "0");
-        img.setAttribute(
-          "aria-label",
-          `View image: ${img.alt || "Blog image"}`
-        );
-
-        // Add event listeners
+        img.setAttribute("aria-label", `View image: ${img.alt || "Blog image"}`);
         img.addEventListener("click", (e) => handleImageClick(e, img.src));
         img.addEventListener("keydown", (e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -94,7 +147,7 @@ export default function Section2({ blogId }: Props) {
         });
       });
     }
-  }, [handleImageClick]);
+  }, [handleImageClick, data]);
 
   if (loading) {
     return (
@@ -154,7 +207,7 @@ export default function Section2({ blogId }: Props) {
           <article className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto">
             <section
               aria-label="Blog content"
-              className="prose prose-lg max-w-none [&_.attachment]:my-8 [&_.attachment]:block [&_.attachment__caption]:text-sm [&_.attachment__caption]:text-base-content/70 [&_.attachment__caption]:mt-2 [&_.attachment__caption]:text-center [&_.attachment__name]:font-medium [&_.attachment__size]:text-base-content/50 [&_.attachment__size]:ml-2 [&_figure]:my-8 [&_figure]:block [&_figcaption]:text-sm [&_figcaption]:text-base-content/70 [&_figcaption]:mt-2 [&_figcaption]:text-center [&_img]:rounded-xl [&_img]:mx-auto [&_img]:max-w-full [&_img]:h-auto [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_img]:focus:outline-none [&_img]:focus:ring-2 [&_img]:focus:ring-primary [&_img]:focus:ring-offset-2 [&_p]:my-4 [&_p]:leading-relaxed [&_h1]:text-4xl [&_h2]:text-3xl [&_h3]:text-2xl [&_h4]:text-xl [&_h5]:text-lg [&_h6]:text-base [&_ul]:list-disc [&_ol]:list-decimal [&_li]:my-2 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-base-content/80 [&_pre]:bg-base-200 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_code]:bg-base-200 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:break-words [&_code]:whitespace-pre-wrap [&_code]:overflow-x-auto [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-base-300 [&_th]:p-2 [&_td]:border [&_td]:border-base-300 [&_td]:p-2 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:font-mono [&_pre_code]:leading-relaxed [&_pre_code]:whitespace-pre-wrap [&_pre_code]:break-words [&_pre_code]:overflow-x-auto"
+              className="prose prose-lg max-w-none [&_.attachment]:my-8 [&_.attachment__caption]:text-sm [&_.attachment__caption]:text-base-content/70 [&_.attachment__caption]:mt-2 [&_.attachment__caption]:text-center [&_.attachment__name]:font-medium [&_.attachment__size]:text-base-content/50 [&_.attachment__size]:ml-2 [&_figure]:my-8 [&_figure]:block [&_figcaption]:text-sm [&_figcaption]:text-base-content/70 [&_figcaption]:mt-2 [&_figcaption]:text-center [&_img]:rounded-xl [&_img]:mx-auto [&_img]:max-w-full [&_img]:h-auto [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_img]:focus:outline-none [&_img]:focus:ring-2 [&_img]:focus:ring-primary [&_img]:focus:ring-offset-2 [&_p]:my-4 [&_p]:leading-relaxed [&_h1]:text-4xl [&_h2]:text-3xl [&_h3]:text-2xl [&_h4]:text-xl [&_h5]:text-lg [&_h6]:text-base [&_ul]:list-disc [&_ol]:list-decimal [&_li]:my-2 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-base-content/80 [&_pre]:bg-base-200 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_code]:bg-base-200 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:break-words [&_code]:whitespace-pre-wrap [&_code]:overflow-x-auto [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-base-300 [&_th]:p-2 [&_td]:border [&_td]:border-base-300 [&_td]:p-2 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:font-mono [&_pre_code]:leading-relaxed [&_pre_code]:whitespace-pre-wrap [&_pre_code]:break-words [&_pre_code]:overflow-x-auto"
             >
               <div
                 ref={contentRef}
