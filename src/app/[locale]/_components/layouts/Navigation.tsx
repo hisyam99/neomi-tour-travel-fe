@@ -148,6 +148,7 @@ export default function Navigation() {
           className="drawer-toggle"
           checked={isDrawerOpen}
           onChange={toggleDrawer}
+          aria-label="Toggle navigation menu"
         />
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
