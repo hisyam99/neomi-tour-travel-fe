@@ -54,26 +54,24 @@ export default function Section2({ roomId }: Props) {
           <div className="flex-1">
             <Image 
               src={photos[0]?.path || `https://picsum.photos/800/400?random=${homestay.id}`}
-              alt={`${homestay.name} - Main view`}
+              alt={homestay.name}
               width={800}
               height={400}
               className="rounded-xl w-full h-64 md:h-96 object-cover" 
               priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
-              quality={85}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <div className="flex flex-col gap-4 w-full md:w-1/3">
-            {photos.slice(1, 4).map((photo, index) => (
+            {photos.slice(1, 4).map((photo) => (
               <Image 
                 key={photo.id}
                 src={photo.path}
-                alt={`${homestay.name} - View ${index + 2}`}
+                alt={`${homestay.name} - Photo ${photo.id}`}
                 width={400}
                 height={200}
                 className="rounded-xl w-full h-20 md:h-28 object-cover"
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                quality={85}
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
               />
             ))}
           </div>

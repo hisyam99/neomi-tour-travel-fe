@@ -13,8 +13,6 @@ export default function Section1() {
         fill
         className="object-cover -z-10"
         priority
-        sizes="100vw"
-        quality={85}
       />
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
       <div className="container mx-auto relative z-10 px-4 py-16">

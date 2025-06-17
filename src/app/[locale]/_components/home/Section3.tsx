@@ -32,9 +32,9 @@ export default function Section3() {
                   <div className="w-16 h-16 rounded-full bg-base-100 flex items-center justify-center mb-4 border border-base-300">
                     <service.icon className="text-2xl text-primary" />
                   </div>
-                  <h2 className="text-lg font-semibold mb-2">
+                  <h3 className="text-lg font-semibold mb-2">
                     {t(`${service.key}.title`)}
-                  </h2>
+                  </h3>
                   <p className="text-base text-base-content/80">
                     {t(`${service.key}.desc`)}
                   </p>

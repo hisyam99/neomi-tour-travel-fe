@@ -32,19 +32,6 @@ export default function Section3({ packageData }: Props) {
     return extractedImages;
   };
 
-  // Function to ensure all images have alt attributes
-  const ensureImageAlts = (content: string) => {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = content;
-    const imgElements = tempDiv.getElementsByTagName("img");
-    Array.from(imgElements).forEach((img) => {
-      if (!img.alt) {
-        img.alt = "Package content image";
-      }
-    });
-    return tempDiv.innerHTML;
-  };
-
   // Function to handle image click
   const handleImageClick = useCallback(
     (e: Event, imgSrc: string) => {
@@ -60,13 +47,11 @@ export default function Section3({ packageData }: Props) {
 
   useEffect(() => {
     if (packageData.description) {
-      const contentWithAlts = ensureImageAlts(packageData.description);
-      const extractedImages = extractImagesFromContent(contentWithAlts);
+      const extractedImages = extractImagesFromContent(packageData.description);
       setImages(extractedImages);
     }
     if (details?.detail_wte) {
-      const wteContentWithAlts = ensureImageAlts(details.detail_wte);
-      const wteImages = extractImagesFromContent(wteContentWithAlts);
+      const wteImages = extractImagesFromContent(details.detail_wte);
       setImages(prev => [...prev, ...wteImages]);
     }
   }, [packageData, details]);
@@ -99,7 +84,7 @@ export default function Section3({ packageData }: Props) {
         <div 
           ref={contentRef}
           className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto [&_.attachment]:my-8 [&_.attachment__caption]:text-sm [&_.attachment__caption]:text-base-content/70 [&_.attachment__caption]:mt-2 [&_.attachment__caption]:text-center [&_.attachment__name]:font-medium [&_.attachment__size]:text-base-content/50 [&_.attachment__size]:ml-2 [&_figure]:my-8 [&_figure]:block [&_figcaption]:text-sm [&_figcaption]:text-base-content/70 [&_figcaption]:mt-2 [&_figcaption]:text-center [&_img]:rounded-xl [&_img]:mx-auto [&_img]:max-w-full [&_img]:h-auto [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_img]:focus:outline-none [&_img]:focus:ring-2 [&_img]:focus:ring-primary [&_img]:focus:ring-offset-2 [&_p]:my-4 [&_p]:leading-relaxed [&_h1]:text-4xl [&_h2]:text-3xl [&_h3]:text-2xl [&_h4]:text-xl [&_h5]:text-lg [&_h6]:text-base [&_ul]:list-disc [&_ol]:list-decimal [&_li]:my-2 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-base-content/80 [&_pre]:bg-base-200 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_code]:bg-base-200 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:break-words [&_code]:whitespace-pre-wrap [&_code]:overflow-x-auto [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-base-300 [&_th]:p-2 [&_td]:border [&_td]:border-base-300 [&_td]:p-2 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:font-mono [&_pre_code]:leading-relaxed [&_pre_code]:whitespace-pre-wrap [&_pre_code]:break-words [&_pre_code]:overflow-x-auto"
-          dangerouslySetInnerHTML={{ __html: packageData.description ? ensureImageAlts(packageData.description) : '' }} 
+          dangerouslySetInnerHTML={{ __html: packageData.description || '' }} 
         />
       </div>
 
@@ -107,7 +92,7 @@ export default function Section3({ packageData }: Props) {
         <h2 className="text-2xl font-semibold mb-4">What to Expect</h2>
         <div 
           className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto [&_.attachment]:my-8 [&_.attachment__caption]:text-sm [&_.attachment__caption]:text-base-content/70 [&_.attachment__caption]:mt-2 [&_.attachment__caption]:text-center [&_.attachment__name]:font-medium [&_.attachment__size]:text-base-content/50 [&_.attachment__size]:ml-2 [&_figure]:my-8 [&_figure]:block [&_figcaption]:text-sm [&_figcaption]:text-base-content/70 [&_figcaption]:mt-2 [&_figcaption]:text-center [&_img]:rounded-xl [&_img]:mx-auto [&_img]:max-w-full [&_img]:h-auto [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_img]:focus:outline-none [&_img]:focus:ring-2 [&_img]:focus:ring-primary [&_img]:focus:ring-offset-2 [&_p]:my-4 [&_p]:leading-relaxed [&_h1]:text-4xl [&_h2]:text-3xl [&_h3]:text-2xl [&_h4]:text-xl [&_h5]:text-lg [&_h6]:text-base [&_ul]:list-disc [&_ol]:list-decimal [&_li]:my-2 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-base-content/80 [&_pre]:bg-base-200 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_code]:bg-base-200 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:break-words [&_code]:whitespace-pre-wrap [&_code]:overflow-x-auto [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-base-300 [&_th]:p-2 [&_td]:border [&_td]:border-base-300 [&_td]:p-2 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:font-mono [&_pre_code]:leading-relaxed [&_pre_code]:whitespace-pre-wrap [&_pre_code]:break-words [&_pre_code]:overflow-x-auto"
-          dangerouslySetInnerHTML={{ __html: details?.detail_wte ? ensureImageAlts(details.detail_wte) : '' }}
+          dangerouslySetInnerHTML={{ __html: details?.detail_wte || '' }} 
         />
       </div>
 
