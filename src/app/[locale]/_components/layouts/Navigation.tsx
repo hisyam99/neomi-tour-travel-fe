@@ -142,6 +142,7 @@ export default function Navigation() {
       }`}
     >
       <div className="container mx-auto drawer">
+        <label htmlFor="nav-drawer" className="sr-only">Navigation Menu</label>
         <input
           id="nav-drawer"
           type="checkbox"

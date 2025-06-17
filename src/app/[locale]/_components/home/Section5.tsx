@@ -104,7 +104,7 @@ export default function Section5() {
                 <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
                   <Image
                     src={rating.foto}
-                    alt={rating.name}
+                    alt={`${rating.name}'s profile picture`}
                     width={80}
                     height={80}
                     className="w-full h-full object-cover"

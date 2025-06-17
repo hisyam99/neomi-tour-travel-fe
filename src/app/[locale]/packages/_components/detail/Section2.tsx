@@ -84,6 +84,8 @@ export default function Section2({ packageId }: Readonly<Props>) {
         alt={`${packageData.name} - 1`}
         fill
         className="object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+        quality={85}
       />
     </div>
   );
@@ -99,6 +101,8 @@ export default function Section2({ packageId }: Readonly<Props>) {
           alt={`${packageData.name} - 1`}
           fill
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          quality={85}
         />
       </button>
       <button
@@ -110,6 +114,8 @@ export default function Section2({ packageId }: Readonly<Props>) {
           alt={`${packageData.name} - 2`}
           fill
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+          quality={85}
         />
       </button>
     </div>
@@ -126,6 +132,8 @@ export default function Section2({ packageId }: Readonly<Props>) {
           alt={`${packageData.name} - 1`}
           fill
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+          quality={85}
         />
       </button>
       <div className="grid grid-rows-2 gap-4">
@@ -140,6 +148,8 @@ export default function Section2({ packageId }: Readonly<Props>) {
               alt={`${packageData.name} - ${index + 2}`}
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+              quality={85}
             />
           </button>
         ))}
@@ -158,6 +168,8 @@ export default function Section2({ packageId }: Readonly<Props>) {
           alt={`${packageData.name} - 1`}
           fill
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+          quality={85}
         />
       </button>
       <div className="grid grid-rows-2 gap-4">
@@ -172,6 +184,8 @@ export default function Section2({ packageId }: Readonly<Props>) {
               alt={`${packageData.name} - ${index + 2}`}
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+              quality={85}
             />
           </button>
         ))}

@@ -12,14 +12,18 @@ interface Props {
   images: string[];
   initialIndex: number;
   onClose: () => void;
+  altTexts?: string[];
 }
 
-export default function ImageViewer({ images, initialIndex, onClose }: Readonly<Props>) {
+export default function ImageViewer({ images, initialIndex, onClose, altTexts }: Readonly<Props>) {
   return (
     <Lightbox
       open={true}
       close={onClose}
-      slides={images.map(src => ({ src }))}
+      slides={images.map((src, index) => ({ 
+        src,
+        alt: altTexts?.[index] || `Image ${index + 1}`
+      }))}
       index={initialIndex}
       plugins={[Thumbnails, Zoom, Fullscreen]}
       carousel={{

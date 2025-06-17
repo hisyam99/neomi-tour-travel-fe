@@ -76,6 +76,9 @@ export default function Section3() {
                 width={400}
                 height={300}
                 className="object-cover w-full h-40 group-hover:scale-110 transition-transform duration-300" 
+                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                loading={idx < 8 ? "eager" : "lazy"}
+                quality={85}
               />
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="text-white font-semibold">{t("view")}</span>

@@ -40,6 +40,19 @@ export default function Section2({ blogId }: Props) {
     return extractedImages;
   };
 
+  // Function to ensure all images have alt attributes
+  const ensureImageAlts = (content: string) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = content;
+    const imgElements = tempDiv.getElementsByTagName("img");
+    Array.from(imgElements).forEach((img) => {
+      if (!img.alt) {
+        img.alt = "Blog content image";
+      }
+    });
+    return tempDiv.innerHTML;
+  };
+
   // Function to handle image click
   const handleImageClick = useCallback(
     (e: Event, imgSrc: string) => {
@@ -61,7 +74,8 @@ export default function Section2({ blogId }: Props) {
     if (data?.data) {
       const currentBlog = data.data.find((post) => post.slug === blogId);
       if (currentBlog?.content) {
-        const extractedImages = extractImagesFromContent(currentBlog.content);
+        const contentWithAlts = ensureImageAlts(currentBlog.content);
+        const extractedImages = extractImagesFromContent(contentWithAlts);
         setImages(extractedImages);
       }
     }
@@ -159,7 +173,7 @@ export default function Section2({ blogId }: Props) {
               <div
                 ref={contentRef}
                 dangerouslySetInnerHTML={{
-                  __html: currentBlog?.content || "",
+                  __html: currentBlog?.content ? ensureImageAlts(currentBlog.content) : "",
                 }}
               />
             </section>

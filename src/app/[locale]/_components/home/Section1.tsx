@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function Section1() {
   const t = useTranslations("Home.section1");
@@ -54,8 +55,22 @@ export default function Section1() {
           muted
           playsInline
           className="w-full h-full object-cover"
+          aria-label={t("videoAlt", { defaultValue: "Neomi Homestay and Tour promotional video" })}
         >
           <source src="/videos/videoplayback.mp4" type="video/mp4" />
+          <track
+            kind="captions"
+            src="/videos/videoplayback.vtt"
+            srcLang="en"
+            label="English"
+            default
+          />
+          <track
+            kind="descriptions"
+            src="/videos/videoplayback.vtt"
+            srcLang="en"
+            label="English"
+          />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -97,6 +112,15 @@ export default function Section1() {
           </button>
         </div>
       </div>
+      <Image 
+        src="/home/hero.jpg"
+        alt={t("imageAlt", { defaultValue: "Neomi Home" })}
+        fill
+        className="object-cover -z-10"
+        priority
+        sizes="100vw"
+        quality={85}
+      />
     </section>
   );
 }

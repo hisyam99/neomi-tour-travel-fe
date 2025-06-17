@@ -48,6 +48,7 @@ export default function Section1({ blogId }: Props) {
         className="object-cover"
         priority
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+        quality={85}
       />
       <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
       <div className="container mx-auto relative z-10 px-4 py-16">
