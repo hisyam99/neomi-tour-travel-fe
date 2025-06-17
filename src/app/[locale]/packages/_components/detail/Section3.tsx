@@ -136,7 +136,7 @@ export default function Section3({ packageData }: Props) {
         });
       });
     }
-  }, [handleImageClick]);
+  }, [handleImageClick, packageData, details]);
 
   return (
     <div className="md:col-span-2">
