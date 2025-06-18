@@ -92,12 +92,7 @@ export default function Section1() {
             <p className="mb-6" data-aos="fade-up" data-aos-delay="200">
               {t("description")}
             </p>
-            <div
-              className="flex flex-col sm:flex-row gap-4"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              {/* <div>disable fitur dibawah karena tidak jadi digunakan</div>
+            {/* <div>disable fitur dibawah karena tidak jadi digunakan</div>
               <button
                 className="btn btn-outline btn-primary flex items-center gap-2 hover:bg-primary hover:text-primary-content transition-colors"
                 onClick={handleVideoClick}
@@ -106,15 +101,14 @@ export default function Section1() {
                 <span className="w-3 h-3 rounded-full bg-primary"></span>
                 {t("playVideo")}
               </button> */}
-              <button
-                className="btn btn-outline btn-primary flex items-center gap-2 hover:bg-primary hover:text-primary-content transition-colors"
-                onClick={handleYouTubeClick}
-                aria-label={t("playVideo")}
-              >
-                <span className="w-3 h-3 rounded-full bg-primary"></span>
-                {t("playVideo")}
-              </button>
-            </div>
+            <button
+              className="btn btn-outline btn-primary flex items-center gap-2 hover:bg-primary hover:text-primary-content transition-colors"
+              onClick={handleYouTubeClick}
+              aria-label={t("playVideo")}
+            >
+              <span className="w-3 h-3 rounded-full bg-primary"></span>
+              {t("playVideo")}
+            </button>
           </div>
         </div>
       </section>
