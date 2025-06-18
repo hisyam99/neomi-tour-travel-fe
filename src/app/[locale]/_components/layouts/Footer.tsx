@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useTranslations } from "next-intl";
 import { socialMediaService } from "../../../../services/socialMedia";
 import { useApi } from "@/hooks/useApi";
@@ -11,10 +11,23 @@ export default function Footer() {
   const t = useTranslations("Footer");
   const fetchSocialMedia = useCallback(() => socialMediaService.getAll(), []);
   const { data, loading, error, execute } = useApi<ApiResponse<SocialMedia[]>, []>(fetchSocialMedia);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     execute();
   }, [execute]);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    
+    window.addEventListener('resize', checkMobile);
+   
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   if (loading) {
     return (
@@ -128,7 +141,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        
+        {/* Mobile-only spacer to prevent floating WhatsApp button from covering content */}
+        {isMobile && <div style={{ height: '80px', width: '100%' }}></div>}
       </div>
     </footer>
   );
-} 
+}
