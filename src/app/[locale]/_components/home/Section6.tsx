@@ -27,6 +27,85 @@ export default function Section6() {
       carouselRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
+  // Helper function to process content HTML for better formatting
+  const processContentHtml = (htmlContent: string) => {
+    if (!htmlContent) return "";
+    
+    // Create a temporary DOM element to manipulate the HTML
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlContent;
+    
+    // Process images and figures to restrict their size
+    const figures = tempDiv.querySelectorAll("figure");
+    figures.forEach((figure) => {
+      // Add responsive image classes
+      figure.classList.add("mx-auto", "my-6");
+      figure.setAttribute("style", "max-width: 100%; margin: 1.5rem auto;");
+      
+      // Process all images inside figures
+      const images = figure.querySelectorAll("img");
+      images.forEach((img) => {
+        // Make images responsive
+        img.classList.add("mx-auto", "h-auto", "rounded-lg");
+        img.setAttribute("style", "max-width: 100%; height: auto; max-height: 500px; object-fit: contain;");
+      });
+      
+      // Process figcaptions
+      const figcaptions = figure.querySelectorAll("figcaption");
+      figcaptions.forEach((caption) => {
+        caption.classList.add("text-center", "text-sm", "mt-2", "text-base-content/70");
+      });
+    });
+    
+    // Process standalone images (not in figures)
+    const images = tempDiv.querySelectorAll("img:not(figure img)");
+    images.forEach((img) => {
+      img.classList.add("mx-auto", "h-auto", "my-4", "rounded-lg");
+      img.setAttribute("style", "max-width: 100%; height: auto; max-height: 500px; object-fit: contain;");
+    });
+    
+    // Process Trix-specific attachments
+    const attachments = tempDiv.querySelectorAll("[data-trix-attachment]");
+    attachments.forEach((attachment) => {
+      attachment.classList.add("mx-auto", "my-6");
+      attachment.setAttribute("style", "max-width: 100%; margin: 1.5rem auto;");
+      
+      // Find images inside attachments
+      const attachmentImages = attachment.querySelectorAll("img");
+      attachmentImages.forEach((img) => {
+        img.classList.add("mx-auto", "h-auto", "rounded-lg");
+        img.setAttribute("style", "max-width: 100%; height: auto; max-height: 500px; object-fit: contain;");
+      });
+    });
+    
+    // Fix indentation and spacing
+    // Clean list indentation
+    const listItems = tempDiv.querySelectorAll("li");
+    listItems.forEach((li) => {
+      li.classList.add("ml-6");
+    });
+    
+    // Fix heading spacing
+    const h2Elements = tempDiv.querySelectorAll("h2");
+    h2Elements.forEach((h2) => {
+      h2.classList.add("mt-8", "mb-4");
+    });
+    
+    const h3Elements = tempDiv.querySelectorAll("h3");
+    h3Elements.forEach((h3) => {
+      h3.classList.add("mt-6", "mb-3");
+    });
+    
+    // Remove excessive whitespace at start of paragraphs
+    const paragraphs = tempDiv.querySelectorAll("p");
+    paragraphs.forEach((p) => {
+      if (p.innerHTML.startsWith("&nbsp;")) {
+        p.innerHTML = p.innerHTML.replace(/^(&nbsp;)+/, "");
+      }
+    });
+    
+    return tempDiv.innerHTML;
+  };
 
   if (loading) {
     return (
@@ -116,7 +195,7 @@ export default function Section6() {
               <div className="font-semibold mb-1">{post.title}</div>
               <div 
                 className="text-sm text-base-content/80 mb-2 line-clamp-2"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: processContentHtml(post.content) }}
               />
               <div className="italic font-semibold text-primary text-sm hover:underline">
                 {commonT("readMore")} &gt;
@@ -127,4 +206,4 @@ export default function Section6() {
       </div>
     </section>
   );
-} 
+}
