@@ -21,7 +21,7 @@ export default function Section2() {
           {/* Right: Profile */}
           <div className="w-full md:w-64 flex flex-col items-center bg-base-100 rounded-xl p-6 shadow-sm" data-aos="zoom-in-up lg:fade-left" data-aos-delay="300">
             <Image 
-              src="https://picsum.photos/100" 
+              src="/icon.png" 
               alt={t("team1.name")} 
               width={96}
               height={96}
