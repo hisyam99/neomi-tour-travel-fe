@@ -12,7 +12,7 @@ export default function Section5({ packageData }: Props) {
 
   return (
     <div className="md:col-span-1">
-      <div className="bg-base-200 p-6 rounded-xl sticky top-4">
+      <div className="bg-base-200 p-6 rounded-xl sticky top-20">
         <h2 className="text-xl font-semibold mb-4">Package Information</h2>
         <div className="space-y-4">
           <div>
