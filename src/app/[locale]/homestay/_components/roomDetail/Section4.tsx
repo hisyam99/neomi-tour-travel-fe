@@ -237,7 +237,7 @@ export default function Section4({ roomId }: Props) {
             </div>
             <div className="divider"></div>
             <div className="flex justify-between items-center">
-              <span className="font-semibold">Total Price:</span>
+              <span className="font-semibold">Price:</span>
               <span className="text-xl font-bold">
                 Rp {parseInt(details.price).toLocaleString()}
               </span>
