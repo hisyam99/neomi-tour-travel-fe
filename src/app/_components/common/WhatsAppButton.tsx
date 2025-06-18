@@ -1,16 +1,15 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
-import { socialMediaService } from '../../../services/socialMedia';
-import { SocialMedia, ApiResponse } from '@/types';
+import React, { useState, useEffect } from "react";
+import { FaWhatsapp } from "react-icons/fa";
+import { socialMediaService } from "../../../services/socialMedia";
 
 interface WhatsAppButtonProps {
   message?: string;
 }
 
-const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({ 
-  message = 'Hello, I would like to inquire about your services.' 
+const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
+  message = "Hello, I would like to inquire about your services.",
 }) => {
   const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -24,7 +23,7 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
           setWhatsappUrl(response.data[0].whatsapp);
         }
       } catch (error) {
-        console.error('Error fetching WhatsApp contact:', error);
+        console.error("Error fetching WhatsApp contact:", error);
       } finally {
         setLoading(false);
       }
@@ -33,16 +32,23 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
     fetchSocialMedia();
   }, []);
 
+  const buildWhatsAppUrl = (baseUrl: string, messageText: string): string => {
+    if (baseUrl.includes("?text=")) {
+      return baseUrl;
+    }
+
+    const separator = baseUrl.includes("?") ? "&" : "?";
+    return `${baseUrl}${separator}text=${encodeURIComponent(messageText)}`;
+  };
+
   if (loading || !whatsappUrl) {
     return null;
   }
-  
-  const finalUrl = whatsappUrl.includes('?text=') 
-    ? whatsappUrl 
-    : `${whatsappUrl}${whatsappUrl.includes('?') ? '&' : '?'}text=${encodeURIComponent(message)}`;
-  
+
+  const finalUrl = buildWhatsAppUrl(whatsappUrl, message);
+
   return (
-    <a 
+    <a
       href={finalUrl}
       target="_blank"
       rel="noopener noreferrer"
