@@ -15,7 +15,7 @@ export default function Section4({ packageData }: Props) {
   const getEmbedUrl = (url: string) => {
     try {
       // If it's already an embed URL, return as is
-      if (url.includes('embed')) {
+      if (url.includes("embed")) {
         return url;
       }
 
@@ -29,10 +29,12 @@ export default function Section4({ packageData }: Props) {
       const urlObj = new URL(url);
       const path = urlObj.pathname;
       const query = urlObj.search;
-      
-      return `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(path + query)}`;
+
+      return `https://www.google.com/maps/embed/v1/place?key=${
+        process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+      }&q=${encodeURIComponent(path + query)}`;
     } catch (error) {
-      console.error('Error converting map URL:', error);
+      console.error("Error converting map URL:", error);
       return url;
     }
   };
@@ -64,4 +66,4 @@ export default function Section4({ packageData }: Props) {
       </div>
     </div>
   );
-} 
+}

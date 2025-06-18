@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
 interface UseApiResponse<T, P extends unknown[]> {
   data: T | null;
@@ -22,7 +22,7 @@ export function useApi<T, P extends unknown[]>(
         const result = await apiFunction(...args);
         setData(result);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('An error occurred'));
+        setError(err instanceof Error ? err : new Error("An error occurred"));
       } finally {
         setLoading(false);
       }
@@ -31,4 +31,4 @@ export function useApi<T, P extends unknown[]>(
   );
 
   return { data, loading, error, execute };
-} 
+}

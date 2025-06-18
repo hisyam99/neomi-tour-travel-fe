@@ -24,8 +24,8 @@ const ThemeChange: React.FC<ThemeChangeProps> = ({ isInDrawer = false }) => {
         setIsScrolled(scrollPosition > 0);
       };
 
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
     }
   }, []);
 
@@ -50,25 +50,25 @@ const ThemeChange: React.FC<ThemeChangeProps> = ({ isInDrawer = false }) => {
 
   const shouldUseLightText = () => {
     const lightTextPaths = [
-      '/',
-      '/homestay',
-      '/packages',
-      '/gallery',
-      '/blog',
-      '/about'
+      "/",
+      "/homestay",
+      "/packages",
+      "/gallery",
+      "/blog",
+      "/about",
     ];
-    
-    return !isScrolled && (
-      lightTextPaths.includes(pathname) || 
-      pathname.startsWith('/blog/')
+
+    return (
+      !isScrolled &&
+      (lightTextPaths.includes(pathname) || pathname.startsWith("/blog/"))
     );
   };
 
   const getTextColor = () => {
     if (isScrolled) {
-      return 'text-base-content';
+      return "text-base-content";
     }
-    return shouldUseLightText() ? 'text-neutral-content' : 'text-base-content';
+    return shouldUseLightText() ? "text-neutral-content" : "text-base-content";
   };
 
   const getButtonClass = () => {
@@ -101,8 +101,8 @@ const ThemeChange: React.FC<ThemeChangeProps> = ({ isInDrawer = false }) => {
             <button
               onClick={() => handleThemeChange(themeOption)}
               className={`btn btn-ghost btn-sm btn-block justify-start transition-all duration-300 ${
-                currentTheme === themeOption 
-                  ? "font-bold text-primary" 
+                currentTheme === themeOption
+                  ? "font-bold text-primary"
                   : "text-base-content hover:text-primary"
               }`}
               aria-label={`Set theme to ${themeOption}`}

@@ -116,4 +116,4 @@ export interface ApiResponse<T> {
   };
   min_price?: string;
   max_price?: string;
-} 
+}

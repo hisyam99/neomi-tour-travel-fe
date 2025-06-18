@@ -10,7 +10,10 @@ import { FaFacebookF, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 export default function Footer() {
   const t = useTranslations("Footer");
   const fetchSocialMedia = useCallback(() => socialMediaService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<SocialMedia[]>, []>(fetchSocialMedia);
+  const { data, loading, error, execute } = useApi<
+    ApiResponse<SocialMedia[]>,
+    []
+  >(fetchSocialMedia);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -21,12 +24,12 @@ export default function Footer() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    
+
     checkMobile();
-    
-    window.addEventListener('resize', checkMobile);
-   
-    return () => window.removeEventListener('resize', checkMobile);
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   if (loading) {
@@ -43,7 +46,10 @@ export default function Footer() {
                 <div className="h-5 bg-base-100 rounded w-1/4 mb-3 animate-pulse"></div>
                 <div className="flex gap-3">
                   {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="w-10 h-10 bg-base-100 rounded-full animate-pulse"></div>
+                    <div
+                      key={i}
+                      className="w-10 h-10 bg-base-100 rounded-full animate-pulse"
+                    ></div>
                   ))}
                 </div>
               </div>
@@ -52,7 +58,10 @@ export default function Footer() {
               <div className="h-5 bg-base-100 rounded w-1/4 mb-3 animate-pulse"></div>
               <div className="space-y-2">
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="h-4 bg-base-100 rounded w-1/2 animate-pulse"></div>
+                  <div
+                    key={i}
+                    className="h-4 bg-base-100 rounded w-1/2 animate-pulse"
+                  ></div>
                 ))}
               </div>
             </div>
@@ -63,7 +72,11 @@ export default function Footer() {
   }
 
   if (error) {
-    return <div className="text-error">Error loading social media: {error.message}</div>;
+    return (
+      <div className="text-error">
+        Error loading social media: {error.message}
+      </div>
+    );
   }
 
   const socialMedia = data?.data[0];
@@ -84,44 +97,44 @@ export default function Footer() {
               <div className="font-semibold mb-3">{t("connect")}</div>
               <div className="flex gap-3">
                 {socialMedia?.facebook && (
-                  <a 
-                    href={socialMedia.facebook} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl" 
+                  <a
+                    href={socialMedia.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl"
                     aria-label="Facebook"
                   >
                     <FaFacebookF />
                   </a>
                 )}
                 {socialMedia?.instagram && (
-                  <a 
-                    href={socialMedia.instagram} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl" 
+                  <a
+                    href={socialMedia.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl"
                     aria-label="Instagram"
                   >
                     <FaInstagram />
                   </a>
                 )}
                 {socialMedia?.tiktok && (
-                  <a 
-                    href={socialMedia.tiktok} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl" 
+                  <a
+                    href={socialMedia.tiktok}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl"
                     aria-label="TikTok"
                   >
                     <FaTiktok />
                   </a>
                 )}
                 {socialMedia?.whatsapp && (
-                  <a 
+                  <a
                     href={socialMedia.whatsapp}
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-circle bg-neutral/70 border-none text-white text-xl"
                     aria-label="WhatsApp"
                   >
                     <FaWhatsapp />
@@ -137,13 +150,18 @@ export default function Footer() {
               <div>{t("address")}</div>
               <div>{t("phone1")}</div>
               {/* <div>{t("phone2")}</div> */}
-              <a href={`mailto:${t("email")}`} className="underline text-base-content/80 block">{t("email")}</a>
+              <a
+                href={`mailto:${t("email")}`}
+                className="underline text-base-content/80 block"
+              >
+                {t("email")}
+              </a>
             </div>
           </div>
         </div>
-        
+
         {/* Mobile-only spacer to prevent floating WhatsApp button from covering content */}
-        {isMobile && <div style={{ height: '80px', width: '100%' }}></div>}
+        {isMobile && <div style={{ height: "80px", width: "100%" }}></div>}
       </div>
     </footer>
   );

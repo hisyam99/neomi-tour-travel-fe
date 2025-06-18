@@ -7,4 +7,4 @@ interface Props {
 
 export default function Section6({ packageId }: Props) {
   return <div className="py-12" />;
-} 
+}

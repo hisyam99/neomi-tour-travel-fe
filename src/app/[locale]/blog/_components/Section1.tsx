@@ -27,16 +27,27 @@ export default function Section1() {
         />
         <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
         <div className="container mx-auto relative z-10 px-4">
-          <div className="max-w-xl text-left text-neutral-content py-24" data-aos="fade-up">
-            <h1 className="mb-6 text-4xl md:text-5xl italic" data-aos="fade-up" data-aos-delay="100">
+          <div
+            className="max-w-xl text-left text-neutral-content py-24"
+            data-aos="fade-up"
+          >
+            <h1
+              className="mb-6 text-4xl md:text-5xl italic"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               {t("title")}
             </h1>
-            <p className="mb-8 text-base md:text-lg" data-aos="fade-up" data-aos-delay="200">
+            <p
+              className="mb-8 text-base md:text-lg"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               {t("description")}
             </p>
-            <button 
-              className="btn btn-outline btn-primary flex items-center gap-2 hover:bg-primary hover:text-primary-content transition-colors" 
-              data-aos="fade-up" 
+            <button
+              className="btn btn-outline btn-primary flex items-center gap-2 hover:bg-primary hover:text-primary-content transition-colors"
+              data-aos="fade-up"
               data-aos-delay="300"
               onClick={handleVideoClick}
               aria-label={t("playVideo")}
@@ -48,11 +59,11 @@ export default function Section1() {
         </div>
       </div>
 
-      <YouTubeModal 
-        isOpen={isOpen} 
-        onClose={closeModal} 
-        section={currentSection || "blog"} 
+      <YouTubeModal
+        isOpen={isOpen}
+        onClose={closeModal}
+        section={currentSection || "blog"}
       />
     </>
   );
-} 
+}

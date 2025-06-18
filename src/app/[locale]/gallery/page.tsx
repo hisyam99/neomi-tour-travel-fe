@@ -10,4 +10,4 @@ export default function GalleryPage() {
       <Section3 />
     </main>
   );
-} 
+}

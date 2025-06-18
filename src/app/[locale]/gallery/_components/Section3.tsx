@@ -18,7 +18,10 @@ export default function Section3() {
   const t = useTranslations("Gallery.section3");
   const [index, setIndex] = useState(-1);
   const fetchPackages = useCallback(() => tourAndTravelService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel[]>, []>(fetchPackages);
+  const { data, loading, error, execute } = useApi<
+    ApiResponse<TourAndTravel[]>,
+    []
+  >(fetchPackages);
 
   useEffect(() => {
     execute();
@@ -30,7 +33,10 @@ export default function Section3() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {Array.from({ length: 8 }).map(() => (
-              <div key={`skeleton-${crypto.randomUUID()}`} className="animate-pulse">
+              <div
+                key={`skeleton-${crypto.randomUUID()}`}
+                className="animate-pulse"
+              >
                 <div className="bg-base-200 rounded-xl h-40"></div>
               </div>
             ))}
@@ -41,7 +47,9 @@ export default function Section3() {
   }
 
   if (error) {
-    return <div className="text-error">Error loading gallery: {error.message}</div>;
+    return (
+      <div className="text-error">Error loading gallery: {error.message}</div>
+    );
   }
 
   if (!data?.data || data.data.length === 0) {
@@ -49,11 +57,11 @@ export default function Section3() {
   }
 
   // Collect all photos from all packages
-  const allPhotos = data.data.flatMap(pkg => 
-    pkg.details.flatMap(detail => 
-      detail.photos.map(photo => ({
+  const allPhotos = data.data.flatMap((pkg) =>
+    pkg.details.flatMap((detail) =>
+      detail.photos.map((photo) => ({
         src: photo.url,
-        alt: pkg.name_package
+        alt: pkg.name_package,
       }))
     )
   );
@@ -70,12 +78,12 @@ export default function Section3() {
               data-aos="zoom-in"
               data-aos-delay={100 * (idx % 4)}
             >
-              <Image 
-                src={img.src} 
-                alt={img.alt} 
+              <Image
+                src={img.src}
+                alt={img.alt}
                 width={400}
                 height={300}
-                className="object-cover w-full h-40 group-hover:scale-110 transition-transform duration-300" 
+                className="object-cover w-full h-40 group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="text-white font-semibold">{t("view")}</span>
@@ -84,11 +92,21 @@ export default function Section3() {
           ))}
         </div>
         {/* Navigation buttons */}
-        <div className="flex justify-center gap-4 mt-8" data-aos="fade-up" data-aos-delay="400">
-          <button className="btn btn-circle bg-base-200 border-none" aria-label={t("previous")}>
+        <div
+          className="flex justify-center gap-4 mt-8"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          <button
+            className="btn btn-circle bg-base-200 border-none"
+            aria-label={t("previous")}
+          >
             <FaChevronLeft className="text-xl" />
           </button>
-          <button className="btn btn-circle bg-base-200 border-none" aria-label={t("next")}>
+          <button
+            className="btn btn-circle bg-base-200 border-none"
+            aria-label={t("next")}
+          >
             <FaChevronRight className="text-xl" />
           </button>
         </div>
@@ -141,4 +159,4 @@ export default function Section3() {
       />
     </section>
   );
-} 
+}

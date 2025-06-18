@@ -8,11 +8,15 @@ export default function Section2() {
     <section className="bg-base-100 py-10">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center" data-aos="fade-up">
-          <p className="text-base-content/80" data-aos="fade-up" data-aos-delay="100">
+          <p
+            className="text-base-content/80"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             {t("description")}
           </p>
         </div>
       </div>
     </section>
   );
-} 
+}

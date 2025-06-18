@@ -29,4 +29,4 @@ export const homeDestinations = [
     title: "City Tour Malang",
     location: "Malang, Jawa Timur",
   },
-]; 
+];

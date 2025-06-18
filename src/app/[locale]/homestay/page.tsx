@@ -16,7 +16,9 @@ export default function HomestayPage() {
   });
 
   const fetchHomestays = useCallback(() => homestaysService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<Homestay[]>, []>(fetchHomestays);
+  const { data, loading, error, execute } = useApi<ApiResponse<Homestay[]>, []>(
+    fetchHomestays
+  );
 
   useEffect(() => {
     execute();
@@ -25,9 +27,9 @@ export default function HomestayPage() {
   // Update price range based on API response
   useEffect(() => {
     if (data?.min_price && data?.max_price) {
-      setFilters(prev => ({
+      setFilters((prev) => ({
         ...prev,
-        priceRange: [Number(data.min_price), Number(data.max_price)]
+        priceRange: [Number(data.min_price), Number(data.max_price)],
       }));
     }
   }, [data?.min_price, data?.max_price]);
@@ -36,11 +38,13 @@ export default function HomestayPage() {
     setFilters(newFilters);
   };
 
-  const filteredHomestays = data?.data?.filter(homestay => {
+  const filteredHomestays = data?.data?.filter((homestay) => {
     // Keyword filter
     const matchesKeyword = filters.keyword
       ? homestay.name.toLowerCase().includes(filters.keyword.toLowerCase()) ||
-        homestay.description.toLowerCase().includes(filters.keyword.toLowerCase())
+        homestay.description
+          .toLowerCase()
+          .includes(filters.keyword.toLowerCase())
       : true;
 
     // Price filter
@@ -64,10 +68,14 @@ export default function HomestayPage() {
             </div>
           </div>
           <div className="w-full lg:w-3/4">
-            <Section4 homestays={filteredHomestays || []} loading={loading} error={error} />
+            <Section4
+              homestays={filteredHomestays || []}
+              loading={loading}
+              error={error}
+            />
           </div>
         </div>
       </div>
     </main>
   );
-} 
+}

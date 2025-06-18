@@ -13,18 +13,16 @@ const POSTS_PER_PAGE = 6;
 // Helper function to strip HTML and get plain text
 const stripHtml = (html: string) => {
   // Use DOMParser instead of creating an element (works both client and server-side)
-  if (typeof window !== 'undefined') {
-    const tmp = document.createElement('DIV');
+  if (typeof window !== "undefined") {
+    const tmp = document.createElement("DIV");
     tmp.innerHTML = html;
     // Replace multiple consecutive spaces, newlines, and tabs with a single space
-    return (tmp.textContent || tmp.innerText || '')
-      .replace(/\s+/g, ' ')
-      .trim();
+    return (tmp.textContent || tmp.innerText || "").replace(/\s+/g, " ").trim();
   } else {
     // Simple regex fallback for server-side
     return html
-      .replace(/<[^>]+>/g, ' ')
-      .replace(/\s+/g, ' ')
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
       .trim();
   }
 };
@@ -33,7 +31,9 @@ export default function Section2() {
   const t = useTranslations("Blog.section2");
   const [currentPage, setCurrentPage] = useState(1);
   const fetchBlogs = useCallback(() => blogService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<Blog[]>, []>(fetchBlogs);
+  const { data, loading, error, execute } = useApi<ApiResponse<Blog[]>, []>(
+    fetchBlogs
+  );
 
   useEffect(() => {
     execute();
@@ -43,7 +43,10 @@ export default function Section2() {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} className="bg-base-200 rounded-xl p-6 shadow animate-pulse">
+          <div
+            key={i}
+            className="bg-base-200 rounded-xl p-6 shadow animate-pulse"
+          >
             <div className="h-48 bg-base-300 rounded-lg mb-4"></div>
             <div className="h-6 bg-base-300 rounded w-3/4 mb-2"></div>
             <div className="h-4 bg-base-300 rounded w-1/2 mb-4"></div>
@@ -56,7 +59,11 @@ export default function Section2() {
   }
 
   if (error) {
-    return <div className="text-error">Error loading blog posts: {error.message}</div>;
+    return (
+      <div className="text-error">
+        Error loading blog posts: {error.message}
+      </div>
+    );
   }
 
   if (!data?.data || data.data.length === 0) {
@@ -70,7 +77,7 @@ export default function Section2() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -79,12 +86,12 @@ export default function Section2() {
         {currentPosts.map((post) => (
           <Link
             href={`/blog/${post.slug}`}
-            key={post.id} 
-            className="block bg-base-200 rounded-xl p-6 shadow hover:shadow-lg transition-shadow" 
+            key={post.id}
+            className="block bg-base-200 rounded-xl p-6 shadow hover:shadow-lg transition-shadow"
             data-aos="fade-up"
           >
             <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
-              <Image 
+              <Image
                 src={post.thumbnail || "https://picsum.photos/400/300"}
                 alt={post.title}
                 fill
@@ -95,13 +102,13 @@ export default function Section2() {
             <div className="text-sm text-base-content/70 mb-3">
               {new Date(post.created_at).toLocaleDateString()}
             </div>
-            <h3 className="text-xl font-semibold mb-3 line-clamp-2">{post.title}</h3>
+            <h3 className="text-xl font-semibold mb-3 line-clamp-2">
+              {post.title}
+            </h3>
             <div className="text-base-content/70 mb-6 line-clamp-3">
               {stripHtml(post.content)}
             </div>
-            <div className="btn btn-primary w-full">
-              {t("readMore")}
-            </div>
+            <div className="btn btn-primary w-full">{t("readMore")}</div>
           </Link>
         ))}
       </div>
@@ -119,7 +126,9 @@ export default function Section2() {
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
-                className={`join-item btn ${currentPage === page ? 'btn-active' : ''}`}
+                className={`join-item btn ${
+                  currentPage === page ? "btn-active" : ""
+                }`}
                 onClick={() => handlePageChange(page)}
               >
                 {page}

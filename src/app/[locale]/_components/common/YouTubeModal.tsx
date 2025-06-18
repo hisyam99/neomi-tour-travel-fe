@@ -9,7 +9,11 @@ interface YouTubeModalProps {
   section: VideoSection;
 }
 
-export default function YouTubeModal({ isOpen, onClose, section }: YouTubeModalProps) {
+export default function YouTubeModal({
+  isOpen,
+  onClose,
+  section,
+}: YouTubeModalProps) {
   const videoConfig = YOUTUBE_VIDEOS[section];
 
   // Handle escape key to close modal
@@ -39,16 +43,39 @@ export default function YouTubeModal({ isOpen, onClose, section }: YouTubeModalP
     }
   };
 
+  // Handle backdrop keyboard events
+  const handleBackdropKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
+      onClose();
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
-    <dialog 
-      className="modal modal-open" 
-      onClick={handleBackdropClick}
+    <dialog
+      className="modal modal-open"
       aria-labelledby="youtube-modal-title"
       aria-describedby="youtube-modal-description"
     >
-      <div className="modal-box w-11/12 max-w-4xl p-0 bg-transparent shadow-none">
+      <button
+        className="modal-backdrop"
+        onClick={handleBackdropClick}
+        onKeyDown={handleBackdropKeyDown}
+        aria-label="Close modal"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "rgba(0, 0, 0, 0.5)",
+          border: "none",
+          cursor: "pointer",
+          zIndex: 40
+        }}
+      />
+      <div className="modal-box w-11/12 max-w-4xl p-0 bg-transparent shadow-none relative z-50">
         <div className="relative w-full aspect-video bg-base-100 rounded-lg overflow-hidden">
           {/* Close button */}
           <button
@@ -86,4 +113,4 @@ export default function YouTubeModal({ isOpen, onClose, section }: YouTubeModalP
       </div>
     </dialog>
   );
-} 
+}

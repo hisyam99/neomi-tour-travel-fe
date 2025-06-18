@@ -1,12 +1,12 @@
 "use client";
 
-import React from 'react';
-import Lightbox from 'yet-another-react-lightbox';
-import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
-import Zoom from 'yet-another-react-lightbox/plugins/zoom';
-import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
-import 'yet-another-react-lightbox/styles.css';
-import 'yet-another-react-lightbox/plugins/thumbnails.css';
+import React from "react";
+import Lightbox from "yet-another-react-lightbox";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 interface Props {
   images: string[];
@@ -14,20 +14,24 @@ interface Props {
   onClose: () => void;
 }
 
-export default function ImageViewer({ images, initialIndex, onClose }: Readonly<Props>) {
+export default function ImageViewer({
+  images,
+  initialIndex,
+  onClose,
+}: Readonly<Props>) {
   return (
     <Lightbox
       open={true}
       close={onClose}
-      slides={images.map(src => ({ src }))}
+      slides={images.map((src) => ({ src }))}
       index={initialIndex}
       plugins={[Thumbnails, Zoom, Fullscreen]}
       carousel={{
-        padding: '16px',
-        spacing: '16px',
+        padding: "16px",
+        spacing: "16px",
       }}
       thumbnails={{
-        position: 'bottom',
+        position: "bottom",
         width: 120,
         height: 80,
         padding: 4,
@@ -47,14 +51,14 @@ export default function ImageViewer({ images, initialIndex, onClose }: Readonly<
       }}
       styles={{
         container: {
-          backgroundColor: 'rgba(0, 0, 0, 0.85)',
-          backdropFilter: 'blur(8px)',
+          backgroundColor: "rgba(0, 0, 0, 0.85)",
+          backdropFilter: "blur(8px)",
         },
         thumbnailsContainer: {
-          backgroundColor: 'rgba(0, 0, 0, 0.85)',
-          backdropFilter: 'blur(4px)',
+          backgroundColor: "rgba(0, 0, 0, 0.85)",
+          backdropFilter: "blur(4px)",
         },
       }}
     />
   );
-} 
+}

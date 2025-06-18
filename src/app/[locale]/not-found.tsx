@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
-import Image from 'next/image';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React, { useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import Image from "next/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function NotFound() {
-  const t = useTranslations('NotFound');
+  const t = useTranslations("NotFound");
 
   useEffect(() => {
     AOS.init({
@@ -33,29 +33,44 @@ export default function NotFound() {
           </div>
 
           {/* Error Message */}
-          <h1 className="text-6xl font-bold mb-4 text-primary" data-aos="fade-up">
+          <h1
+            className="text-6xl font-bold mb-4 text-primary"
+            data-aos="fade-up"
+          >
             404
           </h1>
-          <h2 className="text-3xl font-semibold mb-6" data-aos="fade-up" data-aos-delay="100">
-            {t('title')}
+          <h2
+            className="text-3xl font-semibold mb-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            {t("title")}
           </h2>
-          <p className="text-base-content/70 max-w-md mb-8" data-aos="fade-up" data-aos-delay="200">
-            {t('description')}
+          <p
+            className="text-base-content/70 max-w-md mb-8"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            {t("description")}
           </p>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="300">
-            <Link 
+          <div
+            className="flex flex-col sm:flex-row gap-4"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <Link
               href="/"
               className="btn btn-primary shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              {t('backHome')}
+              {t("backHome")}
             </Link>
-            <button 
+            <button
               onClick={() => window.history.back()}
               className="btn btn-outline btn-primary"
             >
-              {t('goBack')}
+              {t("goBack")}
             </button>
           </div>
 
@@ -68,4 +83,4 @@ export default function NotFound() {
       </div>
     </div>
   );
-} 
+}

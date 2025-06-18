@@ -12,7 +12,9 @@ export default function Section5() {
   const t = useTranslations("Home.section5");
   const carouselRef = useRef<HTMLDivElement>(null);
   const fetchRatings = useCallback(() => ratingService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<Rating[]>, []>(fetchRatings);
+  const { data, loading, error, execute } = useApi<ApiResponse<Rating[]>, []>(
+    fetchRatings
+  );
 
   useEffect(() => {
     execute();
@@ -21,7 +23,8 @@ export default function Section5() {
   const scroll = (dir: "left" | "right") => {
     if (carouselRef.current) {
       const { scrollLeft, clientWidth } = carouselRef.current;
-      const scrollTo = dir === "left" ? scrollLeft - clientWidth : scrollLeft + clientWidth;
+      const scrollTo =
+        dir === "left" ? scrollLeft - clientWidth : scrollLeft + clientWidth;
       carouselRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
@@ -39,7 +42,10 @@ export default function Section5() {
           </div>
           <div className="flex gap-8 overflow-x-auto">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="flex-shrink-0 w-full md:w-1/3 max-w-md mx-auto bg-transparent">
+              <div
+                key={i}
+                className="flex-shrink-0 w-full md:w-1/3 max-w-md mx-auto bg-transparent"
+              >
                 <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left px-4 gap-4 md:gap-6">
                   <div className="w-20 h-20 bg-base-100 rounded-full animate-pulse"></div>
                   <div className="flex-1">
@@ -57,7 +63,11 @@ export default function Section5() {
   }
 
   if (error) {
-    return <div className="text-error">Error loading testimonials: {error.message}</div>;
+    return (
+      <div className="text-error">
+        Error loading testimonials: {error.message}
+      </div>
+    );
   }
 
   if (!data?.data || data.data.length === 0) {
@@ -67,13 +77,30 @@ export default function Section5() {
   return (
     <section className="bg-base-200 py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-center text-2xl md:text-3xl font-normal italic mb-12" data-aos="fade-up">{t("title")}</h2>
-        <div className="flex justify-end mb-6" data-aos="fade-up" data-aos-delay="100">
+        <h2
+          className="text-center text-2xl md:text-3xl font-normal italic mb-12"
+          data-aos="fade-up"
+        >
+          {t("title")}
+        </h2>
+        <div
+          className="flex justify-end mb-6"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <div className="flex gap-4">
-            <button className="btn btn-circle bg-base-100 border-none" onClick={() => scroll("left")} aria-label="Previous">
+            <button
+              className="btn btn-circle bg-base-100 border-none"
+              onClick={() => scroll("left")}
+              aria-label="Previous"
+            >
               <FaChevronLeft className="text-xl" />
             </button>
-            <button className="btn btn-circle bg-base-100 border-none" onClick={() => scroll("right")} aria-label="Next">
+            <button
+              className="btn btn-circle bg-base-100 border-none"
+              onClick={() => scroll("right")}
+              aria-label="Next"
+            >
               <FaChevronRight className="text-xl" />
             </button>
           </div>
@@ -81,21 +108,21 @@ export default function Section5() {
         <div
           ref={carouselRef}
           className="flex gap-8 overflow-x-auto scrollbar-hide"
-          style={{ 
+          style={{
             scrollSnapType: "x mandatory",
             scrollbarWidth: "none",
             msOverflowStyle: "none",
             WebkitOverflowScrolling: "touch",
-            pointerEvents: "none"
+            pointerEvents: "none",
           }}
         >
           {data.data.map((rating, index) => (
             <div
               key={rating.id}
               className="flex-shrink-0 w-full md:w-1/3 max-w-md mx-auto bg-transparent"
-              style={{ 
+              style={{
                 scrollSnapAlign: "start",
-                pointerEvents: "auto"
+                pointerEvents: "auto",
               }}
               data-aos="fade-up"
               data-aos-delay={100 * (index + 1)}
@@ -111,9 +138,15 @@ export default function Section5() {
                   />
                 </div>
                 <div className="flex-1">
-                  <div className="text-5xl text-base-content/40 leading-none mb-2">&ldquo;</div>
-                  <blockquote className="italic text-base-content/70 text-base mb-4">{rating.description}</blockquote>
-                  <div className="tracking-widest text-xs font-semibold text-base-content/80">{rating.name}</div>
+                  <div className="text-5xl text-base-content/40 leading-none mb-2">
+                    &ldquo;
+                  </div>
+                  <blockquote className="italic text-base-content/70 text-base mb-4">
+                    {rating.description}
+                  </blockquote>
+                  <div className="tracking-widest text-xs font-semibold text-base-content/80">
+                    {rating.name}
+                  </div>
                 </div>
               </div>
             </div>
@@ -122,4 +155,4 @@ export default function Section5() {
       </div>
     </section>
   );
-} 
+}

@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { tourAndTravelService } from '@/services/tourAndTravel';
-import Image from 'next/image';
-import ImageViewer from '@/app/_components/common/ImageViewer';
-import { TourAndTravel } from '@/types';
+import React, { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
+import { tourAndTravelService } from "@/services/tourAndTravel";
+import Image from "next/image";
+import ImageViewer from "@/app/_components/common/ImageViewer";
+import { TourAndTravel } from "@/types";
 
 interface Props {
   packageId: number;
@@ -18,11 +18,13 @@ interface Package {
 }
 
 export default function Section2({ packageId }: Readonly<Props>) {
-  const t = useTranslations('Package');
+  const t = useTranslations("Package");
   const [packageData, setPackageData] = useState<Package | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+    null
+  );
 
   useEffect(() => {
     const fetchPackage = async () => {
@@ -32,11 +34,13 @@ export default function Section2({ packageId }: Readonly<Props>) {
         setPackageData({
           id: packageData.id,
           name: packageData.name_package,
-          photos: packageData.details[0].photos.map((photo: { url: string }) => photo.url)
+          photos: packageData.details[0].photos.map(
+            (photo: { url: string }) => photo.url
+          ),
         });
       } catch (error) {
-        setError('Failed to fetch package details');
-        console.error('Error fetching package:', error);
+        setError("Failed to fetch package details");
+        console.error("Error fetching package:", error);
       } finally {
         setLoading(false);
       }
@@ -68,7 +72,7 @@ export default function Section2({ packageId }: Readonly<Props>) {
   if (!packageData) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="text-gray-500">{t('noPackageFound')}</div>
+        <div className="text-gray-500">{t("noPackageFound")}</div>
       </div>
     );
   }
@@ -196,4 +200,4 @@ export default function Section2({ packageId }: Readonly<Props>) {
       )}
     </div>
   );
-} 
+}

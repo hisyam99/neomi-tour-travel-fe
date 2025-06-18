@@ -1,13 +1,13 @@
-import api from './api';
-import { TourAndTravel, ApiResponse } from '@/types';
+import api from "./api";
+import { TourAndTravel, ApiResponse } from "@/types";
 
 class TourAndTravelService {
   async getAll(): Promise<ApiResponse<TourAndTravel[]>> {
     try {
-      const response = await api.get('/tour-and-travel');
+      const response = await api.get("/tour-and-travel");
       return response.data;
     } catch (error) {
-      console.error('Error fetching tour packages:', error);
+      console.error("Error fetching tour packages:", error);
       throw error;
     }
   }
@@ -23,6 +23,6 @@ class TourAndTravelService {
   }
 }
 
-export const tourAndTravelService = new TourAndTravelService(); 
+export const tourAndTravelService = new TourAndTravelService();
 
 export type { TourAndTravel };

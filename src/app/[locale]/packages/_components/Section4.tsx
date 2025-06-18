@@ -22,7 +22,10 @@ export default function Section4({ packages, loading, error }: Props) {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 gap-8">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-base-200 rounded-xl overflow-hidden animate-pulse">
+              <div
+                key={i}
+                className="bg-base-200 rounded-xl overflow-hidden animate-pulse"
+              >
                 <div className="h-48 bg-base-300"></div>
                 <div className="p-4 space-y-3">
                   <div className="h-4 bg-base-300 rounded w-3/4"></div>
@@ -41,7 +44,9 @@ export default function Section4({ packages, loading, error }: Props) {
     return (
       <div className="flex flex-col items-center justify-center py-12 px-4">
         <div className="text-error text-2xl mb-4">⚠️</div>
-        <div className="text-error text-xl font-semibold mb-2">{t("errorTitle")}</div>
+        <div className="text-error text-xl font-semibold mb-2">
+          {t("errorTitle")}
+        </div>
         <div className="text-base-content/70 text-center">{error.message}</div>
       </div>
     );
@@ -56,14 +61,14 @@ export default function Section4({ packages, loading, error }: Props) {
           {t("noResultsDescription")}
         </div>
         <div className="flex flex-col md:flex-row gap-4">
-          <button 
-            onClick={() => window.location.reload()} 
+          <button
+            onClick={() => window.location.reload()}
             className="btn btn-primary"
           >
             {t("refreshPage")}
           </button>
-          <button 
-            onClick={() => window.history.back()} 
+          <button
+            onClick={() => window.history.back()}
             className="btn btn-outline"
           >
             {t("goBack")}
@@ -79,55 +84,73 @@ export default function Section4({ packages, loading, error }: Props) {
         {packages.map((pkg, index) => {
           const details = pkg.details[0];
           const photo = details?.photos?.[0]?.url;
-          
+
           return (
-            <Link 
+            <Link
               href={`/packages/${pkg.id}`}
-            key={pkg.id} 
+              key={pkg.id}
               className="block bg-base-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
-            data-aos="fade-up"
-            data-aos-delay={100 * (index % 3)}
-          >
+              data-aos="fade-up"
+              data-aos-delay={100 * (index % 3)}
+            >
               <div className="flex flex-col md:flex-row">
-            <div className="w-full md:w-1/3 flex items-center justify-center">
-              <Image 
-                    src={photo || "https://picsum.photos/400/200?random=" + (index + 1)} 
-                    alt={pkg.name_package} 
-                width={400}
-                height={160}
-                className="object-cover w-full h-40 rounded" 
-              />
-            </div>
+                <div className="w-full md:w-1/3 flex items-center justify-center">
+                  <Image
+                    src={
+                      photo ||
+                      "https://picsum.photos/400/200?random=" + (index + 1)
+                    }
+                    alt={pkg.name_package}
+                    width={400}
+                    height={160}
+                    className="object-cover w-full h-40 rounded"
+                  />
+                </div>
                 <div className="flex-1 flex flex-col justify-between p-4">
-              <div>
-                    <div className="text-xl font-semibold mb-2">{pkg.name_package}</div>
-                    <div className="text-base-content/70 mb-4 text-sm">
-                      {details?.detail_wte?.replace(/<[^>]*>/g, '').substring(0, 200) + '...'}
+                  <div>
+                    <div className="text-xl font-semibold mb-2">
+                      {pkg.name_package}
                     </div>
-              </div>
-              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 mt-2 md:mt-0">
+                    <div className="text-base-content/70 mb-4 text-sm">
+                      {details?.detail_wte
+                        ?.replace(/<[^>]*>/g, "")
+                        .substring(0, 200) + "..."}
+                    </div>
+                  </div>
+                  <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 mt-2 md:mt-0">
                     <div className="font-bold text-lg">
-                      {t("currency")} {Number(details?.price || 0).toLocaleString()}
+                      {t("currency")}{" "}
+                      {Number(details?.price || 0).toLocaleString()}
                     </div>
                     <div className="btn btn-outline btn-primary btn-sm">
                       {t("moreDetails")}
                     </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
             </Link>
           );
         })}
       </div>
       {/* Navigation buttons */}
-      <div className="flex justify-center gap-4 mt-8 pb-8" data-aos="fade-up" data-aos-delay="800">
-        <button className="btn btn-circle bg-base-200 border-none hover:bg-base-300 transition-colors" aria-label="Previous">
+      <div
+        className="flex justify-center gap-4 mt-8 pb-8"
+        data-aos="fade-up"
+        data-aos-delay="800"
+      >
+        <button
+          className="btn btn-circle bg-base-200 border-none hover:bg-base-300 transition-colors"
+          aria-label="Previous"
+        >
           <FaChevronLeft className="text-xl" />
         </button>
-        <button className="btn btn-circle bg-base-200 border-none hover:bg-base-300 transition-colors" aria-label="Next">
+        <button
+          className="btn btn-circle bg-base-200 border-none hover:bg-base-300 transition-colors"
+          aria-label="Next"
+        >
           <FaChevronRight className="text-xl" />
         </button>
       </div>
     </div>
   );
-} 
+}

@@ -1,9 +1,9 @@
-import api from './api';
-import { Blog, ApiResponse } from '@/types';
+import api from "./api";
+import { Blog, ApiResponse } from "@/types";
 
 export const blogService = {
   getAll: async (): Promise<ApiResponse<Blog[]>> => {
-    const response = await api.get('/blogs');
+    const response = await api.get("/blogs");
     return response.data;
   },
 
@@ -11,4 +11,4 @@ export const blogService = {
     const response = await api.get(`/blogs/${slug}`);
     return response.data;
   },
-}; 
+};

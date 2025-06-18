@@ -57,7 +57,7 @@ export default function Section3({ onFilterChange }: Props) {
   };
 
   const handleMinPriceChange = (value: string) => {
-    const numValue = parseInt(value.replace(/\D/g, '')) || 0;
+    const numValue = parseInt(value.replace(/\D/g, "")) || 0;
     setPriceRange([numValue, priceRange[1]]);
     onFilterChange({
       keyword,
@@ -67,7 +67,7 @@ export default function Section3({ onFilterChange }: Props) {
   };
 
   const handleMaxPriceChange = (value: string) => {
-    const numValue = parseInt(value.replace(/\D/g, '')) || 0;
+    const numValue = parseInt(value.replace(/\D/g, "")) || 0;
     setPriceRange([priceRange[0], numValue]);
     onFilterChange({
       keyword,
@@ -86,7 +86,11 @@ export default function Section3({ onFilterChange }: Props) {
   };
 
   return (
-    <aside className="bg-base-200 rounded-xl p-6 w-full mb-8 lg:mb-0" data-aos="fade" data-aos-duration="1000">
+    <aside
+      className="bg-base-200 rounded-xl p-6 w-full mb-8 lg:mb-0"
+      data-aos="fade"
+      data-aos-duration="1000"
+    >
       <div className="space-y-8">
         {/* Header */}
         <div className="flex items-center gap-3 pb-4 border-b border-base-300">
@@ -96,20 +100,25 @@ export default function Section3({ onFilterChange }: Props) {
 
         {/* Keyword Search */}
         <div>
-          <div className="font-semibold text-lg mb-4 flex items-center gap-2" data-aos="fade" data-aos-duration="1000" data-aos-delay="100">
+          <div
+            className="font-semibold text-lg mb-4 flex items-center gap-2"
+            data-aos="fade"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
             <FaSearch className="text-primary" />
             {t("keyword")}
           </div>
           <div className="join w-full">
-            <input 
-              type="text" 
-              placeholder={t("searchPlaceholder")} 
-              className="input input-bordered join-item w-full" 
+            <input
+              type="text"
+              placeholder={t("searchPlaceholder")}
+              className="input input-bordered join-item w-full"
               value={keyword}
               onChange={(e) => handleKeywordChange(e.target.value)}
-              data-aos="fade" 
-              data-aos-duration="1000" 
-              data-aos-delay="200" 
+              data-aos="fade"
+              data-aos-duration="1000"
+              data-aos-delay="200"
             />
             <button className="btn join-item btn-primary">
               <FaSearch />
@@ -119,16 +128,21 @@ export default function Section3({ onFilterChange }: Props) {
 
         {/* Price Filter */}
         <div>
-          <div className="font-semibold text-lg mb-4" data-aos="fade" data-aos-duration="1000" data-aos-delay="300">
+          <div
+            className="font-semibold text-lg mb-4"
+            data-aos="fade"
+            data-aos-duration="1000"
+            data-aos-delay="300"
+          >
             {t("priceFilter")}
           </div>
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="join w-full">
                 <span className="join-item btn btn-sm">Rp</span>
-                <input 
-                  type="text" 
-                  className="input input-bordered join-item w-full" 
+                <input
+                  type="text"
+                  className="input input-bordered join-item w-full"
                   value={priceRange[0].toLocaleString()}
                   onChange={(e) => handleMinPriceChange(e.target.value)}
                   placeholder={t("min")}
@@ -136,32 +150,37 @@ export default function Section3({ onFilterChange }: Props) {
               </div>
               <div className="join w-full">
                 <span className="join-item btn btn-sm">Rp</span>
-                <input 
-                  type="text" 
-                  className="input input-bordered join-item w-full" 
+                <input
+                  type="text"
+                  className="input input-bordered join-item w-full"
                   value={priceRange[1].toLocaleString()}
                   onChange={(e) => handleMaxPriceChange(e.target.value)}
                   placeholder={t("max")}
                 />
               </div>
             </div>
-            <input 
-              type="range" 
-              min={data?.min_price ? Number(data.min_price) : 0} 
-              max={data?.max_price ? Number(data.max_price) : 50000000} 
+            <input
+              type="range"
+              min={data?.min_price ? Number(data.min_price) : 0}
+              max={data?.max_price ? Number(data.max_price) : 50000000}
               value={priceRange[1]}
               onChange={(e) => handlePriceRangeChange(parseInt(e.target.value))}
-              className="range range-primary w-full" 
-              data-aos="fade" 
-              data-aos-duration="1000" 
-              data-aos-delay="500" 
+              className="range range-primary w-full"
+              data-aos="fade"
+              data-aos-duration="1000"
+              data-aos-delay="500"
             />
           </div>
         </div>
 
         {/* Duration Filter */}
         <div>
-          <div className="font-semibold text-lg mb-4" data-aos="fade" data-aos-duration="1000" data-aos-delay="700">
+          <div
+            className="font-semibold text-lg mb-4"
+            data-aos="fade"
+            data-aos-duration="1000"
+            data-aos-delay="700"
+          >
             {t("duration")}
           </div>
           <div className="space-y-3">
@@ -169,19 +188,19 @@ export default function Section3({ onFilterChange }: Props) {
               { value: null, label: t("durationNone") },
               { value: "1", label: t("duration1") },
               { value: "2", label: t("duration2") },
-              { value: "3+", label: t("duration3") }
+              { value: "3+", label: t("duration3") },
             ].map((option, index) => (
-              <label 
-                key={option.value || "none"} 
-                className="label cursor-pointer justify-start gap-3 hover:bg-base-300 p-3 rounded-lg transition-colors" 
-                data-aos="fade" 
-                data-aos-duration="1000" 
-                data-aos-delay={800 + (index * 100)}
+              <label
+                key={option.value || "none"}
+                className="label cursor-pointer justify-start gap-3 hover:bg-base-300 p-3 rounded-lg transition-colors"
+                data-aos="fade"
+                data-aos-duration="1000"
+                data-aos-delay={800 + index * 100}
               >
-                <input 
-                  type="radio" 
-                  name="duration" 
-                  className="radio radio-primary" 
+                <input
+                  type="radio"
+                  name="duration"
+                  className="radio radio-primary"
                   checked={duration === option.value}
                   onChange={() => handleDurationChange(option.value)}
                 />
@@ -192,7 +211,7 @@ export default function Section3({ onFilterChange }: Props) {
         </div>
 
         {/* Reset Button */}
-        <button 
+        <button
           onClick={() => {
             setKeyword("");
             setDuration(null);
@@ -221,4 +240,4 @@ export default function Section3({ onFilterChange }: Props) {
       </div>
     </aside>
   );
-} 
+}

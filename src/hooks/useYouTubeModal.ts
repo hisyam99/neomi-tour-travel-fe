@@ -3,7 +3,9 @@ import { VideoSection } from "../app/[locale]/_constants/youtubeVideos";
 
 export const useYouTubeModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState<VideoSection | null>(null);
+  const [currentSection, setCurrentSection] = useState<VideoSection | null>(
+    null
+  );
 
   const openModal = useCallback((section: VideoSection) => {
     setCurrentSection(section);
@@ -21,4 +23,4 @@ export const useYouTubeModal = () => {
     openModal,
     closeModal,
   };
-}; 
+};

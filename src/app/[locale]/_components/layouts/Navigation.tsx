@@ -211,7 +211,11 @@ export default function Navigation() {
                   className={`${getDrawerButtonClass()} swap swap-rotate`}
                   aria-label="Open navigation menu"
                 >
-                  <input type="checkbox" checked={isDrawerOpen} onChange={toggleDrawer} />
+                  <input
+                    type="checkbox"
+                    checked={isDrawerOpen}
+                    onChange={toggleDrawer}
+                  />
                   {/* hamburger icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +262,11 @@ export default function Navigation() {
             <div className="flex flex-col h-full">
               <div className="flex-1">
                 <div className="pt-6 mb-8 flex justify-start">
-                  <Link href="/" className="btn btn-ghost text-lg lg:text-2xl font-bold tracking-wide text-base-content hover:text-primary flex items-center gap-0 hover:scale-105 transition-all duration-300" onClick={toggleDrawer}>
+                  <Link
+                    href="/"
+                    className="btn btn-ghost text-lg lg:text-2xl font-bold tracking-wide text-base-content hover:text-primary flex items-center gap-0 hover:scale-105 transition-all duration-300"
+                    onClick={toggleDrawer}
+                  >
                     <Image
                       src="/icon.png"
                       alt="Neomi Logo"
@@ -266,7 +274,7 @@ export default function Navigation() {
                       height={48}
                       className="w-12 h-12"
                     />
-                    <span style={{marginLeft: 0}}>{t("brandName")}</span>
+                    <span style={{ marginLeft: 0 }}>{t("brandName")}</span>
                   </Link>
                 </div>
                 <ul className="menu menu-lg gap-2">

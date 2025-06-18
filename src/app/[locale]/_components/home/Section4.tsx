@@ -14,7 +14,10 @@ export default function Section4() {
   const commonT = useTranslations("Common");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const fetchPackages = useCallback(() => tourAndTravelService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel[]>, []>(fetchPackages);
+  const { data, loading, error, execute } = useApi<
+    ApiResponse<TourAndTravel[]>,
+    []
+  >(fetchPackages);
 
   useEffect(() => {
     execute();
@@ -24,13 +27,14 @@ export default function Section4() {
     if (scrollContainerRef.current) {
       const scrollAmount = 300;
       const currentScroll = scrollContainerRef.current.scrollLeft;
-      const newScroll = direction === "left" 
-        ? currentScroll - scrollAmount 
-        : currentScroll + scrollAmount;
-      
+      const newScroll =
+        direction === "left"
+          ? currentScroll - scrollAmount
+          : currentScroll + scrollAmount;
+
       scrollContainerRef.current.scrollTo({
         left: newScroll,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   };
@@ -61,7 +65,11 @@ export default function Section4() {
   }
 
   if (error) {
-    return <div className="text-error">Error loading destinations: {error.message}</div>;
+    return (
+      <div className="text-error">
+        Error loading destinations: {error.message}
+      </div>
+    );
   }
 
   if (!data?.data || data.data.length === 0) {
@@ -74,18 +82,39 @@ export default function Section4() {
   return (
     <section className="bg-base-100 py-16">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-12" data-aos="fade-up">
+        <div
+          className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-12"
+          data-aos="fade-up"
+        >
           <div className="lg:w-1/3 mb-8 lg:mb-0">
-            <h2 className="text-5xl mb-4" data-aos="fade-up" data-aos-delay="100">{t("title")}</h2>
-            <p className="text-base" data-aos="fade-up" data-aos-delay="200">{t("description")}</p>
+            <h2
+              className="text-5xl mb-4"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              {t("title")}
+            </h2>
+            <p className="text-base" data-aos="fade-up" data-aos-delay="200">
+              {t("description")}
+            </p>
           </div>
-          <div className="flex items-center gap-4 ml-auto mb-8 lg:mb-0" data-aos="fade-up" data-aos-delay="300">
-            <button className="btn btn-circle bg-base-200 border-none" onClick={() => scroll("left")}
-              aria-label={commonT("previous")}>
+          <div
+            className="flex items-center gap-4 ml-auto mb-8 lg:mb-0"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <button
+              className="btn btn-circle bg-base-200 border-none"
+              onClick={() => scroll("left")}
+              aria-label={commonT("previous")}
+            >
               <FaChevronLeft className="text-xl" />
             </button>
-            <button className="btn btn-circle bg-base-200 border-none" onClick={() => scroll("right")}
-              aria-label={commonT("next")}>
+            <button
+              className="btn btn-circle bg-base-200 border-none"
+              onClick={() => scroll("right")}
+              aria-label={commonT("next")}
+            >
               <FaChevronRight className="text-xl" />
             </button>
           </div>
@@ -93,12 +122,12 @@ export default function Section4() {
         <div
           ref={scrollContainerRef}
           className="flex overflow-x-auto gap-8 pb-6 scrollbar-hide"
-          style={{ 
+          style={{
             scrollSnapType: "x mandatory",
             scrollbarWidth: "none",
             msOverflowStyle: "none",
             WebkitOverflowScrolling: "touch",
-            pointerEvents: "none"
+            pointerEvents: "none",
           }}
         >
           {popularDestinations.map((pkg, index) => (
@@ -106,9 +135,9 @@ export default function Section4() {
               href={`/packages/${pkg.id}`}
               key={pkg.id}
               className="flex-shrink-0 w-80 hover:opacity-90 transition-opacity"
-              style={{ 
+              style={{
                 scrollSnapAlign: "start",
-                pointerEvents: "auto"
+                pointerEvents: "auto",
               }}
               data-aos="fade-up"
               data-aos-delay={100 * (index + 1)}
@@ -116,7 +145,10 @@ export default function Section4() {
               <div className="card bg-base-200">
                 <figure className="h-48">
                   <Image
-                    src={pkg.details[0]?.photos[0]?.url || "https://picsum.photos/256/320"}
+                    src={
+                      pkg.details[0]?.photos[0]?.url ||
+                      "https://picsum.photos/256/320"
+                    }
                     alt={pkg.name_package}
                     width={320}
                     height={192}
@@ -124,8 +156,12 @@ export default function Section4() {
                   />
                 </figure>
                 <div className="card-body p-6">
-                  <h2 className="card-title text-lg italic mb-2">{pkg.name_package}</h2>
-                  <p className="text-sm text-base-content/80">{pkg.details[0]?.duration || "Duration not specified"}</p>
+                  <h2 className="card-title text-lg italic mb-2">
+                    {pkg.name_package}
+                  </h2>
+                  <p className="text-sm text-base-content/80">
+                    {pkg.details[0]?.duration || "Duration not specified"}
+                  </p>
                 </div>
               </div>
             </Link>
@@ -134,4 +170,4 @@ export default function Section4() {
       </div>
     </section>
   );
-} 
+}

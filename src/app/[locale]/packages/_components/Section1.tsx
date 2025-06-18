@@ -17,7 +17,7 @@ export default function Section1() {
   return (
     <>
       <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center -mt-16 pt-16">
-        <Image 
+        <Image
           src="/tourandtravel/tour.jpg"
           alt={t("imageAlt", { defaultValue: "Neomi Tour" })}
           fill
@@ -27,11 +27,19 @@ export default function Section1() {
         <div className="hero-overlay absolute inset-0 bg-neutral/60"></div>
         <div className="container mx-auto relative z-10 px-4 py-16">
           <div className="max-w-xl text-left text-neutral-content">
-            <h1 className="mb-4 text-5xl italic" data-aos="fade-up" data-aos-delay="200">{t("title")}</h1>
-            <p className="mb-6" data-aos="fade-up" data-aos-delay="300">{t("description")}</p>
-            <button 
-              className="btn btn-outline btn-primary flex items-center gap-2 hover:bg-primary hover:text-primary-content transition-colors" 
-              data-aos="fade-up" 
+            <h1
+              className="mb-4 text-5xl italic"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              {t("title")}
+            </h1>
+            <p className="mb-6" data-aos="fade-up" data-aos-delay="300">
+              {t("description")}
+            </p>
+            <button
+              className="btn btn-outline btn-primary flex items-center gap-2 hover:bg-primary hover:text-primary-content transition-colors"
+              data-aos="fade-up"
               data-aos-delay="400"
               onClick={handleVideoClick}
               aria-label={t("playVideo")}
@@ -43,11 +51,11 @@ export default function Section1() {
         </div>
       </div>
 
-      <YouTubeModal 
-        isOpen={isOpen} 
-        onClose={closeModal} 
-        section={currentSection || "packages"} 
+      <YouTubeModal
+        isOpen={isOpen}
+        onClose={closeModal}
+        section={currentSection || "packages"}
       />
     </>
   );
-} 
+}

@@ -35,7 +35,7 @@ export default async function LocaleLayout({
   params: { locale: string };
 }) {
   const { locale } = params;
-  
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -58,7 +58,8 @@ export default async function LocaleLayout({
             </div>
             <Script id="gtranslate-settings">
               {`window.gtranslateSettings = {"default_language":"en","languages":["en","id","zh-CN","fr","es","de","ja","ko","th"],"wrapper_selector":".gtranslate_wrapper","position":"bottom_left","switcher_horizontal_position":"left","switcher_vertical_position":"bottom"}`}
-            </Script>            <Script
+            </Script>{" "}
+            <Script
               src="https://cdn.gtranslate.net/widgets/latest/float.js"
               strategy="afterInteractive"
             />

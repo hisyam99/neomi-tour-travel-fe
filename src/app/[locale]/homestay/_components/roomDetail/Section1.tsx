@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { homestaysService } from '@/services/homestays';
-import Image from 'next/image';
-import ImageViewer from '@/app/_components/common/ImageViewer';
-import { Homestay } from '@/types';
+import React, { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
+import { homestaysService } from "@/services/homestays";
+import Image from "next/image";
+import ImageViewer from "@/app/_components/common/ImageViewer";
+import { Homestay } from "@/types";
 
 interface Props {
   roomId: number;
@@ -18,11 +18,13 @@ interface Room {
 }
 
 export default function Section1({ roomId }: Readonly<Props>) {
-  const t = useTranslations('Homestay');
+  const t = useTranslations("Homestay");
   const [room, setRoom] = useState<Room | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+    null
+  );
 
   useEffect(() => {
     const fetchRoom = async () => {
@@ -32,11 +34,11 @@ export default function Section1({ roomId }: Readonly<Props>) {
         setRoom({
           id: homestay.id,
           name: homestay.name,
-          photos: homestay.details.photos.map(photo => photo.path)
+          photos: homestay.details.photos.map((photo) => photo.path),
         });
       } catch (error) {
-        setError('Failed to fetch room details');
-        console.error('Error fetching room:', error);
+        setError("Failed to fetch room details");
+        console.error("Error fetching room:", error);
       } finally {
         setLoading(false);
       }
@@ -68,7 +70,7 @@ export default function Section1({ roomId }: Readonly<Props>) {
   if (!room) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="text-gray-500">{t('noRoomFound')}</div>
+        <div className="text-gray-500">{t("noRoomFound")}</div>
       </div>
     );
   }
@@ -167,4 +169,4 @@ export default function Section1({ roomId }: Readonly<Props>) {
       )}
     </div>
   );
-} 
+}

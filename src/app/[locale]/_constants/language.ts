@@ -1,8 +1,8 @@
 export const LANGUAGES = [
   {
-    code: 'en',
-    name: 'English',
-    flag: '🇬🇧'
+    code: "en",
+    name: "English",
+    flag: "🇬🇧",
   },
   // {
   //   code: 'id',
@@ -17,4 +17,4 @@ export const LANGUAGES = [
   // dimatikan karena menggunakan gtranslate.io saja
 ] as const;
 
-export type LanguageCode = (typeof LANGUAGES)[number]['code']; 
+export type LanguageCode = (typeof LANGUAGES)[number]["code"];

@@ -8,4 +8,4 @@ class SocialMediaService {
   }
 }
 
-export const socialMediaService = new SocialMediaService(); 
+export const socialMediaService = new SocialMediaService();

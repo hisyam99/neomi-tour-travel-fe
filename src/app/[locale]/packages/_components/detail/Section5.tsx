@@ -17,7 +17,7 @@ export default function Section5({ packageData }: Props) {
         <div className="space-y-4">
           <div>
             <div className="text-base-content/70">Duration</div>
-            <div className="font-semibold">{details?.duration || 'N/A'}</div>
+            <div className="font-semibold">{details?.duration || "N/A"}</div>
           </div>
           <div>
             <div className="text-base-content/70">Price</div>
@@ -25,8 +25,8 @@ export default function Section5({ packageData }: Props) {
               Rp {Number(details?.price || 0).toLocaleString()}
             </div>
           </div>
-          <a 
-            href={`https://wa.me/6281230996791?text=${encodeURIComponent(details?.chat || '')}`}
+          <a
+            href={details?.chat_url || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary w-full"
@@ -37,4 +37,4 @@ export default function Section5({ packageData }: Props) {
       </div>
     </div>
   );
-} 
+}

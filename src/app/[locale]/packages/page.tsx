@@ -17,7 +17,10 @@ export default function PackagesPage() {
   });
 
   const fetchPackages = useCallback(() => tourAndTravelService.getAll(), []);
-  const { data, loading, error, execute } = useApi<ApiResponse<TourAndTravel[]>, []>(fetchPackages);
+  const { data, loading, error, execute } = useApi<
+    ApiResponse<TourAndTravel[]>,
+    []
+  >(fetchPackages);
 
   useEffect(() => {
     execute();
@@ -26,9 +29,9 @@ export default function PackagesPage() {
   // Update price range based on API response
   useEffect(() => {
     if (data?.min_price && data?.max_price) {
-      setFilters(prev => ({
+      setFilters((prev) => ({
         ...prev,
-        priceRange: [Number(data.min_price), Number(data.max_price)]
+        priceRange: [Number(data.min_price), Number(data.max_price)],
       }));
     }
   }, [data?.min_price, data?.max_price]);
@@ -61,7 +64,7 @@ export default function PackagesPage() {
     }
   };
 
-  const filteredPackages = data?.data?.filter(pkg => {
+  const filteredPackages = data?.data?.filter((pkg) => {
     const details = pkg.details[0];
     const price = Number(details?.price || 0);
     const itineraryCount = details?.itineraries?.length || 0;
@@ -70,7 +73,7 @@ export default function PackagesPage() {
     console.log(`Package ${pkg.name_package}:`, {
       itineraryCount,
       duration: filters.duration,
-      itineraries: details?.itineraries
+      itineraries: details?.itineraries,
     });
 
     return (
@@ -92,10 +95,14 @@ export default function PackagesPage() {
             </div>
           </div>
           <div className="w-full lg:w-3/4">
-            <Section4 packages={filteredPackages} loading={loading} error={error} />
+            <Section4
+              packages={filteredPackages}
+              loading={loading}
+              error={error}
+            />
           </div>
         </div>
       </div>
     </main>
   );
-} 
+}

@@ -20,4 +20,4 @@ export const homeTestimonials = [
     quote:
       "Penginapan yang worth it banget, tempatnya bersih, nyaman, suasananya juga tenang, pelayanan dari pemilik sangat ramah, lokasinya juga strategis dekat dengan terminal, bandara dan exit tol",
   },
-]; 
+];

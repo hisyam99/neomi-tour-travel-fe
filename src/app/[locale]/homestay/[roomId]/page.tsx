@@ -22,14 +22,23 @@ export default async function HomestayRoomDetailPage(props: Props) {
     <main className="pt-16">
       <Section1 roomId={roomId} />
       <div className="container mx-auto px-4 flex flex-col md:flex-row gap-8 mt-8">
-        <div className="w-full md:w-2/3" data-aos="zoom-in lg:fade-right" data-aos-duration="1000">
+        <div
+          className="w-full md:w-2/3"
+          data-aos="zoom-in lg:fade-right"
+          data-aos-duration="1000"
+        >
           {/* <Section2 roomId={roomId} /> */}
           <Section3 roomId={roomId} />
         </div>
-        <div className="w-full md:w-1/3" data-aos="zoom-in-up lg:fade-left" data-aos-duration="1000" data-aos-delay="200">
+        <div
+          className="w-full md:w-1/3"
+          data-aos="zoom-in-up lg:fade-left"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
           <Section4 roomId={roomId} />
         </div>
       </div>
     </main>
   );
-} 
+}

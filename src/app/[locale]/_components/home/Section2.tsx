@@ -11,7 +11,11 @@ export default function Section2() {
     <div className="min-h-screen items-center justify-center">
       <div className="hero min-h-screen place-items-start items-center container mx-auto">
         <div className="hero-content flex-col lg:flex-row-reverse w-full justify-between max-w-screen">
-          <div className="" data-aos="zoom-in-up lg:fade-left" data-aos-delay="200">
+          <div
+            className=""
+            data-aos="zoom-in-up lg:fade-left"
+            data-aos-delay="200"
+          >
             <Image
               src="/home/section2.jpg"
               alt="Neomi Tour and Travel"
@@ -21,10 +25,31 @@ export default function Section2() {
               priority
             />
           </div>
-          <div className="max-w-md" data-aos="zoom-in lg:fade-right" data-aos-delay="100">
-            <h1 className="text-5xl mb-5" data-aos="zoom-in lg:fade-right" data-aos-delay="200">{t("title")}</h1>
-            <p className="mb-5" data-aos="zoom-in lg:fade-right" data-aos-delay="300">{t("description")}</p>
-            <Link href="/packages" className="btn btn-primary" data-aos="zoom-in lg:fade-right" data-aos-delay="400">
+          <div
+            className="max-w-md"
+            data-aos="zoom-in lg:fade-right"
+            data-aos-delay="100"
+          >
+            <h1
+              className="text-5xl mb-5"
+              data-aos="zoom-in lg:fade-right"
+              data-aos-delay="200"
+            >
+              {t("title")}
+            </h1>
+            <p
+              className="mb-5"
+              data-aos="zoom-in lg:fade-right"
+              data-aos-delay="300"
+            >
+              {t("description")}
+            </p>
+            <Link
+              href="/packages"
+              className="btn btn-primary"
+              data-aos="zoom-in lg:fade-right"
+              data-aos-delay="400"
+            >
               {commonT("getStarted")}
             </Link>
           </div>

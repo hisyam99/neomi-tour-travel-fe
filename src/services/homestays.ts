@@ -23,4 +23,4 @@ class HomestayService {
   }
 }
 
-export const homestaysService = new HomestayService(); 
+export const homestaysService = new HomestayService();
