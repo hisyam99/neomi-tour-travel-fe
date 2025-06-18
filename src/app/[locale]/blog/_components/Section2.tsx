@@ -12,9 +12,21 @@ const POSTS_PER_PAGE = 6;
 
 // Helper function to strip HTML and get plain text
 const stripHtml = (html: string) => {
-  const tmp = document.createElement('DIV');
-  tmp.innerHTML = html;
-  return tmp.textContent || tmp.innerText || '';
+  // Use DOMParser instead of creating an element (works both client and server-side)
+  if (typeof window !== 'undefined') {
+    const tmp = document.createElement('DIV');
+    tmp.innerHTML = html;
+    // Replace multiple consecutive spaces, newlines, and tabs with a single space
+    return (tmp.textContent || tmp.innerText || '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  } else {
+    // Simple regex fallback for server-side
+    return html
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
 };
 
 export default function Section2() {
@@ -125,4 +137,4 @@ export default function Section2() {
       )}
     </div>
   );
-} 
+}

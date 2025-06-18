@@ -47,6 +47,85 @@ export default function Section3({ roomId }: Props) {
     },
     [images]
   );
+  // Helper function to process content HTML for better formatting
+  const processContentHtml = (htmlContent: string) => {
+    if (!htmlContent) return "";
+    
+    // Create a temporary DOM element to manipulate the HTML
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlContent;
+    
+    // Process images and figures to restrict their size
+    const figures = tempDiv.querySelectorAll("figure");
+    figures.forEach((figure) => {
+      // Add responsive image classes
+      figure.classList.add("mx-auto", "my-6");
+      figure.setAttribute("style", "max-width: 100%; margin: 1.5rem auto;");
+      
+      // Process all images inside figures
+      const images = figure.querySelectorAll("img");
+      images.forEach((img) => {
+        // Make images responsive
+        img.classList.add("mx-auto", "h-auto", "rounded-lg");
+        img.setAttribute("style", "max-width: 100%; height: auto; max-height: 500px; object-fit: contain;");
+      });
+      
+      // Process figcaptions
+      const figcaptions = figure.querySelectorAll("figcaption");
+      figcaptions.forEach((caption) => {
+        caption.classList.add("text-center", "text-sm", "mt-2", "text-base-content/70");
+      });
+    });
+    
+    // Process standalone images (not in figures)
+    const images = tempDiv.querySelectorAll("img:not(figure img)");
+    images.forEach((img) => {
+      img.classList.add("mx-auto", "h-auto", "my-4", "rounded-lg");
+      img.setAttribute("style", "max-width: 100%; height: auto; max-height: 500px; object-fit: contain;");
+    });
+    
+    // Process Trix-specific attachments
+    const attachments = tempDiv.querySelectorAll("[data-trix-attachment]");
+    attachments.forEach((attachment) => {
+      attachment.classList.add("mx-auto", "my-6");
+      attachment.setAttribute("style", "max-width: 100%; margin: 1.5rem auto;");
+      
+      // Find images inside attachments
+      const attachmentImages = attachment.querySelectorAll("img");
+      attachmentImages.forEach((img) => {
+        img.classList.add("mx-auto", "h-auto", "rounded-lg");
+        img.setAttribute("style", "max-width: 100%; height: auto; max-height: 500px; object-fit: contain;");
+      });
+    });
+    
+    // Fix indentation and spacing
+    // Clean list indentation
+    const listItems = tempDiv.querySelectorAll("li");
+    listItems.forEach((li) => {
+      li.classList.add("ml-6");
+    });
+    
+    // Fix heading spacing
+    const h2Elements = tempDiv.querySelectorAll("h2");
+    h2Elements.forEach((h2) => {
+      h2.classList.add("mt-8", "mb-4");
+    });
+    
+    const h3Elements = tempDiv.querySelectorAll("h3");
+    h3Elements.forEach((h3) => {
+      h3.classList.add("mt-6", "mb-3");
+    });
+    
+    // Remove excessive whitespace at start of paragraphs
+    const paragraphs = tempDiv.querySelectorAll("p");
+    paragraphs.forEach((p) => {
+      if (p.innerHTML.startsWith("&nbsp;")) {
+        p.innerHTML = p.innerHTML.replace(/^(&nbsp;)+/, "");
+      }
+    });
+    
+    return tempDiv.innerHTML;
+  };
 
   useEffect(() => {
     execute();
@@ -115,10 +194,10 @@ export default function Section3({ roomId }: Props) {
       <div className="container mx-auto px-4">
         <div className="mb-8">
           <h2 className="font-bold text-2xl mb-4">Description</h2>
-          <div 
+          <div
             ref={contentRef}
             className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto [&_.attachment]:my-8 [&_.attachment__caption]:text-sm [&_.attachment__caption]:text-base-content/70 [&_.attachment__caption]:mt-2 [&_.attachment__caption]:text-center [&_.attachment__name]:font-medium [&_.attachment__size]:text-base-content/50 [&_.attachment__size]:ml-2 [&_figure]:my-8 [&_figure]:block [&_figcaption]:text-sm [&_figcaption]:text-base-content/70 [&_figcaption]:mt-2 [&_figcaption]:text-center [&_img]:rounded-xl [&_img]:mx-auto [&_img]:max-w-full [&_img]:h-auto [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_img]:focus:outline-none [&_img]:focus:ring-2 [&_img]:focus:ring-primary [&_img]:focus:ring-offset-2 [&_p]:my-4 [&_p]:leading-relaxed [&_h1]:text-4xl [&_h2]:text-3xl [&_h3]:text-2xl [&_h4]:text-xl [&_h5]:text-lg [&_h6]:text-base [&_ul]:list-disc [&_ol]:list-decimal [&_li]:my-2 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-base-content/80 [&_pre]:bg-base-200 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_code]:bg-base-200 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:break-words [&_code]:whitespace-pre-wrap [&_code]:overflow-x-auto [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-base-300 [&_th]:p-2 [&_td]:border [&_td]:border-base-300 [&_td]:p-2 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:font-mono [&_pre_code]:leading-relaxed [&_pre_code]:whitespace-pre-wrap [&_pre_code]:break-words [&_pre_code]:overflow-x-auto"
-            dangerouslySetInnerHTML={{ __html: homestay.description }} 
+            dangerouslySetInnerHTML={{ __html: processContentHtml(homestay.description) }}
           />
         </div>
 
@@ -219,4 +298,4 @@ export default function Section3({ roomId }: Props) {
       />
     </section>
   );
-} 
+}
