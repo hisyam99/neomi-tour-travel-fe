@@ -43,7 +43,8 @@
   "Home": {
     "section1": {
       "title": "Temukan Pengalaman Baru dengan Neomi.",
-      "description": "Nikmati liburan tak terlupakan dengan kenyamanan seperti di rumah. Dari puncak gunung hingga pantai berpasir, kami menemani setiap langkah perjalanan Anda.",
+      "description": "Nikmati liburan tak terlupakan dengan semua kenyamanan seperti di rumah. Dari puncak gunung hingga pantai berpasir, kami siap menemani setiap langkah perjalanan Anda.",
+      "playVideo": "Tonton Video",
       "imageAlt": "Neomi Tour and Travel Hero"
     },
     "section2": {
@@ -276,6 +277,7 @@
     "section1": {
       "title": "Galeri Kami",
       "description": "Jelajahi koleksi momen berkesan kami",
+      "playVideo": "Tonton Video",
       "imageAlt": "Galeri Neomi"
     },
     "section2": {

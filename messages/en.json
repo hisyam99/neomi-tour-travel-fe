@@ -44,6 +44,7 @@
     "section1": {
       "title": "Discover a New Experience with Neomi.",
       "description": "Savor an unforgettable getaway with all the comforts of home. From mountain peaks to sandy shores, we're with you every step of the way.",
+      "playVideo": "Watch Video",
       "imageAlt": "Neomi Tour and Travel Hero"
     },
     "section2": {
@@ -277,6 +278,7 @@
     "section1": {
       "title": "Our Gallery",
       "description": "Explore our collection of memorable moments",
+      "playVideo": "Watch Video",
       "imageAlt": "Neomi Gallery"
     },
     "section2": {
@@ -337,7 +339,7 @@
       "title": "About Us",
       "about": {
         "title": "About Neomi ",
-        "description": "At Neomi Tour and Travel, we believe that every journey should be memorable, comfortable, and uniquely tailored to your needs. Founded with the passion to explore and connect, we offer exclusive tour packages and personalized travel experiences that go beyond ordinary vacations. Our dedicated team is committed to crafting unforgettable adventures that suit your preferences, whether you seek relaxation, cultural immersion, or thrilling exploration.We prioritize exceptional service, attention to detail, and local expertise to ensure your trip is seamless from start to finish. In addition to our curated tour services, we also offer carefully selected homestay accommodations, allowing you to experience authentic local life while enjoying the comfort and hospitality of a welcoming home environment. Whether you’re staying in a peaceful village, near cultural landmarks, or in the heart of nature, our homestays provide a unique opportunity to connect deeper with the destination and its people.",
+        "description": "At Neomi Tour and Travel, we believe that every journey should be memorable, comfortable, and uniquely tailored to your needs. Founded with the passion to explore and connect, we offer exclusive tour packages and personalized travel experiences that go beyond ordinary vacations. Our dedicated team is committed to crafting unforgettable adventures that suit your preferences, whether you seek relaxation, cultural immersion, or thrilling exploration.We prioritize exceptional service, attention to detail, and local expertise to ensure your trip is seamless from start to finish. In addition to our curated tour services, we also offer carefully selected homestay accommodations, allowing you to experience authentic local life while enjoying the comfort and hospitality of a welcoming home environment. Whether you're staying in a peaceful village, near cultural landmarks, or in the heart of nature, our homestays provide a unique opportunity to connect deeper with the destination and its people.",
         "more": ""
       },
       "team1": {

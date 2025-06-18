@@ -24,12 +24,67 @@ export default function Section3({ packageData }: Props) {
   const extractImagesFromContent = (content: string) => {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = content;
+    
+    // Find all figure elements with attachments
+    const figureElements = tempDiv.getElementsByTagName("figure");
+    Array.from(figureElements).forEach(figure => {
+      const anchor = figure.querySelector("a");
+      const img = figure.querySelector("img");
+      const figcaption = figure.querySelector("figcaption");
+      if (anchor && img) {
+        // Remove the anchor and keep the image and figcaption
+        const newFigure = document.createElement("figure");
+        newFigure.className = figure.className;
+        newFigure.setAttribute("data-trix-attachment", figure.getAttribute("data-trix-attachment") || "");
+        newFigure.setAttribute("data-trix-content-type", figure.getAttribute("data-trix-content-type") || "");
+        newFigure.setAttribute("data-trix-attributes", figure.getAttribute("data-trix-attributes") || "");
+        
+        newFigure.appendChild(img);
+        if (figcaption) {
+          newFigure.appendChild(figcaption);
+        }
+        
+        figure.parentNode?.replaceChild(newFigure, figure);
+      }
+    });
+
     const imgElements = tempDiv.getElementsByTagName("img");
     const extractedImages = Array.from(imgElements).map((img) => ({
       src: img.src,
       alt: img.alt || "Package image",
     }));
     return extractedImages;
+  };
+
+  // Function to process content before rendering
+  const processContent = (content: string) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = content;
+    
+    // Find all figure elements with attachments
+    const figureElements = tempDiv.getElementsByTagName("figure");
+    Array.from(figureElements).forEach(figure => {
+      const anchor = figure.querySelector("a");
+      const img = figure.querySelector("img");
+      const figcaption = figure.querySelector("figcaption");
+      if (anchor && img) {
+        // Remove the anchor and keep the image and figcaption
+        const newFigure = document.createElement("figure");
+        newFigure.className = figure.className;
+        newFigure.setAttribute("data-trix-attachment", figure.getAttribute("data-trix-attachment") || "");
+        newFigure.setAttribute("data-trix-content-type", figure.getAttribute("data-trix-content-type") || "");
+        newFigure.setAttribute("data-trix-attributes", figure.getAttribute("data-trix-attributes") || "");
+        
+        newFigure.appendChild(img);
+        if (figcaption) {
+          newFigure.appendChild(figcaption);
+        }
+        
+        figure.parentNode?.replaceChild(newFigure, figure);
+      }
+    });
+
+    return tempDiv.innerHTML;
   };
 
   // Function to handle image click
@@ -44,38 +99,7 @@ export default function Section3({ packageData }: Props) {
     },
     [images]
   );
-
-  useEffect(() => {
-    if (packageData.description) {
-      const extractedImages = extractImagesFromContent(packageData.description);
-      setImages(extractedImages);
-    }
-    if (details?.detail_wte) {
-      const wteImages = extractImagesFromContent(details.detail_wte);
-      setImages(prev => [...prev, ...wteImages]);
-    }
-  }, [packageData, details]);
-
-  // Add click event listeners to images after content is rendered
-  useEffect(() => {
-    if (contentRef.current) {
-      const imgElements = contentRef.current.getElementsByTagName("img");
-      Array.from(imgElements).forEach((img) => {
-        img.removeAttribute("onclick");
-        img.removeAttribute("href");
-        img.setAttribute("role", "button");
-        img.setAttribute("tabIndex", "0");
-        img.setAttribute("aria-label", `View image: ${img.alt || "Package image"}`);
-        img.addEventListener("click", (e) => handleImageClick(e, img.src));
-        img.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            handleImageClick(e, img.src);
-          }
-        });
-      });
-    }
-  }, [handleImageClick]);
+  
   // Helper function to process content HTML for better formatting
   const processContentHtml = (htmlContent: string) => {
     if (!htmlContent) return "";
@@ -156,22 +180,57 @@ export default function Section3({ packageData }: Props) {
     return tempDiv.innerHTML;
   };
 
+  useEffect(() => {
+    if (packageData.description) {
+      const processedContent = processContent(packageData.description);
+      const extractedImages = extractImagesFromContent(processedContent);
+      setImages(extractedImages);
+      
+      // Update the content ref with processed content
+      if (contentRef.current) {
+        contentRef.current.innerHTML = processedContent;
+      }
+    }    if (details?.detail_wte) {
+      const processedWteContent = processContent(details.detail_wte);
+      const wteImages = extractImagesFromContent(processedWteContent);
+      setImages(prev => [...prev, ...wteImages]);
+    }
+  }, [packageData, details]);
+  // Add click event listeners to images after content is rendered
+  useEffect(() => {
+    if (contentRef.current) {
+      const imgElements = contentRef.current.getElementsByTagName("img");
+      Array.from(imgElements).forEach((img) => {
+        img.removeAttribute("onclick");
+        img.removeAttribute("href");
+        img.setAttribute("role", "button");
+        img.setAttribute("tabIndex", "0");
+        img.setAttribute("aria-label", `View image: ${img.alt || "Package image"}`);
+        img.addEventListener("click", (e) => handleImageClick(e, img.src));
+        img.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleImageClick(e, img.src);
+          }
+        });
+      });
+    }
+  }, [handleImageClick, packageData, details, images]);
+
   return (
     <div className="md:col-span-2">
       <div className="prose max-w-none">
-        <h2 className="text-2xl font-semibold mb-4">Package Details</h2>
-        <div 
+        <h2 className="text-2xl font-semibold mb-4">Package Details</h2>        <div 
           ref={contentRef}
-          className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto [&_.attachment]:my-8 [&_.attachment__caption]:text-sm [&_.attachment__caption]:text-base-content/70 [&_.attachment__caption]:mt-2 [&_.attachment__caption]:text-center [&_.attachment__name]:font-medium [&_.attachment__size]:text-base-content/50 [&_.attachment__size]:ml-2 [&_figure]:my-8 [&_figure]:block [&_figcaption]:text-sm [&_figcaption]:text-base-content/70 [&_figcaption]:mt-2 [&_figcaption]:text-center [&_img]:rounded-xl [&_img]:mx-auto [&_img]:max-w-full [&_img]:h-auto [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_img]:focus:outline-none [&_img]:focus:ring-2 [&_img]:focus:ring-primary [&_img]:focus:ring-offset-2 [&_p]:my-4 [&_p]:leading-relaxed [&_h1]:text-4xl [&_h2]:text-3xl [&_h3]:text-2xl [&_h4]:text-xl [&_h5]:text-lg [&_h6]:text-base [&_ul]:list-disc [&_ol]:list-decimal [&_li]:my-2 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-base-content/80 [&_pre]:bg-base-200 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_code]:bg-base-200 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:break-words [&_code]:whitespace-pre-wrap [&_code]:overflow-x-auto [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-base-300 [&_th]:p-2 [&_td]:border [&_td]:border-base-300 [&_td]:p-2 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:font-mono [&_pre_code]:leading-relaxed [&_pre_code]:whitespace-pre-wrap [&_pre_code]:break-words [&_pre_code]:overflow-x-auto"
-          dangerouslySetInnerHTML={{ __html: processContentHtml(packageData.description || '') }} 
+          className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto [&_.attachment]:my-8 [&_.attachment]:block [&_.attachment]:mx-auto [&_.attachment]:max-w-full [&_.attachment__caption]:text-sm [&_.attachment__caption]:text-base-content/70 [&_.attachment__caption]:mt-2 [&_.attachment__caption]:text-center [&_.attachment__name]:font-medium [&_.attachment__size]:text-base-content/50 [&_.attachment__size]:ml-2 [&_figure]:my-8 [&_figure]:block [&_figure]:mx-auto [&_figure]:max-w-full [&_figcaption]:text-sm [&_figcaption]:text-base-content/70 [&_figcaption]:mt-2 [&_figcaption]:text-center [&_img]:rounded-xl [&_img]:mx-auto [&_img]:max-w-full [&_img]:h-auto [&_img]:max-h-[500px] [&_img]:object-contain [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_img]:focus:outline-none [&_img]:focus:ring-2 [&_img]:focus:ring-primary [&_img]:focus:ring-offset-2 [&_p]:my-4 [&_p]:leading-relaxed [&_p]:break-words [&_p]:overflow-wrap-anywhere [&_p_figure]:my-6 [&_p_img]:my-6 [&_h1]:text-4xl [&_h2]:text-3xl [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-2xl [&_h3]:mt-6 [&_h3]:mb-3 [&_h4]:text-xl [&_h5]:text-lg [&_h6]:text-base [&_ul]:list-disc [&_ol]:list-decimal [&_li]:my-2 [&_li]:ml-6 [&_li]:break-words [&_li]:overflow-wrap-anywhere [&_ul_li]:pl-2 [&_ol_li]:pl-2 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-base-content/80 [&_blockquote]:break-words [&_blockquote]:overflow-wrap-anywhere [&_pre]:bg-base-200 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_code]:bg-base-200 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:break-words [&_code]:whitespace-pre-wrap [&_code]:overflow-x-auto [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-base-300 [&_th]:p-2 [&_td]:border [&_td]:border-base-300 [&_td]:p-2 [&_td]:break-words [&_td]:overflow-wrap-anywhere [&_th]:break-words [&_th]:overflow-wrap-anywhere [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:font-mono [&_pre_code]:leading-relaxed [&_pre_code]:whitespace-pre-wrap [&_pre_code]:break-words [&_pre_code]:overflow-x-auto [&_strong]:font-bold [&_em]:italic [&_ul_ul]:mt-0 [&_ul_ul_li]:ml-6 [&_ol_ol]:mt-0 [&_ol_ol_li]:ml-6 [&_[data-trix-attachment]]:max-w-full [&_[data-trix-attachment]_img]:max-w-full [&_[data-trix-attachment]_img]:max-h-[500px] [&_[data-trix-attachment]_img]:object-contain [&_[data-trix-content-type='image/jpeg']]:mx-auto [&_[data-trix-content-type='image/png']]:mx-auto [&_[data-trix-content-type='image/gif']]:mx-auto"
+          dangerouslySetInnerHTML={{ __html: packageData.description ? processContentHtml(packageData.description) : '' }}
         />
       </div>
 
       <div className="prose max-w-none mt-8">
-        <h2 className="text-2xl font-semibold mb-4">What to Expect</h2>
-        <div 
-          className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto [&_.attachment]:my-8 [&_.attachment__caption]:text-sm [&_.attachment__caption]:text-base-content/70 [&_.attachment__caption]:mt-2 [&_.attachment__caption]:text-center [&_.attachment__name]:font-medium [&_.attachment__size]:text-base-content/50 [&_.attachment__size]:ml-2 [&_figure]:my-8 [&_figure]:block [&_figcaption]:text-sm [&_figcaption]:text-base-content/70 [&_figcaption]:mt-2 [&_figcaption]:text-center [&_img]:rounded-xl [&_img]:mx-auto [&_img]:max-w-full [&_img]:h-auto [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_img]:focus:outline-none [&_img]:focus:ring-2 [&_img]:focus:ring-primary [&_img]:focus:ring-offset-2 [&_p]:my-4 [&_p]:leading-relaxed [&_h1]:text-4xl [&_h2]:text-3xl [&_h3]:text-2xl [&_h4]:text-xl [&_h5]:text-lg [&_h6]:text-base [&_ul]:list-disc [&_ol]:list-decimal [&_li]:my-2 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-base-content/80 [&_pre]:bg-base-200 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_code]:bg-base-200 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:break-words [&_code]:whitespace-pre-wrap [&_code]:overflow-x-auto [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-base-300 [&_th]:p-2 [&_td]:border [&_td]:border-base-300 [&_td]:p-2 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:font-mono [&_pre_code]:leading-relaxed [&_pre_code]:whitespace-pre-wrap [&_pre_code]:break-words [&_pre_code]:overflow-x-auto"
-          dangerouslySetInnerHTML={{ __html: processContentHtml(details?.detail_wte || '') }} 
+        <h2 className="text-2xl font-semibold mb-4">What to Expect</h2>        <div 
+          className="prose max-w-none prose-headings:font-normal prose-headings:italic prose-a:text-primary prose-a:underline hover:prose-a:text-accent prose-img:rounded-xl prose-img:mx-auto [&_.attachment]:my-8 [&_.attachment]:block [&_.attachment]:mx-auto [&_.attachment]:max-w-full [&_.attachment__caption]:text-sm [&_.attachment__caption]:text-base-content/70 [&_.attachment__caption]:mt-2 [&_.attachment__caption]:text-center [&_.attachment__name]:font-medium [&_.attachment__size]:text-base-content/50 [&_.attachment__size]:ml-2 [&_figure]:my-8 [&_figure]:block [&_figure]:mx-auto [&_figure]:max-w-full [&_figcaption]:text-sm [&_figcaption]:text-base-content/70 [&_figcaption]:mt-2 [&_figcaption]:text-center [&_img]:rounded-xl [&_img]:mx-auto [&_img]:max-w-full [&_img]:h-auto [&_img]:max-h-[500px] [&_img]:object-contain [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_img]:focus:outline-none [&_img]:focus:ring-2 [&_img]:focus:ring-primary [&_img]:focus:ring-offset-2 [&_p]:my-4 [&_p]:leading-relaxed [&_p]:break-words [&_p]:overflow-wrap-anywhere [&_p_figure]:my-6 [&_p_img]:my-6 [&_h1]:text-4xl [&_h2]:text-3xl [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-2xl [&_h3]:mt-6 [&_h3]:mb-3 [&_h4]:text-xl [&_h5]:text-lg [&_h6]:text-base [&_ul]:list-disc [&_ol]:list-decimal [&_li]:my-2 [&_li]:ml-6 [&_li]:break-words [&_li]:overflow-wrap-anywhere [&_ul_li]:pl-2 [&_ol_li]:pl-2 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-base-content/80 [&_blockquote]:break-words [&_blockquote]:overflow-wrap-anywhere [&_pre]:bg-base-200 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_code]:bg-base-200 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:break-words [&_code]:whitespace-pre-wrap [&_code]:overflow-x-auto [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-base-300 [&_th]:p-2 [&_td]:border [&_td]:border-base-300 [&_td]:p-2 [&_td]:break-words [&_td]:overflow-wrap-anywhere [&_th]:break-words [&_th]:overflow-wrap-anywhere [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:font-mono [&_pre_code]:leading-relaxed [&_pre_code]:whitespace-pre-wrap [&_pre_code]:break-words [&_pre_code]:overflow-x-auto [&_strong]:font-bold [&_em]:italic [&_ul_ul]:mt-0 [&_ul_ul_li]:ml-6 [&_ol_ol]:mt-0 [&_ol_ol_li]:ml-6 [&_[data-trix-attachment]]:max-w-full [&_[data-trix-attachment]_img]:max-w-full [&_[data-trix-attachment]_img]:max-h-[500px] [&_[data-trix-attachment]_img]:object-contain [&_[data-trix-content-type='image/jpeg']]:mx-auto [&_[data-trix-content-type='image/png']]:mx-auto [&_[data-trix-content-type='image/gif']]:mx-auto"
+          dangerouslySetInnerHTML={{ __html: details?.detail_wte ? processContentHtml(details.detail_wte) : '' }}
         />
       </div>
 

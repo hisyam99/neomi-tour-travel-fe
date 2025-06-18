@@ -32,12 +32,67 @@ export default function Section2({ blogId }: Props) {
   const extractImagesFromContent = (content: string) => {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = content;
+    
+    // Find all figure elements with attachments
+    const figureElements = tempDiv.getElementsByTagName("figure");
+    Array.from(figureElements).forEach(figure => {
+      const anchor = figure.querySelector("a");
+      const img = figure.querySelector("img");
+      const figcaption = figure.querySelector("figcaption");
+      if (anchor && img) {
+        // Remove the anchor and keep the image and figcaption
+        const newFigure = document.createElement("figure");
+        newFigure.className = figure.className;
+        newFigure.setAttribute("data-trix-attachment", figure.getAttribute("data-trix-attachment") || "");
+        newFigure.setAttribute("data-trix-content-type", figure.getAttribute("data-trix-content-type") || "");
+        newFigure.setAttribute("data-trix-attributes", figure.getAttribute("data-trix-attributes") || "");
+        
+        newFigure.appendChild(img);
+        if (figcaption) {
+          newFigure.appendChild(figcaption);
+        }
+        
+        figure.parentNode?.replaceChild(newFigure, figure);
+      }
+    });
+
     const imgElements = tempDiv.getElementsByTagName("img");
     const extractedImages = Array.from(imgElements).map((img) => ({
       src: img.src,
       alt: img.alt || "Blog image",
     }));
     return extractedImages;
+  };
+
+  // Function to process content before rendering
+  const processContent = (content: string) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = content;
+    
+    // Find all figure elements with attachments
+    const figureElements = tempDiv.getElementsByTagName("figure");
+    Array.from(figureElements).forEach(figure => {
+      const anchor = figure.querySelector("a");
+      const img = figure.querySelector("img");
+      const figcaption = figure.querySelector("figcaption");
+      if (anchor && img) {
+        // Remove the anchor and keep the image and figcaption
+        const newFigure = document.createElement("figure");
+        newFigure.className = figure.className;
+        newFigure.setAttribute("data-trix-attachment", figure.getAttribute("data-trix-attachment") || "");
+        newFigure.setAttribute("data-trix-content-type", figure.getAttribute("data-trix-content-type") || "");
+        newFigure.setAttribute("data-trix-attributes", figure.getAttribute("data-trix-attributes") || "");
+        
+        newFigure.appendChild(img);
+        if (figcaption) {
+          newFigure.appendChild(figcaption);
+        }
+        
+        figure.parentNode?.replaceChild(newFigure, figure);
+      }
+    });
+
+    return tempDiv.innerHTML;
   };
 
   // Function to handle image click
@@ -140,8 +195,14 @@ export default function Section2({ blogId }: Props) {
     if (data?.data) {
       const currentBlog = data.data.find((post) => post.slug === blogId);
       if (currentBlog?.content) {
-        const extractedImages = extractImagesFromContent(currentBlog.content);
+        const processedContent = processContent(currentBlog.content);
+        const extractedImages = extractImagesFromContent(processedContent);
         setImages(extractedImages);
+        
+        // Update the content ref with processed content
+        if (contentRef.current) {
+          contentRef.current.innerHTML = processedContent;
+        }
       }
     }
   }, [data, blogId]);
@@ -151,19 +212,11 @@ export default function Section2({ blogId }: Props) {
     if (contentRef.current) {
       const imgElements = contentRef.current.getElementsByTagName("img");
       Array.from(imgElements).forEach((img) => {
-        // Remove any existing click handlers
         img.removeAttribute("onclick");
         img.removeAttribute("href");
-
-        // Add our custom attributes
         img.setAttribute("role", "button");
         img.setAttribute("tabIndex", "0");
-        img.setAttribute(
-          "aria-label",
-          `View image: ${img.alt || "Blog image"}`
-        );
-
-        // Add event listeners
+        img.setAttribute("aria-label", `View image: ${img.alt || "Blog image"}`);
         img.addEventListener("click", (e) => handleImageClick(e, img.src));
         img.addEventListener("keydown", (e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -173,7 +226,7 @@ export default function Section2({ blogId }: Props) {
         });
       });
     }
-  }, [handleImageClick]);
+  }, [handleImageClick, data]);
 
   if (loading) {
     return (
@@ -213,18 +266,20 @@ export default function Section2({ blogId }: Props) {
       </div>
     );
   }
-
   if (!data?.data || data.data.length === 0) {
     return <div className="text-center">No related posts found</div>;
+  }
+
+  // Get the current blog post
+  const currentBlog = data.data.find((post) => post.slug === blogId);
+  if (!currentBlog) {
+    return <div className="text-center">Blog post not found</div>;
   }
 
   // Filter out the current blog post and get up to 6 related posts
   const relatedPosts = data.data
     .filter((post) => post.slug !== blogId)
     .slice(0, 6);
-
-  const currentBlog = data.data.find((post) => post.slug === blogId);
-
   return (
     <section className="py-10">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-8">
@@ -237,8 +292,8 @@ export default function Section2({ blogId }: Props) {
             >
               <div
                 ref={contentRef}
-                dangerouslySetInnerHTML={{                  __html:
-                    currentBlog?.content ? processContentHtml(currentBlog.content) : "",
+                dangerouslySetInnerHTML={{
+                  __html: currentBlog.content ? processContentHtml(currentBlog.content) : ""
                 }}
               />
             </section>
