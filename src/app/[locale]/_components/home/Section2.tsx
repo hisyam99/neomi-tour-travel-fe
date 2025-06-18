@@ -13,7 +13,7 @@ export default function Section2() {
         <div className="hero-content flex-col lg:flex-row-reverse w-full justify-between max-w-screen">
           <div className="" data-aos="zoom-in-up lg:fade-left" data-aos-delay="200">
             <Image
-              src="https://picsum.photos/400/300?random=10"
+              src="/home/section2.jpg"
               alt="Neomi Tour and Travel"
               width={400}
               height={300}

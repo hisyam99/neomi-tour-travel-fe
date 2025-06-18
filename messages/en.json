@@ -11,7 +11,7 @@
     "blog": "Blog",
     "about": "About Us",
     "contactUs": "Contact Us",
-    "brandName": "Neomi Travel",
+    "brandName": "Homestay & Tour Travel",
     "whatsappMessage": "Hello Neomi, I'm interested in arranging a personalized custom trip. Could you please assist me with the details?"
   },
   "Common": {
@@ -127,10 +127,10 @@
     "description": "Enjoy an unforgettable holiday experience with comfort like home. From mountains to beaches, we are ready to accompany every step of your journey.",
     "connect": "Connect",
     "contact": "Contact",
-    "address": "43 Raymouth Rd. Baltemoer, London 3910",
-    "phone1": "0811-3322-218",
+    "address": "Jl. Blimbing Indah Timur XXII P7 No.37, Pandanwangi, Kec. Blimbing, Kota Malang, Jawa Timur 65124",
+    "phone1": "+628113322218",
     "phone2": "0811-3322-218",
-    "email": "info@mydomain.com",
+    "email": "neomips1@gmail.com",
     "quickLinks": {
       "title": "Quick Links",
       "home": "Home",
@@ -157,6 +157,7 @@
       "description": "Interested in a custom tour designed just for you? Reach out to us by clicking the button below.",
       "contactUs": "Contact Us",
       "whatsappMessage": "Hello Neomi, I'm interested in arranging a personalized custom trip. Could you please assist me with the details?"
+      
     },
     "section3": {
       "priceFilter": "Price Range",
@@ -336,7 +337,7 @@
       "title": "About Us",
       "about": {
         "title": "About Neomi ",
-        "description": "At Neomi Tour and Travel, we believe that every journey should be memorable, comfortable, and uniquely tailored to your needs. Founded with the passion to explore and connect, we offer exclusive tour packages and personalized travel experiences that go beyond ordinary vacations. Our dedicated team is committed to crafting unforgettable adventures that suit your preferences, whether you seek relaxation, cultural immersion, or thrilling exploration. We prioritize exceptional service, attention to detail, and local expertise to ensure your trip is seamless from start to finish.With Neomi Tour and Travel, you're not just a traveler — you're a valued guest. We take pride in providing a warm, welcoming atmosphere that makes you feel at home, no matter where your journey takes you.",
+        "description": "At Neomi Tour and Travel, we believe that every journey should be memorable, comfortable, and uniquely tailored to your needs. Founded with the passion to explore and connect, we offer exclusive tour packages and personalized travel experiences that go beyond ordinary vacations. Our dedicated team is committed to crafting unforgettable adventures that suit your preferences, whether you seek relaxation, cultural immersion, or thrilling exploration.We prioritize exceptional service, attention to detail, and local expertise to ensure your trip is seamless from start to finish. In addition to our curated tour services, we also offer carefully selected homestay accommodations, allowing you to experience authentic local life while enjoying the comfort and hospitality of a welcoming home environment. Whether you’re staying in a peaceful village, near cultural landmarks, or in the heart of nature, our homestays provide a unique opportunity to connect deeper with the destination and its people.",
         "more": ""
       },
       "team1": {

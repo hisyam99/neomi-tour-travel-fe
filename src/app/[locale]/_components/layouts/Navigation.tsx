@@ -190,10 +190,10 @@ export default function Navigation() {
               <div className="hidden lg:block shrink-0">
                 <ThemeChange />
               </div>
-              <div className="flex-1 flex justify-end">
+              <div className="hidden lg:flex flex-1 justify-end">
                 {socialMedia?.whatsapp && (
                   <a
-                    href={`${socialMedia.whatsapp}?text=${whatsappMessage}`}
+                    href={`${socialMedia.whatsapp}?text=Hallo%20Neomi,%20Saya%20ingin%20bertanya%20tentang%20layanan%20anda.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`btn transition-all duration-300 ${getContactUsButtonClass()}`}
@@ -257,7 +257,7 @@ export default function Navigation() {
             <div className="flex flex-col h-full">
               <div className="flex-1">
                 <div className="pt-6 mb-8 flex justify-start">
-                  <Link href="/" className="btn btn-ghost text-lg lg:text-2xl font-bold tracking-wide text-base-content hover:text-primary flex items-center gap-3 hover:scale-105 transition-all duration-300" onClick={toggleDrawer}>
+                  <Link href="/" className="btn btn-ghost text-lg lg:text-2xl font-bold tracking-wide text-base-content hover:text-primary flex items-center gap-0 hover:scale-105 transition-all duration-300" onClick={toggleDrawer}>
                     <Image
                       src="/icon.png"
                       alt="Neomi Logo"
@@ -265,7 +265,7 @@ export default function Navigation() {
                       height={48}
                       className="w-12 h-12"
                     />
-                    {t("brandName")}
+                    <span style={{marginLeft: 0}}>{t("brandName")}</span>
                   </Link>
                 </div>
                 <ul className="menu menu-lg gap-2">

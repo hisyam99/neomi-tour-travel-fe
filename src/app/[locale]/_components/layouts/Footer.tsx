@@ -123,7 +123,7 @@ export default function Footer() {
             <div className="text-base-content/70 space-y-1">
               <div>{t("address")}</div>
               <div>{t("phone1")}</div>
-              <div>{t("phone2")}</div>
+              {/* <div>{t("phone2")}</div> */}
               <a href={`mailto:${t("email")}`} className="underline text-base-content/80 block">{t("email")}</a>
             </div>
           </div>

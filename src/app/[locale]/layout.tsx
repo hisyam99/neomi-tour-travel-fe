@@ -5,6 +5,7 @@ import Navigation from "./_components/layouts/Navigation";
 import { Geist_Mono, Playfair_Display } from "next/font/google";
 import Footer from "./_components/layouts/Footer";
 import AOSProvider from "../_components/common/AOSProvider";
+import WhatsAppButton from "../_components/common/WhatsAppButton";
 import Script from "next/script";
 
 const playfair = Playfair_Display({
@@ -56,12 +57,12 @@ export default async function LocaleLayout({
               <div className="gtranslate_wrapper"></div>
             </div>
             <Script id="gtranslate-settings">
-              {`window.gtranslateSettings = {"default_language":"en","languages":["en","id","zh-CN","fr","es","de","ja","ko","th"],"wrapper_selector":".gtranslate_wrapper","position":"bottom_right","switcher_horizontal_position":"right","switcher_vertical_position":"bottom"}`}
-            </Script>
-            <Script
+              {`window.gtranslateSettings = {"default_language":"en","languages":["en","id","zh-CN","fr","es","de","ja","ko","th"],"wrapper_selector":".gtranslate_wrapper","position":"bottom_left","switcher_horizontal_position":"left","switcher_vertical_position":"bottom"}`}
+            </Script>            <Script
               src="https://cdn.gtranslate.net/widgets/latest/float.js"
               strategy="afterInteractive"
             />
+            <WhatsAppButton />
             <Footer />
           </AOSProvider>
         </NextIntlClientProvider>
