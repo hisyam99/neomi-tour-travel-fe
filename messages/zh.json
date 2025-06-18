@@ -25,8 +25,10 @@
   },
   "Home": {
     "section1": {
-      "title": "与 Neomi 一起探索新世界",
-      "description": "享受如家般舒适的难忘假期体验。从山脉到海滩，我们随时准备陪伴您的每一步旅程。"
+      "title": "与 Neomi 一起发现新体验",
+      "description": "享受难忘的假期体验，拥有如家般的舒适。从山峰到沙滩，我们陪伴您旅程的每一步。",
+      "playVideo": "观看视频",
+      "imageAlt": "Neomi 旅游和旅行英雄"
     },
     "section2": {
       "title": "您的旅程从这里开始",
@@ -152,7 +154,9 @@
   "Gallery": {
     "section1": {
       "title": "我们的画廊",
-      "description": "探索我们精彩时刻和体验的收藏"
+      "description": "探索我们难忘时刻的收藏",
+      "playVideo": "观看视频",
+      "imageAlt": "Neomi 画廊"
     },
     "section2": {
       "searchPlaceholder": "搜索画廊...",
