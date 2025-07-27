@@ -1,3 +1,14 @@
+# NOTE:
+# If you use a reusable workflow (e.g., `uses: ./.github/workflows/.build-application.yml`), 
+# you MUST add `secrets: inherit` to the job definition to pass secrets to the called workflow.
+# See: https://docs.github.com/en/actions/using-workflows/reusing-workflows#passing-inputs-and-secrets-to-a-reusable-workflow
+#
+# Example:
+# jobs:
+#   build:
+#     uses: ./.github/workflows/.build-application.yml
+#     secrets: inherit
+
 name: Deploy Next.js App to cPanel via FTP (with Bun)
 
 on:
@@ -6,47 +17,6 @@ on:
       - main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "24.x"
-
-      - name: Install Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - name: Install dependencies and build Next.js app
-        run: |
-          bun install
-
-          echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env
-          echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
-
-          bun run build
-
-      - name: Deploy via FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
-          local-dir: ./
-
-          server-dir: neomi-fe/
-          protocol: ftps
-          timeout: 300000
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            .github/
-            README.md
+  build-and-deploy:
+    uses: ./.github/workflows/.build-application.yml
+    secrets: inherit
