@@ -43,9 +43,9 @@ jobs:
           server-dir: neomi-fe/
           protocol: ftps
           timeout: 300000
-          delete-excluded: true
           exclude: |
-            .git/
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
             .github/
-            node_modules/
             README.md
