@@ -53,4 +53,5 @@ jobs:
             **/.git*/**
             **/node_modules/**
             .github/
+            .next/cache/
             README.md
