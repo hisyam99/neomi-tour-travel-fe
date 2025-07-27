@@ -54,4 +54,8 @@ jobs:
             **/node_modules/**
             .github/
             .next/cache/
+            .next/cache/*
+            .next/cache/**
+            .next/cache*/*
+            .next/cache*/**
             README.md
