@@ -27,12 +27,16 @@ jobs:
         run: |
           bun install
 
-          # Check if NEXT_PUBLIC_API_URL secret is set
+          # Check if NEXT_PUBLIC_API_URL or NODE_ENV secrets are set
           if [ -z "${{ secrets.NEXT_PUBLIC_API_URL }}" ]; then
             echo "WARNING: NEXT_PUBLIC_API_URL secret is not set in repository secrets. Please add it in Settings > Secrets and variables > Actions."
           fi
+          if [ -z "${{ secrets.NODE_ENV }}" ]; then
+            echo "WARNING: NODE_ENV secret is not set in repository secrets. Please add it in Settings > Secrets and variables > Actions."
+          fi
 
           echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env
+          echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env
 
           bun run build
 
