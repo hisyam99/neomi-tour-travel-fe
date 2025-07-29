@@ -11,7 +11,7 @@
     "blog": "Blog",
     "about": "About Us",
     "contactUs": "Contact Us",
-    "brandName": "Homestay & Tour Travel",
+    "brandName": "Neomi Travel Java",
     "whatsappMessage": "Hello Neomi, I'm interested in arranging a personalized custom trip. Could you please assist me with the details?"
   },
   "Common": {
@@ -124,7 +124,7 @@
     }
   },
   "Footer": {
-    "brand": "Neomi Homestay Tour And Travel",
+    "brand": "Neomi Travel Java",
     "description": "Enjoy an unforgettable holiday experience with comfort like home. From mountains to beaches, we are ready to accompany every step of your journey.",
     "connect": "Connect",
     "contact": "Contact",
@@ -215,7 +215,7 @@
       "title": "Our Homestays",
       "description": "Feel at home comfort, only at Neomi HomeStay — the ideal place to rest and enjoy a peaceful atmosphere.",
       "playVideo": "Watch Video",
-      "imageAlt": "Neomi Homestay Tour And Travel"
+      "imageAlt": "Neomi Travel Java"
     },
     "section2": {
       "description": "Neomi HomeStay offers modern comfort with a touch of local culture. Enjoy fast Wi-Fi, breakfast, and a peaceful atmosphere perfect for your vacation or business trip."
